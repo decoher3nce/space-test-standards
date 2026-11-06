@@ -1,0 +1,24 @@
+kind: rule
+id: gevs-7000b.rule.mass_properties_and_balance_sequence
+standard: gevs-7000b
+title: Mass properties by analysis and/or measurement; initial balance before and final balance after environmental testing (2.4.7)
+citation: {standard: gevs-7000b, clause: "2.4.7.1", page: "2.4- 38", pdf_page: 89}
+category: sequence
+statement: >
+  Mass property requirements are mission dependent. Weight, centre of gravity and moments of inertia
+  are determined for all configurations by analysis supplemented by measurement; direct measurement
+  is required when analytic determination is not accurate enough. For balance, the usual sequence is
+  an initial balance before the environmental programme, aiming at a residual unbalance no more than
+  four times the final requirement and proving the balance-weight attachment, then a final balance
+  after all environmental testing. Later changes to weight distribution are minimised and assessed,
+  with rebalancing if the residual exceeds requirements. The requirements apply to all flight
+  hardware, including acceptance of previously qualified items (2.4.7.2).
+applies_to:
+  test_types: [physical_properties]
+  levels: [element, subsystem, unit]
+after: [random_vibration, acoustic, sine_vibration, shock, thermal_vacuum]
+values:
+  initial_residual_unbalance_max: {value: 4, unit: factor, relative_to: final_balance_requirement}
+notes: >
+  "after" lists the environmental tests that the final balance follows; the initial balance precedes
+  them. Pages 2.4- 37 to 2.4- 39 (pdf 88 to 90) carry the clause.

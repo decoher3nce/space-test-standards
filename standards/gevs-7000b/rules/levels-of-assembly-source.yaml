@@ -1,0 +1,19 @@
+kind: rule
+id: gevs-7000b.rule.levels_of_assembly_definitions
+standard: gevs-7000b
+title: Source of the level-of-assembly definitions (Section 1.8; Table 2.2-1 is an image)
+citation: {standard: gevs-7000b, clause: "1.8", page: "1-6", pdf_page: 24, note: "Table 2.2-1 (page 2.2 - 3, pdf 44) is an image in the public PDF and carries no extractable text"}
+category: general
+statement: >
+  Table 2.2-1, the levels-of-assembly hierarchy with examples, is an image in the public PDF. The
+  level ids in vocabulary/levels-of-assembly.yaml are therefore taken from the Section 1.8
+  definitions (entry "Level of Assembly", page 1-6 continuing on 1-7): part, subassembly, assembly,
+  component (used interchangeably with unit), section (a testable grouping such as stacked or
+  tray-mounted components), subsystem (an instrument counts as a subsystem), module, and payload
+  (used interchangeably with spacecraft; also laboratory, observatory, satellite, system segment).
+  2.2.1 says the environmental requirements generally start at unit and end at system segment, with
+  screening and life tests often at lower levels. Section 2.6.1 (page 2.6-3, pdf 244) restates unit,
+  subsystem and system for thermal testing in slightly different words.
+notes: >
+  Mapping used in this library: GEVS component/unit = unit; subsystem/instrument/section/module =
+  subsystem; payload/spacecraft/observatory/satellite = element; system segment = segment.

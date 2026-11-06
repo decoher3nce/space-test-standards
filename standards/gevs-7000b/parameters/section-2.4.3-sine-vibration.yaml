@@ -1,0 +1,36 @@
+kind: test_parameters
+id: gevs-7000b.params.sine_vibration_elv_sweep
+standard: gevs-7000b
+test_type: sine_vibration
+variant: elv_sine_sweep
+title: ELV sine sweep vibration - level factor, sweep rate, frequency range and notching limits (2.4.3)
+citation: {standard: gevs-7000b, clause: "2.4.3", page: "2.4 - 22", pdf_page: 73}
+level_of_assembly: [element, subsystem, unit]
+by_regime:
+  protoflight:
+    level: {value: 1.25, unit: factor, relative_to: limit_level}
+    sweep_rate: {value: 4, unit: oct_per_min, note: "to simulate the flight sine transient; slower in bands with sustained pogo-like vibration"}
+    axes: {value: 3, unit: axes, note: "one sweep through the range per axis"}
+    extra:
+      frequency_range_typical: {text: "5 to 50 Hz typical; limited to the range where coupled loads results apply", unit: text}
+      notching_limit_loads: {value: 1.25, unit: factor, relative_to: limit_load, note: "loads at resonance not to exceed 1.25 x flight limit; responses of critical items may be limited to 1.25 x flight limit"}
+      assumed_q_range: {text: "Q of 10 to 20 when deriving sweep levels from SRS", unit: text}
+    footnotes: [low_level, levels]
+  acceptance:
+    level: {value: 1.0, unit: factor, relative_to: limit_level}
+    sweep_rate: {value: 4, unit: oct_per_min, note: "same rates as protoflight (2.4.3.3)"}
+    axes: {value: 3, unit: axes}
+    footnotes: [levels]
+footnotes:
+  low_level: A low-level sweep precedes the full-level sweep in each axis to check fixture dynamics, cross-axis response and the predetermined notches; notching uses the final verification-cycle coupled loads analysis.
+  levels: >
+    No generalised sine levels exist; mission-specific levels come from coupled loads analysis
+    (interface time histories or SRS divided by Q) and, for subsystems and components, an envelope
+    with base-drive responses of the spacecraft and adapter. Before CLA results, ELV user-manual
+    levels with c.g. load-factor notching may be used as preliminary levels.
+notes: >
+  Qualification regime: Table 2.2-2 (gevs-7000b.params.sine_vibration) gives 1.25 x limit at 2
+  oct/min; 2.4.3.1 and 2.4.3.2 state 4 oct/min for the protoflight test, so only protoflight and
+  acceptance are repeated here. Payload test on a flight-type adapter in three orthogonal axes
+  (2.4.3.1, page 2.4 - 22); subsystem and component requirements on 2.4 - 24 (pdf 75); acceptance
+  on 2.4 - 25 (pdf 76).

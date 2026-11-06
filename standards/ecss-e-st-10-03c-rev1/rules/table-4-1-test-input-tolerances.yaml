@@ -1,0 +1,49 @@
+kind: rule
+id: ecss-e-st-10-03c-rev1.rule.test_input_tolerances
+standard: ecss-e-st-10-03c-rev1
+title: Allowable test input tolerances (Table 4-1)
+citation: {standard: ecss-e-st-10-03c-rev1, clause: "4.4.2", table: Table 4-1, page: "32", pdf_page: 32, note: "table spans pdf pages 32-33"}
+category: tolerance
+statement: >
+  Bands within which the measured test inputs may deviate from the specified test values. Tolerance
+  bands are agreed with the customer and written into the test specification; they must account
+  for the uncertainty budget and confidence level of the instruments that control and monitor the
+  test (4.4.2a-b). Measured demonstrations of quantitative requirements are compared with the
+  specified values including their uncertainties (4.4.2c). Temperature bands apply above 80 K at
+  equipment level only; element-level temperature targets are in Tables 6-2, 6-4 and 6-6.
+values:
+  temperature_low_above_80k: {min_value: -4, max_value: 0, unit: K, note: "Tmin +0/-4 K, equipment level, above 80 K"}
+  temperature_high_above_80k: {min_value: 0, max_value: 4, unit: K, note: "Tmax -0/+4 K, equipment level, above 80 K"}
+  temperature_below_80k: {text: To be defined case by case, unit: text}
+  relative_humidity: {min_value: -10, max_value: 10, unit: percent}
+  chamber_pressure_above_1p3_hpa: {min_value: -15, max_value: 15, unit: percent, note: "vacuum chamber pressure above 1.3 hPa"}
+  chamber_pressure_1p3e-3_to_1p3_hpa: {min_value: -30, max_value: 30, unit: percent, note: "1.3e-3 hPa to 1.3 hPa"}
+  chamber_pressure_below_1p3e-3_hpa: {min_value: -80, max_value: 80, unit: percent, note: "below 1.3e-3 hPa"}
+  steady_acceleration_and_static_load: {min_value: 0, max_value: 10, unit: percent, note: "-0 / +10 %"}
+  sine_frequency: {min_value: -2, max_value: 2, unit: percent, note: "5 Hz to 2000 Hz; or 1 Hz, whichever is greater"}
+  sine_amplitude: {min_value: -10, max_value: 10, unit: percent}
+  sine_sweep_rate: {min_value: -5, max_value: 5, unit: percent, note: "oct/min"}
+  random_psd_20_to_1000_hz: {min_value: -1, max_value: 3, unit: dB, note: "PSD amplitude with frequency resolution better than 10 Hz"}
+  random_psd_1000_to_2000_hz: {min_value: -3, max_value: 3, unit: dB}
+  random_overall_grms: {min_value: -10, max_value: 10, unit: percent}
+  acoustic_spl_31p5_hz_band: {min_value: -2, max_value: 4, unit: dB, note: "octave band centred 31.5 Hz"}
+  acoustic_spl_63_hz_band: {min_value: -1, max_value: 3, unit: dB}
+  acoustic_spl_125_hz_band: {min_value: -1, max_value: 3, unit: dB}
+  acoustic_spl_250_hz_band: {min_value: -1, max_value: 3, unit: dB}
+  acoustic_spl_500_hz_band: {min_value: -1, max_value: 3, unit: dB}
+  acoustic_spl_1000_hz_band: {min_value: -1, max_value: 3, unit: dB}
+  acoustic_spl_2000_hz_band: {min_value: -1, max_value: 3, unit: dB}
+  acoustic_spl_overall: {min_value: -1, max_value: 3, unit: dB}
+  acoustic_spl_homogeneity_per_octave_band: {min_value: -2, max_value: 2, unit: dB}
+  microvibration_acceleration: {min_value: -10, max_value: 10, unit: percent}
+  microvibration_force_or_torque: {min_value: -10, max_value: 10, unit: percent}
+  audible_noise_sound_power_32p5_to_160_hz: {min_value: -3, max_value: 3, unit: dB, note: "1/3 octave bands, crewed elements only"}
+  audible_noise_sound_power_160_hz_to_16_khz: {min_value: -2, max_value: 2, unit: dB, note: "1/3 octave bands, crewed elements only"}
+  shock_srs_amplitude: {min_value: -3, max_value: 6, unit: dB, note: "SRS at 1/12 octave or finer; at least 50 % of the SRS amplitudes above 0 dB"}
+  solar_radiation_reference_plane: {min_value: -4, max_value: 4, unit: percent, note: of the set value}
+  solar_radiation_reference_volume: {min_value: -6, max_value: 6, unit: percent, note: of the set value}
+  infrared_radiation_mean: {min_value: -3, max_value: 3, unit: percent, note: mean value on the reference plane(s)}
+  test_duration: {min_value: 0, max_value: 10, unit: percent, note: "-0 / +10 %"}
+notes: >
+  The printed table numbers both "Audible noise" and "Shock" as item 9; values are legible and
+  unaffected. Decimal commas in the source (1,3 hPa; 31,5 Hz; 32,5 Hz) are rendered with points.

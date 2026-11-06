@@ -1,0 +1,57 @@
+kind: vocabulary
+vocabulary: level_of_assembly
+description: >
+  Unified levels of assembly. The ids follow the GEVS Table 2.2-1 lineage (Aerospace Corporation
+  Space Systems Engineering Database hierarchy agreed by NASA HQ, GSFC and JPL). Each standard's own
+  wording is kept under aliases so a matrix column can be read in the standard's words.
+entries:
+  - id: part
+    name: Part
+    description: Hardware element not normally subject to further subdivision or disassembly without destruction.
+    aliases:
+      gevs-7000b: Part
+      ecss-e-st-10-03c-rev1: Part
+      ssc-s-016-2014: Part
+  - id: subassembly
+    name: Subassembly
+    description: Subdivision of an assembly; examples are a wire harness or a loaded printed circuit board.
+    aliases:
+      gevs-7000b: [Subassembly, Assembly]
+  - id: unit
+    name: Unit (component, equipment)
+    description: >
+      Functional subdivision of a subsystem or instrument, generally self-contained with a
+      complete function. The lowest level at which environmental tests normally start.
+    aliases:
+      gevs-7000b: [Unit, Component]
+      ecss-e-st-10-03c-rev1: Space segment equipment
+      ssc-s-016-2014: Unit
+  - id: subsystem
+    name: Subsystem (instrument)
+    description: >
+      Functional subdivision of a payload consisting of two or more units; an instrument is a
+      subsystem consisting of sensors and associated hardware.
+    aliases:
+      gevs-7000b: [Subsystem, Instrument, Section, Module]
+      ecss-e-st-10-03c-rev1: Subsystem
+      ssc-s-016-2014: Subsystem
+  - id: element
+    name: Element (payload, spacecraft, vehicle)
+    description: >
+      Integrated assemblage of modules and subsystems designed to perform a mission in space;
+      a spacecraft or payload. ECSS calls this the space segment element, SSC-S-016 the vehicle.
+    aliases:
+      gevs-7000b: [Payload, Spacecraft, Observatory, Satellite]
+      ecss-e-st-10-03c-rev1: Space segment element
+      ssc-s-016-2014: [Vehicle, Space vehicle]
+  - id: segment
+    name: System segment
+    description: The space segment as a whole, or a launch stack of elements.
+    aliases:
+      gevs-7000b: System segment
+      ecss-e-st-10-03c-rev1: Space segment
+  - id: system
+    name: System
+    description: Space segment plus ground and launch segments.
+    aliases:
+      gevs-7000b: System

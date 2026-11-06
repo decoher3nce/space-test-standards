@@ -1,0 +1,34 @@
+kind: vocabulary
+vocabulary: model
+description: Hardware model philosophy names and the regime each normally sees.
+entries:
+  - id: EDU
+    name: Engineering development unit
+    description: NASA term for development hardware; no flight credit unless flight-representative and claimed.
+    attributes: {default_regime: development}
+    aliases: {gevs-7000b: [EDU, ETU, Engineering test unit]}
+  - id: EM
+    name: Engineering model
+    description: ECSS term for development hardware; development tests are not run on QM or FM.
+    attributes: {default_regime: development}
+    aliases: {ecss-e-st-10-03c-rev1: EM}
+  - id: EQM
+    name: Engineering qualification model
+    description: ECSS model that carries qualification; flight-standard parts not required.
+    attributes: {default_regime: qualification}
+    aliases: {ecss-e-st-10-03c-rev1: EQM}
+  - id: QM
+    name: Qualification model
+    attributes: {default_regime: qualification}
+    aliases: {ecss-e-st-10-03c-rev1: QM, gevs-7000b: Prototype, ssc-s-016-2014: Qualification unit}
+  - id: PFM
+    name: Protoflight model
+    attributes: {default_regime: protoflight}
+    aliases: {ecss-e-st-10-03c-rev1: PFM, gevs-7000b: Protoflight, ssc-s-016-2014: Protoqualification unit}
+  - id: FM
+    name: Flight model
+    attributes: {default_regime: acceptance}
+    aliases: {ecss-e-st-10-03c-rev1: FM, gevs-7000b: Flight, ssc-s-016-2014: Flight unit}
+  - id: FS
+    name: Flight spare
+    attributes: {default_regime: acceptance}

@@ -1,0 +1,87 @@
+# GEVS 2.6.4 "Thermal Balance Verification".
+kind: rule
+id: gevs-7000b.rule.thermal_balance_minimum_cases
+standard: gevs-7000b
+title: Thermal balance within subsystem and system thermal vacuum - at least hot operational, cold operational and survival cases (2.6.4)
+citation: {standard: gevs-7000b, clause: "2.6.4", page: "2.6-24", pdf_page: 265}
+category: general
+statement: >
+  Thermal balance phases run inside the subsystem/instrument and system thermal vacuum tests to verify
+  the thermal design (heaters, radiator sizing, blankets, heat paths) and to collect data for model
+  correlation; thermal subsystem performance can only be shown in thermal vacuum. At least three
+  conditions are imposed: an operational hot case (maximum environment, maximum power), an
+  operational cold case (minimum environment, minimum power), and a survival case (non-operating
+  with minimum environment for a subsystem or instrument; survival or safe mode with minimum
+  environment and matching power for a system). Transient, safe-mode and day-in-the-life cases are
+  added as warranted, placed at the end of the relevant steady plateau. Pre-test predictions guide the
+  design and protect the hardware; the correlated model becomes the delivery or launch model.
+  Acceptance (2.6.4.5): the simulated environments match the analysis environments within 10 percent
+  (TBR), all temperatures stay within allowable ranges with design uncertainty applied, and heater
+  duty cycles meet branch requirements. Thermal balance is repeated on each of multiple flight systems.
+applies_to:
+  test_types: [thermal_balance]
+  levels: [subsystem, element]
+values:
+  minimum_cases: {value: 3, unit: count, note: "hot operational, cold operational, survival or safehold"}
+  environment_simulation_match: {value: 10, unit: percent, relative_to: analysis_environment, note: "marked TBR in the standard (2.6.4.5, page 2.6-28, pdf 269)"}
+---
+kind: rule
+id: gevs-7000b.rule.thermal_design_margins_verified_in_balance
+standard: gevs-7000b
+title: Design margins demonstrated by thermal balance - 5 degC uncertainty on AFT, heater duty cycle under 70 percent, two-phase loops over plus or minus 30 percent environment (2.6.4.1, 2.6.4.3)
+citation: {standard: gevs-7000b, clause: "2.6.4.1", page: "2.6-24", pdf_page: 265}
+category: margin
+statement: >
+  Thermal balance verifies design margins rather than setting them. For non-cryogenic hardware the
+  thermal design (uncertainty) margin is applied by shrinking the AFT range by 5 degC at each end to
+  form the prediction range. For passive cryogenic hardware the margin is a heat-load margin on the
+  current best estimate (Table 2.7-2, 33 percent at PSR/launch), equivalent below 120 K to a
+  temperature margin that shrinks with temperature: 5 K for predictions of 103 to 120 K, 4 K for 81 to
+  103 K, 3 K for 59 to 81 K, 2 K for 35 to 59 K, 1 K for 14 to 35 K. Operational heater duty cycle
+  stays below 70 percent in the worst cold case at minimum voltage including line losses; survival
+  heater margin depends on the survival setpoint and resources. Interface temperatures, gradients and
+  heat flows meet project requirements. Two-phase systems (LHP, CPL) show heat transport and setpoint
+  controllability over the full control range in environments margined by plus or minus 30 percent
+  about the hot and cold mission environments, demonstrated in test by raising and lowering the
+  simulated external loads by at least 30 percent (2.6.4.3).
+applies_to:
+  test_types: [thermal_balance]
+  hardware_types: [thermal]
+values:
+  design_uncertainty_margin_non_cryogenic: {value: 5, unit: degC, relative_to: design_range, note: "AFT reduced by this at hot and cold ends to form the prediction range"}
+  operational_heater_duty_cycle_max: {value: 70, unit: percent, note: "worst cold case, minimum bus voltage with line losses"}
+  two_phase_environment_margin: {value: 30, unit: percent, relative_to: mission_environment, note: "plus and minus; external loads varied by at least this in test"}
+  cryogenic_heat_load_margin_at_launch: {value: 33, unit: percent, relative_to: current_best_estimate}
+  cryogenic_temperature_margin_103_to_120_k: {text: "5 K", unit: text}
+  cryogenic_temperature_margin_81_to_103_k: {text: "4 K", unit: text}
+  cryogenic_temperature_margin_59_to_81_k: {text: "3 K", unit: text}
+  cryogenic_temperature_margin_35_to_59_k: {text: "2 K", unit: text}
+  cryogenic_temperature_margin_14_to_35_k: {text: "1 K", unit: text}
+notes: The cryogenic table and heater duty-cycle bullets are on 2.6-25 (pdf 266); the plus or minus 30 percent demonstration is in 2.6.4.3 on 2.6-28 (pdf 269).
+---
+kind: rule
+id: gevs-7000b.rule.thermal_model_correlation_criteria
+standard: gevs-7000b
+title: Thermal model correlation goals - mean error within 1 degC, standard deviation under 2.5 degC, heater duty cycles within 5 percent (2.6.4.5)
+citation: {standard: gevs-7000b, clause: "2.6.4.5", page: "2.6-29", pdf_page: 270}
+category: tolerance
+statement: >
+  Correlation adjusts the thermal model to the balance data (temperatures, heater power and duty
+  cycle, boundary conditions at stability) for every balance case; failure to match points to a
+  deficiency in model, setup or hardware. GSFC recommends statistical criteria: the average of the
+  errors (model minus data) within plus or minus 1.0 degC, the standard deviation of the errors below
+  2.5 degC, any error above 5 degC justified against the same flight prediction error, and heater
+  power and duty-cycle predictions within 5 percent of test for all operational and survival
+  circuits. Differences from pre-test predictions above 3 degC are assessed and design margins
+  re-examined. The process is documented per Thermal Branch guidelines, peer reviewed and kept under
+  configuration management with the final mission models; the correlated model is then reconfigured
+  to flight to produce the final predictions.
+applies_to:
+  test_types: [thermal_balance]
+  levels: [subsystem, element]
+values:
+  mean_error_max: {value: 1.0, unit: degC, relative_to: test_data, note: "plus or minus, average of model minus data"}
+  error_standard_deviation_max: {value: 2.5, unit: degC, relative_to: test_data}
+  individual_error_requiring_justification: {value: 5, unit: degC, relative_to: test_data}
+  heater_duty_cycle_match: {value: 5, unit: percent, relative_to: test_data}
+  pretest_prediction_delta_requiring_assessment: {value: 3, unit: degC, relative_to: pretest_prediction}

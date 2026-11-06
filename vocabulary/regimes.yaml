@@ -1,0 +1,41 @@
+kind: vocabulary
+vocabulary: regime
+description: >
+  Unified test regimes. The equivalences are about intent, not factors: NASA protoflight, SSC
+  protoqualification and ECSS protoflight all mean "qualification levels on the flight article for
+  acceptance-like durations", but each standard sets its own margins. Never copy a factor across
+  standards through this map; read it from that standard's test_parameters record.
+entries:
+  - id: qualification
+    name: Qualification
+    description: Dedicated qualification article tested at qualification levels and durations; not flown.
+    aliases:
+      gevs-7000b: [Prototype qualification, Prototype]
+      ecss-e-st-10-03c-rev1: Qualification (QM)
+      ssc-s-016-2014: Qualification
+  - id: protoflight
+    name: Protoflight
+    description: Flight article tested at qualification levels with reduced durations; flown.
+    aliases:
+      gevs-7000b: Protoflight qualification
+      ecss-e-st-10-03c-rev1: Protoflight (PFM)
+      ssc-s-016-2014: [Protoqualification, Protoqual, Flight-proof]
+  - id: acceptance
+    name: Acceptance
+    description: Flight article tested at maximum expected levels to screen workmanship and demonstrate flight-worthiness.
+    aliases:
+      gevs-7000b: Acceptance
+      ecss-e-st-10-03c-rev1: Acceptance (FM)
+      ssc-s-016-2014: Acceptance
+  - id: development
+    name: Development
+    description: >
+      Tests on engineering or development hardware to mature the design; carry no qualification
+      credit unless the article is flight-representative and the program explicitly claims it.
+    aliases:
+      gevs-7000b: Development
+      ecss-e-st-10-03c-rev1: Development tests
+      ssc-s-016-2014: Development
+  - id: all
+    name: All regimes
+    description: Marker for tables that apply irrespective of regime.

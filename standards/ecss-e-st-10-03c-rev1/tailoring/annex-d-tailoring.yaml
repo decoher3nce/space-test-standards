@@ -1,0 +1,64 @@
+# Tailoring that ECSS-E-ST-10-03C Rev.1 itself describes: the Annex D three-step method and the
+# X-coded customer decisions of the baseline tables.
+kind: tailoring_provision
+id: ecss-e-st-10-03c-rev1.provision.annex_d_three_step_tailoring
+standard: ecss-e-st-10-03c-rev1
+title: Annex D three-step tailoring of the testing standard to a project
+citation: {standard: ecss-e-st-10-03c-rev1, clause: "D.2", figure: Figure D-2, page: "142", pdf_page: 142, note: "Annex D on pdf pages 142-145; informative"}
+summary: >
+  The standard covers several product kinds and models and leaves options open as X entries, so
+  tailoring is unavoidable. Step one selects the relevant clauses from the product type (equipment
+  or element) and the model philosophy (QM, FM, PFM, or combinations such as QM+FM or PFM+FM, whose
+  clauses are merged). Step two consolidates the applicable baseline tables (5-1, 5-3, 5-5, 6-1,
+  6-3, 6-5). Step three adds, merges and tailors the tables and clauses those baselines call up:
+  the levels and durations (5-2, 5-4, 5-6, 6-2, 6-4, 6-6) and the implementation requirements of
+  clauses 5.5 and 6.5, plus clause 4.6 when retesting applies and clause 7 for a stand-alone PFM or
+  FM element. The result is a project-specific tailored testing standard, answered by the supplier
+  with a compliance matrix and verified through a verification matrix (Figure D-1). Table D-1 says
+  which clauses need verification close-out: the level and duration tables and clauses 4.4, 5.5 and
+  6.5 do; the baseline tables and clauses 4.1-4.3, 4.5, 4.6, 5.1, 6.1 and 7 are closed by agreeing
+  the test documentation.
+applies_to:
+  levels: [unit, element]
+  regimes: [qualification, acceptance, protoflight]
+permits:
+  - action: other
+    description: Select the clauses that apply from the product type (equipment versus element, per 4.1b) and the chosen model philosophy; merge the clauses when several models are combined.
+  - action: other
+    description: For equipment, agree the type or combination of types a to l (Table 5-1, 5-3 or 5-5 key); for several types the union of required tests applies (5.1b).
+  - action: other
+    description: Consolidate the baseline tables selected in step one into one project test matrix and test flow (Figure 5-1 for equipment), and agree the test block definition (4.3.2.1b).
+  - action: reduce_level
+    description: Tailor the corresponding test levels and durations from Tables 5-2, 5-4, 5-6, 6-2, 6-4 and 6-6 to the project.
+    constraints: Tabulated durations are minimum values (4.5.2f, 4.5.3d, 4.5.4c); launcher-authority margins larger than 3 dB take precedence for random vibration and acoustics.
+  - action: other
+    description: Tailor the implementation requirements of clauses 5.5 or 6.5 referenced by the "Reference clause" column of the consolidated tables; include clause 4.6 for retesting and clause 7 for a stand-alone PFM or FM element.
+approval: Customer performs the tailoring; the supplier answers with a compliance matrix (Figure D-1)
+documentation: Tailored testing standard for the project, supplier compliance matrix, verification matrix and VCD close-out per Table D-1
+notes: Annex D is informative, so this provision documents the method the standard recommends rather than a requirement.
+---
+kind: tailoring_provision
+id: ecss-e-st-10-03c-rev1.provision.x_tests_customer_decision
+standard: ecss-e-st-10-03c-rev1
+title: X-coded tests are performed only when the customer decides they apply
+citation: {standard: ecss-e-st-10-03c-rev1, clause: "5.1", table: Table 5-1, page: "42", pdf_page: 42, note: "keys of Tables 5-1/5-3/5-5 (pdf 47, 56, 64) and 6-1/6-3/6-5 (pdf 89, 96, 103); 5.1a, 5.2a, 5.3a, 5.4a, 6.1c-d, 6.2a, 6.3a, 6.4a"}
+summary: >
+  The baseline of each regime is the set of tests in the corresponding table for the equipment type
+  or element (5.2a, 5.3a, 5.4a, 6.2a, 6.3a, 6.4a), and the baseline and sequencing are tailored to
+  the equipment type for each project (5.1a) or to each element project (6.1c). In the equipment
+  tables X means "to be decided by the customer"; in the element tables X means decided on design
+  features, required lifetime, sensitivity to the environment and expected usage. R tests are
+  required (equipment) or mandatory (element) and "-" tests are not required. Tests are sorted into
+  R or X according to the type's sensitivity to the environment, the probability of meeting it and
+  project specifics (Table NOTE 1).
+applies_to:
+  levels: [unit, element]
+  regimes: [qualification, acceptance, protoflight]
+permits:
+  - action: other
+    description: An X-coded test is part of the project baseline only when agreed with the customer; leaving an X test out of the baseline is a customer decision, not a deviation.
+    constraints: Does not relax R-coded tests; printed application notes or applicability conditions can make an X test mandatory (for example pressurised elements, spinning elements above 2 g, crewed missions).
+  - action: other
+    description: The element test sequence is agreed with the customer according to the element's nature and how performance is verified, for example thermal vacuum last for infrared instruments or auto-compatibility last for RF radiometers (6.1d).
+approval: Customer
+documentation: Project test matrix and tailored testing standard (Annex D)

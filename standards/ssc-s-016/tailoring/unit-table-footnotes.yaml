@@ -1,0 +1,64 @@
+# Relaxations written into the footnotes of the SSC-S-016 unit acceptance test table (NESC deck
+# slide 6, pdf 7): footnote 2 (vibration or acoustic), footnote 9 (thruster hot fire in lieu of
+# thermal vacuum) and footnote 10 (solar panel thermal vacuum at array level).
+kind: tailoring_provision
+id: ssc-s-016.provision.vibration_or_acoustic
+standard: ssc-s-016
+title: Either vibration or acoustic is required at unit level; the other is discretionary (footnote 2)
+citation: {standard: ssc-s-016, clause: "6.3.5", table: "Unit Acceptance Tests - SSC-S-016 (deck slide 6), footnote 2", page: "6", pdf_page: 7, note: "6.3.5 vibration and 6.3.6 acoustic"}
+summary: >
+  The unit acceptance table requires vibration or acoustic for most hardware types with the other
+  at the program's discretion, so a unit that is better excited acoustically (large, light,
+  area-dominated) may take acoustic in place of random vibration and vice versa.
+applies_to:
+  test_types: [random_vibration, acoustic]
+  levels: [unit]
+  regimes: [acceptance]
+permits:
+  - action: substitute_test
+    description: Perform acoustic in place of random vibration, or random vibration in place of acoustic, as the required dynamics test.
+    constraints: One of the two is always performed where the table shows R or ER for the row; the choice follows which environment excites the unit.
+  - action: delete_test
+    description: Omit the discretionary one of the pair.
+    constraints: Only after the other is performed.
+confidence: deck_only
+notes: Deck-sourced; verify footnote 2 and clauses 6.3.5 and 6.3.6 of SSC-S-016.
+---
+kind: tailoring_provision
+id: ssc-s-016.provision.thruster_tv_hot_fire
+standard: ssc-s-016
+title: Thruster thermal vacuum requirement may be met by hot-fire testing (footnote 9)
+citation: {standard: ssc-s-016, clause: "6.3.9", table: "Unit Acceptance Tests - SSC-S-016 (deck slide 6), footnote 9", page: "6", pdf_page: 7}
+summary: >
+  For thrusters the unit thermal vacuum requirement may be satisfied with hot-fire testing.
+applies_to:
+  test_types: [thermal_vacuum]
+  levels: [unit]
+  hardware_types: [thruster]
+  regimes: [acceptance]
+permits:
+  - action: substitute_test
+    description: Accept thruster hot-fire testing in place of the unit thermal vacuum test.
+    constraints: Thrusters only; the vocabulary has no hot_fire test type yet (see VOCAB-REQUESTS.md).
+confidence: deck_only
+notes: Deck-sourced; the footnote 9 marker is not visible on the thruster cell in the extracted slide, verify against the SSC-S-016 unit acceptance table.
+---
+kind: tailoring_provision
+id: ssc-s-016.provision.solar_panel_tv_at_array
+standard: ssc-s-016
+title: Solar panel thermal vacuum may be performed on the solar array (footnote 10)
+citation: {standard: ssc-s-016, clause: "6.3.9", table: "Unit Acceptance Tests - SSC-S-016 (deck slide 6), footnote 10", page: "6", pdf_page: 7}
+summary: >
+  Thermal vacuum testing of solar panels may be performed on the assembled solar array instead of
+  on each panel.
+applies_to:
+  test_types: [thermal_vacuum]
+  levels: [unit]
+  hardware_types: [solar_array, solar_panel]
+  regimes: [acceptance]
+permits:
+  - action: change_level_of_assembly
+    description: Move the panel thermal vacuum test up to the solar array assembly.
+    constraints: Solar panels and arrays only.
+confidence: deck_only
+notes: Deck-sourced; verify footnote 10 of the SSC-S-016 unit acceptance table.

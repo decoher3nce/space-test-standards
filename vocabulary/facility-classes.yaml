@@ -1,0 +1,19 @@
+kind: vocabulary
+vocabulary: facility_class
+entries:
+  - {id: shaker, name: Electrodynamic shaker}
+  - {id: acoustic_chamber, name: Reverberant acoustic chamber or direct field acoustic rig}
+  - {id: shock_machine, name: Shock test machine or pyro-shock fixture}
+  - {id: centrifuge, name: Centrifuge}
+  - {id: static_load_rig, name: Static load fixture}
+  - {id: tvac_chamber, name: Thermal vacuum chamber}
+  - {id: cryo_tvac_chamber, name: Cryogenic thermal vacuum chamber}
+  - {id: thermal_chamber, name: Ambient-pressure thermal cycling chamber}
+  - {id: bakeout_chamber, name: Vacuum bakeout chamber with QCM/RGA}
+  - {id: emc_chamber, name: Shielded anechoic EMC chamber}
+  - {id: magnetics_facility, name: Magnetic test facility (coil system)}
+  - {id: mass_properties_machine, name: Mass properties measurement machine}
+  - {id: cleanroom, name: Cleanroom integration area}
+  - {id: optical_bench, name: Optical alignment and performance bench}
+  - {id: rf_range, name: RF anechoic range or compact range}
+  - {id: pressure_test_cell, name: Pressure test cell}

@@ -1,0 +1,64 @@
+kind: vocabulary
+vocabulary: hardware_type
+description: >
+  Unified hardware types for matrix columns and product nodes. Aliases map each standard's own
+  column heading (SSC-S-016 unit table columns; ECSS equipment types a to l) to the unified id.
+  Payload-specific types used by Bespoke but absent from the standards carry a parent so a resolver
+  can fall back to the parent's column.
+entries:
+  - id: electronic
+    name: Electrical, electronic and RF unit
+    aliases: {ssc-s-016-2014: Electrical and Electronic, ecss-e-st-10-03c-rev1: "a"}
+  - id: antenna
+    name: Antenna
+    aliases: {ssc-s-016-2014: Antenna, ecss-e-st-10-03c-rev1: "b"}
+  - id: battery
+    name: Battery
+    aliases: {ssc-s-016-2014: Battery, ecss-e-st-10-03c-rev1: "c"}
+  - id: fluid_component
+    name: Fluid or pressure component (valve, regulator, filter, line, fitting)
+    aliases: {ssc-s-016-2014: Pressure Component, ecss-e-st-10-03c-rev1: ["d", "e"]}
+  - id: thruster
+    name: Thruster
+    aliases: {ssc-s-016-2014: Thruster, ecss-e-st-10-03c-rev1: "g"}
+  - id: pressure_vessel
+    name: Pressure vessel (tank)
+    aliases: {ssc-s-016-2014: Pressure Vessel, ecss-e-st-10-03c-rev1: "f"}
+  - id: mechanism
+    name: Mechanism (moving mechanical assembly)
+    aliases: {ssc-s-016-2014: [MMA, Moving Mechanical Assembly], ecss-e-st-10-03c-rev1: "j"}
+  - id: optical
+    name: Optical unit
+    aliases: {ssc-s-016-2014: Optical, ecss-e-st-10-03c-rev1: "i"}
+  - id: thermal
+    name: Thermal hardware (heat pipe, radiator, louvre, heater)
+    aliases: {ssc-s-016-2014: Thermal, ecss-e-st-10-03c-rev1: "h"}
+  - id: structure
+    name: Structural component
+    aliases: {ssc-s-016-2014: Structural Components}
+  - id: solar_array
+    name: Solar array (deployable assembly)
+    aliases: {ssc-s-016-2014: Solar Array (Panel), ecss-e-st-10-03c-rev1: "k"}
+  - id: solar_panel
+    name: Solar panel
+    parent: solar_array
+    aliases: {ecss-e-st-10-03c-rev1: "l"}
+  - id: harness
+    name: Electrical harness
+    parent: electronic
+  - id: rf_passive
+    name: Passive RF hardware (waveguide, filter, diplexer, coupler)
+    parent: electronic
+  - id: rf_high_power
+    name: High-power RF unit (TWTA, SSPA, high-power switch)
+    parent: electronic
+  - id: detector_fpa
+    name: Detector or focal plane assembly
+    parent: electronic
+  - id: cryocooler
+    name: Cryocooler
+    parent: mechanism
+  - id: instrument
+    name: Instrument (subsystem-level assembly of units)
+  - id: payload
+    name: Payload or spacecraft (element-level assembly)

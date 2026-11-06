@@ -1,0 +1,23 @@
+kind: vocabulary
+vocabulary: method
+entries:
+  - id: test
+    name: Test
+    aliases: {gevs-7000b: T}
+  - id: analysis
+    name: Analysis
+    aliases: {gevs-7000b: A}
+  - id: analysis_or_test
+    name: Analysis and/or test
+    aliases: {gevs-7000b: A/T}
+  - id: analysis_and_test
+    name: Analysis and test
+    aliases: {gevs-7000b: "A,T"}
+  - id: inspection
+    name: Inspection
+  - id: demonstration
+    name: Demonstration
+  - id: review_of_design
+    name: Review of design
+  - id: similarity
+    name: Qualification by similarity

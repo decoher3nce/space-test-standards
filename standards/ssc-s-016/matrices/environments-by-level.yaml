@@ -1,0 +1,148 @@
+# Overview slide 5 (pdf page 6) of the NESC Academy deck lists which SSC-S-016 environmental
+# tests appear at unit, subsystem and vehicle level. It is the briefing's summary, not the
+# standard's own test tables, so the code is simply "listed" or "-".
+kind: applicability_matrix
+id: ssc-s-016.matrix.environments_by_level
+standard: ssc-s-016
+title: Environmental tests listed per level of assembly (NESC deck overview of SSC-S-016)
+citation: {standard: ssc-s-016, table: "SSC-S-016 Environment Test Requirements (deck slide 5)", page: "5", pdf_page: 6, note: "pdf_page indexes the NESC Academy deck; the standard's own unit, subsystem and vehicle test tables are in its sections 6, 7 and 8 (verify numbering)"}
+regime: all
+column_dimension: level_of_assembly
+columns:
+  - {id: unit, label: Unit}
+  - {id: subsystem, label: Subsystem}
+  - {id: element, label: Vehicle}
+rows:
+  - test_type: inspection
+    label: Pre-, during and post-environmental tests - Inspection
+    cells:
+      unit: {code: listed, requirement: as_specified}
+      subsystem: {code: listed, requirement: as_specified}
+      element: {code: listed, requirement: as_specified}
+  - test_type: functional_performance
+    label: Pre-, during and post-environmental tests - Performance
+    cells:
+      unit: {code: listed, requirement: as_specified}
+      subsystem: {code: listed, requirement: as_specified}
+      element: {code: listed, requirement: as_specified}
+  - test_type: leak
+    label: Propulsion / Pressure - Leakage
+    cells:
+      unit: {code: listed, requirement: as_specified}
+      subsystem: {code: listed, requirement: as_specified, notes: Printed as one entry "Leakage / Pressure"}
+      element: {code: listed, requirement: as_specified, notes: Printed as one entry "Leakage / Pressure"}
+  - test_type: proof_pressure
+    label: Propulsion / Pressure - Pressure
+    cells:
+      unit: {code: listed, requirement: as_specified, notes: "Printed as Pressure; read as proof pressure (unit table row 6.3.12), verify"}
+      subsystem: {code: listed, requirement: as_specified, notes: Printed as one entry "Leakage / Pressure"}
+      element: {code: listed, requirement: as_specified, notes: Printed as one entry "Leakage / Pressure"}
+  - test_type: burst
+    label: Propulsion / Pressure - Burst Pressure [1]
+    cells:
+      unit: {code: listed, requirement: as_specified, footnotes: [f1]}
+      subsystem: {code: "-", requirement: not_required}
+      element: {code: "-", requirement: not_required}
+  - test_type: shock
+    label: Dynamics - Shock
+    cells:
+      unit: {code: listed, requirement: as_specified}
+      subsystem: {code: listed, requirement: as_specified}
+      element: {code: listed, requirement: as_specified}
+  - test_type: random_vibration
+    label: Dynamics - Vibration / Random Vibration
+    cells:
+      unit: {code: listed, requirement: as_specified, notes: Printed as "Vibration" at unit level}
+      subsystem: {code: listed, requirement: as_specified}
+      element: {code: listed, requirement: as_specified}
+  - test_type: acoustic
+    label: Dynamics - Acoustic
+    cells:
+      unit: {code: listed, requirement: as_specified}
+      subsystem: {code: listed, requirement: as_specified}
+      element: {code: listed, requirement: as_specified}
+  - test_type: acceleration
+    label: Dynamics - Acceleration
+    cells:
+      unit: {code: listed, requirement: as_specified}
+      subsystem: {code: "-", requirement: not_required}
+      element: {code: "-", requirement: not_required}
+  - test_type: static_load
+    label: Dynamics - Static Load [2]
+    cells:
+      unit: {code: listed, requirement: as_specified, footnotes: [f2]}
+      subsystem: {code: listed, requirement: as_specified}
+      element: {code: "-", requirement: not_required}
+  - test_type: modal_survey
+    label: Dynamics - Mode Survey [3]
+    cells:
+      unit: {code: "-", requirement: not_required}
+      subsystem: {code: listed, requirement: conditional, footnotes: [f3], may_shift_level: true, condition: "Performed at either subsystem or vehicle level, not both"}
+      element: {code: listed, requirement: conditional, footnotes: [f3], may_shift_level: true, condition: "Performed at either subsystem or vehicle level, not both"}
+  - test_type: mechanical_function
+    label: Mechanical - Separation and Deployment [3]
+    cells:
+      unit: {code: "-", requirement: not_required}
+      subsystem: {code: listed, requirement: conditional, footnotes: [f3], may_shift_level: true, condition: "Performed at either subsystem or vehicle level, not both"}
+      element: {code: listed, requirement: conditional, footnotes: [f3], may_shift_level: true, condition: "Performed at either subsystem or vehicle level, not both"}
+  - test_type: thermal_cycle
+    label: Thermal - Thermal Cycle
+    parameters_ref: ssc-s-016.params.thermal_cycle_unit
+    cells:
+      unit: {code: listed, requirement: as_specified}
+      subsystem: {code: "-", requirement: not_required, notes: Deck slide 15 calls subsystem thermal cycling optional; slide 60 describes an optional vehicle thermal cycle (Appendix A)}
+      element: {code: "-", requirement: not_required, notes: Optional vehicle thermal cycle preceding thermal vacuum is described in the standard's Appendix A (deck slide 60)}
+  - test_type: burn_in
+    label: Thermal - Burn-In
+    parameters_ref: ssc-s-016.params.burn_in_unit
+    cells:
+      unit: {code: listed, requirement: as_specified}
+      subsystem: {code: "-", requirement: not_required}
+      element: {code: "-", requirement: not_required}
+  - test_type: thermal_vacuum
+    label: Thermal - Thermal Vacuum
+    parameters_ref: ssc-s-016.params.thermal_vacuum_unit
+    cells:
+      unit: {code: listed, requirement: as_specified}
+      subsystem: {code: listed, requirement: as_specified}
+      element: {code: listed, requirement: as_specified}
+  - test_type: thermal_balance
+    label: Thermal - Thermal Balance [3]
+    cells:
+      unit: {code: "-", requirement: not_required}
+      subsystem: {code: listed, requirement: conditional, footnotes: [f3], may_shift_level: true, condition: "Performed at either subsystem or vehicle level, not both"}
+      element: {code: listed, requirement: conditional, footnotes: [f3], may_shift_level: true, condition: "Performed at either subsystem or vehicle level, not both"}
+  - test_type: humidity
+    label: Climatic - Climatic
+    cells:
+      unit: {code: listed, requirement: as_specified, notes: Slide prints "Climatic"; mapped to the humidity test type per the vocabulary alias}
+      subsystem: {code: "-", requirement: not_required}
+      element: {code: "-", requirement: not_required}
+  - test_type: emc
+    label: EMC - EMC
+    cells:
+      unit: {code: listed, requirement: as_specified}
+      subsystem: {code: listed, requirement: as_specified}
+      element: {code: listed, requirement: as_specified}
+  - test_type: life
+    label: Life - Life
+    cells:
+      unit: {code: listed, requirement: as_specified}
+      subsystem: {code: "-", requirement: not_required}
+      element: {code: "-", requirement: not_required}
+legend:
+  listed: The test appears in that level's column of the overview slide
+  "-": Not shown for that level on the overview slide
+footnotes:
+  f1: Burst pressure testing also verifies proof pressure.
+  f2: Static load testing also covers proof load verification.
+  f3: Performed at either the subsystem or the vehicle level, not both.
+confidence: deck_only
+notes: >
+  This slide is the briefing's overview of SSC-S-016 environmental tests by level, not the
+  standard's own applicability matrix; "listed" means only that the test is named for that
+  level, so it is encoded as `as_specified` (an overview reading that a concrete table cell
+  supersedes) except where a footnote makes it conditional. Whether a test is required or
+  evaluation-required for a given hardware type is in ssc-s-016.matrix.unit_acceptance (unit
+  level) and must otherwise be read from the subsystem and vehicle test tables of SSC-S-016
+  itself (sections 7 and 8, verify).

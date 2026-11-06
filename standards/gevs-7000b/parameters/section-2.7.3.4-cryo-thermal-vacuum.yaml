@@ -1,0 +1,29 @@
+kind: test_parameters
+id: gevs-7000b.params.cryo_thermal_vacuum
+standard: gevs-7000b
+test_type: thermal_vacuum
+variant: cryogenic
+title: Cryo-thermal vacuum test parameters - 150 hours at operating temperature at every level, 4-hour survival soak, heat-load margin (2.7.3.4)
+citation: {standard: gevs-7000b, clause: "2.7.3.4", page: "2.7-7", pdf_page: 282}
+level_of_assembly: [unit, subsystem, element]
+flags: [cryogenic]
+by_regime:
+  all:
+    dwell: {value: 150, unit: hr, per: level_of_assembly, note: "minimum at operating temperature at payload, subsystem/instrument and unit level, long enough for all performance tests including safehold/survival modes"}
+    margin: {text: "heat-load margin per Table 2.7-2 on the flight minimum operating temperature (passive) or on the controlled setpoint (active); see gevs-7000b.rule.cryogenic_heat_load_margin_by_phase", unit: text}
+    cycles: {text: "set by the project with the cryogenics engineer and documented at SRR; one cool-down from ambient and return counts as a cycle; temperature cycling for stress applies only to portions above 120 K", unit: text}
+    extra:
+      survival_safehold_soak: {value: 4, unit: hr, note: "non-operating element soaked at operating-temperature conditions, no margin"}
+      chamber_pressure: {text: "below 1.33e-3 Pa (1e-5 torr) after discharge checks", unit: text}
+      warm_up_gradient_limit: {text: "chamber-to-article gradient not above 20 K during warm-up to ambient (2.7.3.6.c and j)", unit: text}
+      stored_cryogen_dewar_guard_vacuum: {text: "dewars tested in ambient with guard vacuum at or below 1e-5 torr may mix vacuum and ambient failure-free hours (2.7.3.8)", unit: text}
+    footnotes: [deviation, warm_components, turn_on]
+footnotes:
+  deviation: Reducing the time at temperature requires a deviation approved by ETD before PDR (gevs-7000b.provision.cryo_dwell_reduction_deviation).
+  warm_components: Room-temperature electronics of a cryogenic system are qualified by temperature margin in vacuum per Section 2.6, not by heat load; ambient cycling may be substituted per Table 2.7-1 note 2.
+  turn_on: Turn-on is demonstrated at temperature at the start of the operational condition, on primary and redundant sides, at the mission turn-on temperature with margin; a CPT runs at least once at a cryogenic operational plateau (2.7.3.6).
+notes: >
+  Unit-level durations and the survival soak are on 2.7-8 (pdf 283); cycling on 2.7-7 (pdf 282) and
+  in 2.7 (page 2.7-1, pdf 276). Failure-free hours for cryogenic operation are set per mission by the
+  time needed for a single in-flight measurement event (2.7.3.8, page 2.7-10, pdf 285) and count only
+  under vacuum except for guard-vacuum dewar tests.

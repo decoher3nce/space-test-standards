@@ -1,0 +1,172 @@
+kind: vocabulary
+vocabulary: test_type
+description: >
+  Unified test types. One id per physical test or verification activity; the aliases carry each
+  standard's own row heading so a matrix row can be read in the standard's words. The discipline
+  attribute groups rows for rendering. Perceptiveness tags (what failure mechanisms the test exposes)
+  are seeds for the coverage check and are not standard-derived unless a citation is given.
+entries:
+  - id: inspection
+    name: Inspection (visual, dimensional, workmanship)
+    attributes: {discipline: general, short: "Inspection"}
+    aliases: {ssc-s-016-2014: Inspection, gevs-7000b: Inspection}
+  - id: physical_properties
+    name: Physical properties (mass, centre of gravity, moments of inertia)
+    attributes: {discipline: general, short: "Mass props"}
+    aliases: {gevs-7000b: Mass Properties, ecss-e-st-10-03c-rev1: Physical properties, ssc-s-016-2014: Mass properties}
+  - id: functional_performance
+    name: Comprehensive functional and performance test
+    attributes: {discipline: functional, short: "CPT"}
+    aliases: {gevs-7000b: [Comprehensive Performance Test, CPT], ecss-e-st-10-03c-rev1: [Functional and performance (FFT/RFT), Full functional test], ssc-s-016-2014: [Specification Performance, Performance]}
+  - id: functional_limited
+    name: Limited functional test
+    attributes: {discipline: functional, short: "LPT"}
+    aliases: {gevs-7000b: [Limited Performance Test, LPT], ecss-e-st-10-03c-rev1: Reduced functional test}
+  - id: electrical_interface
+    name: Electrical interface test
+    attributes: {discipline: functional, short: "Elec I/F"}
+    aliases: {gevs-7000b: Electrical Interface Tests}
+  - id: wear_in
+    name: Wear-in (run-in) of mechanisms
+    attributes: {discipline: functional, short: "Wear-in"}
+    aliases: {ssc-s-016-2014: Wear-In}
+  - id: burn_in
+    name: Burn-in (powered operating time)
+    attributes: {discipline: functional, short: "Burn-in"}
+    aliases: {ssc-s-016-2014: Burn-In, gevs-7000b: Performance Operating Time}
+  - id: humidity
+    name: Humidity
+    attributes: {discipline: climatic, short: "Humidity"}
+    aliases: {ecss-e-st-10-03c-rev1: Humidity, gevs-7000b: Humidity, ssc-s-016-2014: Climatic}
+  - id: life
+    name: Life test
+    attributes: {discipline: life, short: "Life"}
+    aliases: {ecss-e-st-10-03c-rev1: Life, ssc-s-016-2014: Life, gevs-7000b: Life Test}
+  - id: static_load
+    name: Static load (strength) test
+    attributes: {discipline: structural, short: "Static load"}
+    aliases: {gevs-7000b: [Structural Loads, Centrifuge/Static Load], ecss-e-st-10-03c-rev1: Static load, ssc-s-016-2014: Static Load}
+  - id: spin
+    name: Spin test
+    attributes: {discipline: structural, short: "Spin"}
+    aliases: {ecss-e-st-10-03c-rev1: Spin}
+  - id: sine_burst
+    name: Sine burst (quasi-static strength on a shaker)
+    attributes: {discipline: structural, short: "Sine burst"}
+    aliases: {gevs-7000b: Sine Burst, ecss-e-st-10-03c-rev1: Sine Burst}
+  - id: proof_load
+    name: Proof load
+    attributes: {discipline: structural, short: "Proof load"}
+    aliases: {ssc-s-016-2014: Proof Load}
+  - id: modal_survey
+    name: Modal survey
+    attributes: {discipline: structural, short: "Modal"}
+    aliases: {gevs-7000b: Modal Survey, ssc-s-016-2014: Mode Survey}
+  - id: random_vibration
+    name: Random vibration
+    attributes: {discipline: dynamics, short: "Random vib"}
+    aliases: {gevs-7000b: Random Vibration, ecss-e-st-10-03c-rev1: Random vibration, ssc-s-016-2014: [Vibration, Random Vibration]}
+  - id: acoustic
+    name: Acoustic
+    attributes: {discipline: dynamics, short: "Acoustic"}
+    aliases: {gevs-7000b: Acoustics, ecss-e-st-10-03c-rev1: Acoustic, ssc-s-016-2014: Acoustic}
+  - id: sine_vibration
+    name: Sinusoidal vibration
+    attributes: {discipline: dynamics, short: "Sine vib"}
+    aliases: {gevs-7000b: Sine Vibration, ecss-e-st-10-03c-rev1: Sinusoidal vibration, ssc-s-016-2014: Sinusoidal Vibration}
+  - id: shock
+    name: Mechanical shock
+    attributes: {discipline: dynamics, short: "Shock"}
+    aliases: {gevs-7000b: Mechanical Shock, ecss-e-st-10-03c-rev1: Shock, ssc-s-016-2014: Shock}
+  - id: acceleration
+    name: Acceleration (centrifuge)
+    attributes: {discipline: dynamics, short: "Accel"}
+    aliases: {ssc-s-016-2014: Acceleration}
+  - id: microvibration_susceptibility
+    name: Micro-vibration susceptibility
+    attributes: {discipline: dynamics, short: "µvib suscept"}
+    aliases: {ecss-e-st-10-03c-rev1: Micro-vibration susceptibility}
+  - id: microvibration_emission
+    name: Micro-vibration emission (exported disturbance)
+    attributes: {discipline: dynamics, short: "µvib emission"}
+    aliases: {ecss-e-st-10-03c-rev1: Micro-vibration emission}
+  - id: mechanical_function
+    name: Mechanical function (deployment, separation, actuation)
+    attributes: {discipline: mechanical, short: "Mech function"}
+    aliases: {gevs-7000b: Mechanical Function, ssc-s-016-2014: [Separation and Deployment, Deployment], ecss-e-st-10-03c-rev1: Deployment}
+  - id: pressure_profile
+    name: Pressure profile (ascent depressurisation)
+    attributes: {discipline: mechanical, short: "Press profile"}
+    aliases: {gevs-7000b: Pressure Profile}
+  - id: leak
+    name: Leak test
+    attributes: {discipline: pressure, short: "Leak"}
+    aliases: {ecss-e-st-10-03c-rev1: Leak, ssc-s-016-2014: Leakage, gevs-7000b: Leakage}
+  - id: proof_pressure
+    name: Proof pressure
+    attributes: {discipline: pressure, short: "Proof press"}
+    aliases: {ecss-e-st-10-03c-rev1: Proof pressure, ssc-s-016-2014: Proof Pressure}
+  - id: pressure_cycling
+    name: Pressure cycling
+    attributes: {discipline: pressure, short: "Press cycling"}
+    aliases: {ecss-e-st-10-03c-rev1: Pressure cycling}
+  - id: design_burst_pressure
+    name: Design burst pressure
+    attributes: {discipline: pressure, short: "Design burst"}
+    aliases: {ecss-e-st-10-03c-rev1: Design burst pressure}
+  - id: burst
+    name: Burst (destructive)
+    attributes: {discipline: pressure, short: "Burst"}
+    aliases: {ecss-e-st-10-03c-rev1: Burst, ssc-s-016-2014: Burst Pressure}
+  - id: thermal_vacuum
+    name: Thermal vacuum
+    attributes: {discipline: thermal, short: "TV"}
+    aliases: {gevs-7000b: [Thermal-Vacuum, Thermal Vacuum], ecss-e-st-10-03c-rev1: Thermal vacuum, ssc-s-016-2014: Thermal Vacuum}
+  - id: thermal_cycle
+    name: Thermal cycling at ambient pressure
+    attributes: {discipline: thermal, short: "TC"}
+    aliases: {gevs-7000b: [Temperature-Humidity, Thermal Cycling], ecss-e-st-10-03c-rev1: [Thermal ambient, Thermal cycling], ssc-s-016-2014: Thermal Cycle}
+  - id: thermal_balance
+    name: Thermal balance
+    attributes: {discipline: thermal, short: "TB"}
+    aliases: {gevs-7000b: Thermal Balance, ecss-e-st-10-03c-rev1: Thermal balance, ssc-s-016-2014: Thermal Balance}
+  - id: bakeout
+    name: Vacuum bakeout and outgassing certification
+    attributes: {discipline: contamination, short: "Bakeout"}
+    aliases: {gevs-7000b: [Bakeout, Outgassing]}
+  - id: cleanliness_inspection
+    name: Cleanliness verification
+    attributes: {discipline: contamination, short: "Cleanliness"}
+    aliases: {gevs-7000b: Contamination Control}
+  - id: emc
+    name: Electromagnetic compatibility (emissions and susceptibility)
+    attributes: {discipline: emc, short: "EMC"}
+    aliases: {gevs-7000b: [EMC, EMI], ecss-e-st-10-03c-rev1: EMC, ssc-s-016-2014: EMC}
+  - id: esd
+    name: Electrostatic discharge
+    attributes: {discipline: emc, short: "ESD"}
+    aliases: {ecss-e-st-10-03c-rev1: ESD}
+  - id: magnetics
+    name: Magnetic properties (dc magnetics)
+    attributes: {discipline: emc, short: "Magnetics"}
+    aliases: {gevs-7000b: Magnetics}
+  - id: pim
+    name: Passive intermodulation
+    attributes: {discipline: rf, short: "PIM"}
+    aliases: {ecss-e-st-10-03c-rev1: PIM}
+  - id: discharge
+    name: Corona, arc and multipaction discharge
+    attributes: {discipline: rf, short: "Discharge"}
+    aliases: {ecss-e-st-10-03c-rev1: [Corona and arc discharge, Multipaction]}
+  - id: audible_noise
+    name: Audible noise
+    attributes: {discipline: general, short: "Audible noise"}
+    aliases: {ecss-e-st-10-03c-rev1: Audible noise}
+  - id: alignment
+    name: Alignment measurement
+    attributes: {discipline: optical, short: "Alignment"}
+    aliases: {gevs-7000b: Alignment}
+  - id: mission_specific
+    name: Mission-specific test
+    attributes: {discipline: general, short: "Mission-specific"}
+    aliases: {ecss-e-st-10-03c-rev1: Mission specific}

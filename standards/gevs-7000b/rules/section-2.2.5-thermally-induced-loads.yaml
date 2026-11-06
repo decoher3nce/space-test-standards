@@ -1,0 +1,24 @@
+kind: rule
+id: gevs-7000b.rule.thermal_stress_factors_and_acceptance_margins
+standard: gevs-7000b
+title: Factors of safety on thermally induced loads and the acceptance temperature margins used to size them (2.2.5)
+citation: {standard: gevs-7000b, clause: "2.2.5", page: "2.2 - 4", pdf_page: 45}
+category: factor_of_safety
+statement: >
+  Thermally induced loads use the static-load factors of safety of Table 2.2-3. The temperatures the
+  factors are applied to depend on the hardware's temperature swing at flight acceptance
+  temperatures: a differential of 20 degC or more applies the factors to loads at acceptance
+  temperatures, a smaller differential applies them to loads at qualification temperatures. Flight
+  acceptance temperature is the maximum predicted flight temperature plus the acceptance margin,
+  typically 5 degC for thermal vacuum and 20 degC for thermal cycling at ambient pressure; survival
+  temperatures are treated as acceptance temperatures. Hot and cold cases are both evaluated, and
+  thermal loads are combined with simultaneous mechanical loads.
+applies_to:
+  test_types: [thermal_vacuum, thermal_cycle]
+values:
+  acceptance_margin_thermal_vacuum: {value: 5, unit: degC, relative_to: max_predicted}
+  acceptance_margin_thermal_cycle_ambient: {value: 20, unit: degC, relative_to: max_predicted}
+  differential_threshold_for_acceptance_temperatures: {value: 20, unit: degC, note: "absolute temperature change between stressed and unstressed states at flight acceptance temperatures"}
+notes: >
+  The thermal-cycling margin of 20 degC is stated here, in Section 2.2, as the typical acceptance
+  margin for ambient-pressure cycling; Table 2.2-2 gives the thermal vacuum margins.

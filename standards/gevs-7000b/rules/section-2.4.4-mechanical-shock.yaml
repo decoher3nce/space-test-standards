@@ -1,0 +1,59 @@
+# GEVS 2.4.4 "Mechanical Shock Qualification".
+kind: rule
+id: gevs-7000b.rule.mechanical_shock_test_structure
+standard: gevs-7000b
+title: Shock qualification - self-induced sources fired twice, external shock simulated at 1.4 x maximum expected once per axis, Q of 10 (2.4.4.1, 2.4.4.2)
+citation: {standard: gevs-7000b, clause: "2.4.4.1", page: "2.4 - 25", pdf_page: 76}
+category: general
+statement: >
+  All subsystems including instruments are qualified for shock. Self-induced shocks (pyrotechnic and
+  pneumatic releases, end-of-travel impacts of deployables) are produced by actuating each source
+  twice, using the flight firing circuits, and may be deferred to payload level. When the most severe
+  shock is externally induced, a controllable shock generator applies 1.4 x the maximum expected level
+  at the interface once in each of three axes, matching the required spectrum within the Section 1.13
+  tolerances at one-sixth octave resolution and with the damping used to derive the specification (Q
+  of 10 absent other rationale); if the subsystem is too large, the test may instead be done at payload
+  level by firing the external shock sources at least twice. The payload itself is qualified for
+  separation shock and any other external shock not enveloped by it, at 1.4 x maximum expected in each
+  of three axes when a controllable source is used (2.4.4.2). Acceptance shock testing of previously
+  qualified hardware is decided case by case (2.4.4.3).
+applies_to:
+  test_types: [shock]
+  levels: [subsystem, element]
+  flags: [self_induced_shock]
+values:
+  self_induced_actuations_per_source: {value: 2, unit: actuations}
+  external_shock_qualification_level: {value: 1.4, unit: factor, relative_to: limit_level, note: "maximum expected at the test item interface"}
+  external_shock_applications: {value: 1, unit: count, per: axis}
+  axes: {value: 3, unit: axes}
+  payload_level_source_actuations_min: {value: 2, unit: actuations, note: "when subsystem external shock is covered by firing devices at payload level"}
+  srs_analysis_q: {value: 10, unit: factor, note: "amplification Q for shock spectrum analysis unless the specification was derived with another value"}
+notes: >
+  Table 2.2-2 (gevs-7000b.params.shock_simulated and shock_actual_device) holds the regime factors;
+  this rule adds the test structure. The externally induced requirements continue on page 2.4 - 26
+  (pdf 77); payload shock is on 2.4 - 27 (pdf 78).
+---
+kind: rule
+id: gevs-7000b.rule.component_shock_deferral_screen
+standard: gevs-7000b
+title: Figure 2.4-1 screening curves for deciding whether component shock testing is needed (2.4.4.1)
+citation: {standard: gevs-7000b, clause: "2.4.4.1", figure: Figure 2.4-1, page: "2.4 - 27", pdf_page: 78}
+category: general
+statement: >
+  Component shock testing is decided from the component's susceptibility and the predicted shock. A
+  flight SRS (Q of 10) enveloped by the applicable Figure 2.4-1 curve is treated as benign and the
+  shock test may be deferred to payload level; levels above the curve call for component testing. The
+  figure has two curves, one for standard aerospace electronics and one for all other hardware.
+applies_to:
+  test_types: [shock]
+  levels: [unit]
+values:
+  constant_velocity_line: {text: "50 in/s constant velocity line (figure annotation)", unit: text}
+  constant_acceleration_line: {text: "500 g constant acceleration line (figure annotation)", unit: text}
+  srs_q: {value: 10, unit: factor}
+confidence: needs_check
+notes: >
+  Figure 2.4-1 is a plot; the extracted text gives only its annotations (axes 100 to 10000 Hz, 10 to
+  10000 g, the two curve names, a 50 in/s constant-velocity line and a 500 g constant-acceleration
+  line). Which curve the 500 g plateau belongs to, the second curve's plateau value and the knee
+  frequency are not recoverable from the text and must be read from the figure.

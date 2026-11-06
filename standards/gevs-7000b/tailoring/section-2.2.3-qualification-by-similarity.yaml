@@ -1,0 +1,23 @@
+kind: tailoring_provision
+id: gevs-7000b.provision.qualification_by_similarity
+standard: gevs-7000b
+title: Qualification of hardware by similarity to previously qualified hardware (2.2.3)
+citation: {standard: gevs-7000b, clause: "2.2.3", page: "2.2 - 3", pdf_page: 44}
+summary: >
+  Hardware qualified on an earlier flight programme may be treated as qualified for a new programme,
+  and then needs only acceptance-level testing, when a documented review shows the design is
+  sufficiently similar and the earlier qualification envelopes the new mission environments.
+applies_to:
+  regimes: [qualification, protoflight]
+permits:
+  - action: qualify_by_similarity
+    description: >
+      Accept prior qualification and test the new build to acceptance levels only, after reviewing
+      three areas: (1) the new design and test requirements are enveloped by the original ones,
+      including the original test configuration and every waiver or deviation granted during the
+      original tests; (2) manufacturing information (parts, materials, packaging, assembly processes
+      and procedures) shows no change that would invalidate the earlier qualification; (3) the
+      earlier flight build's test history shows no significant modification was needed to pass, and
+      any significant change to the heritage item is carried into the new build.
+    constraints: The similarity review is defined by the project, documented, and included in the verification package; the second page of the clause (pdf 45) carries criteria 2 and 3.
+documentation: Verification package

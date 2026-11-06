@@ -1,0 +1,96 @@
+# Unit thermal test rules of SSC-S-016 as described in the NESC Academy deck: burn-in hours,
+# failure-free final cycles, thermal after vibration, and operation during the thermal profile.
+kind: rule
+id: ssc-s-016.rule.burn_in_hours
+standard: ssc-s-016
+title: Burn-in of 200 thermal test hours for acceptance and protoqualification electronic units
+citation: {standard: ssc-s-016, clause: "6.3.8", table: "Other SSC-S-016 Thermal Test Requirements (deck slide 37)", page: "37", pdf_page: 38, note: "also deck slides 45 and 48 (pdf 46, 49); the deck does not name the burn-in clause, footnote 8 of the unit table says burn-in is required for electronic units"}
+category: operating_hours
+statement: >
+  Acceptance and protoqualification electronic units accrue at least 200 hours of thermal test
+  operation, counted across thermal cycling, thermal vacuum and elevated-temperature operation,
+  with at least 100 hours on each redundant path. Hours short of the total are made up with extra
+  thermal cycles (preferred for fatigue-driven defects) or dwell at the hot acceptance temperature
+  (preferred for diffusion-driven defects). Operation at ambient temperature does not count
+  because it gives little thermal stress. Qualification units have no separate burn-in
+  requirement (enveloped).
+applies_to:
+  test_types: [burn_in, thermal_cycle, thermal_vacuum]
+  levels: [unit]
+  hardware_types: [electronic]
+  regimes: [acceptance, protoflight]
+values:
+  total_thermal_test_hours: {value: 200, unit: hr}
+  hours_per_redundant_path: {value: 100, unit: hr}
+  ambient_hours_credit: {value: 0, unit: hr, note: "ambient operation is not credited toward burn-in"}
+confidence: deck_only
+notes: >
+  Deck-sourced; verify against the SSC-S-016 burn-in requirement (clause not named in the deck).
+  The 2026 revision reduces the total to 150 hr (175 hr for internally redundant units); see
+  ssc-s-016-2026.rule.burn_in_hours.
+---
+kind: rule
+id: ssc-s-016.rule.failure_free_final_cycles
+standard: ssc-s-016
+title: Last three unit thermal cycles must be failure-free
+citation: {standard: ssc-s-016, clause: "6.3.8", table: "Other SSC-S-016 Thermal Test Requirements (deck slide 37)", page: "37", pdf_page: 38, note: "also deck slide 49 (pdf 50)"}
+category: screening
+statement: >
+  The last three cycles of the unit thermal cycle test are performed failure-free (the last three
+  thermal vacuum cycles when no thermal cycle test is performed). The deck's rationale is that
+  this demonstrates flight-worthiness after the environment and readiness for the next level of
+  assembly; it recommends against relief from the requirement.
+applies_to:
+  test_types: [thermal_cycle, thermal_vacuum]
+  levels: [unit]
+  regimes: [acceptance, protoflight, qualification]
+values:
+  failure_free_final_cycles: {value: 3, unit: cycles}
+confidence: deck_only
+notes: Deck-sourced; verify against SSC-S-016 6.3.8 and 6.3.9 and the retest provisions.
+---
+kind: rule
+id: ssc-s-016.rule.thermal_after_vibration
+standard: ssc-s-016
+title: Unit thermal tests follow the vibration or acoustic test
+citation: {standard: ssc-s-016, clause: "6.3", table: "Unit Acceptance Tests - SSC-S-016 (deck slide 6)", page: "21", pdf_page: 22, note: "deck slide 21 (pdf 22) gives the rationale; the unit table's suggested sequence (slide 6, pdf 7) puts vibration/acoustic at 6, thermal cycle at 8 and thermal vacuum at 9"}
+category: sequence
+statement: >
+  Unit thermal cycling and thermal vacuum are performed after the vibration (or acoustic) test so
+  that latent defects precipitated by vibration are found during the longer operating exposure of
+  the thermal tests. The suggested unit acceptance sequence is inspection, wear-in, specification
+  performance, leakage, shock, vibration or acoustic, leakage, thermal cycle, thermal vacuum,
+  proof pressure, proof load, leakage, EMC, specification performance, inspection.
+applies_to:
+  test_types: [thermal_cycle, thermal_vacuum, random_vibration, acoustic]
+  levels: [unit]
+before: [random_vibration, acoustic]
+after: [thermal_cycle, thermal_vacuum]
+confidence: deck_only
+notes: Deck-sourced; verify against the suggested test sequence in the SSC-S-016 unit acceptance table (section 6.3).
+---
+kind: rule
+id: ssc-s-016.rule.unit_thermal_test_operation
+standard: ssc-s-016
+title: Operation and functional testing during the unit thermal profile
+citation: {standard: ssc-s-016, clause: "6.3.8", table: "Other SSC-S-016 Thermal Test Requirements (deck slide 37)", page: "37", pdf_page: 38, note: "also deck slides 17 and 38 (pdf 18, 39)"}
+category: functional_test
+statement: >
+  The unit operates at the temperature plateaus and during transitions. At the plateaus it runs
+  performance testing, hot and cold starts and turn-on demonstration; during transitions
+  perceptive parameters are monitored for failures and intermittents. Full specification
+  performance tests are run hot and cold on the first and last cycle and abbreviated functional
+  tests hot and cold on intermediate cycles. Survival temperatures are demonstrated with turn-on
+  at the survival extremes; performance need not meet specification there but must show no
+  degradation once back in the operating range. A thermal dwell at each plateau ensures all
+  areas of the unit are at test temperature before functional testing starts.
+applies_to:
+  test_types: [thermal_cycle, thermal_vacuum]
+  levels: [unit]
+  regimes: [acceptance, protoflight, qualification]
+values:
+  specification_performance_cycles: {text: "First and last cycle, hot and cold", unit: text}
+  functional_test_cycles: {text: "Intermediate cycles, hot and cold", unit: text}
+  hot_and_cold_starts: {text: Required at plateaus, unit: text}
+confidence: deck_only
+notes: Deck-sourced; verify against SSC-S-016 6.3.8 and 6.3.9 (unit thermal cycle and thermal vacuum tests) and 6.3.2 (performance tests).

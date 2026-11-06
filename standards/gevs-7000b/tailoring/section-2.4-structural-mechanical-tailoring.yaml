@@ -1,0 +1,93 @@
+# Relaxations that Section 2.4 itself permits, one record per clause.
+kind: tailoring_provision
+id: gevs-7000b.provision.strength_qualification_by_analysis
+standard: gevs-7000b
+title: Strength qualification by stress analysis instead of test (2.4.1.3)
+citation: {standard: gevs-7000b, clause: "2.4.1.3", page: "2.4 - 8", pdf_page: 59}
+summary: >
+  With payload project concurrence, strength may be qualified by stress analysis alone when
+  development tests have verified the stress model, stringent quality control assures conformance
+  of the structure, and the load paths are well defined.
+applies_to:
+  test_types: [static_load, sine_burst]
+permits:
+  - action: use_analysis
+    description: Show positive margins at 2.0 x limit load on yield and 2.6 x limit load on ultimate instead of testing to 1.25 x limit.
+    constraints: Lower factors are considered case by case with justification. Composite, beryllium, bonded and welded structure may never be qualified by analysis alone (2.4.1.3, pdf 60). At limit load the launch vehicle interface loads and deformation limits must still be shown.
+approval: Payload project concurrence; alternative factors reviewed case by case
+---
+kind: tailoring_provision
+id: gevs-7000b.provision.modal_survey_on_structural_model
+standard: gevs-7000b
+title: Modal survey on a representative structural model may replace the protoflight unit survey (2.4.1.2)
+citation: {standard: gevs-7000b, clause: "2.4.1.2", page: "2.4 - 7", pdf_page: 58}
+summary: >
+  A satisfactory modal survey on a representative structural model can make a survey of the
+  protoflight unit unnecessary. The same clause lets a modal survey be dropped when the hardware
+  has no significant modes in the coupled-loads frequency range, provided the fundamental frequency
+  is verified during vibration testing (a low-level sine survey is the usual method).
+applies_to:
+  test_types: [modal_survey]
+permits:
+  - action: accept_in_lieu
+    description: Accept a modal survey of a representative structural model for the protoflight unit.
+    constraints: The model must duplicate materials, configuration, fabrication and assembly methods and represent mounted items in location, attachment, mass properties and dynamics.
+  - action: delete_test
+    description: Omit the modal survey when modal analysis shows no significant modes in the launch vehicle coupled-loads range.
+    constraints: Fundamental frequency must then be verified during vibration testing.
+---
+kind: tailoring_provision
+id: gevs-7000b.provision.random_vibration_replaced_by_acoustic_large_items
+standard: gevs-7000b
+title: Random vibration may be supplemented or replaced by acoustics for very large components (2.4.2)
+citation: {standard: gevs-7000b, clause: "2.4.2", page: "2.4 - 12", pdf_page: 63}
+summary: >
+  For very large components whose random vibration test cannot excite internal hardware adequately,
+  an acoustic test may supplement or replace it; if neither suffices, environmental stress screening
+  at lower levels of assembly (down to board level) is recommended.
+applies_to:
+  test_types: [random_vibration]
+  levels: [unit]
+permits:
+  - action: substitute_test
+    description: Supplement or replace the component random vibration test by an acoustic test.
+    constraints: If workmanship still cannot be screened, run a lower-level screening programme (2.4.2.5) whose need the project evaluates against reliability, criticality, budget and schedule.
+---
+kind: tailoring_provision
+id: gevs-7000b.provision.notch_below_workmanship_level
+standard: gevs-7000b
+title: Random vibration input may be notched below the workmanship minimum when responses are known (2.4.2.5)
+citation: {standard: gevs-7000b, clause: "2.4.2.5", page: "2.4 - 17", pdf_page: 68}
+summary: >
+  When test levels would exceed design safety margins or create unrealistic failure modes, the input
+  spectrum may be notched below the minimum workmanship level of Table 2.4-4.
+applies_to:
+  test_types: [random_vibration]
+  levels: [unit]
+permits:
+  - action: reduce_level
+    description: Notch the component random vibration input below the Table 2.4-4 minimum in specific bands.
+    constraints: Only when flight or higher-level test responses are known or force limits have been calculated; for delicate optics and detectors notching needs project concurrence and force limiting is recommended (2.4.2, NASA-HDBK-7004).
+approval: GSFC project
+---
+kind: tailoring_provision
+id: gevs-7000b.provision.component_shock_deferred_to_payload_level
+standard: gevs-7000b
+title: Component shock testing may be deferred to the payload level when the environment is benign (2.4.4.1)
+citation: {standard: gevs-7000b, clause: "2.4.4.1", page: "2.4 - 26", pdf_page: 77}
+summary: >
+  Where a component is not shock sensitive and the predicted shock is low, the project may defer
+  shock testing to the payload level. Figure 2.4-1 (SRS at Q=10, separate curves for standard
+  aerospace electronics and other hardware) is the screening guideline: an environment enveloped by
+  the applicable curve is considered benign. Externally induced shock tests may also be dropped when
+  the self-induced shock spectrum exceeds the external envelope at every frequency and location.
+applies_to:
+  test_types: [shock]
+  levels: [unit, subsystem]
+permits:
+  - action: change_level_of_assembly
+    description: Cover the component shock requirement by the payload-level test.
+    constraints: Component assessed individually against Figure 2.4-1 and its susceptibility; levels above the curve call for component-level shock testing.
+  - action: delete_test
+    description: Omit the externally induced shock test when self-induced shock envelopes it.
+    constraints: Demonstrated at all frequencies and all locations within the subsystem.

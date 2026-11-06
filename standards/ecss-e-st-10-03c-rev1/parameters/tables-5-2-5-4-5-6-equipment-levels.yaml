@@ -1,0 +1,489 @@
+# ECSS-E-ST-10-03C Rev.1 Tables 5-2 (qualification), 5-4 (acceptance) and 5-6 (protoflight)
+# "Space segment equipment - test levels and duration", one record per test so a single record
+# spans the three regimes. The "No" of each table row is given in the ParameterSet notes. Levels
+# that the standard expresses as a reference to another ECSS standard are kept as text.
+kind: test_parameters
+id: ecss-e-st-10-03c-rev1.params.life
+standard: ecss-e-st-10-03c-rev1
+test_type: life
+title: Life test level and duration (Tables 5-2 and 5-6)
+citation: {standard: ecss-e-st-10-03c-rev1, clause: "5.5.1.3", table: "Table 5-2 / Table 5-6", page: "49", pdf_page: 49, note: "Table 5-2 No 1 (pdf 49); Table 5-6 No 1 (pdf 65); no acceptance row"}
+level_of_assembly: [unit]
+by_regime:
+  qualification:
+    level: {text: Expected environment and maximum operational load, unit: text}
+    duration: {text: "Mechanisms: ECSS-E-ST-33-01 Table 4-3; batteries: ECSS-E-ST-20", unit: text, note: duration and cycles}
+    actuations: {value: 1, unit: count, note: 1 test}
+    notes: Table 5-2 No 1
+  protoflight:
+    level: {text: Expected environment and maximum operational load, unit: text}
+    duration: {text: "Mechanisms: ECSS-E-ST-33-01 Table 4-3; batteries: ECSS-E-ST-20", unit: text, note: duration and cycles}
+    actuations: {value: 1, unit: count, note: 1 test}
+    notes: Table 5-6 No 1; performed on a dedicated model, never on the PFM (clause 5.4b)
+---
+kind: test_parameters
+id: ecss-e-st-10-03c-rev1.params.static_load
+standard: ecss-e-st-10-03c-rev1
+test_type: static_load
+title: Static load level and duration (Table 5-2)
+citation: {standard: ecss-e-st-10-03c-rev1, clause: "5.5.2.2", table: Table 5-2, page: "49", pdf_page: 49, note: "Table 5-2 No 2; not in Tables 5-4 or 5-6"}
+level_of_assembly: [unit]
+by_regime:
+  qualification:
+    level: {text: KQ x limit load, unit: factor, relative_to: limit_load, note: qualification factor KQ from ECSS-E-ST-32-10 clause 4.3.1}
+    duration: {value: 10, unit: s, note: minimum; as needed to record data}
+    extra:
+      load_cases: {text: Worst combined load cases, unit: text, note: determined by analysis}
+    notes: Table 5-2 No 2
+---
+kind: test_parameters
+id: ecss-e-st-10-03c-rev1.params.spin
+standard: ecss-e-st-10-03c-rev1
+test_type: spin
+title: Spin test level and duration (Tables 5-2 and 5-6)
+citation: {standard: ecss-e-st-10-03c-rev1, clause: "5.5.2.2", table: "Table 5-2 / Table 5-6", page: "49", pdf_page: 49, note: "Table 5-2 No 3 (pdf 49); Table 5-6 No 2 (pdf 65); no acceptance row"}
+level_of_assembly: [unit]
+by_regime:
+  qualification:
+    level: {text: KQ x spin rate, unit: factor, relative_to: limit_level, note: qualification factor KQ from ECSS-E-ST-32-10 clause 4.3.1}
+    duration: {text: As specified by the project, unit: text}
+    actuations: {value: 1, unit: count, note: 1 test}
+    notes: Table 5-2 No 3
+  protoflight:
+    level: {text: KQ x spin rate, unit: factor, relative_to: limit_level, note: qualification factor KQ from ECSS-E-ST-32-10 clause 4.3.1}
+    duration: {text: As needed to record data, unit: text}
+    axes: {value: 3, unit: axes, note: printed as "on each of 3 orthogonal axes"}
+    notes: Table 5-6 No 2
+---
+kind: test_parameters
+id: ecss-e-st-10-03c-rev1.params.sine_burst
+standard: ecss-e-st-10-03c-rev1
+test_type: sine_burst
+title: Sine burst level and duration (Tables 5-2 and 5-6)
+citation: {standard: ecss-e-st-10-03c-rev1, clause: "5.5.2.2", table: "Table 5-2 / Table 5-6", page: "49", pdf_page: 49, note: "Table 5-2 No 4 (pdf 49); Table 5-6 No 3 (pdf 65); no acceptance row"}
+level_of_assembly: [unit]
+by_regime:
+  qualification:
+    level: {text: KQ x limit load, unit: factor, relative_to: limit_load, note: qualification factor KQ from ECSS-E-ST-32-10 clause 4.3.1}
+    duration: {text: As needed to record data, unit: text}
+    actuations: {text: As specified, unit: text}
+    notes: Table 5-2 No 4
+  protoflight:
+    level: {text: KQ x limit load, unit: factor, relative_to: limit_load, note: qualification factor KQ from ECSS-E-ST-32-10 clause 4.3.1}
+    duration: {text: As needed to record data, unit: text}
+    actuations: {text: As specified, unit: text}
+    notes: Table 5-6 No 3
+---
+kind: test_parameters
+id: ecss-e-st-10-03c-rev1.params.random_vibration
+standard: ecss-e-st-10-03c-rev1
+test_type: random_vibration
+title: Random vibration level and duration (Tables 5-2, 5-4 and 5-6)
+citation: {standard: ecss-e-st-10-03c-rev1, clause: "5.5.2.3", table: "Table 5-2 / Table 5-4 / Table 5-6", page: "49", pdf_page: 49, note: "Table 5-2 No 5 (pdf 49); Table 5-4 No 1 (pdf 58); Table 5-6 No 4 (pdf 65)"}
+level_of_assembly: [unit]
+by_regime:
+  qualification:
+    level: {value: 3, unit: dB, relative_to: max_predicted, note: on PSD values of the maximum expected spectrum}
+    duration: {value: 2, unit: min, per: axis}
+    axes: {value: 3, unit: axes, note: each of 3 orthogonal axes}
+    footnotes: [launcher_margin]
+    notes: Table 5-2 No 5
+  acceptance:
+    level: {value: 0, unit: dB, relative_to: max_predicted, note: on PSD values of the maximum expected spectrum}
+    duration: {value: 1, unit: min, per: axis}
+    axes: {value: 3, unit: axes, note: each of 3 orthogonal axes}
+    notes: Table 5-4 No 1
+  protoflight:
+    level: {value: 3, unit: dB, relative_to: max_predicted, note: on PSD values of the maximum expected spectrum}
+    duration: {value: 1, unit: min, per: axis}
+    axes: {value: 3, unit: axes, note: each of 3 orthogonal axes}
+    footnotes: [launcher_margin]
+    notes: Table 5-6 No 4
+footnotes:
+  launcher_margin: A larger margin specified by the launcher authority takes precedence over 3 dB
+---
+kind: test_parameters
+id: ecss-e-st-10-03c-rev1.params.acoustic
+standard: ecss-e-st-10-03c-rev1
+test_type: acoustic
+title: Acoustic level and duration (Tables 5-2, 5-4 and 5-6)
+citation: {standard: ecss-e-st-10-03c-rev1, clause: "5.5.2.4", table: "Table 5-2 / Table 5-4 / Table 5-6", page: "49", pdf_page: 49, note: "Table 5-2 No 6 (pdf 49); Table 5-4 No 2 (pdf 58); Table 5-6 No 5 (pdf 65)"}
+level_of_assembly: [unit]
+by_regime:
+  qualification:
+    level: {value: 3, unit: dB, relative_to: max_predicted, note: on the maximum expected acoustic spectrum}
+    duration: {value: 2, unit: min}
+    actuations: {value: 1, unit: count, note: 1 test}
+    footnotes: [launcher_margin]
+    notes: Table 5-2 No 6
+  acceptance:
+    level: {value: 0, unit: dB, relative_to: max_predicted, note: on the maximum expected acoustic spectrum}
+    duration: {value: 1, unit: min}
+    actuations: {value: 1, unit: count, note: 1 test}
+    notes: Table 5-4 No 2
+  protoflight:
+    level: {value: 3, unit: dB, relative_to: max_predicted, note: on the maximum expected acoustic spectrum}
+    duration: {value: 1, unit: min}
+    actuations: {value: 1, unit: count, note: 1 test}
+    footnotes: [launcher_margin]
+    notes: Table 5-6 No 5
+footnotes:
+  launcher_margin: A larger margin specified by the launcher authority takes precedence over 3 dB
+---
+kind: test_parameters
+id: ecss-e-st-10-03c-rev1.params.sine_vibration
+standard: ecss-e-st-10-03c-rev1
+test_type: sine_vibration
+title: Sinusoidal vibration level and sweep (Tables 5-2, 5-4 and 5-6)
+citation: {standard: ecss-e-st-10-03c-rev1, clause: "5.5.2.5", table: "Table 5-2 / Table 5-4 / Table 5-6", page: "49", pdf_page: 49, note: "Table 5-2 No 7 (pdf 49); Table 5-4 No 3 (pdf 58); Table 5-6 No 6 (pdf 65)"}
+level_of_assembly: [unit]
+by_regime:
+  qualification:
+    level: {text: KQ x limit load spectrum, unit: factor, relative_to: limit_load, note: qualification factor KQ from ECSS-E-ST-32-10 clause 4.3.1}
+    sweep_rate: {value: 2, unit: oct_per_min}
+    axes: {value: 3, unit: axes, note: each of 3 orthogonal axes}
+    extra:
+      frequency_range: {min_value: 5, max_value: 140, unit: Hz}
+    notes: Table 5-2 No 7
+  acceptance:
+    level: {text: KA x limit load spectrum, unit: factor, relative_to: limit_load, note: acceptance factor KA from ECSS-E-ST-32-10 clause 4.3.1}
+    sweep_rate: {value: 4, unit: oct_per_min}
+    axes: {value: 3, unit: axes, note: each of 3 orthogonal axes}
+    extra:
+      frequency_range: {min_value: 5, max_value: 140, unit: Hz}
+    notes: Table 5-4 No 3
+  protoflight:
+    level: {text: KQ x limit load spectrum, unit: factor, relative_to: limit_load, note: qualification factor KQ from ECSS-E-ST-32-10 clause 4.3.1}
+    sweep_rate: {value: 4, unit: oct_per_min}
+    axes: {value: 3, unit: axes, note: each of 3 orthogonal axes}
+    extra:
+      frequency_range: {min_value: 5, max_value: 140, unit: Hz}
+    notes: Table 5-6 No 6
+---
+kind: test_parameters
+id: ecss-e-st-10-03c-rev1.params.shock
+standard: ecss-e-st-10-03c-rev1
+test_type: shock
+title: Shock level, duration and number of applications (Tables 5-2 and 5-6)
+citation: {standard: ecss-e-st-10-03c-rev1, clause: "5.5.2.6", table: "Table 5-2 / Table 5-6", page: "50", pdf_page: 50, note: "Table 5-2 No 8 (pdf 50); Table 5-6 No 7 (pdf 66); no acceptance row"}
+level_of_assembly: [unit]
+by_regime:
+  qualification:
+    level: {value: 3, unit: dB, relative_to: max_predicted, note: qualification margin on the maximum expected shock spectrum}
+    duration: {min_value: 20, max_value: 30, unit: ms, note: typical; representative of the expected environment}
+    actuations: {min_value: 1, max_value: 3, unit: count, note: "covering the complete FM life cycle in all 3 axes: 1 if only the flight shock event is seen, 3 if an element-level qualifying shock test (plus a retest provision) is also seen"}
+    footnotes: [element_shock_no_margin]
+    notes: Table 5-2 No 8
+  protoflight:
+    level: {value: 3, unit: dB, relative_to: max_predicted, note: margin on the maximum expected shock spectrum}
+    duration: {min_value: 20, max_value: 30, unit: ms, note: typical; as specified by the project}
+    actuations: {value: 1, unit: count, note: 1 test}
+    footnotes: [element_shock_no_margin]
+    notes: Table 5-6 No 7
+footnotes:
+  element_shock_no_margin: An element-level qualification test firing the actual shock device is run without margin to consolidate the equipment shock specification
+---
+kind: test_parameters
+id: ecss-e-st-10-03c-rev1.params.microvibration_susceptibility
+standard: ecss-e-st-10-03c-rev1
+test_type: microvibration_susceptibility
+title: Micro-vibration susceptibility level and duration (Tables 5-2, 5-4 and 5-6)
+citation: {standard: ecss-e-st-10-03c-rev1, clause: "5.5.2.8", table: "Table 5-2 / Table 5-4 / Table 5-6", page: "50", pdf_page: 50, note: "Table 5-2 No 9 (pdf 50); Table 5-4 No 4 (pdf 58); Table 5-6 No 8 (pdf 66)"}
+level_of_assembly: [unit]
+by_regime:
+  qualification:
+    level: {text: Specified environment (maximum predicted environment at element level plus margin), unit: text, relative_to: max_predicted}
+    duration: {text: As needed for susceptibility determination, unit: text}
+    actuations: {text: As specified by the project, unit: text}
+    notes: Table 5-2 No 9
+  acceptance:
+    level: {text: Specified environment (maximum predicted environment at element level plus margin), unit: text, relative_to: max_predicted}
+    duration: {text: As needed for susceptibility determination, unit: text}
+    actuations: {text: As specified by the project, unit: text}
+    notes: Table 5-4 No 4
+  protoflight:
+    level: {text: Specified environment (maximum predicted environment at element level plus margin), unit: text, relative_to: max_predicted}
+    duration: {text: As needed for susceptibility determination, unit: text}
+    actuations: {text: As specified by the project, unit: text}
+    notes: Table 5-6 No 8
+---
+kind: test_parameters
+id: ecss-e-st-10-03c-rev1.params.leak
+standard: ecss-e-st-10-03c-rev1
+test_type: leak
+title: Leak test pressure and hold time (Tables 5-2, 5-4 and 5-6)
+citation: {standard: ecss-e-st-10-03c-rev1, clause: "5.5.3.1", table: "Table 5-2 / Table 5-4 / Table 5-6", page: "51", pdf_page: 51, note: "Table 5-2 No 10 (pdf 51); Table 5-4 No 5 (pdf 58); Table 5-6 No 9 (pdf 66)"}
+level_of_assembly: [unit]
+by_regime:
+  qualification:
+    level: {text: MDP, unit: text, note: maximum design pressure}
+    duration: {value: 30, unit: min, note: minimum hold at pressure}
+    actuations: {text: In conformance with Figure 5-1, unit: text, note: before and after environmental blocks per the equipment sequence}
+    notes: Table 5-2 No 10
+  acceptance:
+    level: {text: MDP, unit: text, note: maximum design pressure}
+    duration: {value: 30, unit: min, note: minimum hold at pressure}
+    actuations: {text: In conformance with Figure 5-1, unit: text}
+    notes: Table 5-4 No 5
+  protoflight:
+    level: {text: MDP, unit: text, note: maximum design pressure}
+    duration: {value: 30, unit: min, note: minimum hold at pressure}
+    actuations: {text: In conformance with Figure 5-1, unit: text}
+    notes: Table 5-6 No 9
+---
+kind: test_parameters
+id: ecss-e-st-10-03c-rev1.params.proof_pressure
+standard: ecss-e-st-10-03c-rev1
+test_type: proof_pressure
+title: Proof pressure level and hold time (Tables 5-2, 5-4 and 5-6)
+citation: {standard: ecss-e-st-10-03c-rev1, clause: "5.5.3.2", table: "Table 5-2 / Table 5-4 / Table 5-6", page: "51", pdf_page: 51, note: "Table 5-2 No 11 (pdf 51); Table 5-4 No 6 (pdf 58); Table 5-6 No 10 (pdf 66)"}
+level_of_assembly: [unit]
+by_regime:
+  qualification:
+    level: {text: jproof x MDP, unit: factor, relative_to: mdp, note: proof factor jproof from ECSS-E-ST-32-02 Tables 4-1 to 4-9}
+    duration: {value: 5, unit: min, note: minimum hold time}
+    actuations: {text: Number of pressure applications covering the complete FM life cycle, unit: text}
+    notes: Table 5-2 No 11
+  acceptance:
+    level: {text: jproof x MDP, unit: factor, relative_to: mdp, note: proof factor jproof from ECSS-E-ST-32-02 Tables 4-1 to 4-9}
+    duration: {value: 5, unit: min, note: minimum hold time}
+    actuations: {value: 1, unit: count}
+    notes: Table 5-4 No 6
+  protoflight:
+    level: {text: jproof x MDP, unit: factor, relative_to: mdp, note: proof factor jproof from ECSS-E-ST-32-02 Tables 4-1 to 4-9}
+    duration: {value: 5, unit: min, note: minimum hold time}
+    actuations: {value: 1, unit: count, note: 1 test}
+    notes: Table 5-6 No 10
+---
+kind: test_parameters
+id: ecss-e-st-10-03c-rev1.params.pressure_cycling
+standard: ecss-e-st-10-03c-rev1
+test_type: pressure_cycling
+title: Pressure cycling level (Table 5-2)
+citation: {standard: ecss-e-st-10-03c-rev1, clause: "5.5.3.3", table: Table 5-2, page: "51", pdf_page: 51, note: "Table 5-2 No 12; not in Tables 5-4 or 5-6"}
+level_of_assembly: [unit]
+by_regime:
+  qualification:
+    level: {text: MDP, unit: text, note: the MDP level can be exceeded; see ECSS-E-ST-32-02 clause 5.4.5}
+    cycles: {text: See ECSS-E-ST-32-02 clause 5.4.5, unit: text}
+    actuations: {value: 1, unit: count, note: 1 test}
+    notes: Table 5-2 No 12
+---
+kind: test_parameters
+id: ecss-e-st-10-03c-rev1.params.design_burst_pressure
+standard: ecss-e-st-10-03c-rev1
+test_type: design_burst_pressure
+title: Design burst pressure level and hold time (Table 5-2)
+citation: {standard: ecss-e-st-10-03c-rev1, clause: "5.5.3.4", table: Table 5-2, page: "51", pdf_page: 51, note: "Table 5-2 No 13; not in Tables 5-4 or 5-6"}
+level_of_assembly: [unit]
+by_regime:
+  qualification:
+    level: {text: jburst x MDP, unit: factor, relative_to: mdp, note: burst factor jburst from ECSS-E-ST-32-02 Tables 4-1 to 4-9}
+    duration: {value: 30, unit: s, note: minimum}
+    actuations: {value: 1, unit: count, note: 1 test}
+    notes: Table 5-2 No 13
+---
+kind: test_parameters
+id: ecss-e-st-10-03c-rev1.params.burst
+standard: ecss-e-st-10-03c-rev1
+test_type: burst
+title: Burst test (Table 5-2)
+citation: {standard: ecss-e-st-10-03c-rev1, clause: "5.5.3.5", table: Table 5-2, page: "51", pdf_page: 51, note: "Table 5-2 No 14; not in Tables 5-4 or 5-6"}
+level_of_assembly: [unit]
+by_regime:
+  qualification:
+    level: {text: Pressure increased until burst occurs, unit: text}
+    duration: {text: Until burst occurs, unit: text}
+    actuations: {value: 1, unit: count, note: 1 test}
+    notes: Table 5-2 No 14; on a dedicated model, or as the last test when done on the QM
+---
+kind: test_parameters
+id: ecss-e-st-10-03c-rev1.params.thermal_vacuum
+standard: ecss-e-st-10-03c-rev1
+test_type: thermal_vacuum
+title: Thermal vacuum temperature margins and cycles (Tables 5-2, 5-4 and 5-6)
+citation: {standard: ecss-e-st-10-03c-rev1, clause: "5.5.4.2", table: "Table 5-2 / Table 5-4 / Table 5-6", page: "52", pdf_page: 52, note: "Table 5-2 No 15 (pdf 52); Table 5-4 No 7 (pdf 58-59); Table 5-6 No 11 (pdf 67)"}
+level_of_assembly: [unit]
+by_regime:
+  qualification:
+    margin: {value: 5, unit: degC, relative_to: acceptance_level, note: "TQ max = TA max + 5 degC and TQ min = TA min - 5 degC, operating and non-operating"}
+    cycles: {value: 8, unit: cycles, note: or 1 or more when combined with cycles at mission pressure}
+    actuations: {value: 1, unit: count, note: 1 test}
+    extra:
+      solar_panel_cycles: {value: 10, unit: cycles, note: solar panels}
+      solar_panel_plateau: {value: 2, unit: hr, per: plateau, note: "minimum at hot and cold extremes, solar panels"}
+    footnotes: [margin_extremes_q, combined_with_mission_pressure, cycles_by_mission_profile]
+    notes: Table 5-2 No 15
+  acceptance:
+    margin: {value: 5, unit: degC, relative_to: design_range, note: "TA max = TD max + 5 degC and TA min = TD min - 5 degC, operating and non-operating"}
+    cycles: {value: 4, unit: cycles, note: or 1 or more when combined with cycles at mission pressure}
+    actuations: {value: 1, unit: count, note: 1 test}
+    extra:
+      solar_panel_cycles: {value: 5, unit: cycles, note: "solar panels, baseline"}
+      solar_panel_plateau: {value: 1, unit: hr, per: plateau, note: "minimum at hot and cold extremes, solar panels, baseline"}
+      solar_panel_cycles_no_heritage: {value: 10, unit: cycles, note: "panel design, process or manufacturer without flight heritage, plateau 1 h minimum"}
+      solar_panel_cycles_single_panel_qualification: {value: 10, unit: cycles, note: "when qualification used one panel only, acceptance of a second panel, plateau 1 h minimum"}
+      solar_panel_cycles_significant_heritage: {value: 3, unit: cycles, note: "significant heritage in design, processes and manufacturer, plateau 30 min minimum"}
+      solar_panel_cycles_after_fifth_recurrent: {value: 5, unit: cycles, note: "after the fifth recurrent panel accepted, plateau 30 min"}
+    footnotes: [margin_extremes_a, combined_with_mission_pressure, cycles_by_mission_profile]
+    notes: Table 5-4 No 7
+  protoflight:
+    margin: {value: 5, unit: degC, relative_to: acceptance_level, note: "TQ max = TA max + 5 degC and TQ min = TA min - 5 degC, operating and non-operating"}
+    cycles: {value: 4, unit: cycles, note: or 1 or more when combined with cycles at mission pressure}
+    actuations: {value: 1, unit: count, note: 1 test}
+    extra:
+      solar_panel_cycles: {value: 10, unit: cycles, note: solar panels}
+      solar_panel_plateau: {value: 2, unit: hr, per: plateau, note: "minimum at hot and cold extremes, solar panels"}
+    footnotes: [margin_extremes_q, combined_with_mission_pressure, cycles_by_mission_profile]
+    notes: Table 5-6 No 11
+footnotes:
+  margin_extremes_q: A qualification margin smaller than 5 degC may be used below -170 degC and a larger one above 120 degC
+  margin_extremes_a: An acceptance margin smaller than 5 degC may be used below -170 degC and a larger one above 120 degC
+  combined_with_mission_pressure: Equipment that operates in a non-vacuum environment after exposure to vacuum undergoes both vacuum cycling and mission-pressure cycling
+  cycles_by_mission_profile: The split of cycles and operating conditions between vacuum and mission pressure follows the mission profile
+notes: >
+  TA is the acceptance temperature range, TD the design temperature range and TQ the qualification
+  temperature range at the unit temperature reference point (terms from ECSS-E-ST-31). The printed
+  formulae are rendered as margins here. The PDF extraction garbles the formula glyphs; the
+  values were cross-checked against the surrounding margin text.
+---
+kind: test_parameters
+id: ecss-e-st-10-03c-rev1.params.thermal_mission_pressure
+standard: ecss-e-st-10-03c-rev1
+test_type: thermal_cycle
+variant: mission_pressure
+title: Thermal test at mission pressure, margins and cycles (Tables 5-2, 5-4 and 5-6)
+citation: {standard: ecss-e-st-10-03c-rev1, clause: "5.5.4.3", table: "Table 5-2 / Table 5-4 / Table 5-6", page: "52", pdf_page: 52, note: "Table 5-2 No 16 (pdf 52); Table 5-4 No 8 (pdf 60); Table 5-6 No 12 (pdf 67)"}
+level_of_assembly: [unit]
+by_regime:
+  qualification:
+    margin: {value: 5, unit: degC, relative_to: acceptance_level, note: "TQ max = TA max + 5 degC and TQ min = TA min - 5 degC, operating and non-operating"}
+    cycles: {value: 8, unit: cycles, note: or 8 minus the number of cycles performed in thermal vacuum}
+    actuations: {value: 1, unit: count, note: 1 test}
+    footnotes: [margin_extremes_q, mission_examples, applicability_without_vacuum]
+    notes: Table 5-2 No 16
+  acceptance:
+    margin: {value: 5, unit: degC, relative_to: design_range, note: "TA max = TD max + 5 degC and TA min = TD min - 5 degC, operating and non-operating"}
+    cycles: {value: 4, unit: cycles, note: or 4 minus the number of cycles performed in thermal vacuum}
+    actuations: {value: 1, unit: count, note: 1 test}
+    footnotes: [margin_extremes_a, mission_examples, applicability_without_vacuum]
+    notes: Table 5-4 No 8
+  protoflight:
+    margin: {value: 5, unit: degC, relative_to: acceptance_level, note: "TQ max = TA max + 5 degC and TQ min = TA min - 5 degC, operating and non-operating"}
+    cycles: {value: 4, unit: cycles, note: or 4 minus the number of cycles performed in thermal vacuum}
+    actuations: {value: 1, unit: count, note: 1 test}
+    footnotes: [margin_extremes_q, mission_examples, applicability_without_vacuum]
+    notes: Table 5-6 No 12
+footnotes:
+  margin_extremes_q: A qualification margin smaller than 5 degC may be used below -170 degC and a larger one above 120 degC
+  margin_extremes_a: An acceptance margin smaller than 5 degC may be used below -170 degC and a larger one above 120 degC
+  mission_examples: Typical cases are Mars or Venus missions
+  applicability_without_vacuum: Mission-pressure cycling without vacuum cycling applies only to equipment that operates in a non-vacuum environment for its whole life; consider depressurisation failure
+notes: >
+  Temperature cycling at the mission (non-vacuum) pressure. Encoded under thermal_cycle as the
+  closest unified id; the standard states that room-pressure thermal cycling in the US sense is
+  not part of it (see VOCAB-REQUESTS.md). Formula glyphs are garbled in the PDF extraction and
+  were cross-checked against the margin text.
+---
+kind: test_parameters
+id: ecss-e-st-10-03c-rev1.params.emc
+standard: ecss-e-st-10-03c-rev1
+test_type: emc
+title: EMC level and duration (Tables 5-2, 5-4 and 5-6)
+citation: {standard: ecss-e-st-10-03c-rev1, clause: "5.5.5.1", table: "Table 5-2 / Table 5-4 / Table 5-6", page: "53", pdf_page: 53, note: "Table 5-2 No 17 (pdf 53); Table 5-4 No 9 (pdf 60); Table 5-6 No 13 (pdf 68)"}
+level_of_assembly: [unit]
+by_regime:
+  qualification:
+    level: {text: See ECSS-E-ST-20-07 clause 5.4, unit: text}
+    duration: {text: See ECSS-E-ST-20-07 clause 5.4, unit: text}
+    actuations: {value: 1, unit: count, note: 1 test}
+    notes: Table 5-2 No 17
+  acceptance:
+    level: {text: Apply ECSS-E-ST-20-07 clause 5.4, unit: text}
+    duration: {text: Apply ECSS-E-ST-20-07 clause 5.4, unit: text}
+    actuations: {value: 1, unit: count, note: 1 test}
+    notes: Table 5-4 No 9
+  protoflight:
+    level: {text: See ECSS-E-ST-20-07 clause 5.4, unit: text}
+    duration: {text: See ECSS-E-ST-20-07 clause 5.4, unit: text}
+    actuations: {value: 1, unit: count, note: 1 test}
+    notes: Table 5-6 No 13
+---
+kind: test_parameters
+id: ecss-e-st-10-03c-rev1.params.esd
+standard: ecss-e-st-10-03c-rev1
+test_type: esd
+title: ESD level and duration (Tables 5-2 and 5-6)
+citation: {standard: ecss-e-st-10-03c-rev1, clause: "5.5.5.3", table: "Table 5-2 / Table 5-6", page: "53", pdf_page: 53, note: "Table 5-2 No 18 (pdf 53); Table 5-6 No 14 (pdf 68); no acceptance row"}
+level_of_assembly: [unit]
+by_regime:
+  qualification:
+    level: {text: "See ECSS-E-ST-20-06; ECSS-E-ST-20-07 clause 5.2.1 for the ESD test; ECSS-E-ST-20-08 for solar arrays and panels", unit: text}
+    duration: {text: "See ECSS-E-ST-20-06; ECSS-E-ST-20-07 clause 5.2.1; ECSS-E-ST-20-08 for solar arrays and panels", unit: text}
+    actuations: {value: 1, unit: count, note: 1 test}
+    notes: Table 5-2 No 18
+  protoflight:
+    level: {text: "See ECSS-E-ST-20-06; ECSS-E-ST-20-07 clause 5.2.1 for the ESD test; ECSS-E-ST-20-08 for solar arrays and panels", unit: text}
+    duration: {text: "See ECSS-E-ST-20-06; ECSS-E-ST-20-07 clause 5.2.1; ECSS-E-ST-20-08 for solar arrays and panels", unit: text}
+    actuations: {value: 1, unit: count, note: 1 test}
+    notes: Table 5-6 No 14; performed on a dedicated model, never on the PFM (clause 5.4b)
+---
+kind: test_parameters
+id: ecss-e-st-10-03c-rev1.params.pim
+standard: ecss-e-st-10-03c-rev1
+test_type: pim
+title: Passive intermodulation level and duration (Tables 5-2, 5-4 and 5-6)
+citation: {standard: ecss-e-st-10-03c-rev1, clause: "5.5.5.4", table: "Table 5-2 / Table 5-4 / Table 5-6", page: "53", pdf_page: 53, note: "Table 5-2 No 19 (pdf 53); Table 5-4 No 10 (pdf 60); Table 5-6 No 15 (pdf 68)"}
+level_of_assembly: [unit]
+by_regime:
+  qualification:
+    level: {text: See ECSS-E-ST-20 clause 7.4, unit: text}
+    duration: {text: See ECSS-E-ST-20 clause 7.4, unit: text}
+    notes: Table 5-2 No 19; no number of applications printed
+  acceptance:
+    level: {text: See ECSS-E-ST-20 clause 7.4, unit: text}
+    duration: {text: See ECSS-E-ST-20 clause 7.4, unit: text}
+    notes: Table 5-4 No 10; no number of applications printed
+  protoflight:
+    level: {text: See ECSS-E-ST-20 clause 7.4, unit: text}
+    duration: {text: See ECSS-E-ST-20 clause 7.4, unit: text}
+    notes: Table 5-6 No 15; no number of applications printed
+---
+kind: test_parameters
+id: ecss-e-st-10-03c-rev1.params.corona_arc_discharge
+standard: ecss-e-st-10-03c-rev1
+test_type: discharge
+variant: corona_arc
+title: Corona and arc discharge level and duration (Tables 5-2, 5-4 and 5-6)
+citation: {standard: ecss-e-st-10-03c-rev1, clause: "5.5.5.6", table: "Table 5-2 / Table 5-4 / Table 5-6", page: "53", pdf_page: 53, note: "Table 5-2 No 20 (pdf 53); Table 5-4 No 11 (pdf 60); Table 5-6 No 16 (pdf 68)"}
+level_of_assembly: [unit]
+by_regime:
+  qualification:
+    level: {text: "Maximum operational voltage, and maximum RF output power for RF equipment", unit: text}
+    duration: {min_value: 10, max_value: 15, unit: min}
+    actuations: {value: 1, unit: count, note: 1 test}
+    extra:
+      pressure_sweep: {min_value: 0.1, max_value: 10, unit: hPa, note: "sweep over the critical pressure range, 10 hPa down to 0.1 hPa"}
+    footnotes: [paschen]
+    notes: Table 5-2 No 20
+  acceptance:
+    level: {text: "Maximum operational voltage, and maximum RF output power for RF equipment", unit: text}
+    duration: {min_value: 10, max_value: 15, unit: min}
+    actuations: {value: 1, unit: count, note: 1 test}
+    extra:
+      pressure_sweep: {min_value: 0.1, max_value: 10, unit: hPa, note: "sweep over the critical pressure range, 10 hPa down to 0.1 hPa"}
+    footnotes: [paschen]
+    notes: Table 5-4 No 11
+  protoflight:
+    level: {text: "Maximum operational voltage, and maximum RF output power for RF equipment", unit: text}
+    duration: {min_value: 10, max_value: 15, unit: min}
+    actuations: {value: 1, unit: count, note: 1 test}
+    extra:
+      pressure_sweep: {min_value: 0.1, max_value: 10, unit: hPa, note: "sweep over the critical pressure range, 10 hPa down to 0.1 hPa"}
+    footnotes: [paschen]
+    notes: Table 5-6 No 16; on a dedicated model (Table 5-5 note)
+footnotes:
+  paschen: For a given frequency, minimum internal gap and pressure a Paschen curve applies, with a power minimum inside the swept pressure range
+notes: >
+  The tables add that room-condition tests such as humidity and toxic offgassing have no level row
+  because they are applied without margin. Multipactor (5.5.5.5) has no level row in any table.

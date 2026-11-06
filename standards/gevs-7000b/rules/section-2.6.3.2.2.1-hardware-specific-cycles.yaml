@@ -1,0 +1,139 @@
+# GEVS 2.6.3.2.2.1: the hardware-specific cycling table on the page after Table 2.6-1 (page 2.6-18),
+# attributed to Code 543 (mechanical) and Code 597 (propulsion). One record per row.
+kind: rule
+id: gevs-7000b.rule.hardware_cycles_metallic_structure
+standard: gevs-7000b
+title: Metallic structure - at least 2 thermal cycles when structural margins are driven by thermal stress (2.6.3.2.2.1 hardware table)
+citation: {standard: gevs-7000b, clause: "2.6.3.2.2.1", page: "2.6-18", pdf_page: 259}
+category: screening
+statement: >
+  Metallic structure receives a minimum of two thermal cycles when its structural margins are driven
+  by thermal stresses. For optically sensitive structure a complete alignment performance test before
+  instrument assembly is recommended.
+applies_to:
+  test_types: [thermal_cycle, thermal_vacuum]
+  hardware_types: [structure]
+values:
+  cycles_min: {value: 2, unit: cycles, note: "when thermal stress drives structural margins"}
+---
+kind: rule
+id: gevs-7000b.rule.hardware_cycles_bonded_bolted_structure
+standard: gevs-7000b
+title: Bonded/bolted structure - at least 2 thermal cycles (2.6.3.2.2.1 hardware table)
+citation: {standard: gevs-7000b, clause: "2.6.3.2.2.1", page: "2.6-18", pdf_page: 259}
+category: screening
+statement: >
+  Structure that is both bonded and bolted receives a minimum of two thermal cycles. A complete
+  alignment performance test before instrument assembly is recommended for optically sensitive
+  structure.
+applies_to:
+  test_types: [thermal_cycle, thermal_vacuum]
+  hardware_types: [structure]
+  flags: [composite_or_bonded]
+values:
+  cycles_min: {value: 2, unit: cycles}
+---
+kind: rule
+id: gevs-7000b.rule.hardware_cycles_bonded_only_structure
+standard: gevs-7000b
+title: Bonded-only structure - at least 2 thermal cycles if in the primary load path, none for secondary structure unless thermally driven (2.6.3.2.2.1 hardware table)
+citation: {standard: gevs-7000b, clause: "2.6.3.2.2.1", page: "2.6-18", pdf_page: 259}
+category: screening
+statement: >
+  Structure held only by bonds receives a minimum of two thermal cycles when it is in the primary
+  load path. Secondary bonded structure needs no cycles unless its structural margins are driven by
+  thermal stresses. 2.4.1.4.1 separately requires bonded-joint panels to be thermally cycled to
+  worst-case extremes before structural proof testing.
+applies_to:
+  test_types: [thermal_cycle, thermal_vacuum]
+  hardware_types: [structure]
+  flags: [composite_or_bonded, primary_load_path]
+values:
+  cycles_min_primary_load_path: {value: 2, unit: cycles}
+  cycles_min_secondary_structure: {value: 0, unit: cycles, note: "unless thermal stress drives the margins"}
+---
+kind: rule
+id: gevs-7000b.rule.hardware_cycles_radiator_panels
+standard: gevs-7000b
+title: Radiator panels - at least 4 thermal cycles, with IR imaging when heat pipes or LHPs are embedded (2.6.3.2.2.1 hardware table)
+citation: {standard: gevs-7000b, clause: "2.6.3.2.2.1", page: "2.6-18", pdf_page: 259}
+category: screening
+statement: >
+  Radiator panels receive a minimum of four thermal cycles whether or not thermal hardware is
+  embedded. Panels with embedded heat pipes, loop heat pipes or similar two-phase hardware also need
+  infrared imaging (2.6.4.4) of both facesheets, ideally before shipment from the vendor and after
+  mechanical environments, to confirm bond integrity and uniform heat paths before thermal vacuum.
+applies_to:
+  test_types: [thermal_cycle, thermal_vacuum]
+  hardware_types: [thermal]
+  flags: [heat_pipe]
+values:
+  cycles_min_plain_panel: {value: 4, unit: cycles}
+  cycles_min_embedded_two_phase_hardware: {value: 4, unit: cycles, note: "plus IR imaging per 2.6.4.4 (page 2.6-28, pdf 269)"}
+---
+kind: rule
+id: gevs-7000b.rule.hardware_cycles_propulsion_static
+standard: gevs-7000b
+title: Static propulsion hardware (tanks, lines, filters, fittings, venturis) - thermal cycling not required (2.6.3.2.2.1 hardware table)
+citation: {standard: gevs-7000b, clause: "2.6.3.2.2.1", page: "2.6-18", pdf_page: 259}
+category: screening
+statement: >
+  Static propulsion components without electronics or moving parts (tanks, lines, filters, fittings,
+  venturis) do not require thermal cycle testing.
+applies_to:
+  test_types: [thermal_cycle, thermal_vacuum]
+  hardware_types: [pressure_vessel, fluid_component]
+values:
+  cycles_min: {value: 0, unit: cycles, note: "not required"}
+---
+kind: rule
+id: gevs-7000b.rule.hardware_cycles_pressure_transducers
+standard: gevs-7000b
+title: Propulsion pressure transducers - 8 thermal cycles (2.6.3.2.2.1 hardware table, note b)
+citation: {standard: gevs-7000b, clause: "2.6.3.2.2.1", page: "2.6-18", pdf_page: 259}
+category: screening
+statement: >
+  Pressure transducers in the propulsion system receive eight thermal cycles. Table note b: electronic
+  components demonstrate in qualification how long they tolerate maximum voltage.
+applies_to:
+  test_types: [thermal_cycle, thermal_vacuum]
+  hardware_types: [fluid_component, electronic]
+  flags: [has_eee_parts]
+values:
+  cycles: {value: 8, unit: cycles}
+notes: No pressure-transducer hardware type exists in the vocabulary; fluid_component and electronic are the closest ids (see VOCAB-REQUESTS.md).
+---
+kind: rule
+id: gevs-7000b.rule.hardware_cycles_propulsion_dynamic_non_electronic
+standard: gevs-7000b
+title: Dynamic non-electronic propulsion components (regulators, fill and drain valves) - 1 thermal cycle with functional tests at both extremes (2.6.3.2.2.1 hardware table, note d)
+citation: {standard: gevs-7000b, clause: "2.6.3.2.2.1", page: "2.6-18", pdf_page: 259}
+category: screening
+statement: >
+  Propulsion components with moving parts but no electronics (regulators, fill and drain valves)
+  receive one thermal cycle. Table note d: functional testing at the hot and cold extremes.
+applies_to:
+  test_types: [thermal_cycle, thermal_vacuum]
+  hardware_types: [fluid_component]
+  flags: [mechanism]
+values:
+  cycles: {value: 1, unit: cycles, note: "functional tests at hot and cold extremes"}
+---
+kind: rule
+id: gevs-7000b.rule.hardware_cycles_propulsion_dynamic_electronic
+standard: gevs-7000b
+title: Dynamic electronic propulsion components (solenoid valves, thrusters) - 8 thermal cycles with pull-in voltage shown hot and cold (2.6.3.2.2.1 hardware table, notes a to d)
+citation: {standard: gevs-7000b, clause: "2.6.3.2.2.1", page: "2.6-18", pdf_page: 259}
+category: screening
+statement: >
+  Propulsion components with solenoids or other EEE parts, including valves and thrusters, receive
+  eight thermal cycles. Notes: (a) pull-in voltage demonstrated at the hot and cold plateaus to show
+  force margin; (b) tolerance of maximum voltage demonstrated in qualification; (c) engines rely on
+  validated hot-fire models and need no dedicated cycle test; (d) functional tests at the hot and cold
+  extremes.
+applies_to:
+  test_types: [thermal_cycle, thermal_vacuum]
+  hardware_types: [fluid_component, thruster]
+  flags: [has_eee_parts, mechanism]
+values:
+  cycles: {value: 8, unit: cycles}

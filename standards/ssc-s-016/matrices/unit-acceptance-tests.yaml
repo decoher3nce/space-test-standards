@@ -1,0 +1,250 @@
+# SSC-S-016 unit acceptance test table as reproduced on slide 6 (pdf page 7) of the public NESC
+# Academy briefing "Introduction & Application of SSC-S-016: Thermal Environmental Testing"
+# (J. W. Welch, June 2026). The standard itself is not held, so every code and footnote marker is
+# exactly as the slide prints it and the whole record is deck_only until checked against the
+# unit acceptance test table in SSC-S-016 section 6.3. The "Vibration or Acoustic" row is split
+# into a random_vibration row (6.3.5) and an acoustic row (6.3.6) carrying the same cells.
+kind: applicability_matrix
+id: ssc-s-016.matrix.unit_acceptance
+standard: ssc-s-016
+title: Unit acceptance tests by hardware type (SSC-S-016 unit acceptance table, as shown in the NESC deck)
+citation: {standard: ssc-s-016, clause: "6.3", table: "Unit Acceptance Tests - SSC-S-016 (deck slide 6)", page: "6", pdf_page: 7, note: "pdf_page indexes the 72-page NESC Academy deck, not the standard; row clauses are the slide's Reference paragraph column"}
+regime: acceptance
+level_of_assembly: unit
+column_dimension: hardware_type
+columns:
+  - {id: electronic, label: Electrical and Electronic}
+  - {id: antenna, label: Antenna}
+  - {id: mechanism, label: MMA}
+  - {id: solar_array, label: Solar Array (Panel)}
+  - {id: battery, label: Battery (12), notes: Column heading carries footnote 12 (safety-device testing required for lithium-ion batteries)}
+  - {id: fluid_component, label: Pressure Component}
+  - {id: pressure_vessel, label: Pressure Vessel}
+  - {id: thruster, label: Thruster}
+  - {id: thermal, label: Thermal}
+  - {id: optical, label: Optical}
+  - {id: structure, label: Structural Components}
+rows:
+  - test_type: inspection
+    label: Inspection
+    clause: "4.6"
+    suggested_sequence: [1, 15]
+    cells:
+      electronic: {code: R, requirement: required}
+      antenna: {code: R, requirement: required}
+      mechanism: {code: R, requirement: required}
+      solar_array: {code: "--", requirement: not_required}
+      battery: {code: R, requirement: required}
+      fluid_component: {code: R, requirement: required}
+      pressure_vessel: {code: R, requirement: required}
+      thruster: {code: R, requirement: required}
+      thermal: {code: R, requirement: required}
+      optical: {code: R, requirement: required}
+      structure: {code: R, requirement: required}
+  - test_type: wear_in
+    label: Wear-In
+    clause: "6.3.1"
+    suggested_sequence: [2]
+    cells:
+      electronic: {code: "--", requirement: not_required}
+      antenna: {code: "--", requirement: not_required}
+      mechanism: {code: R, requirement: required}
+      solar_array: {code: "-", requirement: not_required, notes: Printed as a single dash on the slide}
+      battery: {code: ER, requirement: evaluate}
+      fluid_component: {code: R, requirement: required}
+      pressure_vessel: {code: "--", requirement: not_required}
+      thruster: {code: R, requirement: required}
+      thermal: {code: "--", requirement: not_required}
+      optical: {code: "--", requirement: not_required}
+      structure: {code: "--", requirement: not_required}
+  - test_type: functional_performance
+    label: Specification Performance (1)
+    clause: "6.3.2"
+    suggested_sequence: [3, 14]
+    notes: Row heading carries footnote 1 (performance tests before, during and after each environmental test)
+    cells:
+      electronic: {code: R, requirement: required, footnotes: [f1]}
+      antenna: {code: R, requirement: required, footnotes: [f1]}
+      mechanism: {code: R, requirement: required, footnotes: [f1]}
+      solar_array: {code: R, requirement: required, footnotes: [f1]}
+      battery: {code: R, requirement: required, footnotes: [f1]}
+      fluid_component: {code: R, requirement: required, footnotes: [f1]}
+      pressure_vessel: {code: R, requirement: required, footnotes: [f1]}
+      thruster: {code: R, requirement: required, footnotes: [f1]}
+      thermal: {code: R, requirement: required, footnotes: [f1]}
+      optical: {code: R, requirement: required, footnotes: [f1]}
+      structure: {code: ER, requirement: evaluate, footnotes: [f1]}
+  - test_type: leak
+    label: Leakage
+    clause: "6.3.3"
+    suggested_sequence: [4, 7, 12]
+    cells:
+      electronic: {code: ER, requirement: evaluate}
+      antenna: {code: "--", requirement: not_required}
+      mechanism: {code: "R(11)", requirement: conditional, footnotes: [f11], condition: Required only when the moving mechanical assembly is pressurised or hermetically sealed}
+      solar_array: {code: "--", requirement: not_required}
+      battery: {code: R, requirement: required}
+      fluid_component: {code: R, requirement: required}
+      pressure_vessel: {code: R, requirement: required}
+      thruster: {code: R, requirement: required}
+      thermal: {code: "ER(4)", requirement: conditional, footnotes: [f4], condition: Required for sealed or pressurised thermal units such as heat pipes; otherwise evaluation required}
+      optical: {code: "--", requirement: not_required}
+      structure: {code: "--", requirement: not_required}
+  - test_type: shock
+    label: Shock
+    clause: "6.3.4"
+    suggested_sequence: [5]
+    cells:
+      electronic: {code: ER, requirement: evaluate}
+      antenna: {code: "--", requirement: not_required}
+      mechanism: {code: ER, requirement: evaluate}
+      solar_array: {code: "--", requirement: not_required}
+      battery: {code: ER, requirement: evaluate}
+      fluid_component: {code: ER, requirement: evaluate}
+      pressure_vessel: {code: "--", requirement: not_required}
+      thruster: {code: ER, requirement: evaluate}
+      thermal: {code: "-", requirement: not_required, notes: Printed as a single dash on the slide}
+      optical: {code: ER, requirement: evaluate}
+      structure: {code: "--", requirement: not_required}
+  - test_type: random_vibration
+    label: Vibration or Acoustic (2)
+    clause: "6.3.5"
+    parameters_ref: null
+    suggested_sequence: [6]
+    notes: Slide row "Vibration or Acoustic (2)" cites 6.3.5 (vibration) and 6.3.6 (acoustic); this row is the vibration reading, the acoustic row below repeats the cells
+    cells:
+      electronic: {code: "R(8)", requirement: required, footnotes: [f2, f8]}
+      antenna: {code: R, requirement: required, footnotes: [f2]}
+      mechanism: {code: R, requirement: required, footnotes: [f2]}
+      solar_array: {code: R, requirement: required, footnotes: [f2]}
+      battery: {code: "R(6)", requirement: conditional, footnotes: [f2, f6], condition: Required; for silver-zinc batteries evaluation required instead}
+      fluid_component: {code: "R(6)", requirement: conditional, footnotes: [f2, f6], condition: Required; footnote 6 (silver-zinc batteries) is printed on this cell, notes: "Footnote 6 concerns silver-zinc batteries, so its marker on the Pressure Component cell may be a text-extraction artefact; verify against the standard"}
+      pressure_vessel: {code: ER, requirement: evaluate, footnotes: [f2]}
+      thruster: {code: R, requirement: required, footnotes: [f2]}
+      thermal: {code: "ER(3)", requirement: conditional, footnotes: [f2, f3], condition: Required only for composite or bonded thermal hardware; otherwise evaluation required}
+      optical: {code: R, requirement: required, footnotes: [f2]}
+      structure: {code: ER, requirement: evaluate, footnotes: [f2]}
+  - test_type: acoustic
+    label: Vibration or Acoustic (2)
+    clause: "6.3.6"
+    suggested_sequence: [6]
+    notes: Acoustic reading of the slide's combined "Vibration or Acoustic (2)" row; either vibration or acoustic is required and the other is discretionary (footnote 2)
+    cells:
+      electronic: {code: "R(8)", requirement: required, footnotes: [f2, f8]}
+      antenna: {code: R, requirement: required, footnotes: [f2]}
+      mechanism: {code: R, requirement: required, footnotes: [f2]}
+      solar_array: {code: R, requirement: required, footnotes: [f2]}
+      battery: {code: "R(6)", requirement: conditional, footnotes: [f2, f6], condition: Required; for silver-zinc batteries evaluation required instead}
+      fluid_component: {code: "R(6)", requirement: conditional, footnotes: [f2, f6], condition: Required; footnote 6 (silver-zinc batteries) is printed on this cell, notes: "Footnote 6 concerns silver-zinc batteries, so its marker on the Pressure Component cell may be a text-extraction artefact; verify against the standard"}
+      pressure_vessel: {code: ER, requirement: evaluate, footnotes: [f2]}
+      thruster: {code: R, requirement: required, footnotes: [f2]}
+      thermal: {code: "ER(3)", requirement: conditional, footnotes: [f2, f3], condition: Required only for composite or bonded thermal hardware; otherwise evaluation required}
+      optical: {code: R, requirement: required, footnotes: [f2]}
+      structure: {code: ER, requirement: evaluate, footnotes: [f2]}
+  - test_type: thermal_cycle
+    label: Thermal Cycle
+    clause: "6.3.8"
+    parameters_ref: ssc-s-016.params.thermal_cycle_unit
+    suggested_sequence: [8]
+    cells:
+      electronic: {code: "R(7)(8)", requirement: required, footnotes: [f7, f8], notes: Burn-in required; 4.10.2 exemptions apply}
+      antenna: {code: ER, requirement: evaluate}
+      mechanism: {code: ER, requirement: evaluate}
+      solar_array: {code: ER, requirement: evaluate}
+      battery: {code: ER, requirement: evaluate}
+      fluid_component: {code: ER, requirement: evaluate}
+      pressure_vessel: {code: ER, requirement: evaluate}
+      thruster: {code: ER, requirement: evaluate}
+      thermal: {code: ER, requirement: evaluate}
+      optical: {code: ER, requirement: evaluate}
+      structure: {code: "ER(3)", requirement: conditional, footnotes: [f3], condition: Required only for composite or bonded structural components; otherwise evaluation required}
+  - test_type: thermal_vacuum
+    label: Thermal Vacuum (7)
+    clause: "6.3.9"
+    parameters_ref: ssc-s-016.params.thermal_vacuum_unit
+    suggested_sequence: [9]
+    notes: Row heading carries footnote 7 (exemptions in 4.10.2); footnote 7 is attached to every applicable cell below
+    cells:
+      electronic: {code: R, requirement: required, footnotes: [f7], notes: 4.10.2 lets acceptance electronic units shown insensitive to vacuum fold the thermal vacuum cycles into thermal cycling (see provision ssc-s-016.provision.tv_exemption_4_10_2)}
+      antenna: {code: R, requirement: required, footnotes: [f7]}
+      mechanism: {code: R, requirement: required, footnotes: [f7]}
+      solar_array: {code: "R(10)", requirement: required, footnotes: [f7, f10], may_shift_level: true, notes: Thermal vacuum of solar panels may be performed on the solar array}
+      battery: {code: "R(6)", requirement: conditional, footnotes: [f6, f7], condition: Required; for silver-zinc batteries evaluation required instead}
+      fluid_component: {code: "R(6)", requirement: conditional, footnotes: [f6, f7], condition: Required; footnote 6 (silver-zinc batteries) is printed on this cell, notes: "Footnote 6 concerns silver-zinc batteries, so its marker on the Pressure Component cell may be a text-extraction artefact; verify against the standard"}
+      pressure_vessel: {code: ER, requirement: evaluate, footnotes: [f7]}
+      thruster: {code: R, requirement: required, footnotes: [f7, f9], notes: The footnote 9 marker (hot-fire testing may satisfy the thruster thermal vacuum requirement) is not visible in the extracted slide text; it is attached here because it concerns this cell}
+      thermal: {code: R, requirement: required, footnotes: [f7]}
+      optical: {code: R, requirement: required, footnotes: [f7]}
+      structure: {code: "--", requirement: not_required}
+  - test_type: proof_pressure
+    label: Proof Pressure
+    clause: "6.3.12"
+    suggested_sequence: [10]
+    cells:
+      electronic: {code: ER, requirement: evaluate}
+      antenna: {code: "--", requirement: not_required}
+      mechanism: {code: ER, requirement: evaluate}
+      solar_array: {code: "--", requirement: not_required}
+      battery: {code: R, requirement: required}
+      fluid_component: {code: R, requirement: required}
+      pressure_vessel: {code: R, requirement: required}
+      thruster: {code: R, requirement: required}
+      thermal: {code: "ER(4)", requirement: conditional, footnotes: [f4], condition: Required for sealed or pressurised thermal units such as heat pipes; otherwise evaluation required}
+      optical: {code: "--", requirement: not_required}
+      structure: {code: "--", requirement: not_required}
+  - test_type: proof_load
+    label: Proof Load
+    clause: "6.3.11"
+    suggested_sequence: [11]
+    cells:
+      electronic: {code: "--", requirement: not_required}
+      antenna: {code: ER, requirement: evaluate}
+      mechanism: {code: ER, requirement: evaluate}
+      solar_array: {code: "--", requirement: not_required}
+      battery: {code: ER, requirement: evaluate}
+      fluid_component: {code: ER, requirement: evaluate}
+      pressure_vessel: {code: ER, requirement: evaluate}
+      thruster: {code: "--", requirement: not_required}
+      thermal: {code: "--", requirement: not_required}
+      optical: {code: "--", requirement: not_required}
+      structure: {code: "R(3)", requirement: conditional, footnotes: [f3], condition: Required only for composite or bonded structural components}
+  - test_type: emc
+    label: EMC (5)
+    clause: "6.3.13"
+    suggested_sequence: [13]
+    notes: Row heading carries footnote 5 (required when the EMC margin is below 12 dB); footnote 5 is attached to every ER cell below
+    cells:
+      electronic: {code: ER, requirement: conditional, footnotes: [f5], condition: Required when the EMC margin is less than 12 dB; otherwise evaluation required}
+      antenna: {code: ER, requirement: conditional, footnotes: [f5], condition: Required when the EMC margin is less than 12 dB; otherwise evaluation required}
+      mechanism: {code: "--", requirement: not_required}
+      solar_array: {code: ER, requirement: conditional, footnotes: [f5], condition: Required when the EMC margin is less than 12 dB; otherwise evaluation required}
+      battery: {code: ER, requirement: conditional, footnotes: [f5], condition: Required when the EMC margin is less than 12 dB; otherwise evaluation required}
+      fluid_component: {code: ER, requirement: conditional, footnotes: [f5], condition: Required when the EMC margin is less than 12 dB; otherwise evaluation required}
+      pressure_vessel: {code: "--", requirement: not_required}
+      thruster: {code: "--", requirement: not_required}
+      thermal: {code: "--", requirement: not_required}
+      optical: {code: "--", requirement: not_required}
+      structure: {code: "--", requirement: not_required}
+legend:
+  R: Required
+  ER: Evaluation required (see 6.3)
+  "--": Not required (printed "--", in two cells as a single dash)
+footnotes:
+  f1: Performance tests are run before, during and after each environmental test, as appropriate.
+  f2: Either vibration or acoustic is required; the other is discretionary.
+  f3: Required only for composite and/or bonded structures.
+  f4: Required for sealed or pressurised units, heat pipes for example.
+  f5: Required when the EMC margin is less than 12 dB.
+  f6: For silver-zinc batteries the requirement becomes evaluation required.
+  f7: Exemptions are given in 4.10.2.
+  f8: Burn-in is required.
+  f9: The thruster thermal vacuum requirement may be satisfied by hot-fire testing.
+  f10: Thermal vacuum testing of solar panels may be performed at solar-array level.
+  f11: Required only for pressurised or hermetically sealed units.
+  f12: Safety-device testing is required for lithium-ion batteries (marker on the Battery column heading).
+confidence: deck_only
+notes: >
+  Read from slide 6 of the NESC Academy deck, not from the standard. Verify every cell, footnote
+  marker and the suggested-sequence numbers against the unit acceptance test table in SSC-S-016
+  section 6.3 (the deck attributes this content to the 2014 SMC-S-016 text redesignated SSC-S-016).
+  Suggested sequence positions are the slide's own column (1 inspection ... 15 inspection).

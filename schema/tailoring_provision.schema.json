@@ -1,0 +1,314 @@
+{
+  "$defs": {
+    "Citation": {
+      "additionalProperties": false,
+      "description": "Where a value comes from. Clause and table are the durable anchors; page numbers\nare a convenience and are given for the public PDF named in the standard record.",
+      "properties": {
+        "standard": {
+          "description": "Library id of the standard, e.g. gevs-7000b",
+          "title": "Standard",
+          "type": "string"
+        },
+        "clause": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Clause or paragraph, e.g. 2.2.4",
+          "title": "Clause"
+        },
+        "table": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Table designation as printed",
+          "title": "Table"
+        },
+        "figure": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Figure"
+        },
+        "page": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Printed page label, e.g. '2.2 - 5'",
+          "title": "Page"
+        },
+        "pdf_page": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "1-based page index in the public PDF",
+          "title": "Pdf Page"
+        },
+        "note": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Note"
+        }
+      },
+      "required": [
+        "standard"
+      ],
+      "title": "Citation",
+      "type": "object"
+    },
+    "Level": {
+      "description": "Unified level of assembly (GEVS Table 2.2-1 lineage).",
+      "enum": [
+        "part",
+        "subassembly",
+        "unit",
+        "subsystem",
+        "element",
+        "segment",
+        "system"
+      ],
+      "title": "Level",
+      "type": "string"
+    },
+    "Permit": {
+      "additionalProperties": false,
+      "properties": {
+        "action": {
+          "enum": [
+            "delete_test",
+            "reduce_level",
+            "reduce_duration",
+            "reduce_cycles",
+            "increase_cycles",
+            "change_level_of_assembly",
+            "combine_items",
+            "combine_tests",
+            "substitute_test",
+            "adjust_operating_hours",
+            "alternate_cycle_plan",
+            "qualify_by_similarity",
+            "accept_in_lieu",
+            "use_analysis",
+            "other"
+          ],
+          "title": "Action",
+          "type": "string"
+        },
+        "description": {
+          "description": "Paraphrase of what is allowed and its limits",
+          "title": "Description",
+          "type": "string"
+        },
+        "constraints": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Constraints"
+        }
+      },
+      "required": [
+        "action",
+        "description"
+      ],
+      "title": "Permit",
+      "type": "object"
+    },
+    "Regime": {
+      "description": "Unified test regime. Standards use different words for similar ideas; the\nterminology map in the library records the local word and the local factors.",
+      "enum": [
+        "qualification",
+        "protoflight",
+        "acceptance",
+        "development",
+        "all"
+      ],
+      "title": "Regime",
+      "type": "string"
+    },
+    "Scope": {
+      "additionalProperties": false,
+      "properties": {
+        "test_types": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Test Types",
+          "type": "array"
+        },
+        "levels": {
+          "items": {
+            "$ref": "#/$defs/Level"
+          },
+          "title": "Levels",
+          "type": "array"
+        },
+        "hardware_types": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Hardware Types",
+          "type": "array"
+        },
+        "regimes": {
+          "items": {
+            "$ref": "#/$defs/Regime"
+          },
+          "title": "Regimes",
+          "type": "array"
+        },
+        "flags": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Flags",
+          "type": "array"
+        }
+      },
+      "title": "Scope",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "description": "A relaxation the standard itself allows. Overlay rules that relax a cell must cite one of\nthese to be classed as permitted tailoring; otherwise they are deviations.",
+  "properties": {
+    "kind": {
+      "const": "tailoring_provision",
+      "title": "Kind",
+      "type": "string"
+    },
+    "id": {
+      "pattern": "^[a-z0-9][a-z0-9._-]*$",
+      "title": "Id",
+      "type": "string"
+    },
+    "standard": {
+      "title": "Standard",
+      "type": "string"
+    },
+    "title": {
+      "title": "Title",
+      "type": "string"
+    },
+    "citation": {
+      "$ref": "#/$defs/Citation"
+    },
+    "summary": {
+      "title": "Summary",
+      "type": "string"
+    },
+    "applies_to": {
+      "$ref": "#/$defs/Scope"
+    },
+    "permits": {
+      "items": {
+        "$ref": "#/$defs/Permit"
+      },
+      "title": "Permits",
+      "type": "array"
+    },
+    "approval": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "description": "Who must approve, as the text says",
+      "title": "Approval"
+    },
+    "documentation": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "description": "Where it must be recorded",
+      "title": "Documentation"
+    },
+    "confidence": {
+      "default": "verified",
+      "enum": [
+        "verified",
+        "deck_only",
+        "secondary",
+        "needs_check"
+      ],
+      "title": "Confidence",
+      "type": "string"
+    },
+    "notes": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Notes"
+    }
+  },
+  "required": [
+    "kind",
+    "id",
+    "standard",
+    "title",
+    "citation",
+    "summary",
+    "permits"
+  ],
+  "title": "TailoringProvision",
+  "type": "object",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/decoher3nce/space-test-standards/schema/tailoring_provision.schema.json"
+}

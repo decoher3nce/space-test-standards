@@ -1,0 +1,20 @@
+kind: rule
+id: ecss-e-st-10-03c-rev1.rule.equipment_functional_tests_around_environments
+standard: ecss-e-st-10-03c-rev1
+title: Functional and performance tests bracket the equipment test programme and each environmental block
+citation: {standard: ecss-e-st-10-03c-rev1, clause: "5.1", figure: Figure 5-1, page: "42", pdf_page: 42, note: "5.1c-h on pdf pages 42-43"}
+category: functional_test
+statement: >
+  Equipment follows the Figure 5-1 sequence ("test like you fly": environments in flight order,
+  defects found as early as possible), filtered by the applicability tables (5.1c). Performance and
+  full functional tests are run at the start and end of the programme under clean-room conditions
+  and should agree within test tolerances (5.1e); a reduced functional test is run before and after
+  each environmental block and around transportation (5.1f); PT, FFT or RFT as relevant are run
+  during thermal tests and whenever the equipment is operational under an imposed environment
+  (5.1g). Equipment operated during ascent or descent is powered and monitored in that mode during
+  the environmental tests (5.1h). Unusual behaviour is trended (5.1d); adjustable protections are
+  tested (5.1j). Elements: visual inspections before and after each test (6.1g); the sequence is
+  agreed with the customer according to how performance is verified (6.1d).
+applies_to:
+  test_types: [functional_performance, functional_limited]
+  levels: [unit, element]

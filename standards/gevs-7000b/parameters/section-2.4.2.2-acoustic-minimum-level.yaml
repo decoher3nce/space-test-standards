@@ -1,0 +1,32 @@
+kind: test_parameters
+id: gevs-7000b.params.acoustic_minimum_overall_level
+standard: gevs-7000b
+test_type: acoustic
+variant: minimum_overall_level
+title: Minimum overall acoustic test level at payload level (2.4.2.2, 2.4.2.6)
+citation: {standard: gevs-7000b, clause: "2.4.2.2", page: "2.4 - 14", pdf_page: 65}
+level_of_assembly: [element]
+by_regime:
+  qualification:
+    level: {value: 138, unit: db_oaspl, relative_to: none, note: "minimum overall; raise the profile if the launch-vehicle-derived spectrum (with fill factor) falls below it"}
+    duration: {value: 2, unit: min}
+    footnotes: [lv, control]
+  protoflight:
+    level: {value: 138, unit: db_oaspl, relative_to: none, note: "minimum overall"}
+    duration: {value: 1, unit: min}
+    footnotes: [lv, control]
+  acceptance:
+    level: {value: 138, unit: db_oaspl, relative_to: none, note: "minimum overall for acceptance of previously qualified hardware (2.4.2.6, page 2.4 - 18, pdf 69)"}
+    duration: {value: 1, unit: min}
+    footnotes: [lv, control]
+footnotes:
+  lv: The test spectrum is mission specific (payload and launch vehicle dependent) and is confirmed with the launch vehicle programme office.
+  control: >
+    Control at one-third octave resolution, preferably averaging four or more microphones in real
+    time; at least four microphones placed away from surfaces (about a quarter wavelength of the lowest
+    frequency where possible). Reverberant chamber preferred over direct-field (speaker) testing,
+    which needs extra instrumentation and field mapping. Flight-like or soft (under 20 Hz) suspension.
+notes: >
+  Durations are those of Table 2.2-2 (gevs-7000b.params.acoustic); the qualification/protoflight
+  margin of limit plus 3 dB also lives there. This record carries only the 138 dB floor and its
+  facility conditions.

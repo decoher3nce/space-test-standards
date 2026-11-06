@@ -1,0 +1,163 @@
+# Relaxations written into the application notes of Tables 5-1, 5-3 and 5-5 and the notes of
+# Tables 5-2, 5-4 and 5-6 (space segment equipment).
+kind: tailoring_provision
+id: ecss-e-st-10-03c-rev1.provision.equipment_strength_test_selection
+standard: ecss-e-st-10-03c-rev1
+title: One strength test (static, spin or sine burst) only when sinusoidal vibration does not cover it
+citation: {standard: ecss-e-st-10-03c-rev1, clause: "5.5.2.2", table: Table 5-1, page: "46", pdf_page: 46, note: "also Table 5-3 (pdf 55) and Table 5-5 (pdf 62)"}
+summary: >
+  At qualification, static load, spin and sine burst are X for every equipment type except solar
+  panels, and only one of the three is performed, and only if the strength case is not already
+  covered by the sinusoidal vibration test. At protoflight the choice is between spin and sine
+  burst (static load is "-"). At acceptance all three are "-" except a general structural proof
+  test on pressure vessels when no higher-level test (such as sinusoidal vibration with full
+  tanks) covers it.
+applies_to:
+  test_types: [static_load, spin, sine_burst]
+  levels: [unit]
+  regimes: [qualification, protoflight, acceptance]
+permits:
+  - action: delete_test
+    description: Omit the dedicated strength test when the sinusoidal vibration test already demonstrates the limit-load strength case.
+  - action: substitute_test
+    description: Choose one of static load, spin or sine burst (qualification) or spin or sine burst (protoflight) as the strength demonstration.
+  - action: change_level_of_assembly
+    description: At acceptance, cover the pressure-vessel structural proof by a higher-level test instead of a dedicated static test.
+approval: Customer (X-coded tests)
+---
+kind: tailoring_provision
+id: ecss-e-st-10-03c-rev1.provision.equipment_random_or_acoustic_selection
+standard: ecss-e-st-10-03c-rev1
+title: Random vibration, acoustic or both chosen by equipment type, size and location
+citation: {standard: ecss-e-st-10-03c-rev1, clause: "5.5.2.3", table: Table 5-1, page: "46", pdf_page: 46, note: "also Table 5-3 (pdf 55) and Table 5-5 (pdf 62)"}
+summary: >
+  For antennas, optical equipment and mechanisms the application notes let the programme select
+  random vibration, acoustic, or (at qualification and protoflight) both, according to the type,
+  size and mounting location of the equipment. Solar arrays fixed directly to the element side wall
+  without an offset bracket should add random vibration to their acoustic test.
+applies_to:
+  test_types: [random_vibration, acoustic]
+  levels: [unit]
+  hardware_types: [antenna, optical, mechanism, solar_array]
+permits:
+  - action: substitute_test
+    description: Replace random vibration by acoustic (or the reverse) for antennas, optical equipment and mechanisms when the type, size and location make the other environment the relevant one.
+  - action: combine_tests
+    description: Perform both random vibration and acoustic where each covers part of the equipment response; add random vibration to the acoustic test for wall-mounted solar arrays without offset brackets.
+approval: Customer (X-coded cells)
+---
+kind: tailoring_provision
+id: ecss-e-st-10-03c-rev1.provision.equipment_shock_omission
+standard: ecss-e-st-10-03c-rev1
+title: Shock test omitted when the equipment is shown to withstand more than the shock environment
+citation: {standard: ecss-e-st-10-03c-rev1, clause: "5.5.2.6", table: Table 5-1, page: "46", pdf_page: 46, note: "also Table 5-5 (pdf 62)"}
+summary: >
+  The shock test need not be performed when it is demonstrated that the equipment's shock
+  susceptibility lies above the shock environment. Solar array shock qualification is done at
+  component level and confirmed during the deployment test. Element-level firing of the real shock
+  device is run without margin to consolidate the equipment shock specification (Table 5-2 note 1).
+applies_to:
+  test_types: [shock]
+  levels: [unit]
+  regimes: [qualification, protoflight]
+permits:
+  - action: delete_test
+    description: Omit the equipment shock test on demonstration that the equipment tolerates levels above the specified shock environment.
+    constraints: Demonstration required; the standard does not name the method.
+  - action: change_level_of_assembly
+    description: For solar arrays, qualify shock at component level and confirm it during the deployment test.
+approval: Customer
+---
+kind: tailoring_provision
+id: ecss-e-st-10-03c-rev1.provision.cog_moi_by_calculation
+standard: ecss-e-st-10-03c-rev1
+title: Centre of gravity and moments of inertia calculated instead of measured
+citation: {standard: ecss-e-st-10-03c-rev1, clause: "5.5.2.1", table: Table 5-1, page: "46", pdf_page: 46, note: "also Table 5-3 (pdf 55), Table 5-5 (pdf 62) and Table 6-3 (pdf 94)"}
+summary: >
+  Physical properties are required for every equipment type and element, but with customer
+  agreement the centre of gravity and moments of inertia of equipment may be calculated rather than
+  measured; at element acceptance the moment-of-inertia measurement may be deleted with customer
+  approval (Table 6-3).
+applies_to:
+  test_types: [physical_properties]
+  levels: [unit, element]
+permits:
+  - action: use_analysis
+    description: Calculate equipment centre of gravity and moments of inertia instead of measuring them; mass is still measured.
+  - action: delete_test
+    description: Delete the moment-of-inertia measurement at element acceptance.
+approval: Customer agreement (equipment); customer approval (element acceptance)
+---
+kind: tailoring_provision
+id: ecss-e-st-10-03c-rev1.provision.thermal_vacuum_and_mission_pressure_combination
+standard: ecss-e-st-10-03c-rev1
+title: Vacuum and mission-pressure temperature cycles combined and split by mission profile
+citation: {standard: ecss-e-st-10-03c-rev1, clause: "5.5.4.1", table: Table 5-2, page: "52", pdf_page: 52, note: "Table 5-2 No 15-16, Table 5-4 No 7-8 (pdf 58-60), Table 5-6 No 11-12 (pdf 67); Table 6-2/6-4/6-6 No 14-15"}
+summary: >
+  Equipment or elements that operate in a non-vacuum environment after exposure to vacuum undergo
+  both the thermal vacuum test and the thermal test at mission pressure (5.5.4.1a), which may be
+  combined in sequence. The vacuum test then needs only one or more cycles, and the mission-pressure
+  test takes the baseline count (8 at equipment qualification, 4 at equipment acceptance and
+  protoflight, 4 and 3 at element level) minus the cycles already run in vacuum; the split and the
+  operating conditions follow the mission profile. Mission-pressure cycling alone applies only to
+  items that never see vacuum in their life, with depressurisation failure considered. Room-pressure
+  thermal cycling in the US sense is not part of this standard.
+applies_to:
+  test_types: [thermal_vacuum, thermal_cycle]
+  levels: [unit, element]
+permits:
+  - action: combine_tests
+    description: Run the vacuum temperature cycling and the mission-pressure temperature cycling as one combined sequence.
+  - action: reduce_cycles
+    description: Reduce thermal vacuum to one or more cycles when combined, and run the mission-pressure test for the baseline count minus the vacuum cycles performed.
+    constraints: Total cycle count across the two tests stays at the tabulated baseline; the split follows the mission profile.
+approval: Customer (through the tailored levels table)
+---
+kind: tailoring_provision
+id: ecss-e-st-10-03c-rev1.provision.solar_panel_acceptance_cycles
+standard: ecss-e-st-10-03c-rev1
+title: Solar panel acceptance thermal cycles adjusted for heritage and recurrence
+citation: {standard: ecss-e-st-10-03c-rev1, clause: "5.5.4.2", table: Table 5-4, page: "59", pdf_page: 59, note: "Table 5-4 No 7 note 3"}
+summary: >
+  The solar panel thermal vacuum acceptance baseline is 5 cycles with plateaus of at least 1 hour at
+  the hot and cold extremes. Without flight heritage of the panel design, process or manufacturer,
+  or when qualification was done on a single panel (acceptance of a second panel), 10 cycles are
+  run; with significant heritage in design, processes and manufacturer the count may drop to 3
+  cycles with 30-minute plateaus; after the fifth recurrent panel accepted, 5 cycles with 30-minute
+  plateaus apply.
+applies_to:
+  test_types: [thermal_vacuum]
+  levels: [unit]
+  hardware_types: [solar_panel]
+  regimes: [acceptance]
+permits:
+  - action: reduce_cycles
+    description: Reduce to 3 cycles with plateaus of at least 30 minutes given significant flight heritage of design, processes and manufacturer.
+  - action: increase_cycles
+    description: Increase to 10 cycles with plateaus of at least 1 hour when heritage is lacking or qualification used one panel only.
+  - action: reduce_duration
+    description: After the fifth recurrent panel, keep 5 cycles but shorten the plateaus to 30 minutes.
+approval: As tabulated; heritage claims are the supplier's to justify to the customer
+---
+kind: tailoring_provision
+id: ecss-e-st-10-03c-rev1.provision.solar_array_recurrent_fm_omissions
+standard: ecss-e-st-10-03c-rev1
+title: Recurrent solar array FMs may skip acoustic and sinusoidal acceptance when tested at element level
+citation: {standard: ecss-e-st-10-03c-rev1, clause: "5.5.2.4", table: Table 5-3, page: "55", pdf_page: 55}
+summary: >
+  For solar arrays, acoustic acceptance testing of recurrent flight models (from the second FM) can
+  be omitted when they are acceptance tested at space segment element level; sinusoidal vibration
+  acceptance of recurrent FMs can likewise be omitted given element-level acceptance testing or
+  significant flight heritage in design, processes and manufacturer.
+applies_to:
+  test_types: [acoustic, sine_vibration]
+  levels: [unit]
+  hardware_types: [solar_array]
+  regimes: [acceptance]
+permits:
+  - action: change_level_of_assembly
+    description: Cover acoustic and sinusoidal acceptance of recurrent solar array FMs by the element-level acceptance test.
+  - action: delete_test
+    description: Omit sinusoidal acceptance of recurrent solar array FMs on significant flight heritage.
+    constraints: From the second FM onward only; the first FM is tested.
+approval: Customer

@@ -1,0 +1,197 @@
+{
+  "$defs": {
+    "Level": {
+      "description": "Unified level of assembly (GEVS Table 2.2-1 lineage).",
+      "enum": [
+        "part",
+        "subassembly",
+        "unit",
+        "subsystem",
+        "element",
+        "segment",
+        "system"
+      ],
+      "title": "Level",
+      "type": "string"
+    },
+    "Regime": {
+      "description": "Unified test regime. Standards use different words for similar ideas; the\nterminology map in the library records the local word and the local factors.",
+      "enum": [
+        "qualification",
+        "protoflight",
+        "acceptance",
+        "development",
+        "all"
+      ],
+      "title": "Regime",
+      "type": "string"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "kind": {
+      "const": "standard",
+      "title": "Kind",
+      "type": "string"
+    },
+    "id": {
+      "pattern": "^[a-z0-9][a-z0-9._-]*$",
+      "title": "Id",
+      "type": "string"
+    },
+    "designation": {
+      "description": "As printed, e.g. GSFC-STD-7000B",
+      "title": "Designation",
+      "type": "string"
+    },
+    "title": {
+      "title": "Title",
+      "type": "string"
+    },
+    "revision": {
+      "title": "Revision",
+      "type": "string"
+    },
+    "date": {
+      "description": "ISO date or year-month as printed",
+      "title": "Date",
+      "type": "string"
+    },
+    "publisher": {
+      "title": "Publisher",
+      "type": "string"
+    },
+    "status": {
+      "default": "active",
+      "enum": [
+        "active",
+        "superseded",
+        "cancelled",
+        "draft",
+        "unknown"
+      ],
+      "title": "Status",
+      "type": "string"
+    },
+    "supersedes": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Supersedes"
+    },
+    "superseded_by": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Superseded By"
+    },
+    "url": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Url"
+    },
+    "access": {
+      "default": "unknown",
+      "enum": [
+        "public_domain",
+        "public_release",
+        "free_registration",
+        "limited",
+        "purchase",
+        "unknown"
+      ],
+      "title": "Access",
+      "type": "string"
+    },
+    "copyright_posture": {
+      "description": "Why structured values and citations may be stored for this document",
+      "title": "Copyright Posture",
+      "type": "string"
+    },
+    "scope": {
+      "title": "Scope",
+      "type": "string"
+    },
+    "regime_terms": {
+      "additionalProperties": {
+        "type": "string"
+      },
+      "description": "Unified regime -> this standard's own term",
+      "propertyNames": {
+        "$ref": "#/$defs/Regime"
+      },
+      "title": "Regime Terms",
+      "type": "object"
+    },
+    "level_terms": {
+      "additionalProperties": {
+        "type": "string"
+      },
+      "description": "Unified level -> this standard's own term",
+      "propertyNames": {
+        "$ref": "#/$defs/Level"
+      },
+      "title": "Level Terms",
+      "type": "object"
+    },
+    "source_file": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "description": "Public PDF the pdf_page numbers refer to",
+      "title": "Source File"
+    },
+    "notes": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Notes"
+    }
+  },
+  "required": [
+    "kind",
+    "id",
+    "designation",
+    "title",
+    "revision",
+    "date",
+    "publisher",
+    "copyright_posture",
+    "scope"
+  ],
+  "title": "Standard",
+  "type": "object",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/decoher3nce/space-test-standards/schema/standard.schema.json"
+}

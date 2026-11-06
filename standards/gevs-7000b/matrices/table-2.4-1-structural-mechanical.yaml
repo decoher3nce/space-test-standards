@@ -1,0 +1,106 @@
+kind: applicability_matrix
+id: gevs-7000b.matrix.structural_mechanical
+standard: gevs-7000b
+title: Structural and mechanical verification test requirements (Table 2.4-1)
+citation: {standard: gevs-7000b, clause: "2.4", table: Table 2.4-1, page: "2.4 - 2", pdf_page: 53}
+regime: all
+column_dimension: level_of_assembly
+columns:
+  - {id: element, label: Payload / Spacecraft}
+  - {id: subsystem, label: Subsystem / Instrument}
+  - {id: unit, label: Unit (Component) including instrument units}
+rows:
+  - test_type: modal_survey
+    label: Structural loads - modal survey
+    clause: "2.4.2"
+    cells:
+      element: {code: "*", requirement: optional, method: test, may_shift_level: true, condition: May be performed at this level instead of the subsystem/instrument level if appropriate}
+      subsystem: {code: T2, requirement: required_unless_justified, method: test, footnotes: [T2]}
+      unit: {code: "*", requirement: optional, method: test, may_shift_level: true, condition: May be performed at this level instead of the subsystem/instrument level if appropriate}
+  - test_type: static_load
+    variant: design_qualification
+    label: Structural loads - design qualification
+    clause: "2.4.1"
+    parameters_ref: gevs-7000b.params.static_load
+    cells:
+      element: {code: "*", requirement: optional, method: analysis_and_test, may_shift_level: true, condition: May be performed at this level instead of the subsystem/instrument level if appropriate}
+      subsystem: {code: "A,T/A1", requirement: required, method: analysis_and_test, footnotes: [f1_design_qual]}
+      unit: {code: "*", requirement: optional, method: analysis_and_test, may_shift_level: true, condition: May be performed at this level instead of the subsystem/instrument level if appropriate}
+  - test_type: static_load
+    variant: structural_reliability
+    label: Structural loads - structural reliability (primary and secondary structure)
+    clause: "2.4.1.4"
+    cells:
+      element: {code: "*", requirement: optional, method: analysis_and_test, may_shift_level: true, condition: May be performed at this level instead of the subsystem/instrument level if appropriate}
+      subsystem: {code: "(A,T)1", requirement: required, method: analysis_and_test, footnotes: [f1_structural_reliability]}
+      unit: {code: "*", requirement: optional, method: analysis_and_test, may_shift_level: true, condition: May be performed at this level instead of the subsystem/instrument level if appropriate}
+  - test_type: acoustic
+    label: Vibroacoustics - acoustics
+    clause: "2.4.2"
+    parameters_ref: gevs-7000b.params.acoustic
+    cells:
+      element: {code: T, requirement: required, method: test}
+      subsystem: {code: T2, requirement: required_unless_justified, method: test, footnotes: [T2]}
+      unit: {code: T2, requirement: required_unless_justified, method: test, footnotes: [T2]}
+  - test_type: random_vibration
+    label: Vibroacoustics - random vibration
+    clause: "2.4.2"
+    parameters_ref: gevs-7000b.params.random_vibration
+    cells:
+      element: {code: T2, requirement: required_unless_justified, method: test, footnotes: [T2]}
+      subsystem: {code: T2, requirement: required_unless_justified, method: test, footnotes: [T2]}
+      unit: {code: T, requirement: required, method: test}
+  - test_type: sine_vibration
+    label: Sine vibration
+    clause: "2.4.3"
+    parameters_ref: gevs-7000b.params.sine_vibration
+    cells:
+      element: {code: "T3,T4", requirement: conditional, method: test, footnotes: [T3, T4], condition: Performed to simulate low-frequency transient or sustained periodic environments or to satisfy another requirement; for ELV payloads performed if practicable}
+      subsystem: {code: T3, requirement: conditional, method: test, footnotes: [T3], condition: Performed to simulate low-frequency transient or sustained periodic environments or to satisfy another requirement such as strength qualification}
+      unit: {code: T3, requirement: conditional, method: test, footnotes: [T3], condition: Performed to simulate low-frequency transient or sustained periodic environments or to satisfy another requirement such as strength qualification}
+  - test_type: shock
+    label: Mechanical shock
+    clause: "2.4.4"
+    parameters_ref: gevs-7000b.params.shock_simulated
+    cells:
+      element: {code: T, requirement: required, method: test}
+      subsystem: {code: T5, requirement: conditional, method: test, footnotes: [T5], condition: Required for self-induced shocks; externally induced shocks may be covered at payload level}
+      unit: {code: T5, requirement: conditional, method: test, footnotes: [T5], condition: Required for self-induced shocks; externally induced shocks may be covered at payload level}
+  - test_type: mechanical_function
+    label: Mechanical function
+    clause: "2.4.5"
+    cells:
+      element: {code: "A,T", requirement: required, method: analysis_and_test}
+      subsystem: {code: "A,T", requirement: required, method: analysis_and_test}
+      unit: {code: "-", requirement: not_required}
+  - test_type: pressure_profile
+    label: Pressure profile
+    clause: "2.4.6"
+    cells:
+      element: {code: "-", requirement: not_required}
+      subsystem: {code: "A,T2", requirement: required, method: analysis_and_test, footnotes: [T2], notes: Analysis required; test unless assessment justifies deletion}
+      unit: {code: A, requirement: required, method: analysis}
+  - test_type: physical_properties
+    label: Mass properties
+    clause: "2.4.7"
+    cells:
+      element: {code: A/T, requirement: required, method: analysis_or_test}
+      subsystem: {code: "A,T2", requirement: required, method: analysis_and_test, footnotes: [T2], notes: Analysis required; test unless assessment justifies deletion}
+      unit: {code: "*", requirement: optional, method: analysis_or_test, may_shift_level: true, condition: May be performed at this level instead of the subsystem/instrument level if appropriate}
+legend:
+  "*": May be performed at payload or component level of assembly if appropriate (encoded as optional at this level with may_shift_level; the requirement itself is held at the subsystem/instrument level)
+  A: Analysis required
+  T: Test required
+  A/T: Analysis and/or test
+  "A,T": Analysis and test
+  "-": Not required
+footnotes:
+  f1_design_qual: Analysis and test, or analysis only if the no-test factors of safety of 2.4.1.1.1 are used
+  f1_structural_reliability: Combination of fracture analysis and proof tests on selected elements, with special attention to beryllium, composites, bonded joints and weldments
+  T2: Test must be performed unless an assessment justifies deletion
+  T3: Test performed to simulate low-frequency transient vibration and any sustained periodic mission environment, or to satisfy another requirement such as strength qualification
+  T4: Test must be performed for ELV payloads, if practicable, to simulate transient and sustained periodic vibration environments
+  T5: Test required for self-induced shocks; may be performed at payload level for externally induced shocks
+notes: >
+  Row clause references are the GEVS subsections that elaborate each requirement; verify against
+  the section table of contents when a clause number is in doubt.

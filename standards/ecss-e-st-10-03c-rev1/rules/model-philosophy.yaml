@@ -1,0 +1,50 @@
+# Model-philosophy rules of ECSS-E-ST-10-03C Rev.1: what is tested on which model.
+kind: rule
+id: ecss-e-st-10-03c-rev1.rule.development_tests_before_qualification
+standard: ecss-e-st-10-03c-rev1
+title: Development tests are completed before qualification and never run on QM or FM hardware
+citation: {standard: ecss-e-st-10-03c-rev1, clause: "4.2", page: "24", pdf_page: 24}
+category: model_philosophy
+statement: >
+  Development testing of a product is finished before its formal qualification testing starts
+  (4.2a); development tests may run over operating conditions beyond the design range. They are not
+  performed on qualification or flight models or parts of them (4.2b). Configuration, results and
+  other pertinent data are kept on record for later failure investigations (4.2c).
+applies_to:
+  regimes: [development]
+---
+kind: rule
+id: ecss-e-st-10-03c-rev1.rule.qualification_on_dedicated_models
+standard: ecss-e-st-10-03c-rev1
+title: Qualification on dedicated models; destructive and life-consuming tests kept off flight hardware
+citation: {standard: ecss-e-st-10-03c-rev1, clause: "4.5.2", page: "36", pdf_page: 36, note: "also 4.5.4b (pdf 38) and 5.4b (pdf 61)"}
+category: model_philosophy
+statement: >
+  Qualification testing is done on dedicated qualification models unless the protoflight approach
+  is used (4.5.2b). Destructive tests such as burst use a representative model other than the QM,
+  or are run last in the qualification programme (4.5.2e); with a PFM they always use a separate
+  representative model (4.5.4b). For equipment under a protoflight approach, life, burst pressure
+  and ESD are qualification tests performed on a dedicated model and never on the PFM (5.4b).
+  Acceptance testing is performed on every flight product except the one used as protoflight
+  (4.5.3b), after the qualification programme is complete (4.5.3c).
+applies_to:
+  test_types: [life, burst, esd]
+  regimes: [qualification, protoflight]
+---
+kind: rule
+id: ecss-e-st-10-03c-rev1.rule.protoflight_levels_and_durations
+standard: ecss-e-st-10-03c-rev1
+title: Protoflight approach uses qualification levels with acceptance durations; tabulated durations are minima
+citation: {standard: ecss-e-st-10-03c-rev1, clause: "4.5.4", page: "38", pdf_page: 38, note: "also 4.5.2f (pdf 37) and 4.5.3d (pdf 37)"}
+category: model_philosophy
+statement: >
+  Protoflight testing on the first flight model combines the qualification objective (performance
+  with qualification margins) and the acceptance objective (freedom from workmanship and material
+  defects). The general approach selects qualification test levels and acceptance test durations;
+  the durations in Tables 5-2, 5-4, 5-6, 6-2, 6-4 and 6-6 are minimum values. The protoflight
+  approach may be applied at any level of decomposition, and an element PFM programme can include
+  tests on dedicated models later refurbished into the PFM (for example a structural model for early
+  mechanical qualification). For an element PFM the embedded equipment should be acceptance tested
+  (6.1e).
+applies_to:
+  regimes: [protoflight]

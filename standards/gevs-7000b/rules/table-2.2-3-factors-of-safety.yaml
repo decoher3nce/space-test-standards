@@ -1,0 +1,36 @@
+kind: rule
+id: gevs-7000b.rule.factors_of_safety
+standard: gevs-7000b
+title: Design and analysis factors of safety applied to limit loads (Table 2.2-3)
+citation: {standard: gevs-7000b, clause: "2.2.5", table: Table 2.2-3, page: "2.2 - 6", pdf_page: 47}
+category: factor_of_safety
+statement: >
+  Minimum factors of safety on limit loads for flight hardware, by material class and load type
+  (static, sine, random/acoustic). Random and acoustic factors apply to the statistically derived
+  peak response (at least 3-sigma) and assume qualification or protoflight testing at acceptance
+  level plus 3 dB. If qualified by analysis only, 2.0 on yield and 2.6 on ultimate apply.
+  Pressurised systems follow AFSPCMAN 91-710; glass and structural glass bonds follow NASA-STD-5001.
+values:
+  metallic_yield_static: {value: 1.25, unit: factor}
+  metallic_yield_sine: {value: 1.25, unit: factor}
+  metallic_yield_random_acoustic: {value: 1.6, unit: factor}
+  metallic_ultimate_static: {value: 1.4, unit: factor}
+  metallic_ultimate_sine: {value: 1.4, unit: factor}
+  metallic_ultimate_random_acoustic: {value: 1.8, unit: factor}
+  stability_ultimate_static: {value: 1.4, unit: factor}
+  stability_ultimate_sine: {value: 1.4, unit: factor}
+  stability_ultimate_random_acoustic: {value: 1.8, unit: factor}
+  beryllium_yield_static: {value: 1.4, unit: factor}
+  beryllium_yield_sine: {value: 1.4, unit: factor}
+  beryllium_yield_random_acoustic: {value: 1.8, unit: factor}
+  beryllium_ultimate_static: {value: 1.6, unit: factor}
+  beryllium_ultimate_sine: {value: 1.6, unit: factor}
+  beryllium_ultimate_random_acoustic: {value: 2.0, unit: factor}
+  composite_ultimate_static: {value: 1.5, unit: factor}
+  composite_ultimate_sine: {value: 1.5, unit: factor}
+  composite_ultimate_random_acoustic: {value: 1.9, unit: factor}
+  bonded_inserts_joints_ultimate_static: {value: 1.5, unit: factor}
+  bonded_inserts_joints_ultimate_sine: {value: 1.5, unit: factor}
+  bonded_inserts_joints_ultimate_random_acoustic: {value: 1.9, unit: factor}
+  analysis_only_yield: {value: 2.0, unit: factor}
+  analysis_only_ultimate: {value: 2.6, unit: factor}

@@ -1,0 +1,34 @@
+kind: standard
+id: ssc-s-016
+designation: SSC-S-016 (formerly SMC-S-016, 5 September 2014)
+title: Test Requirements for Launch, Upper-Stage and Space Vehicles
+revision: "2014 issue (SMC-S-016); redesignated SSC-S-016 without content change when SMC became SSC"
+date: "2014-09-05"
+publisher: Air Force Space and Missile Systems Center (now US Space Force Space Systems Command), prepared by The Aerospace Corporation
+status: superseded
+supersedes: MIL-STD-1540B (baseline) / MIL-STD-1540D process specification (cancelled)
+superseded_by: ssc-s-016-2026
+url: https://apps.dtic.mil/sti/citations/ADA619375
+access: public_release
+copyright_posture: >
+  US Government work released for public distribution (DTIC, EverySpec). Structured values and
+  clause citations stored; prose not reproduced.
+scope: >
+  Environmental and functional test requirements for launch, upper-stage and space vehicles and their
+  subsystems and units: qualification, protoqualification and acceptance strategies, test levels,
+  durations, cycle counts, unit test matrices by hardware type, and tailoring exemptions (4.10.2).
+regime_terms:
+  qualification: Qualification
+  protoflight: Protoqualification
+  acceptance: Acceptance
+level_terms:
+  unit: Unit
+  subsystem: Subsystem
+  element: Vehicle
+source_file: >
+  Records so far are read from the public NESC Academy briefing "Introduction & Application of
+  SSC-S-016: Thermal Environmental Testing" (J. W. Welch, The Aerospace Corporation, June 2026) and
+  carry confidence deck_only; pdf_page values index that 72-page deck until the 2014 PDF is encoded.
+notes: >
+  The deck attributes the same values to "SSC-S-016 2023" (the redesignated 2014 content) and lists
+  the 2026 revision (TR-2025-00777) separately; see ssc-s-016-2026 for the deltas.

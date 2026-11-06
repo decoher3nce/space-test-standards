@@ -1,0 +1,227 @@
+# Test regimes, thermal test purposes and model philosophy of SSC-S-016 as explained in the NESC
+# Academy deck (slides 14-16, 41, 53, 56, 57, 63, 67, 68; pdf 15-17, 42, 54, 57, 58, 64, 68, 69).
+kind: rule
+id: ssc-s-016.rule.regime_definitions
+standard: ssc-s-016
+title: Acceptance, qualification, protoqualification and development test regimes
+citation: {standard: ssc-s-016, clause: "4", table: "Test Levels (deck slide 14)", page: "14", pdf_page: 15, note: "the deck does not give the definitions clause; SSC-S-016 section 3 (definitions) and 4 (general) are the places to verify"}
+category: model_philosophy
+statement: >
+  Acceptance testing demonstrates the acceptability of each deliverable item, with the emphasis on
+  workmanship and flight-worthiness. Qualification testing demonstrates the design, the
+  manufacturing process and the acceptance program, at conditions more severe than flight, on
+  non-flight hardware and before acceptance testing. Protoqualification (also called protoqual or
+  flight-proof) is reduced qualification testing of flight hardware to save the cost and schedule
+  of a dedicated qualification article; its thermal environment lies between acceptance and
+  qualification. Development tests are engineering tests for design information, typically before
+  formal qualification and unit-level testing.
+applies_to:
+  regimes: [acceptance, protoflight, qualification, development]
+confidence: deck_only
+notes: Deck-sourced paraphrase; verify against the SSC-S-016 definitions and test-strategy clauses.
+---
+kind: rule
+id: ssc-s-016.rule.thermal_tests_by_regime_and_level
+standard: ssc-s-016
+title: Which thermal tests each regime runs and at which level of assembly
+citation: {standard: ssc-s-016, clause: "6.3", table: "Thermal Environmental Tests specified in SSC-S-016 (deck slide 15)", page: "15", pdf_page: 16, note: "also deck slide 41 (pdf 42) for the unit TC/BI/TV by regime table"}
+category: model_philosophy
+statement: >
+  Thermal cycle (hot/cold cycling in air or GN2 with rapid transitions, purpose ESS) is the
+  primary unit test and optional at subsystem and vehicle level; burn-in (continuation of thermal
+  cycling, purpose ESS) is a unit test; thermal vacuum (realistic flight simulation, purpose
+  performance verification and survival/turn-on) is the primary test at unit (vacuum-sensitive
+  units), subsystem and vehicle level; thermal balance (flight simulation in vacuum, purpose
+  thermal control verification and model correlation) is run on the vehicle and some subsystems.
+  Qualification hardware receives thermal cycle, thermal vacuum and thermal balance but no
+  burn-in; protoqualification hardware receives all four; acceptance hardware receives thermal
+  cycle, burn-in and thermal vacuum but no thermal balance.
+applies_to:
+  test_types: [thermal_cycle, burn_in, thermal_vacuum, thermal_balance]
+  levels: [unit, subsystem, element]
+  regimes: [acceptance, protoflight, qualification]
+values:
+  thermal_cycle_qualification: {text: "Yes", unit: text}
+  thermal_cycle_protoqualification: {text: "Yes", unit: text}
+  thermal_cycle_acceptance: {text: "Yes", unit: text}
+  burn_in_qualification: {text: "No", unit: text}
+  burn_in_protoqualification: {text: "Yes", unit: text}
+  burn_in_acceptance: {text: "Yes", unit: text}
+  thermal_vacuum_qualification: {text: "Yes", unit: text}
+  thermal_vacuum_protoqualification: {text: "Yes", unit: text}
+  thermal_vacuum_acceptance: {text: "Yes", unit: text}
+  thermal_balance_qualification: {text: "Yes", unit: text}
+  thermal_balance_protoqualification: {text: "Yes", unit: text}
+  thermal_balance_acceptance: {text: "No", unit: text}
+  thermal_cycle_unit: {text: Primary test, unit: text}
+  thermal_cycle_subsystem: {text: Optional, unit: text}
+  thermal_cycle_vehicle: {text: Optional, unit: text}
+  burn_in_unit: {text: Primary test, unit: text}
+  thermal_vacuum_unit: {text: Primary test (vacuum-sensitive units), unit: text}
+  thermal_vacuum_subsystem: {text: Primary test, unit: text}
+  thermal_vacuum_vehicle: {text: Primary test, unit: text}
+  thermal_balance_subsystem: {text: Some subsystems, unit: text}
+  thermal_balance_vehicle: {text: Primary test, unit: text}
+confidence: deck_only
+notes: Deck-sourced; verify against the SSC-S-016 unit (6), subsystem (7) and vehicle (8) thermal test clauses.
+---
+kind: rule
+id: ssc-s-016.rule.thermal_test_objectives
+standard: ssc-s-016
+title: Objectives of thermal testing (screening, performance, turn-on, survival, model correlation)
+citation: {standard: ssc-s-016, clause: "6.3.8", table: "Objectives of Thermal Testing (deck slides 12-13)", page: "12", pdf_page: 13, note: "deck slides 12 and 13 (pdf 13, 14); the standard's purpose statements are in the individual test clauses"}
+category: general
+statement: >
+  Thermal tests serve five purposes: environmental stress screening, which forces latent defects
+  into observable failures under stresses more severe than use so they can be repaired before
+  flight; performance verification within specification in a flight-like environment; turn-on
+  demonstration under severe, changing temperatures and gradients; survival demonstration at the
+  most severe realistic temperatures, where the unit must turn on and show no degradation once
+  back in its operating range; and thermal model correlation of test data against predictions.
+applies_to:
+  test_types: [thermal_cycle, burn_in, thermal_vacuum, thermal_balance]
+confidence: deck_only
+notes: Deck-sourced paraphrase; verify against the purpose paragraphs of SSC-S-016 6.3.8, 6.3.9 and the vehicle thermal clauses.
+---
+kind: rule
+id: ssc-s-016.rule.tc_tv_perceptiveness
+standard: ssc-s-016
+title: Thermal cycle and thermal vacuum are not interchangeable (perceptiveness by failure mechanism)
+citation: {standard: ssc-s-016, clause: "6.3.8", table: "Thermal Test Purposes (deck slide 16)", page: "16", pdf_page: 17, note: "also deck slide 60 (pdf 61) for the same point at vehicle level"}
+category: general
+statement: >
+  The deck's perceptiveness table shows why thermal cycling and thermal vacuum have different
+  physics of failure and objectives and cannot replace one another: thermal vacuum is very
+  perceptive to flight-like performance and perceptive to thermal balance, arcing, multipaction
+  and corona, and outgassing, where thermal cycling is not perceptive; thermal cycling is very
+  perceptive to thermal stress effects where thermal vacuum is only perceptive; both are
+  perceptive to latent defects and failure propagation, hardware and integration faults, and
+  electrical intermittences.
+applies_to:
+  test_types: [thermal_cycle, thermal_vacuum]
+values:
+  flight_like_performance_tc: {text: Not perceptive, unit: text}
+  flight_like_performance_tv: {text: Very perceptive, unit: text}
+  thermal_control_balance_tc: {text: Not perceptive, unit: text}
+  thermal_control_balance_tv: {text: Perceptive, unit: text}
+  arcing_tc: {text: Not perceptive, unit: text}
+  arcing_tv: {text: Perceptive, unit: text}
+  multipaction_corona_tc: {text: Not perceptive, unit: text}
+  multipaction_corona_tv: {text: Perceptive, unit: text}
+  material_outgassing_tc: {text: Not perceptive, unit: text}
+  material_outgassing_tv: {text: Perceptive, unit: text}
+  latent_defects_failure_propagation_tc: {text: Perceptive, unit: text}
+  latent_defects_failure_propagation_tv: {text: Perceptive, unit: text}
+  thermal_stress_effects_tc: {text: Very perceptive, unit: text}
+  thermal_stress_effects_tv: {text: Perceptive, unit: text}
+  hardware_and_integration_tc: {text: Perceptive, unit: text}
+  hardware_and_integration_tv: {text: Perceptive, unit: text}
+  electrical_intermittences_tc: {text: Perceptive, unit: text}
+  electrical_intermittences_tv: {text: Perceptive, unit: text}
+confidence: deck_only
+notes: >
+  This is the briefing's rationale table, not text of the standard; it is kept because tailoring
+  arguments that trade thermal vacuum against thermal cycling must address these mechanisms.
+  Verify the standard's own wording in 6.3.8 and 6.3.9 and 4.10.2.
+---
+kind: rule
+id: ssc-s-016.rule.flightproof_not_for_thermal
+standard: ssc-s-016
+title: Flightproof strategy is not applicable to thermal environments; protoqualification cycle counts
+citation: {standard: ssc-s-016, clause: "6.3.8", table: "Unit Thermal Test Parameter Requirements in SSC-S-016 (deck slide 53)", page: "53", pdf_page: 54, note: "also deck slide 63 (pdf 64) for the vehicle-level protoqualification cycle count"}
+category: model_philosophy
+statement: >
+  A flightproof test strategy is not applicable for thermal environments. At unit level the
+  protoqualification thermal cycle count (20 total) is closer to qualification (27) than to
+  acceptance (14), reflecting more screening at the unit level; at vehicle level
+  protoqualification uses the same four thermal vacuum cycles as acceptance because the emphasis
+  there is hot/cold performance verification rather than screening.
+applies_to:
+  test_types: [thermal_cycle, thermal_vacuum]
+  regimes: [protoflight]
+values:
+  unit_total_cycles_acceptance: {value: 14, unit: cycles}
+  unit_total_cycles_protoqualification: {value: 20, unit: cycles}
+  unit_total_cycles_qualification: {value: 27, unit: cycles}
+  vehicle_tv_cycles_acceptance: {value: 4, unit: cycles}
+  vehicle_tv_cycles_protoqualification: {value: 4, unit: cycles}
+  vehicle_tv_cycles_qualification: {value: 8, unit: cycles}
+confidence: deck_only
+notes: Deck-sourced; verify against the SSC-S-016 test-strategy clauses (section 4) and the unit and vehicle thermal tables.
+---
+kind: rule
+id: ssc-s-016.rule.subsystem_payload_thermal_vacuum_applicability
+standard: ssc-s-016
+title: Subsystem-level thermal vacuum applicability for structure, bus and payload
+citation: {standard: ssc-s-016, clause: "7", table: "Subsystem/Payload Thermal Testing (deck slide 56)", page: "56", pdf_page: 57, note: "deck gives no clause; SSC-S-016 subsystem test requirements are in section 7 (verify)"}
+category: general
+statement: >
+  SSC-S-016 thermal requirements for subsystems and payloads are thermal vacuum only, intended to
+  move vehicle-level verifications to a level where they can be better demonstrated. The deck's
+  table: for qualification and protoqualification hardware, thermal vacuum is evaluation-required
+  for structure and bus subsystems and required for payloads; for acceptance hardware it is not
+  required for structure, evaluation-required for bus and required for payloads.
+applies_to:
+  test_types: [thermal_vacuum]
+  levels: [subsystem]
+values:
+  structure_qualification_protoqualification: {text: ER, unit: text, note: "evaluation required"}
+  bus_qualification_protoqualification: {text: ER, unit: text, note: "evaluation required"}
+  payload_qualification_protoqualification: {text: R, unit: text, note: "required"}
+  structure_acceptance: {text: "-", unit: text, note: "not required"}
+  bus_acceptance: {text: ER, unit: text, note: "evaluation required"}
+  payload_acceptance: {text: R, unit: text, note: "required"}
+confidence: deck_only
+notes: >
+  Encoded as a rule rather than an applicability_matrix because the hardware_type vocabulary has
+  no "bus" entry (see VOCAB-REQUESTS.md). Verify against the SSC-S-016 subsystem thermal vacuum
+  requirements (section 7).
+---
+kind: rule
+id: ssc-s-016.rule.vehicle_thermal_vacuum_performance_tests
+standard: ssc-s-016
+title: Vehicle thermal vacuum profile, performance testing and thermal zones
+citation: {standard: ssc-s-016, clause: "8", table: "Vehicle Thermal Vacuum (TV) Testing (deck slide 57)", page: "57", pdf_page: 58, note: "also deck slides 61, 63 and 64 (pdf 62, 64, 65); SSC-S-016 vehicle test requirements are in section 8 (verify)"}
+category: functional_test
+statement: >
+  Vehicle thermal vacuum runs four cycles for acceptance and protoqualification vehicles with
+  specification performance tests hot and cold on the first and last cycle and the vehicle powered
+  and monitored (trending, anomaly detection) during intermediate cycles and transitions. The
+  temperature range is worst-case predictions plus the regime margin, with no default screening
+  range; the vehicle is divided into thermal zones and performance testing in a zone starts when
+  its first unit reaches the goal temperature. The test demonstrates mission performance and is
+  not intended to screen units. The deck notes that programs sometimes waive full performance
+  testing on the first cycle and recommends against it because trending from pre-test ambient to
+  first and last vacuum cycle is lost.
+applies_to:
+  test_types: [thermal_vacuum]
+  levels: [element]
+  regimes: [acceptance, protoflight]
+values:
+  tv_cycles: {value: 4, unit: cycles}
+  specification_performance_cycles: {text: "First and last cycle, hot and cold", unit: text}
+confidence: deck_only
+notes: Deck-sourced; verify against the SSC-S-016 vehicle thermal vacuum clause (section 8).
+---
+kind: rule
+id: ssc-s-016.rule.thermal_balance_phases
+standard: ssc-s-016
+title: Vehicle thermal balance during the first thermal vacuum cycle with at least three phases
+citation: {standard: ssc-s-016, clause: "8", table: "Rationale for Thermal Balance Test Approach (deck slide 67)", page: "67", pdf_page: 68, note: "also deck slide 68 (pdf 69); SSC-S-016 vehicle thermal balance clause is in section 8 (verify)"}
+category: general
+statement: >
+  Thermal balance for thermal model correlation is specified during the first cycle of the first
+  vehicle thermal vacuum test, so thermal subsystem problems can be fixed before the rest of the
+  vacuum test and analysts have the remaining test time for correlation. At least three phases are
+  needed: hot operational, cold operational and cold non-operational (the third gives a further
+  correlation point and verifies survival and heater design); safe-mode and transient cool-down
+  phases are optional. Hardware not designed to reach steady state is correlated on temperature
+  change and rate of change instead of steady-state temperatures.
+applies_to:
+  test_types: [thermal_balance, thermal_vacuum]
+  levels: [subsystem, element]
+values:
+  minimum_phases: {value: 3, unit: count, note: "hot operational, cold operational, cold non-operational"}
+  minimum_operational_correlation_points: {value: 2, unit: count, note: "approximate thermal extremes"}
+confidence: deck_only
+notes: Deck-sourced; verify against the SSC-S-016 vehicle thermal balance clause (section 8).

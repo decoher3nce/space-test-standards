@@ -1,0 +1,382 @@
+{
+  "$defs": {
+    "Citation": {
+      "additionalProperties": false,
+      "description": "Where a value comes from. Clause and table are the durable anchors; page numbers\nare a convenience and are given for the public PDF named in the standard record.",
+      "properties": {
+        "standard": {
+          "description": "Library id of the standard, e.g. gevs-7000b",
+          "title": "Standard",
+          "type": "string"
+        },
+        "clause": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Clause or paragraph, e.g. 2.2.4",
+          "title": "Clause"
+        },
+        "table": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Table designation as printed",
+          "title": "Table"
+        },
+        "figure": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Figure"
+        },
+        "page": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Printed page label, e.g. '2.2 - 5'",
+          "title": "Page"
+        },
+        "pdf_page": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "1-based page index in the public PDF",
+          "title": "Pdf Page"
+        },
+        "note": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Note"
+        }
+      },
+      "required": [
+        "standard"
+      ],
+      "title": "Citation",
+      "type": "object"
+    },
+    "Level": {
+      "description": "Unified level of assembly (GEVS Table 2.2-1 lineage).",
+      "enum": [
+        "part",
+        "subassembly",
+        "unit",
+        "subsystem",
+        "element",
+        "segment",
+        "system"
+      ],
+      "title": "Level",
+      "type": "string"
+    },
+    "Quantity": {
+      "additionalProperties": false,
+      "description": "A numeric or textual value with an explicit unit and reference.\n\nExamples: level 3 dB relative to limit_level; duration 1 min per axis; cycles 4;\nmargin 10 degC relative to max_min_predicted. When a standard prints words rather\nthan a number (\"As specified for mission\") use `text` and leave value empty.",
+      "properties": {
+        "value": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Value"
+        },
+        "min_value": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Min Value"
+        },
+        "max_value": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Max Value"
+        },
+        "unit": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "dB | factor | min | min_per_axis | s | hr | cycles | degC | degC_per_min | oct_per_min | actuations | axes | grms | g2_per_hz | db_oaspl | percent | count | text",
+          "title": "Unit"
+        },
+        "relative_to": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "limit_level | limit_load | max_predicted | min_predicted | acceptance_level | mpe | qualification_level | design_range | none",
+          "title": "Relative To"
+        },
+        "per": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "axis | cycle | plateau | side | model",
+          "title": "Per"
+        },
+        "text": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Value as printed when not numeric",
+          "title": "Text"
+        },
+        "note": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Note"
+        }
+      },
+      "title": "Quantity",
+      "type": "object"
+    },
+    "Regime": {
+      "description": "Unified test regime. Standards use different words for similar ideas; the\nterminology map in the library records the local word and the local factors.",
+      "enum": [
+        "qualification",
+        "protoflight",
+        "acceptance",
+        "development",
+        "all"
+      ],
+      "title": "Regime",
+      "type": "string"
+    },
+    "Scope": {
+      "additionalProperties": false,
+      "properties": {
+        "test_types": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Test Types",
+          "type": "array"
+        },
+        "levels": {
+          "items": {
+            "$ref": "#/$defs/Level"
+          },
+          "title": "Levels",
+          "type": "array"
+        },
+        "hardware_types": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Hardware Types",
+          "type": "array"
+        },
+        "regimes": {
+          "items": {
+            "$ref": "#/$defs/Regime"
+          },
+          "title": "Regimes",
+          "type": "array"
+        },
+        "flags": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Flags",
+          "type": "array"
+        }
+      },
+      "title": "Scope",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "description": "Any other requirement with structured content: sequence constraints, operating hours,\nprobability levels, factors of safety, minimum cycle counts.",
+  "properties": {
+    "kind": {
+      "const": "rule",
+      "title": "Kind",
+      "type": "string"
+    },
+    "id": {
+      "pattern": "^[a-z0-9][a-z0-9._-]*$",
+      "title": "Id",
+      "type": "string"
+    },
+    "standard": {
+      "title": "Standard",
+      "type": "string"
+    },
+    "title": {
+      "title": "Title",
+      "type": "string"
+    },
+    "citation": {
+      "$ref": "#/$defs/Citation"
+    },
+    "category": {
+      "enum": [
+        "sequence",
+        "operating_hours",
+        "screening",
+        "margin",
+        "probability_level",
+        "factor_of_safety",
+        "functional_test",
+        "documentation",
+        "retest",
+        "tolerance",
+        "model_philosophy",
+        "general"
+      ],
+      "title": "Category",
+      "type": "string"
+    },
+    "statement": {
+      "description": "Paraphrase; never the standard's text",
+      "title": "Statement",
+      "type": "string"
+    },
+    "applies_to": {
+      "$ref": "#/$defs/Scope"
+    },
+    "values": {
+      "additionalProperties": {
+        "$ref": "#/$defs/Quantity"
+      },
+      "title": "Values",
+      "type": "object"
+    },
+    "before": {
+      "description": "sequence rules: test_types that must come first",
+      "items": {
+        "type": "string"
+      },
+      "title": "Before",
+      "type": "array"
+    },
+    "after": {
+      "description": "sequence rules: test_types that must come later",
+      "items": {
+        "type": "string"
+      },
+      "title": "After",
+      "type": "array"
+    },
+    "confidence": {
+      "default": "verified",
+      "enum": [
+        "verified",
+        "deck_only",
+        "secondary",
+        "needs_check"
+      ],
+      "title": "Confidence",
+      "type": "string"
+    },
+    "notes": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Notes"
+    }
+  },
+  "required": [
+    "kind",
+    "id",
+    "standard",
+    "title",
+    "citation",
+    "category",
+    "statement"
+  ],
+  "title": "Rule",
+  "type": "object",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/decoher3nce/space-test-standards/schema/rule.schema.json"
+}

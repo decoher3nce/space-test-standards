@@ -1,0 +1,300 @@
+# 320-MAR-1001 Rev. D, Appendix 6 tailoring codes for Section 9 (System Performance Verification)
+# and its DIDs 9-1 to 9-6, with the paragraph and DID content paraphrased from Appendix 1
+# (Section 9 body, pdf page 18), Appendix 3 (DID sheets, pdf pages 68-73) and Appendix 5 (DID
+# delivery table, pdf page 105). Appendix 6 Section 9 rows are on pdf page 110. One rule per
+# paragraph and per DID, plus one for the Appendix 6 scheme and one for the GEVS delegation.
+kind: rule
+id: gsfc-320-mar-1001d.rule.appendix_6_tailoring_scheme
+standard: gsfc-320-mar-1001d
+title: Appendix 6 tailoring table - per-class A/T/R codes against a Class B baseline
+citation: {standard: gsfc-320-mar-1001d, clause: "1", table: "Appendix 6 Tailoring Table", page: "107/114", pdf_page: 107, note: "baseline statement in section 1 Applicability and 3.1 (pdf page 4); table runs pdf pages 107-112"}
+category: general
+statement: >
+  The MAR's baseline narrative (Appendix 1) and DIDs (Appendix 3) are written to meet a Class B
+  out-of-house mission. Appendix 6 lists every MAR paragraph and DID with one code per mission
+  class A, B, C and D: A means applicable as written with no tailoring expected, T means tailoring
+  is expected based on project-specific requirements, and R means tailoring is required based on
+  project-specific requirements. The Chief Safety and Mission Assurance Officer tailors the
+  appendices for Class A, C or D projects using this table. The table's header characterises the
+  classes by example missions, priority and acceptable risk, national significance, complexity,
+  primary mission lifetime and cost.
+values:
+  code_a: {text: A, unit: text, note: "applicable as written; no tailoring expected"}
+  code_t: {text: T, unit: text, note: "tailoring expected based on project-specific requirements"}
+  code_r: {text: R, unit: text, note: "tailoring required based on project-specific requirements"}
+  baseline_class: {text: B, unit: text, note: "Appendices 1 to 4 are written for a Class B out-of-house mission"}
+  class_a_risk: {text: "High priority, very low (minimized) risk", unit: text}
+  class_b_risk: {text: "High priority, low risk", unit: text}
+  class_c_risk: {text: "Medium priority, medium risk", unit: text}
+  class_d_risk: {text: "Low priority, high risk", unit: text}
+  class_a_lifetime: {text: "Long, more than 5 years", unit: text}
+  class_b_lifetime: {text: "Medium, 2 to 5 years", unit: text}
+  class_c_lifetime: {text: Short, unit: text}
+  class_d_lifetime: {text: "Short, less than 2 years", unit: text}
+confidence: verified
+notes: >
+  Legend as printed at the head of each Appendix 6 page. Example missions named in the table
+  (TDRS and JWST for A, SDO and STEREO for B, MAP for C, FAST and IBEX for D) are given for
+  orientation only.
+---
+kind: rule
+id: gsfc-320-mar-1001d.rule.section_9_gevs_delegation
+standard: gsfc-320-mar-1001d
+title: Section 9 delegates verification and environmental test requirements to GSFC-STD-7000 (GEVS)
+citation: {standard: gsfc-320-mar-1001d, clause: "9.1", page: "18/114", pdf_page: 18, note: "DID sheets 9-1 to 9-6 on pdf pages 68-73 each list GSFC-STD-7000 as the reference document"}
+category: general
+statement: >
+  Section 9 does not set environmental test levels or durations of its own. Paragraph 9.1
+  requires the developer to plan and implement the system performance verification program per
+  the requirements of GSFC-STD-7000, the General Environmental Verification Standard (GEVS) for
+  GSFC flight programs and projects, and every Section 9 DID names GSFC-STD-7000 as its reference
+  document and points to a GEVS paragraph for preparation: the verification plan to GEVS 2.1.1.1,
+  the environmental verification plan to 2.1.1.1.1, the verification matrix to 2.1.1.2, the
+  environmental test matrix to 2.1.1.2.1 (example in GEVS Figure 2.1-1), verification reports to
+  2.1.1.5 and the system performance verification report to 2.1.1.6. Test requirements for a MAR
+  program are therefore read from the GEVS edition the contract cites (gevs-7000b in this library).
+values:
+  referenced_standard: {text: GSFC-STD-7000, unit: text, note: "General Environmental Verification Standard (GEVS); edition not stated in Rev. D"}
+  gevs_paragraph_verification_plan: {text: "2.1.1.1", unit: text}
+  gevs_paragraph_environmental_verification_plan: {text: "2.1.1.1.1", unit: text}
+  gevs_paragraph_verification_matrix: {text: "2.1.1.2", unit: text}
+  gevs_paragraph_environmental_test_matrix: {text: "2.1.1.2.1", unit: text}
+  gevs_paragraph_verification_reports: {text: "2.1.1.5", unit: text}
+  gevs_paragraph_system_performance_verification_report: {text: "2.1.1.6", unit: text}
+confidence: verified
+notes: The MAR cites GSFC-STD-7000 without a revision letter; confirm the GEVS edition on the contract before applying gevs-7000b records.
+---
+kind: rule
+id: gsfc-320-mar-1001d.rule.para_9_1
+standard: gsfc-320-mar-1001d
+title: MAR 9.1 System Performance Verification Program Plan - class applicability
+citation: {standard: gsfc-320-mar-1001d, clause: "9.1", table: "Appendix 6 Tailoring Table", page: "110/114", pdf_page: 110, note: "paragraph text on pdf page 18"}
+category: documentation
+statement: >
+  The developer plans and implements a system performance verification program following the
+  requirements of GSFC-STD-7000 (GEVS), delivered as the System Performance Verification Plan
+  (DID 9-1). Appendix 6 marks the paragraph applicable as written for all four mission classes.
+values:
+  class_a: {text: A, unit: text}
+  class_b: {text: A, unit: text}
+  class_c: {text: A, unit: text}
+  class_d: {text: A, unit: text}
+confidence: verified
+notes: "Appendix 6 legend: A applicable as written (no tailoring expected), T tailoring expected, R tailoring required, both based on project-specific requirements."
+---
+kind: rule
+id: gsfc-320-mar-1001d.rule.para_9_2
+standard: gsfc-320-mar-1001d
+title: MAR 9.2 Environmental Verification Plan - class applicability
+citation: {standard: gsfc-320-mar-1001d, clause: "9.2", table: "Appendix 6 Tailoring Table", page: "110/114", pdf_page: 110, note: "paragraph text on pdf page 18"}
+category: documentation
+statement: >
+  The developer prepares and implements an environmental verification plan, delivered as DID 9-2.
+  Appendix 6 marks the paragraph applicable as written for all four mission classes.
+values:
+  class_a: {text: A, unit: text}
+  class_b: {text: A, unit: text}
+  class_c: {text: A, unit: text}
+  class_d: {text: A, unit: text}
+confidence: verified
+notes: "Appendix 6 legend: A applicable as written (no tailoring expected), T tailoring expected, R tailoring required, both based on project-specific requirements."
+---
+kind: rule
+id: gsfc-320-mar-1001d.rule.para_9_3
+standard: gsfc-320-mar-1001d
+title: MAR 9.3 System Performance Verification Matrix - class applicability
+citation: {standard: gsfc-320-mar-1001d, clause: "9.3", table: "Appendix 6 Tailoring Table", page: "110/114", pdf_page: 110, note: "paragraph text on pdf page 18"}
+category: documentation
+statement: >
+  The developer prepares and maintains a system performance verification matrix, delivered as
+  DID 9-3. Appendix 6 marks the paragraph applicable as written for all four mission classes.
+values:
+  class_a: {text: A, unit: text}
+  class_b: {text: A, unit: text}
+  class_c: {text: A, unit: text}
+  class_d: {text: A, unit: text}
+confidence: verified
+notes: "Appendix 6 legend: A applicable as written (no tailoring expected), T tailoring expected, R tailoring required, both based on project-specific requirements."
+---
+kind: rule
+id: gsfc-320-mar-1001d.rule.para_9_4
+standard: gsfc-320-mar-1001d
+title: MAR 9.4 Environmental Test Matrix - class applicability
+citation: {standard: gsfc-320-mar-1001d, clause: "9.4", table: "Appendix 6 Tailoring Table", page: "110/114", pdf_page: 110, note: "paragraph text on pdf page 18"}
+category: documentation
+statement: >
+  The developer prepares and maintains an environmental test matrix, delivered as DID 9-4.
+  Appendix 6 marks the paragraph applicable as written for all four mission classes.
+values:
+  class_a: {text: A, unit: text}
+  class_b: {text: A, unit: text}
+  class_c: {text: A, unit: text}
+  class_d: {text: A, unit: text}
+confidence: verified
+notes: "Appendix 6 legend: A applicable as written (no tailoring expected), T tailoring expected, R tailoring required, both based on project-specific requirements."
+---
+kind: rule
+id: gsfc-320-mar-1001d.rule.para_9_5
+standard: gsfc-320-mar-1001d
+title: MAR 9.5 Verification Reports - class applicability
+citation: {standard: gsfc-320-mar-1001d, clause: "9.5", table: "Appendix 6 Tailoring Table", page: "110/114", pdf_page: 110, note: "paragraph text on pdf page 18"}
+category: documentation
+statement: >
+  The developer prepares and submits verification reports, delivered as DID 9-5. Appendix 6 marks
+  the paragraph applicable as written for all four mission classes.
+values:
+  class_a: {text: A, unit: text}
+  class_b: {text: A, unit: text}
+  class_c: {text: A, unit: text}
+  class_d: {text: A, unit: text}
+confidence: verified
+notes: "Appendix 6 legend: A applicable as written (no tailoring expected), T tailoring expected, R tailoring required, both based on project-specific requirements."
+---
+kind: rule
+id: gsfc-320-mar-1001d.rule.para_9_6
+standard: gsfc-320-mar-1001d
+title: MAR 9.6 System Performance Verification Report - class applicability
+citation: {standard: gsfc-320-mar-1001d, clause: "9.6", table: "Appendix 6 Tailoring Table", page: "110/114", pdf_page: 110, note: "paragraph text on pdf page 18"}
+category: documentation
+statement: >
+  The developer prepares and submits system performance verification reports, delivered as
+  DID 9-6. Appendix 6 marks the paragraph applicable as written for all four mission classes.
+values:
+  class_a: {text: A, unit: text}
+  class_b: {text: A, unit: text}
+  class_c: {text: A, unit: text}
+  class_d: {text: A, unit: text}
+confidence: verified
+notes: "Appendix 6 legend: A applicable as written (no tailoring expected), T tailoring expected, R tailoring required, both based on project-specific requirements."
+---
+kind: rule
+id: gsfc-320-mar-1001d.rule.did_9_1
+standard: gsfc-320-mar-1001d
+title: DID 9-1 System Performance Verification Plan - content, delivery and class applicability
+citation: {standard: gsfc-320-mar-1001d, clause: "9.1", table: "Appendix 6 Tailoring Table", page: "110/114", pdf_page: 110, note: "DID sheet on pdf page 68; Appendix 5 delivery row on pdf page 105"}
+category: documentation
+statement: >
+  DID 9-1 establishes the System Performance Verification Plan, prepared to comply with paragraph
+  2.1.1.1 of GSFC-STD-7000. A preliminary plan goes to the Project Office 30 days before PDR for
+  review and the final plan 30 days before CDR for approval. Appendix 6 marks the DID applicable
+  as written for all four mission classes.
+values:
+  class_a: {text: A, unit: text}
+  class_b: {text: A, unit: text}
+  class_c: {text: A, unit: text}
+  class_d: {text: A, unit: text}
+  preliminary_delivery: {value: 30, unit: days, note: "before PDR, for review"}
+  final_delivery: {value: 30, unit: days, note: "before CDR, for approval"}
+  gevs_paragraph: {text: "2.1.1.1", unit: text}
+confidence: verified
+notes: "Appendix 6 legend: A applicable as written (no tailoring expected), T tailoring expected, R tailoring required, both based on project-specific requirements."
+---
+kind: rule
+id: gsfc-320-mar-1001d.rule.did_9_2
+standard: gsfc-320-mar-1001d
+title: DID 9-2 Environmental Verification Plan - content, delivery and class applicability
+citation: {standard: gsfc-320-mar-1001d, clause: "9.2", table: "Appendix 6 Tailoring Table", page: "110/114", pdf_page: 110, note: "DID sheet on pdf page 69; Appendix 5 delivery row on pdf page 105"}
+category: documentation
+statement: >
+  DID 9-2 establishes the Environmental Verification Plan, prepared to comply with paragraph
+  2.1.1.1.1 of GSFC-STD-7000. A preliminary plan goes to the Project Office 30 days before PDR for
+  review and the final plan 30 days before CDR for approval. Appendix 6 marks the DID applicable
+  as written for all four mission classes.
+values:
+  class_a: {text: A, unit: text}
+  class_b: {text: A, unit: text}
+  class_c: {text: A, unit: text}
+  class_d: {text: A, unit: text}
+  preliminary_delivery: {value: 30, unit: days, note: "before PDR, for review"}
+  final_delivery: {value: 30, unit: days, note: "before CDR, for approval"}
+  gevs_paragraph: {text: "2.1.1.1.1", unit: text}
+confidence: verified
+notes: "Appendix 6 legend: A applicable as written (no tailoring expected), T tailoring expected, R tailoring required, both based on project-specific requirements."
+---
+kind: rule
+id: gsfc-320-mar-1001d.rule.did_9_3
+standard: gsfc-320-mar-1001d
+title: DID 9-3 System Performance Verification Matrix - content, delivery and class applicability
+citation: {standard: gsfc-320-mar-1001d, clause: "9.3", table: "Appendix 6 Tailoring Table", page: "110/114", pdf_page: 110, note: "DID sheet on pdf page 70; Appendix 5 delivery row on pdf page 105"}
+category: documentation
+statement: >
+  DID 9-3 establishes the System Performance Verification Matrix, prepared and maintained per
+  paragraph 2.1.1.2 of GSFC-STD-7000. The updated matrix is included in the data packages for the
+  Integrated Independent Reviews beginning with PDR, for review. Appendix 6 marks the DID
+  applicable as written for all four mission classes.
+values:
+  class_a: {text: A, unit: text}
+  class_b: {text: A, unit: text}
+  class_c: {text: A, unit: text}
+  class_d: {text: A, unit: text}
+  delivery: {text: "Updated matrix in Integrated Independent Review data packages from PDR, for review", unit: text}
+  gevs_paragraph: {text: "2.1.1.2", unit: text}
+confidence: verified
+notes: "Appendix 6 legend: A applicable as written (no tailoring expected), T tailoring expected, R tailoring required, both based on project-specific requirements."
+---
+kind: rule
+id: gsfc-320-mar-1001d.rule.did_9_4
+standard: gsfc-320-mar-1001d
+title: DID 9-4 Environmental Test Matrix - content, delivery and class applicability
+citation: {standard: gsfc-320-mar-1001d, clause: "9.4", table: "Appendix 6 Tailoring Table", page: "110/114", pdf_page: 110, note: "DID sheet on pdf page 71; Appendix 5 delivery row on pdf page 105"}
+category: documentation
+statement: >
+  DID 9-4 establishes a matrix summarising the environmental tests and their status for flight
+  hardware and other equipment, following the guidelines of paragraph 2.1.1.2.1 of GSFC-STD-7000
+  (example in GEVS Figure 2.1-1). The updated matrix is included with the review data package for
+  milestone reviews beginning with PDR, for review. Appendix 6 marks the DID applicable as written
+  for all four mission classes.
+values:
+  class_a: {text: A, unit: text}
+  class_b: {text: A, unit: text}
+  class_c: {text: A, unit: text}
+  class_d: {text: A, unit: text}
+  delivery: {text: "Updated matrix in milestone review data packages from PDR, for review", unit: text}
+  gevs_paragraph: {text: "2.1.1.2.1", unit: text}
+confidence: verified
+notes: "Appendix 6 legend: A applicable as written (no tailoring expected), T tailoring expected, R tailoring required, both based on project-specific requirements."
+---
+kind: rule
+id: gsfc-320-mar-1001d.rule.did_9_5
+standard: gsfc-320-mar-1001d
+title: DID 9-5 Verification Reports - content, delivery and class applicability
+citation: {standard: gsfc-320-mar-1001d, clause: "9.5", table: "Appendix 6 Tailoring Table", page: "110/114", pdf_page: 110, note: "DID sheet on pdf page 72; Appendix 5 delivery row on pdf page 105"}
+category: documentation
+statement: >
+  DID 9-5 establishes the requirement to submit verification reports, prepared to comply with
+  paragraph 2.1.1.5 of GSFC-STD-7000. A preliminary report goes to the Project Office within 72
+  hours of test completion and the final report within 30 days of test completion, both for
+  information. Appendix 6 marks the DID applicable as written for all four mission classes.
+values:
+  class_a: {text: A, unit: text}
+  class_b: {text: A, unit: text}
+  class_c: {text: A, unit: text}
+  class_d: {text: A, unit: text}
+  preliminary_report: {value: 72, unit: hr, note: "after test completion, for information"}
+  final_report: {value: 30, unit: days, note: "after test completion, for information"}
+  gevs_paragraph: {text: "2.1.1.5", unit: text}
+confidence: verified
+notes: "Appendix 6 legend: A applicable as written (no tailoring expected), T tailoring expected, R tailoring required, both based on project-specific requirements."
+---
+kind: rule
+id: gsfc-320-mar-1001d.rule.did_9_6
+standard: gsfc-320-mar-1001d
+title: DID 9-6 System Performance Verification Report - content, delivery and class applicability
+citation: {standard: gsfc-320-mar-1001d, clause: "9.6", table: "Appendix 6 Tailoring Table", page: "110/114", pdf_page: 110, note: "DID sheet on pdf page 73; Appendix 5 delivery row on pdf page 105"}
+category: documentation
+statement: >
+  DID 9-6 establishes a System Performance Verification Report comparing hardware and software
+  specifications with the final verified values, prepared and maintained per paragraph 2.1.1.6 of
+  GSFC-STD-7000. Updated reports are provided with the review data package at milestone reviews
+  beginning with CDR, and the final report within 30 days after completion of on-orbit checkout,
+  all for information. Appendix 6 marks the DID applicable as written for all four mission classes.
+values:
+  class_a: {text: A, unit: text}
+  class_b: {text: A, unit: text}
+  class_c: {text: A, unit: text}
+  class_d: {text: A, unit: text}
+  final_report: {value: 30, unit: days, note: "after completion of on-orbit checkout, for information"}
+  delivery: {text: "Updated reports in milestone review data packages from CDR, for information", unit: text}
+  gevs_paragraph: {text: "2.1.1.6", unit: text}
+confidence: verified
+notes: "Appendix 6 legend: A applicable as written (no tailoring expected), T tailoring expected, R tailoring required, both based on project-specific requirements."

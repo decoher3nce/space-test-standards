@@ -1,0 +1,26 @@
+kind: rule
+id: gevs-7000b.rule.leakage_before_and_after_stressing_environments
+standard: gevs-7000b
+title: Leakage of sealed items checked before and after stress-inducing tests; final check may be in the last thermal vacuum test (2.6.6, 2.7.6)
+citation: {standard: gevs-7000b, clause: "2.6.6", page: "2.6-32", pdf_page: 274}
+category: sequence
+statement: >
+  Sealed items are tested to show leakage stays within the rate prescribed for the mission (for
+  cryogenic hardware, the rate set by the project with the cryogenics engineer, 2.7.6). Tests may be
+  done at component level for early assurance; payload-level checks cover only items not verified
+  lower, not fully assembled until higher integration, or of suspect integrity. Rates are checked
+  before and after the stress-inducing parts of the verification programme and the final check may be
+  made during the final thermal vacuum test. A mass spectrometer or leak detector senses flow into or
+  out of the item; items with dynamic seals are operated during the test; conditions are steady
+  (pumping, pressure, temperature) or a special method is devised. The same provisions apply to
+  acceptance of previously qualified hardware.
+applies_to:
+  test_types: [leak]
+  levels: [unit, element]
+  flags: [sealed, pressurized]
+before: [random_vibration, acoustic, sine_vibration, shock, thermal_vacuum]
+after: [random_vibration, acoustic, sine_vibration, shock, thermal_vacuum]
+notes: >
+  Leak checks bracket the stressing environments, so the same tests appear in both lists. The printed
+  page label 2.6-32 is used twice in the source (pdf 273 and 274); the leakage clause is on pdf 274.
+  The cryogenic counterpart 2.7.6 is on page 2.7-16 (pdf 291).

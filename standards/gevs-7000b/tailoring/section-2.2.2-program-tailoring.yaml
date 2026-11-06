@@ -1,0 +1,117 @@
+# GEVS 2.2.2 "Verification Program Tailoring": each relaxation the clause itself permits is one
+# record. The baseline assumes a low-risk, modular payload testable at unit, subsystem and system
+# level; the clause names the cases in which the project may depart from that.
+kind: tailoring_provision
+id: gevs-7000b.provision.failure_free_hours_varied
+standard: gevs-7000b
+title: Failure-free performance hours may be varied for mission duration and risk (2.2.2)
+citation: {standard: gevs-7000b, clause: "2.2.2", page: "2.2 - 1", pdf_page: 42}
+summary: >
+  The 350-hour failure-free demonstration of 2.3.4 is a low-risk-program baseline; the project may
+  raise or lower it to match mission duration and the risk the project accepts.
+applies_to:
+  test_types: [burn_in]
+permits:
+  - action: adjust_operating_hours
+    description: Vary the failure-free performance hours from the 350-hour baseline.
+    constraints: Justified by mission duration and accepted risk level; hardware classification also drives the tailoring (2.3.4).
+approval: GSFC approval
+documentation: Environmental verification plan
+---
+kind: tailoring_provision
+id: gevs-7000b.provision.highest_practicable_level
+standard: gevs-7000b
+title: Test at the highest practicable level of assembly when facility limits prevent system-level testing (2.2.2)
+citation: {standard: gevs-7000b, clause: "2.2.2", page: "2.2 - 2", pdf_page: 43}
+summary: >
+  When the physical size of the system or facility limitations prevent an environmental test at the
+  system level, the test moves to the highest level of assembly that can be tested; for very large
+  systems or instruments extra levels of assembly may be added.
+applies_to:
+  levels: [element, subsystem]
+permits:
+  - action: change_level_of_assembly
+    description: Perform a system-level environmental test at the highest practicable lower level instead.
+    constraints: Add tests or analyses at additional levels where needed to verify design, workmanship and performance; 2.4.2 and 2.4.3 require the residual risk to be assessed and recorded in the verification plan.
+documentation: System performance verification plan
+---
+kind: tailoring_provision
+id: gevs-7000b.provision.small_payload_skip_subsystem_level
+standard: gevs-7000b
+title: Small payloads may skip subsystem-level environmental tests (2.2.2)
+citation: {standard: gevs-7000b, clause: "2.2.2", page: "2.2 - 2", pdf_page: 43}
+summary: >
+  For a small payload the subsystem-level environmental tests may be omitted in favour of testing at
+  the component and system/spacecraft levels.
+applies_to:
+  levels: [subsystem]
+permits:
+  - action: change_level_of_assembly
+    description: Omit subsystem-level environmental tests; cover the requirement at unit and system level.
+    constraints: Decision to be taken carefully because problems found late carry schedule and cost risk.
+approval: GSFC project
+---
+kind: tailoring_provision
+id: gevs-7000b.provision.very_small_instrument_skip_components
+standard: gevs-7000b
+title: Very small instruments need not test every component (2.2.2)
+citation: {standard: gevs-7000b, clause: "2.2.2", page: "2.2 - 2", pdf_page: 43}
+summary: >
+  For a very small instrument the GSFC project may choose not to test all components individually
+  and instead test at the instrument level.
+applies_to:
+  levels: [unit]
+  hardware_types: [instrument]
+permits:
+  - action: change_level_of_assembly
+    description: Replace some component-level environmental tests by the instrument-level test.
+    constraints: Bypassing lower-level testing for instruments carries increased programme risk and must be weighed explicitly.
+approval: GSFC project
+---
+kind: tailoring_provision
+id: gevs-7000b.provision.stacked_components_as_section
+standard: gevs-7000b
+title: Stacked components may be tested together as a section (2.2.2)
+citation: {standard: gevs-7000b, clause: "2.2.2", page: "2.2 - 2", pdf_page: 43}
+summary: >
+  Where the hardware configuration makes it reasonable, several components stacked in their flight
+  configuration may be tested at once as a "section".
+applies_to:
+  levels: [unit]
+permits:
+  - action: combine_items
+    description: Test more than one component at a time as a section in flight configuration.
+    constraints: Size and mass must be considered; the configuration must still deliver adequate dynamic or thermal stress to each component to expose design errors and workmanship flaws.
+---
+kind: tailoring_provision
+id: gevs-7000b.provision.subsystem_requirement_at_higher_level
+standard: gevs-7000b
+title: Some subsystem/instrument requirements may be satisfied at a higher level of assembly (2.2.2)
+citation: {standard: gevs-7000b, clause: "2.2.2", page: "2.2 - 2", pdf_page: 43}
+summary: >
+  A requirement written at subsystem/instrument level may be met at system level with GSFC project
+  approval; the example given is externally induced mechanical shock, covered by firing the shock
+  source at system level because simulating it on a large subsystem is difficult.
+applies_to:
+  levels: [subsystem]
+  test_types: [shock]
+permits:
+  - action: change_level_of_assembly
+    description: Satisfy a subsystem-level requirement by test at the system level.
+approval: GSFC project
+---
+kind: tailoring_provision
+id: gevs-7000b.provision.waive_tv_cycling_small_orbit_variation
+standard: gevs-7000b
+title: Thermal vacuum cycling may be waived for longer dwells when on-orbit variation is small (2.2.2)
+citation: {standard: gevs-7000b, clause: "2.2.2", page: "2.2 - 2", pdf_page: 43}
+summary: >
+  If on-orbit temperature variations are small (under 5 degC) the project should consider waiving
+  thermal vacuum cycling at the system or instrument level in favour of longer hot and cold dwells.
+applies_to:
+  test_types: [thermal_vacuum]
+  levels: [element, subsystem]
+permits:
+  - action: reduce_cycles
+    description: Replace system- or instrument-level thermal vacuum cycling by extended hot and cold dwell times.
+    constraints: On-orbit temperature variation less than 5 degC; the 12-cycles-before-flight goal of Table 2.6-1 still applies to the hardware overall.

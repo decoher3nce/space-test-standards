@@ -1,0 +1,29 @@
+# GEVS 2.2.1 "Test Sequence and Level of Assembly": the two ordering statements the clause makes.
+kind: rule
+id: gevs-7000b.rule.no_mandatory_test_sequence
+standard: gevs-7000b
+title: No fixed environmental test sequence is imposed (2.2.1)
+citation: {standard: gevs-7000b, clause: "2.2.1", page: "2.2 - 1", pdf_page: 42}
+category: sequence
+statement: >
+  The verification activities are grouped by discipline, not listed in a required order. The project
+  arranges the sequence to best expose the problems and failures its hardware and mission are prone
+  to. Only specific ordering constraints stated elsewhere (for example dc magnetics after vibration)
+  apply.
+---
+kind: rule
+id: gevs-7000b.rule.magnetics_after_vibration
+standard: gevs-7000b
+title: DC magnetics testing after vibration testing (2.2.1)
+citation: {standard: gevs-7000b, clause: "2.2.1", page: "2.2 - 1", pdf_page: 42}
+category: sequence
+statement: >
+  When magnetic properties must be controlled, the dc magnetics test follows the vibration tests so
+  that any magnetisation picked up from the shaker's fields can be corrected.
+applies_to:
+  test_types: [magnetics]
+  flags: [magnetic_sensitive]
+before: [random_vibration, sine_vibration]
+notes: >
+  "before" lists the tests that precede the magnetics test. The clause says "vibration testing";
+  random and sine are the shaker-based tests, acoustic is not listed because it does not use a shaker.

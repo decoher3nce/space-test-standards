@@ -1,0 +1,47 @@
+# GEVS Section 2.7: structured statements not carried by Table 2.7-1, Table 2.7-2 or the
+# cryo-thermal-vacuum parameters record.
+kind: rule
+id: gevs-7000b.rule.cryogenic_applicability_and_cycle_definition
+standard: gevs-7000b
+title: Section 2.7 applies below 120 K and to cryocoolers with loads at or below 200 K; a cool-down and return to ambient is one cycle (2.7)
+citation: {standard: gevs-7000b, clause: "2.7", page: "2.7-1", pdf_page: 276}
+category: general
+statement: >
+  Cryogenic engineering at GSFC covers systems operating below 120 K, plus cryocooler systems whose
+  cooling load is at or below 200 K; systems above 120 K otherwise follow Section 2.6. Because most
+  cryogenic systems cool from room temperature to operation below 120 K, the classical hot-cold cycle
+  does not apply: one cool-down from ambient to operating temperature and return to ambient counts as
+  a temperature cycle. Cycling to low-side values above 120 K or high-side values above room
+  temperature follows Section 2.6. Mechanical testing precedes cryo-thermal testing at system level
+  and the test order is the project's, with the cryogenics engineer (2.7.2). At least three levels of
+  testing are considered (component, subsystem/instrument, payload); where the full assembly cannot
+  reach operational cryogenic temperatures, lower-level tests are added, and components may need
+  hermetic-seal pressure tests or cryogenic material property and strength tests (2.7.3.3, page
+  2.7-5, pdf 280).
+applies_to:
+  test_types: [thermal_vacuum, thermal_balance]
+  flags: [cryogenic]
+values:
+  cryogenic_regime_upper_bound: {text: "120 K (-153 degC)", unit: text}
+  cryocooler_load_temperature_bound: {text: "200 K or below", unit: text}
+  cycle_definition: {text: "ambient to operating temperature and back to ambient equals one cycle", unit: text}
+---
+kind: rule
+id: gevs-7000b.rule.cryogenic_failure_free_hours
+standard: gevs-7000b
+title: Cryogenic failure-free hours set by the duration of a single in-flight measurement event, counted under vacuum (2.7.3.8)
+citation: {standard: gevs-7000b, clause: "2.7.3.8", page: "2.7-10", pdf_page: 285}
+category: operating_hours
+statement: >
+  For cryogenic systems the number of trouble-free hours of functional operation at temperature is
+  driven by the time needed to complete one in-flight measurement event at operational temperature;
+  the project sets the figure with guidance from the cryogenics engineer and then demonstrates it in
+  the cryo-thermal verification programme. Hours count as failure free only when demonstrated under
+  vacuum (per 2.3.4), except that stored-cryogen dewar systems tested in ambient with a guard vacuum
+  at or below 1e-5 torr may combine vacuum and ambient hours.
+applies_to:
+  test_types: [burn_in, thermal_vacuum]
+  flags: [cryogenic]
+values:
+  failure_free_hours: {text: "project-defined from one in-flight measurement event; vacuum hours only (guard-vacuum dewar exception)", unit: text}
+  dewar_guard_vacuum_max: {text: "1e-5 torr", unit: text}

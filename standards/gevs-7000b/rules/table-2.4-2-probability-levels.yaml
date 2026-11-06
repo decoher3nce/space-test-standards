@@ -1,0 +1,24 @@
+kind: rule
+id: gevs-7000b.rule.minimum_probability_levels
+standard: gevs-7000b
+title: Minimum probability levels for flight limit (maximum expected) loads and environments (Table 2.4-2)
+citation: {standard: gevs-7000b, clause: "2.4", table: Table 2.4-2, page: "2.4 - 3", pdf_page: 54}
+category: probability_level
+statement: >
+  Flight loads and dynamic environments are probabilistic. The project manager chooses the
+  probability level of the flight limit levels used for design and test, but never below the minimums
+  of Table 2.4-2 for ELV payloads: 97.72/50 for structural loads and sine vibration, 95/50 for
+  acoustics, random vibration and mechanical shock. Section 1.8 defines limit level as the maximum
+  expected flight level at these probabilities.
+applies_to:
+  test_types: [static_load, sine_burst, modal_survey, acoustic, random_vibration, sine_vibration, shock]
+values:
+  structural_loads: {value: 97.72, unit: percent, note: "probability of not exceeding, at 50 percent confidence; equals mean plus two sigma for a normal distribution (table note 2)"}
+  acoustics: {value: 95, unit: percent, note: "at 50 percent confidence"}
+  random_vibration: {value: 95, unit: percent, note: "at 50 percent confidence"}
+  sine_vibration: {value: 97.72, unit: percent, note: "at 50 percent confidence (table note 1)"}
+  mechanical_shock: {value: 95, unit: percent, note: "at 50 percent confidence"}
+  confidence_level: {value: 50, unit: percent, note: "statistical confidence attached to every probability above"}
+notes: >
+  Table note 1: when parametric statistics set the limit level, the data should be shown to fit the
+  assumed distribution. The table has a single column (ELV payloads).

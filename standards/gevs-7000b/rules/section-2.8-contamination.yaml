@@ -1,0 +1,72 @@
+# GEVS 2.8.1 "Contamination": the verification process, cleanliness monitoring during I&T and the
+# bakeout philosophy. Section 2.8 states no numeric cleanliness levels; those are mission-specific.
+kind: rule
+id: gevs-7000b.rule.contamination_verification_process
+standard: gevs-7000b
+title: Contamination verification process - sensitivity, requirements, budget, control plan, analyses, monitoring and corrective action (2.8.1.1)
+citation: {standard: gevs-7000b, clause: "2.8.1.1", page: "2.8-1", pdf_page: 293}
+category: documentation
+statement: >
+  The process runs: determine contamination sensitivity; derive requirements; set a contamination
+  budget; write and implement a contamination control plan (CCP) with supporting documents
+  (cleanliness verification procedures, particle counting method, outgassing certification plans,
+  bakeout plans and procedures, transport and storage cleanliness plans, launch-site requirements,
+  test reports); write verification plans; model predicted deposition and compare with requirements;
+  monitor surfaces, air, cleanrooms and purges; compare hardware or witness-plate cleanliness with
+  the budget for each build or integration phase; and on any non-compliance the contamination
+  engineer and project set root cause and a corrective action (added cleaning, covers, purges, better
+  cleanroom class, limited activities, or re-assessed requirement). Each step is documented per
+  mission phase and approved by the project manager. Requirements are stated verifiably (outgassing
+  rates, partial pressures, surface and visual cleanliness levels, 2.8.1.4 and 2.8.1.5); ASTM E1559
+  outgassing data feed the molecular analyses and set bakeout acceptance criteria (2.8.1.7).
+applies_to:
+  test_types: [cleanliness_inspection, bakeout]
+  flags: [contamination_sensitive]
+notes: The CCP supporting-document list is in 2.8.1.6.1 (page 2.8-6, pdf 298); ASTM E1559 and bakeout criteria in 2.8.1.7 (page 2.8-7, pdf 299).
+---
+kind: rule
+id: gevs-7000b.rule.cleanliness_monitoring_during_integration_and_test
+standard: gevs-7000b
+title: Cleanliness monitored and verified for every major integration and test event; protection and frequent sampling in non-cleanroom test facilities (2.8.1.9)
+citation: {standard: gevs-7000b, clause: "2.8.1.9", page: "2.8-10", pdf_page: 302}
+category: general
+statement: >
+  Integration and test must not compromise the cleanliness of the hardware. Some test activities
+  (vibration and acoustic facilities, typically) happen outside cleanrooms and need pre-planning,
+  protection devices (covers, bags) and frequent cleanliness sampling. The most critical elements
+  (usually optical and thermal control surfaces) drive the integration plan; the spacecraft is kept
+  in cleanrooms and bagged during downtime. A cleanliness monitoring and verification programme runs
+  through I&T and is checked regularly, with each major integration event and test activity
+  monitored separately to show it was clean or to support forensics after an anomaly; the testing
+  requirements are set out in the CCP and its supporting documents. Facility class, gowning, GSE
+  cleanliness, cleaning processes, thermal vacuum plans, bagging and shipping provisions are the
+  cost drivers weighed against mission success.
+applies_to:
+  test_types: [cleanliness_inspection]
+  levels: [unit, subsystem, element]
+  flags: [contamination_sensitive, optical_surface]
+---
+kind: rule
+id: gevs-7000b.rule.bakeout_philosophy
+standard: gevs-7000b
+title: Vacuum bakeout and certification - start at the parts level, highest allowable temperature, quantitative QCM acceptance criteria from the outgassing budget (2.8.1.10)
+citation: {standard: gevs-7000b, clause: "2.8.1.10", page: "2.8-11", pdf_page: 303}
+category: general
+statement: >
+  Bakeout and certification of each component, assembly and subsystem in a controlled vacuum reduces
+  what remains to outgas on orbit and is a dominant contamination-engineering activity for
+  molecularly sensitive spacecraft and instruments. The approach: begin bakeouts at the parts level
+  where possible and bake at the highest temperature the hardware allows; set quantitative acceptance
+  criteria for every bakeout from the spacecraft's total allowable outgassing (usually via modelling);
+  do not accept hardware that misses its criteria, or re-allocate the outgassing budget; expect lower
+  allowable temperatures, and so longer and less effective bakeouts, as hardware is assembled; and
+  write a Thermal Vacuum Bakeout and Certification Plan covering schedule, instrumentation, QCM
+  acceptance criteria and responsible contacts. Thermal vacuum tests of contamination-sensitive
+  articles include an outgassing phase (gevs-7000b.rule.tv_outgassing_phase_and_contamination_monitoring).
+applies_to:
+  test_types: [bakeout]
+  levels: [part, subassembly, unit, subsystem]
+  flags: [contamination_sensitive]
+values:
+  bakeout_temperature: {text: "highest temperature the hardware allows at that level of assembly", unit: text}
+  acceptance_criteria: {text: "quantitative QCM criteria derived from the total allowable spacecraft outgassing", unit: text}

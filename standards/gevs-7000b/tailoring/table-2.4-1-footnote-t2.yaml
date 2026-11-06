@@ -1,0 +1,19 @@
+kind: tailoring_provision
+id: gevs-7000b.provision.t2_delete_test_if_assessment_justifies
+standard: gevs-7000b
+title: Code T2 - test may be deleted when an assessment justifies it (Table 2.4-1 footnote 2)
+citation: {standard: gevs-7000b, clause: "2.4", table: Table 2.4-1, page: "2.4 - 2", pdf_page: 53}
+summary: >
+  Cells marked T2 in the structural and mechanical matrix are tests that must be run unless an
+  assessment shows the test is not needed. The matrix record gevs-7000b.matrix.structural_mechanical
+  carries the cells; 2.4.2 gives the assessment basis for the vibroacoustic rows (no significant
+  vibration input to the subsystem; hardware not susceptible to the acoustic environment, or
+  higher-level testing gives sufficient exposure at acceptable risk).
+applies_to:
+  test_types: [modal_survey, acoustic, random_vibration, pressure_profile, physical_properties]
+  levels: [element, subsystem, unit]
+permits:
+  - action: delete_test
+    description: Omit a T2-coded test on the strength of a documented assessment.
+    constraints: Applies only to cells coded T2; delivery requirements may still demand the test (2.4.2).
+documentation: Environmental verification plan

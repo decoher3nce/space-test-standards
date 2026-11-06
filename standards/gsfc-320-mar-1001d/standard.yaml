@@ -1,0 +1,21 @@
+kind: standard
+id: gsfc-320-mar-1001d
+designation: 320-MAR-1001 Rev. D
+title: Standard Mission Assurance Requirements (MAR) for GSFC out-of-house missions
+revision: D
+date: "unknown (Rev D approved per CCR-D-0037; verify effective date)"
+publisher: NASA Goddard Space Flight Center, Office of Systems Safety and Mission Assurance (Code 320)
+status: active
+url: https://ossmacm.gsfc.nasa.gov/
+access: public_release
+copyright_posture: >
+  Work of the United States Government. Structured A/T/R tailoring codes and DID identifiers are
+  stored; requirement text is paraphrased.
+scope: >
+  Baseline mission assurance requirements written for a Class B out-of-house mission, with Appendix 6
+  giving per-class (A, B, C, D) tailoring codes for every paragraph and DID. Section 9 covers the
+  verification programme (plan, environmental verification plan, verification matrix, environmental
+  test matrix, reports) and points to GEVS for environmental test requirements.
+level_terms: {}
+regime_terms: {}
+source_file: 320-MAR-1001D.pdf (114 pages); pdf_page values index this file

@@ -1,0 +1,24 @@
+kind: tailoring_provision
+id: gevs-7000b.provision.tv_alternate_cycle_plan
+standard: gevs-7000b
+title: Alternate thermal vacuum cycle plan - fewer subsystem/system cycles, more at lower levels (Table 2.6-1 note 1)
+citation: {standard: gevs-7000b, clause: "2.6.3.2.2.1", table: Table 2.6-1, page: "2.6-18", pdf_page: 259}
+summary: >
+  The preferred plan gives all flight hardware its final four cycles in the system test, with
+  instrument hardware completing eight before delivery (at least four of them at instrument level).
+  A project that wants fewer subsystem and/or system cycles may use the alternate column of Table
+  2.6-1 instead, which adds workmanship cycles at the lower levels so the hardware is not
+  under-tested. 2.6.3.1 adds the rationale: individual protoflight temperatures are easier to reach
+  at unit level, so all workmanship cycles may be completed there and the higher-level tests focus on
+  performance.
+applies_to:
+  test_types: [thermal_vacuum]
+  levels: [unit, subsystem, element]
+permits:
+  - action: alternate_cycle_plan
+    description: >
+      Use the alternate cycle quantities (unit 6 for instrument hardware or 10 for spacecraft hardware,
+      subsystem 4, system 2) in place of the preferred plan (unit 4 or 8, subsystem 4, system 4); see
+      gevs-7000b.params.thermal_vacuum_unit and companions.
+    constraints: A minimum of 12 cycles before flight is kept for every flight item; units not included in system-level thermal vacuum complete the total at lower levels before final integration (2.6.3.1).
+documentation: Environmental verification plan

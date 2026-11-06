@@ -1,0 +1,44 @@
+# Rules the NESC Academy deck attributes to the 2026 revision of SSC-S-016 (TR-2025-00777).
+kind: rule
+id: ssc-s-016-2026.rule.burn_in_hours
+standard: ssc-s-016-2026
+title: Burn-in reduced to 150 hr (175 hr for internally redundant units) for acceptance and protoqualification electronic units
+citation: {standard: ssc-s-016-2026, clause: "6.3.8", table: "Other SSC-S-016 Thermal Test Requirements (deck slide 37)", page: "37", pdf_page: 38, note: "also deck slides 31, 45 and 46 (pdf 32, 46, 47); the burn-in clause number is not given in the deck"}
+category: operating_hours
+statement: >
+  The 2026 revision lowers the unit burn-in requirement from 200 hr of total thermal test
+  operation to 175 hr for internally redundant units and 150 hr for units without internal
+  redundancy, for acceptance and protoqualification electronic units. The deck presents the
+  reduction as supported by the burn-in duration data that earlier justified 300 hr (MIL-STD-1540A/B)
+  and 200 hr. Thermal stress is still required to accrue the hours; ambient operation is not
+  expected to count.
+applies_to:
+  test_types: [burn_in, thermal_cycle, thermal_vacuum]
+  levels: [unit]
+  hardware_types: [electronic]
+  regimes: [acceptance, protoflight]
+values:
+  total_hours_internally_redundant: {value: 175, unit: hr}
+  total_hours_non_internally_redundant: {value: 150, unit: hr}
+  previous_edition_total_hours: {value: 200, unit: hr, note: "2014 SMC-S-016 / SSC-S-016 value"}
+confidence: deck_only
+notes: >
+  Deck-sourced; verify against TR-2025-00777 / SSC-S-016 (2026), including the definition of
+  internal redundancy and whether the per-redundant-path minimum of the 2014 edition remains.
+---
+kind: rule
+id: ssc-s-016-2026.rule.revision_posture
+standard: ssc-s-016-2026
+title: 2026 revision published as TR-2025-00777 - generally less stressing, same test-effectiveness goals
+citation: {standard: ssc-s-016-2026, clause: "1", table: "Timeline of MIL-STD-1540 and SSC-S-016 Publish Dates (deck slide 4)", page: "4", pdf_page: 5, note: "clause given as the standard's scope section pending the TR; also deck slide 31 (pdf 32)"}
+category: general
+statement: >
+  SSC-S-016 replaced SMC-S-016 without content change when SMC became SSC. The next revision has
+  been published as Aerospace Technical Report TR-2025-00777 and is expected to be issued as
+  SSC-S-016 soon; compared with SMC-S-016 its requirements are described as generally less
+  stressing while maintaining the baseline test-effectiveness goals. The reported unit thermal
+  deltas are the burn-in reduction (150-175 hr) with cycle counts unchanged (14 / 20 / 27 total
+  for acceptance / protoqualification / qualification); the deck also mentions a credit for
+  slice/board-level thermal cycling without saying which edition introduces it.
+confidence: deck_only
+notes: Deck-sourced; obtain TR-2025-00777 to confirm the full change list before relying on ssc-s-016-2026 records.

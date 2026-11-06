@@ -1,0 +1,39 @@
+# Retesting rules of ECSS-E-ST-10-03C Rev.1 clause 4.6 (plus the NRB retest decision in 4.3.4c).
+kind: rule
+id: ecss-e-st-10-03c-rev1.rule.retest_after_anomaly_or_design_change
+standard: ecss-e-st-10-03c-rev1
+title: Retest after a nonconformance or after a design change following qualification
+citation: {standard: ecss-e-st-10-03c-rev1, clause: "4.6.2", page: "39", pdf_page: 39, note: "also 4.3.4c (pdf 30) and 4.6.1 (pdf 38)"}
+category: retest
+statement: >
+  Retesting is defined case by case because its scope varies (4.6.1); ECSS-E-ST-10-02 lists the
+  situations that call for re-verification. After a failure or anomaly, all nonconformances are
+  handled per ECSS-Q-ST-10-09 and the nonconformance review board decides whether and how far to
+  retest to prove the disposition (4.3.4c). When a design modification is introduced after
+  qualification is complete, the configuration control board (ECSS-M-ST-40) decides which part of
+  the qualification test sequence is repeated (4.6.2a).
+---
+kind: rule
+id: ecss-e-st-10-03c-rev1.rule.retest_after_storage_reflight_or_qm_flight_use
+standard: ecss-e-st-10-03c-rev1
+title: Retest after storage, before re-flight, and when qualification hardware is flown
+citation: {standard: ecss-e-st-10-03c-rev1, clause: "4.6.3", page: "39", pdf_page: 39, note: "4.6.3 to 4.6.5 on pdf pages 39-41"}
+category: retest
+statement: >
+  Storage after protoflight or acceptance testing: the supplier defines storage and post-storage
+  test requirements (4.6.3a); periodic tests are scheduled for equipment degradation and personnel
+  know-how (4.6.3b) and cover overall function, rotating parts, power consumption, TT&C through
+  test caps, propulsion pressure via telemetry, visual inspection of separately stored equipment
+  and contamination probes (4.6.3d); additional tests and the storage procedure need customer
+  approval (4.6.3e-f); solar arrays should be stored in gaseous nitrogen (4.6.3g). The electrical
+  functional and performance test of 5.5.1.1l is repeated before flight after storage longer than
+  2 years, and after 6 months to 2 years it is repeated but may omit the flasher (4.6.3h-i).
+  Re-flown elements or equipment are retested per the new mission's verification programme and
+  acceptance criteria, preferring high-level functional tests (4.6.4). Qualification hardware is
+  flown only with customer agreement, any added testing must respect residual life, and after
+  refurbishment or disassembly it undergoes an acceptance retest agreed with the customer (4.6.5).
+values:
+  storage_requiring_full_functional_repeat: {value: 2, unit: years, note: "longer than 2 years: repeat 5.5.1.1l electrical functional and performance test before flight"}
+  storage_allowing_repeat_without_flasher: {min_value: 6, max_value: 24, unit: months, note: "6 months to 2 years: repeat the test, flasher may be omitted"}
+applies_to:
+  test_types: [functional_performance]

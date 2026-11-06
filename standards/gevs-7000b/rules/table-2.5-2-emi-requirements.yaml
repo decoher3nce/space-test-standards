@@ -1,0 +1,158 @@
+# GEVS Table 2.5-2 "EMI Requirements Summary" lists each requirement against its MIL-STD-461G
+# designator and GEVS tailoring status; it is not item-versus-level shaped, so it is encoded as one
+# rule per requirement family (CE, CS, RE, RS, magnetics) with the limits from 2.5.2.x as values.
+kind: rule
+id: gevs-7000b.rule.emi_conducted_emissions
+standard: gevs-7000b
+title: Conducted emissions - differential-mode power leads, common-mode cables, inrush transients, antenna terminal (Table 2.5-2, 2.5.2.1)
+citation: {standard: gevs-7000b, clause: "2.5.2.1", table: Table 2.5-2, page: "2.5-18", pdf_page: 109}
+category: general
+statement: >
+  CE requirements apply to component and subsystem hardware on a shared primary bus. Power-lead
+  differential-mode emissions (CE101 tailored, 30 Hz to 150 kHz; CE03-style current probe 150 kHz to
+  50 MHz) are measured with send and return through one probe, so the measured limit sits 6 dB above
+  the true DM limit of Figure 2.5-6; the default curve is for loads of 1 A dc or less and the
+  low-frequency plateau rises by 20 log(load current) for larger loads. Common-mode conducted
+  emissions on power and signal cables (no MIL-STD-461G equivalent) have a default limit of 50 dBuA
+  from 10 kHz to 200 MHz, optionally extended down to 30 Hz for magnetically sensitive platforms,
+  measured with a current probe to 30 MHz and an absorbing clamp 30 to 200 MHz. Turn-on and
+  operational inrush transients (no equivalent) are bounded relative to peak operational current.
+  Antenna-terminal emissions follow CE106 limits and method in the bands of other receivers on the
+  platform, usually above 200 MHz.
+applies_to:
+  test_types: [emc]
+  levels: [unit, subsystem]
+  flags: [has_eee_parts]
+values:
+  ce_dm_status: {text: "CE101 tailored (DM, 30 Hz to 150 kHz); CE03 DM method 150 kHz to 50 MHz; limit Figure 2.5-6", unit: text}
+  ce_dm_measurement_offset: {value: 6, unit: dB, relative_to: true_dm_limit, note: "DM probe method measures twice the true DM current"}
+  ce_dm_default_load_current: {text: "1 A dc or less; plateau shifts up by 20 log(I) for higher currents", unit: text}
+  cmce_default_limit: {text: "50 dBuA, 10 kHz to 200 MHz (30 Hz option for magnetics)", unit: text}
+  inrush_first_10_us: {value: 1000, unit: percent, relative_to: peak_operational_current}
+  inrush_10_us_to_20_ms: {value: 300, unit: percent, relative_to: peak_operational_current}
+  inrush_recovery_time: {text: "return to peak operational current within 20 ms", unit: text}
+  ce106_status: {text: "tailored: MIL-STD-461G limits in bands of platform receivers (typically above 200 MHz)", unit: text}
+notes: >
+  Clause pages: 2.5.2.1.1 on 2.5-19 (pdf 110), 2.5.2.1.2 on 2.5-22 (pdf 113), 2.5.2.1.3 on 2.5-26
+  (pdf 117), 2.5.2.1.4 on 2.5-28 (pdf 119). Limit curves (Figures 2.5-6, 2.5-7, 2.5-11) are plots not
+  reproduced in the text; only the stated anchor values are recorded. Inrush measurement is
+  recommended again at each unit's integration into the payload or spacecraft.
+---
+kind: rule
+id: gevs-7000b.rule.emi_conducted_susceptibility
+standard: gevs-7000b
+title: Conducted susceptibility - power-lead ripple, antenna port, CS06 transients, bulk cable injection, impulse, case-by-case tests (Table 2.5-2, 2.5.2.2)
+citation: {standard: gevs-7000b, clause: "2.5.2.2", table: Table 2.5-2, page: "2.5-18", pdf_page: 109}
+category: general
+statement: >
+  Primary power leads (CS101 tailored, 30 Hz to 150 kHz) are injected to the Figure 2.5-14 voltage
+  limit or the Figure 2.5-15 power limit into 0.5 ohm; with direct current monitoring the requirement
+  is also met if 1 Vrms cannot be reached but 4 Arms is injected without susceptibility (the drive
+  amplifier is powered before the EUT). Antenna terminals of receivers apply CS103 and CS104; CS105
+  is not applied. Power-lead transients use the negative MIL-STD-461C CS06 waveform at least once per
+  second for one minute, and the positive pulse too where inductive loads can produce back-emf; the
+  test is for buses where loads switch at full potential. Bulk cable injection (CS114 tailored, 10 kHz
+  to 200 MHz) on power and signal cables is pre-calibrated to the Figure 2.5-21 current limit and may
+  stop at 76 dBuA induced (6 dB over the plateau); the default matches the 2 V/m on-orbit RS limit and
+  can replace radiated susceptibility below 200 MHz. Power leads 150 kHz to 50 MHz are injected to the
+  Figure 2.5-22 voltage limit, pre-calibrated to 1 Vrms into 100 ohm, or alternatively to the Figure
+  2.5-23 current limit after common-mode injection. CS115 impulse (MIL-STD-461G waveform, common mode
+  only) applies to cables that may see impulses. CS116, CS117 and CS118 are applied case by case;
+  CS109 is not applied.
+applies_to:
+  test_types: [emc]
+  levels: [unit, subsystem]
+  flags: [has_eee_parts]
+values:
+  cs101_status: {text: "tailored; alternate direct-current-monitoring method available", unit: text}
+  cs101_power_limit_load: {text: "Figure 2.5-15 power into 0.5 ohm", unit: text}
+  cs101_alternate_current_limit: {text: "4 A rms injected when 1 V rms cannot be established", unit: text}
+  cs103_cs104_status: {text: "tailored, MIL-STD-461G limits and methods in platform and launch vehicle bands; CS105 not applied", unit: text}
+  cs06_pulse_repetition: {text: "at least one pulse per second", unit: text}
+  cs06_duration: {value: 1, unit: min, note: "negative pulse always; positive pulse also for platforms with back-emf sources"}
+  cs114_cm_frequency_range: {text: "10 kHz to 200 MHz", unit: text}
+  cs114_cm_pass_current: {text: "76 dBuA induced in the cable under test (6 dB above the limit plateau)", unit: text}
+  cs114_cm_plateau_equivalent_field: {text: "2 V/m default on-orbit radiated susceptibility", unit: text}
+  cs_power_leads_150khz_50mhz_calibration: {text: "1 V rms into the 100 ohm CS114 calibration fixture; voltage probe and injection probe each within 30 cm of the EUT", unit: text}
+  cs115_status: {text: "no change: MIL-STD-461G impulse, common mode only (5 A, 30 Hz repetition per Figure 2.5-26)", unit: text}
+  cs116_cs117_cs118_status: {text: "applied case by case", unit: text}
+  cs109_status: {text: "not applied", unit: text}
+notes: >
+  Clause pages: 2.5.2.2.1 on 2.5-30 (pdf 121), 2.5.2.2.2 and 2.5.2.2.3 on 2.5-33 (pdf 124),
+  2.5.2.2.4.1 on 2.5-36 (pdf 127), 2.5.2.2.4.2 on 2.5-38 (pdf 129), 2.5.2.2.5 on 2.5-42 (pdf 133),
+  2.5.2.2.6 to 2.5.2.2.8 on 2.5-43 (pdf 134). Limit curves are plots; only stated anchors are recorded.
+---
+kind: rule
+id: gevs-7000b.rule.emi_radiated_emissions
+standard: gevs-7000b
+title: Radiated emissions - magnetic field per magnetics plan, electric field 200 MHz to 18 GHz with receiver notches (Table 2.5-2, 2.5.2.3)
+citation: {standard: gevs-7000b, clause: "2.5.2.3", table: Table 2.5-2, page: "2.5-18", pdf_page: 109}
+category: general
+statement: >
+  Magnetic-field emissions (RE101 tailored, 7 cm; RE04 at 1 m as an alternate from MIL-STD-462
+  Notice 2) apply on platforms with magnetically sensitive devices, with limits set by a project
+  Magnetics Control Plan. Electric-field emissions (RE102 tailored) apply to enclosures, cables and
+  permanently mounted antennas (not at transmitter fundamentals) from 200 MHz to 18 GHz, with the
+  default Figure 2.5-27 limit and notches tailored to protect the platform's receivers; below 200
+  MHz crosstalk is controlled by the common-mode conducted emissions and CS114 requirements instead,
+  unless the platform has receivers below 200 MHz. RE103 is not applied.
+applies_to:
+  test_types: [emc]
+  levels: [unit, subsystem]
+  flags: [has_eee_parts]
+values:
+  re101_status: {text: "tailored; measured at 7 cm, alternate RE04 method at 1 m; limit from Magnetics Control Plan", unit: text}
+  re102_frequency_range: {text: "200 MHz to 18 GHz (extend lower only if the platform has receivers below 200 MHz)", unit: text}
+  re102_status: {text: "tailored; default Figure 2.5-27 with notional notches, tailored to platform receivers", unit: text}
+  re103_status: {text: "not applied", unit: text}
+notes: Clause pages 2.5-44 and 2.5-45 (pdf 135, 136). The RE102 default curve is a plot and is not reproduced.
+---
+kind: rule
+id: gevs-7000b.rule.emi_radiated_susceptibility
+standard: gevs-7000b
+title: Radiated susceptibility - 20 V/m for equipment operating at launch, 2 V/m for equipment off at launch, 2 MHz to 18 GHz (Table 2.5-2, 2.5.2.4)
+citation: {standard: gevs-7000b, clause: "2.5.2.4.2", table: Table 2.5-2, page: "2.5-47", pdf_page: 138}
+category: general
+statement: >
+  Electric-field susceptibility (RS103 tailored) covers enclosures and interconnecting cables against
+  intentional transmitters on orbit, on the launch vehicle, at the launch site and in test. Equipment
+  that operates during launch is tested to at least 20 V/m from 2 MHz to 18 GHz; equipment powered off
+  at launch to at least 2 V/m over the same range, the minimum on-orbit environment from the
+  spacecraft's own transmitters, and need only survive the launch levels without damage, which is
+  verified by analysis since a test cannot prove absence of stress. Equipment off at launch but
+  powered during launch-site testing is also tested at launch-site levels. On-orbit fields can exceed
+  2 V/m in specific bands (JSC-CR-06-070), so levels derive from the mission environment; launch
+  environments per ELVL-2010-0042300 and the launch vehicle ICD. Magnetic-field susceptibility (RS101
+  tailored) uses MIL-STD-461G method for ac fields with limits from the Magnetics Control Plan; dc
+  field methods and limits also come from that plan. RS105 is not applied.
+applies_to:
+  test_types: [emc]
+  levels: [unit, subsystem]
+  flags: [has_eee_parts]
+values:
+  rs103_operating_at_launch: {text: "20 V/m, 2 MHz to 18 GHz, minimum", unit: text}
+  rs103_off_at_launch: {text: "2 V/m, 2 MHz to 18 GHz, minimum (on-orbit)", unit: text}
+  rs103_survive_without_damage_verification: {text: "analysis (2.5.3.3.8), not test", unit: text}
+  rs101_status: {text: "tailored; limits and dc methods from the Magnetics Control Plan", unit: text}
+  rs105_status: {text: "not applied", unit: text}
+notes: RS101 is on 2.5-46 (pdf 137); RS103 on 2.5-47 and 2.5-48 (pdf 138, 139).
+---
+kind: rule
+id: gevs-7000b.rule.magnetics_control_plan
+standard: gevs-7000b
+title: Magnetic emissions and susceptibility are tailored through a project Magnetics Control Plan (2.5.2.3.1, 2.5.2.4.1)
+citation: {standard: gevs-7000b, clause: "2.5.2.3.1", page: "2.5-44", pdf_page: 135}
+category: general
+statement: >
+  Where the platform carries devices sensitive to magnetic fields, the project defines its magnetic
+  environment and tailored requirements in a Magnetics Control Plan (part of the EMCCP or separate),
+  maintained through the programme. RE101 (7 cm) and optionally RE04 (1 m, with a sensor matching
+  the most sensitive victim) measure emissions; RS101 covers ac susceptibility and the plan sets dc
+  methods and limits. The cited design guide is Acuna's practical guide to magnetically clean
+  spacecraft. Table 2.2-2 defers all magnetics levels to the mission, and 2.2.1 places dc magnetics
+  testing after vibration (gevs-7000b.rule.magnetics_after_vibration).
+applies_to:
+  test_types: [magnetics, emc]
+  flags: [magnetic_sensitive]
+values:
+  re101_measurement_distance: {text: "7 cm (MIL-STD-461G); 1 m alternate (RE04)", unit: text}

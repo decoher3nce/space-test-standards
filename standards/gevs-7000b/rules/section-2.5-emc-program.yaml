@@ -1,0 +1,49 @@
+# GEVS 2.5.1 and 2.5.2.5: where EMI and EMC tests sit in the programme and the system-level checks.
+kind: rule
+id: gevs-7000b.rule.emi_at_component_level_emc_at_system_level
+standard: gevs-7000b
+title: EMI tests at component and subsystem level, EMC tests at payload, spacecraft or observatory level (2.5.1.2, 2.5.1.3)
+citation: {standard: gevs-7000b, clause: "2.5.1.3", page: "2.5-6", pdf_page: 97}
+category: general
+statement: >
+  All flight hardware is recommended for EMI testing at component or subsystem level, to fixed levels
+  enveloping the predicted mission environments with allowance for degradation, tailored by the
+  project EMC engineers for platform, launch vehicle and launch site environments and sensitive
+  detectors; these tests find design flaws, workmanship defects and unit-to-unit variation. EMC tests
+  at the payload, spacecraft or observatory level assess compatibility and are defined case by case
+  (MIL-STD-464C guidance). Diagnostic testing at board or breadboard level is recommended as early as
+  feasible. The requirement set is selected to fit the hardware (a transmitter and a receiver need
+  different tests). One-of-a-kind GSFC components are each tested fully; multiple copies may use the
+  hybrid approach of gevs-7000b.provision.emi_hybrid_approach_multiple_units.
+applies_to:
+  test_types: [emc]
+  levels: [subassembly, unit, subsystem, element]
+---
+kind: rule
+id: gevs-7000b.rule.emc_system_level_tests
+standard: gevs-7000b
+title: System-level EMC - power quality (1 V p-p ripple), turn-on/off transients, aggregate RE and RS in receiver and transmitter bands, 6 dB RF self-compatibility margin (2.5.2.5)
+citation: {standard: gevs-7000b, clause: "2.5.2.5", page: "2.5-49", pdf_page: 140}
+category: general
+statement: >
+  At instrument/payload and spacecraft/observatory level the recommended minimum is: power quality
+  (aggregate bus ripple measured in the time domain through a LISN at payload level or at the power
+  distribution point at spacecraft level, recommended not to exceed 1 V peak-to-peak with 20 MHz
+  bandwidth, plus turn-on and turn-off transients compared with the negative and positive CS06 pulses
+  the units were tested to); aggregate radiated emissions measured only in bands of intentional
+  receivers on the platform and at the launch site, at representative antenna locations; aggregate
+  radiated susceptibility only in bands of intentional transmitters; and system self-compatibility.
+  RF self-compatibility verifies the MIL-STD-464C 6 dB margin for the mission-critical uplink,
+  either by holding lock on an uplink 6 dB below the link-budget minimum through a mission sequence
+  or by measuring noise in the receiver band at the antenna cable; the transmitter in its most
+  emissive mode must not disturb non-RF equipment. Compatibility between non-RF components is checked
+  during the CPT with a planned culprit-victim list. Component CE/CS tests are not repeated at higher
+  levels, and the RE102/RS103 names are not used for system-level tests.
+applies_to:
+  test_types: [emc, functional_performance]
+  levels: [subsystem, element]
+values:
+  aggregate_ripple_limit: {text: "1 V peak-to-peak, time domain, 20 MHz bandwidth (recommended)", unit: text}
+  rf_self_compatibility_margin: {value: 6, unit: dB, relative_to: link_budget_minimum}
+  current_probe_flat_band: {text: "20 Hz to 1 MHz for time-domain transient probes", unit: text}
+notes: Subclauses run from 2.5-49 to 2.5-54 (pdf 140 to 145).

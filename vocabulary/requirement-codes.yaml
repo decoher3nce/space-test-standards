@@ -1,0 +1,49 @@
+kind: vocabulary
+vocabulary: requirement_code
+description: >
+  Unified reading of the letter codes printed in applicability matrices. The raw code is always kept
+  in the cell; this vocabulary says what each raw code means in each standard.
+entries:
+  - id: required
+    name: Required
+    aliases:
+      gevs-7000b: [T, A, "A,T", A/T]
+      ecss-e-st-10-03c-rev1: R
+      ssc-s-016-2014: R
+    description: The test (or analysis) is part of the baseline for this item.
+  - id: required_unless_justified
+    name: Required unless an assessment justifies deletion
+    aliases:
+      gevs-7000b: T2
+    description: GEVS Table 2.4-1 footnote 2; deletion is permitted tailoring when documented.
+  - id: evaluate
+    name: Evaluation required
+    aliases:
+      ssc-s-016-2014: ER
+    description: SSC-S-016 ER; the program must evaluate and document whether the test is needed.
+  - id: customer_decision
+    name: Performed if agreed with the customer
+    aliases:
+      ecss-e-st-10-03c-rev1: X
+    description: ECSS X; the test is performed only when the customer and supplier agree it is relevant.
+  - id: optional
+    name: Optional
+    description: Explicitly optional in the standard.
+  - id: conditional
+    name: Conditional on a footnote
+    description: Applicability depends on a stated condition (for example composite or bonded structure only).
+  - id: as_specified
+    name: As specified for the mission
+    aliases:
+      gevs-7000b: As Specified for Mission
+    description: The standard defers the requirement to the mission specification.
+  - id: not_required
+    name: Not required
+    aliases:
+      gevs-7000b: "-"
+      ecss-e-st-10-03c-rev1: "-"
+      ssc-s-016-2014: "--"
+    description: The standard does not require the test for this item.
+  - id: not_applicable
+    name: Not applicable
+    description: The test has no meaning for the item (for example thermal vacuum on a plain bracket).

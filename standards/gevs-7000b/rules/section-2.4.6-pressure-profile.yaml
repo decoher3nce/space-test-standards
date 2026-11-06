@@ -1,0 +1,24 @@
+kind: rule
+id: gevs-7000b.rule.pressure_profile_qualification
+standard: gevs-7000b
+title: Pressure profile - test unless analysis shows margin at twice the maximum pressure-differential loads; qualification rate 1.12 x predicted; applied once (2.4.6)
+citation: {standard: gevs-7000b, clause: "2.4.6", page: "2.4- 37", pdf_page: 88}
+category: general
+statement: >
+  The need for a pressure profile test is assessed for every subsystem. An analysis estimates the
+  pressure differential induced by the nominal launch trajectory across susceptible elements
+  (thermal blankets, contamination enclosures, component housings); a test is required unless the
+  analysis shows positive margin at loads equal to twice those from the maximum expected
+  differential. Because pressure loads scale with the square of the rate of change, the qualification
+  profile multiplies the predicted rate by 1.12 (the square root of the 1.25 load factor) and is
+  applied once; the facility must follow the profile within plus or minus 5 percent at all times.
+  Subsystem level is usual but payload level is allowed. Not required for acceptance of previously
+  qualified hardware (2.4.6.2).
+applies_to:
+  test_types: [pressure_profile]
+  levels: [subsystem, element]
+values:
+  analysis_margin_load_factor: {value: 2.0, unit: factor, relative_to: limit_load, note: "loads from the maximum expected pressure differential; positive margin here waives the test"}
+  qualification_rate_factor: {value: 1.12, unit: factor, relative_to: limit_level, note: "applied to the predicted pressure rate of change; square root of 1.25"}
+  applications: {value: 1, unit: count}
+  facility_profile_tolerance: {value: 5, unit: percent, relative_to: specified_profile, note: "plus or minus, at all times"}

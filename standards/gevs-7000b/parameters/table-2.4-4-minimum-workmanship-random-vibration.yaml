@@ -1,0 +1,38 @@
+# GEVS Table 2.4-4 "Component Minimum Workmanship Random Vibration Test Levels, 45.4 kg or less".
+kind: test_parameters
+id: gevs-7000b.params.random_vibration_minimum_workmanship_unit
+standard: gevs-7000b
+test_type: random_vibration
+variant: minimum_workmanship
+title: Component minimum workmanship random vibration levels for components of 45.4 kg or less (Table 2.4-4)
+citation: {standard: gevs-7000b, clause: "2.4.2.5", table: Table 2.4-4, page: "2.4 - 20", pdf_page: 71}
+level_of_assembly: [unit]
+by_regime:
+  all:
+    level: {value: 6.8, unit: grms, relative_to: none, note: "overall; floor for every regime including acceptance"}
+    duration: {value: 1, unit: min, per: axis}
+    axes: {value: 3, unit: axes}
+    extra:
+      asd_20_hz: {value: 0.01, unit: g2_per_hz}
+      slope_20_to_80_hz: {text: "+3 dB/oct", unit: text}
+      asd_80_to_500_hz: {value: 0.04, unit: g2_per_hz}
+      slope_500_to_2000_hz: {text: "-3 dB/oct", unit: text}
+      asd_2000_hz: {value: 0.01, unit: g2_per_hz}
+      overall_above_182_kg: {value: 4.4, unit: grms, relative_to: none, note: "flat 0.01 g2/Hz from 20 to 2000 Hz"}
+      asd_floor: {value: 0.01, unit: g2_per_hz, note: "the spectrum never drops below this value"}
+    footnotes: [mass, breakpoints, heavy]
+footnotes:
+  mass: >
+    Between 45.4 and 182 kg (100 and 400 lb) the plateau may be lowered with mass by at most 6 dB:
+    reduction in dB = 10 log(W / 45.4) with W in kg (10 log(W / 100) in lb), plateau = 0.04 x
+    (45.4 / W) g2/Hz.
+  breakpoints: >
+    The slopes stay at +3 and -3 dB/oct, so the plateau break frequencies move with mass: lower break
+    FL = 80 x (45.4 / W) Hz and upper break FH = 500 x (W / 45.4) Hz (W in kg; use 100 in place of
+    45.4 for lb).
+  heavy: Above 182 kg (400 lb) the workmanship spectrum is flat at 0.01 g2/Hz from 20 to 2000 Hz, 4.4 grms overall.
+notes: >
+  Intended mainly for electrical, electronic and electromechanical hardware (2.4.2.5). It is the
+  minimum for every component test, the level for acceptance random vibration (2.4.2.6), the minimum
+  retest after rework (2.4.2.8), and the starting point for tailoring below-component (board-level)
+  screening. Duration and axes per 2.4.2.5(a) and Table 2.2-2.

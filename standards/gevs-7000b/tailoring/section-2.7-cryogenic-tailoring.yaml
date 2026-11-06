@@ -1,0 +1,37 @@
+# Relaxations Section 2.7 itself permits, one record per clause or table note.
+kind: tailoring_provision
+id: gevs-7000b.provision.cryo_warm_components_ambient_cycling
+standard: gevs-7000b
+title: Ambient temperature cycling may replace thermal vacuum cycling for warm components of cryogenic systems (Table 2.7-1 note 2)
+citation: {standard: gevs-7000b, clause: "2.7.2", table: Table 2.7-1, page: "2.7-2", pdf_page: 277}
+summary: >
+  Components of a cryogenic system that operate at or near room temperature may be temperature
+  cycled at ambient pressure instead of under vacuum if analysis shows this acceptable; the levels
+  and gradients predicted in air must be as severe as those under vacuum.
+applies_to:
+  test_types: [thermal_vacuum]
+  levels: [unit]
+  flags: [cryogenic]
+permits:
+  - action: substitute_test
+    description: Temperature cycle warm (near room temperature) cryogenic-system components at ambient pressure.
+    constraints: Supported by thermal analysis showing air-test temperatures and gradients at least as severe as in vacuum.
+---
+kind: tailoring_provision
+id: gevs-7000b.provision.cryo_dwell_reduction_deviation
+standard: gevs-7000b
+title: Cryogenic time-at-temperature may be reduced by an ETD-approved deviation before PDR (2.7.3.4.c)
+citation: {standard: gevs-7000b, clause: "2.7.3.4", page: "2.7-7", pdf_page: 282}
+summary: >
+  Payloads, subsystems/instruments and units are each exposed for at least 150 hours at operating
+  temperature in cryo-thermal vacuum testing. A project wishing to shorten these durations submits a
+  deviation and must have it approved by ETD prior to PDR.
+applies_to:
+  test_types: [thermal_vacuum]
+  flags: [cryogenic]
+permits:
+  - action: reduce_duration
+    description: Shorten the 150-hour minimum at operating temperature.
+    constraints: Deviation approved by ETD before PDR; soak must still allow all required performance tests in every operating mode including safehold/survival.
+approval: ETD, before PDR
+documentation: Deviation request

@@ -1,0 +1,23 @@
+kind: tailoring_provision
+id: gevs-7000b.provision.emi_hybrid_approach_multiple_units
+standard: gevs-7000b
+title: Reduced EMI test set for build-to-print copies after full test of a representative unit (2.5.1.2)
+citation: {standard: gevs-7000b, clause: "2.5.1.2", page: "2.5-5", pdf_page: 96}
+summary: >
+  Where a programme uses several copies of a component, or build-to-print copies from a previous
+  mission, a hybrid approach is recommended: the full EMI test programme on one representative unit,
+  and a minimum subset on the remaining units. The subset can be run in the development laboratory
+  rather than an EMI chamber.
+applies_to:
+  test_types: [emc]
+  levels: [unit]
+permits:
+  - action: qualify_by_similarity
+    description: Treat the remaining copies as covered by the representative unit's full EMI test.
+    constraints: >
+      Each remaining unit still receives at least: conducted emissions, power leads, differential mode
+      (2.5.2.1.1); conducted emissions, common mode, power and signal lines (2.5.2.1.2); conducted
+      susceptibility, primary power leads 30 Hz to 150 kHz (2.5.2.2.1) and 150 kHz to 50 MHz
+      (2.5.2.2.4.2); conducted susceptibility, power and signal cables, common mode 10 kHz to 200 MHz
+      (2.5.2.2.4.1). For the common-mode tests one cable of each representative type suffices.
+documentation: EMC control plan

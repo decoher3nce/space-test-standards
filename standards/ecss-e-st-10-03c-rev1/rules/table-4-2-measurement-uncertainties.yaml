@@ -1,0 +1,33 @@
+kind: rule
+id: ecss-e-st-10-03c-rev1.rule.measurement_uncertainties
+standard: ecss-e-st-10-03c-rev1
+title: Typical measurement uncertainties from test centres (Table 4-2)
+citation: {standard: ecss-e-st-10-03c-rev1, clause: "4.4.3", table: Table 4-2, page: "35", pdf_page: 35}
+category: tolerance
+statement: >
+  Typical uncertainty intervals (95 % confidence) achieved by test centres, offered as a guide for
+  choosing facilities, instrumentation and GSE. The allowable uncertainties for a project are agreed
+  with the customer and specified in the test specification (4.4.3a); they are demonstrated through
+  approved calibration traceable to international standards (4.4.3b), instruments are within their
+  calibration period (4.4.3c) and any instrument anomaly found at the next calibration is reported
+  (4.4.3d). Rev.1 changed this table from requirements to typical values.
+values:
+  mass: {min_value: -0.05, max_value: 0.05, unit: percent, note: "or 1 g, whichever is larger; equipment and element"}
+  cog_equipment: {value: 1, unit: mm, note: within a sphere of 1 mm radius}
+  cog_element_launch_axis: {min_value: -2.5, max_value: 2.5, unit: mm}
+  cog_element_other_axes: {min_value: -1, max_value: 1, unit: mm, note: each of the other two axes}
+  moi: {min_value: -3, max_value: 3, unit: percent, note: each axis; equipment and element}
+  leak_rate: {text: One order of magnitude below the system specification, unit: text, note: "in Pa m3 s-1 at standard conditions, printed as 1013,25 Pa and 288,15 K"}
+  audible_noise_32p5_to_160_hz: {min_value: -3, max_value: 3, unit: dB, note: crewed elements only}
+  audible_noise_160_hz_to_16_khz: {min_value: -2, max_value: 2, unit: dB, note: crewed elements only}
+  temperature_above_80k: {min_value: -2, max_value: 2, unit: K}
+  temperature_below_80k: {text: To be defined case by case, unit: text}
+  chamber_pressure_above_1p3_hpa: {min_value: -15, max_value: 15, unit: percent}
+  chamber_pressure_1p3e-3_to_1p3_hpa: {min_value: -30, max_value: 30, unit: percent}
+  chamber_pressure_below_1p3e-3_hpa: {min_value: -80, max_value: 80, unit: percent}
+  steady_acceleration_and_static_load: {min_value: -10, max_value: 10, unit: percent}
+  frequency_mechanical_tests: {min_value: -2, max_value: 2, unit: percent, note: "or 1 Hz, whichever is greater"}
+  acoustic_noise: {min_value: -0.1, max_value: 0.1, unit: dB}
+  strain: {min_value: -10, max_value: 10, unit: percent}
+  emc: {text: See ECSS-E-ST-20-07 clause 5.2.1, unit: text}
+  esd: {text: "See ECSS-E-ST-20-06; ECSS-E-ST-20-07 clause 5.2.1 for equipment ESD tests", unit: text}

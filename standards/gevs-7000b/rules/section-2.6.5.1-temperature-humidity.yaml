@@ -1,0 +1,71 @@
+# GEVS 2.6.5.1 "Temperature-Humidity Verification": the three applicability cases in the clause's
+# table, one record each.
+kind: rule
+id: gevs-7000b.rule.temperature_humidity_crewed_spaces
+standard: gevs-7000b
+title: Temperature-humidity for hardware in crewed spaces - 10 degC and 10 percent RH beyond mission limits, not above 95 percent RH unless condensation can occur (2.6.5.1)
+citation: {standard: gevs-7000b, clause: "2.6.5.1", page: "2.6-31", pdf_page: 272}
+category: margin
+statement: >
+  Payloads in crewed spaces, and support equipment placed there for payloads in unpressurised areas,
+  are tested when analysis shows condensation can occur, at the severest credible conditions: at least
+  10 degC and 10 percent RH beyond the mission limits, capped at 95 percent RH unless condensation
+  can occur in the mission, in which case function after (or during) such exposure is shown. Thermal
+  cycling, duration and performance test requirements apply except those tied to vacuum.
+applies_to:
+  test_types: [humidity]
+  flags: [crewed_volume]
+values:
+  temperature_margin: {value: 10, unit: degC, relative_to: max_predicted}
+  humidity_margin: {value: 10, unit: percent, relative_to: max_predicted, note: "relative humidity"}
+  humidity_cap: {value: 95, unit: percent, note: "RH; exceeded only if condensation can occur in the mission"}
+---
+kind: rule
+id: gevs-7000b.rule.temperature_humidity_descent_and_landing
+standard: gevs-7000b
+title: Temperature-humidity for hardware that must perform after re-entry, descent and landing - profile of Figure 2.6-3 (2.6.5.1)
+citation: {standard: gevs-7000b, clause: "2.6.5.1", figure: Figure 2.6-3, page: "2.6-31", pdf_page: 272}
+category: general
+statement: >
+  Hardware that experiences a specified temperature-humidity environment during re-entry and must
+  keep a specified performance (for example throughput or reflectivity) is tested in a
+  temperature-humidity chamber to the profile of Figure 2.6-3, in its descent-and-landing
+  configuration, with a functional performance test before exposure (or the preceding test's
+  post-test checkout) and electrical function tests (2.3) after. If the test would make the flight
+  item unflightworthy (for example by degrading thermal control surfaces), analysis based on tests of
+  engineering or prototype models is used instead.
+applies_to:
+  test_types: [humidity]
+  levels: [element]
+confidence: needs_check
+notes: >
+  The temperature and humidity profile is Figure 2.6-3 (page 2.6-32, pdf 274), a plot not reproduced
+  in the text; its temperatures, humidities and durations must be read from the figure.
+---
+kind: rule
+id: gevs-7000b.rule.temperature_humidity_transportation_and_storage
+standard: gevs-7000b
+title: Temperature-humidity for uncontrolled transportation and storage - 10 degC and 10 percent RH beyond predictions, 6 hours at each extreme, before thermal vacuum (2.6.5.1)
+citation: {standard: gevs-7000b, clause: "2.6.5.1", page: "2.6-32", pdf_page: 273}
+category: margin
+statement: >
+  Hardware that will not be kept within controlled temperature-humidity limits during transportation
+  and storage is tested for performance after (and during, if it must operate then) exposure. The
+  test applies to all payload equipment unless acceptable limits were already shown elsewhere in the
+  programme, and is performed before the thermal vacuum test. Analysis sets the uncontrolled limits
+  from component-level integration through launch; electrical function tests run before exposure
+  (or the preceding test's checkout suffices) and after. Exposure is at extremes 10 degC and 10
+  percent RH higher and lower than predicted (not above 95 percent RH), six hours at each extreme.
+  Cryogenic hardware kept temperature regulated in storage (ADR salt pills, HTS leads) is exempt
+  (2.7.5.1, page 2.7-15, pdf 290); other cryogenic-system hardware follows the same test with the
+  predicted extremes and six hours exposure.
+applies_to:
+  test_types: [humidity]
+  levels: [unit, subsystem, element]
+after: [thermal_vacuum]
+values:
+  temperature_margin: {value: 10, unit: degC, relative_to: max_predicted, note: "above the hot and below the cold predicted extremes"}
+  humidity_margin: {value: 10, unit: percent, relative_to: max_predicted, note: "relative humidity"}
+  humidity_cap: {value: 95, unit: percent, note: "RH"}
+  dwell_per_extreme: {value: 6, unit: hr, per: extreme}
+notes: The after list names thermal vacuum because this demonstration precedes it.

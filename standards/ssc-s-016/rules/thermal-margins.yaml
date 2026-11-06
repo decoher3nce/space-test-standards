@@ -1,0 +1,59 @@
+# Thermal margins of SSC-S-016 as explained in the NESC Academy deck: the +/-11 degC thermal
+# uncertainty margin on analytic predictions (slides 23, 26, 28, 62) and the +/-10 degC
+# qualification / +/-5 degC protoqualification test margins (slides 26, 53, 62).
+kind: rule
+id: ssc-s-016.rule.thermal_uncertainty_margin
+standard: ssc-s-016
+title: Thermal uncertainty margin of 11 degC on thermal model predictions
+citation: {standard: ssc-s-016, clause: "6.3.8", table: "Basis of Unit Thermal Uncertainty Margin (deck slide 28)", page: "28", pdf_page: 29, note: "also deck slides 23, 26 and 62 (pdf 24, 27, 63); the standard's clause for the uncertainty margin is not named in the deck"}
+category: margin
+statement: >
+  Thermal analysis predictions carry a thermal uncertainty margin of 11 degC on both the hot and
+  cold side; the maximum and minimum predicted temperatures used as acceptance test extremes are
+  the raw analytic predictions widened by this margin. The deck gives the basis as 30 years of
+  flight-versus-model comparisons across many programs, consistent with ESA and JAXA data, showing
+  that 11 degC keeps 95 percent of flight temperatures (2 sigma) within the acceptance range; it
+  says Class A and B mission analyses should include it.
+applies_to:
+  test_types: [thermal_cycle, thermal_vacuum, thermal_balance]
+  levels: [unit, subsystem, element]
+  regimes: [acceptance, protoflight, qualification]
+values:
+  thermal_uncertainty_margin: {value: 11, unit: degC, relative_to: none, note: "added to the raw analytic hot and cold predictions to form the maximum/minimum predicted temperatures"}
+  flight_within_margin: {value: 95, unit: percent, note: "share of flight temperatures within the margin of prediction"}
+  sigma_level: {value: 2, unit: count, note: "2 sigma screening"}
+confidence: deck_only
+notes: >
+  Deck-sourced; verify the margin value and its applicability (unit, subsystem, vehicle) against
+  the thermal uncertainty margin clause of SSC-S-016 (likely in the thermal test or definitions
+  sections; the deck does not name it).
+---
+kind: rule
+id: ssc-s-016.rule.qualification_temperature_margin
+standard: ssc-s-016
+title: Qualification and protoqualification temperature margins beyond the acceptance extremes
+citation: {standard: ssc-s-016, clause: "6.3.8", table: "Unit Thermal Test Parameter Requirements in SSC-S-016 (deck slide 53)", page: "53", pdf_page: 54, note: "also deck slides 26 and 62 (pdf 27, 63) and slide 69 (pdf 70) for subsystem/vehicle"}
+category: margin
+statement: >
+  Qualification thermal test extremes are 10 degC beyond the acceptance extremes on both the hot
+  and cold side (acceptance extremes being the maximum/minimum predicted temperatures); the
+  protoqualification margin is half of that, 5 degC. The deck gives the basis of the 10 degC as
+  contractor consensus on the extra range that stresses hardware without damage or significant
+  loss of life or performance. The same margins apply at unit, subsystem and vehicle level; what
+  differs is that only unit level has a default screening range.
+applies_to:
+  test_types: [thermal_cycle, thermal_vacuum]
+  levels: [unit, subsystem, element]
+  regimes: [protoflight, qualification]
+values:
+  qualification_margin: {value: 10, unit: degC, relative_to: acceptance_level, note: "each side; equals 10 degC beyond maximum/minimum predicted"}
+  protoqualification_margin: {value: 5, unit: degC, relative_to: acceptance_level, note: "each side; half the qualification margin"}
+  acceptance_margin: {value: 0, unit: degC, relative_to: max_predicted, note: "acceptance extremes are the maximum/minimum predicted temperatures themselves"}
+  unit_default_acceptance_range: {min_value: -24, max_value: 61, unit: degC}
+  unit_default_protoqualification_range: {min_value: -29, max_value: 66, unit: degC}
+  unit_default_qualification_range: {min_value: -34, max_value: 71, unit: degC}
+confidence: deck_only
+notes: >
+  Deck-sourced; verify against SSC-S-016 6.3.8 / 6.3.9 (unit) and the subsystem and vehicle
+  thermal vacuum clauses. The task brief called this the "10 degC acceptance margin"; the deck
+  presents it as the qualification margin above acceptance, which is how it is encoded here.

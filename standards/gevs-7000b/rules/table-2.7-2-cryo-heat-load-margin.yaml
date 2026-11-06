@@ -1,0 +1,33 @@
+kind: rule
+id: gevs-7000b.rule.cryogenic_heat_load_margin_by_phase
+standard: gevs-7000b
+title: Cryogenic heat-load margin as a function of project life-cycle phase (Table 2.7-2)
+citation: {standard: gevs-7000b, clause: "2.7.3.4", table: Table 2.7-2, page: "2.7-6", pdf_page: 281}
+category: margin
+statement: >
+  Cryogenic hardware is stressed in test by heat load rather than temperature. For passively
+  controlled systems a qualification heat-load margin is applied to the flight minimum operating
+  temperature; for actively controlled hardware (cryocoolers, ADRs, stored-cryogen dewars, circulation
+  loops, vapour-cooled and cryocooler-cooled shields, TVS, heaters and TECs) a margin from Table 2.7-2
+  is imposed on the controlled setpoint according to the life-cycle phase at the time of test, and the
+  required control range is shown in the flight thermal environment during thermal balance. The margin
+  is a percentage of the current best estimate of the heat loads including parasitics, applied where
+  the loads are incurred: margin = (cooling capability - current best estimate) / current best
+  estimate. The acceptance margin for previously qualified passive hardware may be reduced with
+  programme phase as long as higher-level protoflight levels remain achievable; active-hardware
+  margins apply equally to qualification/protoflight and acceptance. Survival/safehold cases are run
+  without margin to the desired temperature and back.
+applies_to:
+  test_types: [thermal_vacuum, thermal_balance]
+  flags: [cryogenic]
+values:
+  pre_phase_a: {value: 100, unit: percent, relative_to: current_best_estimate}
+  phase_a: {value: 100, unit: percent, relative_to: current_best_estimate}
+  phase_b: {value: 80, unit: percent, relative_to: current_best_estimate}
+  phase_c: {value: 50, unit: percent, relative_to: current_best_estimate}
+  phase_d: {value: 40, unit: percent, relative_to: current_best_estimate}
+  phase_e: {value: 33, unit: percent, relative_to: current_best_estimate}
+notes: >
+  Table 2.7-2 is margin versus programme phase rather than level versus regime, so it is a rule, not a
+  test_parameters record. 2.6.4.1 (page 2.6-25, pdf 266) converts the 33 percent launch margin into
+  equivalent temperature margins below 120 K; see gevs-7000b.rule.thermal_design_margins_verified_in_balance.

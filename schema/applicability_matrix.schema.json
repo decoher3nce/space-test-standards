@@ -1,0 +1,512 @@
+{
+  "$defs": {
+    "Cell": {
+      "additionalProperties": false,
+      "description": "One cell of an applicability matrix. `code` is exactly what the standard prints;\n`requirement` and `method` are the unified reading of it.",
+      "properties": {
+        "code": {
+          "title": "Code",
+          "type": "string"
+        },
+        "requirement": {
+          "$ref": "#/$defs/Requirement"
+        },
+        "method": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Method"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "footnotes": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Footnotes",
+          "type": "array"
+        },
+        "condition": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Paraphrase of a footnote condition that gates the cell",
+          "title": "Condition"
+        },
+        "may_shift_level": {
+          "default": false,
+          "description": "GEVS '*': may be performed at another level of assembly if appropriate",
+          "title": "May Shift Level",
+          "type": "boolean"
+        },
+        "notes": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Notes"
+        }
+      },
+      "required": [
+        "code",
+        "requirement"
+      ],
+      "title": "Cell",
+      "type": "object"
+    },
+    "Citation": {
+      "additionalProperties": false,
+      "description": "Where a value comes from. Clause and table are the durable anchors; page numbers\nare a convenience and are given for the public PDF named in the standard record.",
+      "properties": {
+        "standard": {
+          "description": "Library id of the standard, e.g. gevs-7000b",
+          "title": "Standard",
+          "type": "string"
+        },
+        "clause": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Clause or paragraph, e.g. 2.2.4",
+          "title": "Clause"
+        },
+        "table": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Table designation as printed",
+          "title": "Table"
+        },
+        "figure": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Figure"
+        },
+        "page": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Printed page label, e.g. '2.2 - 5'",
+          "title": "Page"
+        },
+        "pdf_page": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "1-based page index in the public PDF",
+          "title": "Pdf Page"
+        },
+        "note": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Note"
+        }
+      },
+      "required": [
+        "standard"
+      ],
+      "title": "Citation",
+      "type": "object"
+    },
+    "ColumnDef": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "description": "Unified id from the level_of_assembly or hardware_type vocabulary",
+          "title": "Id",
+          "type": "string"
+        },
+        "label": {
+          "description": "Column heading as printed",
+          "title": "Label",
+          "type": "string"
+        },
+        "notes": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Notes"
+        }
+      },
+      "required": [
+        "id",
+        "label"
+      ],
+      "title": "ColumnDef",
+      "type": "object"
+    },
+    "Level": {
+      "description": "Unified level of assembly (GEVS Table 2.2-1 lineage).",
+      "enum": [
+        "part",
+        "subassembly",
+        "unit",
+        "subsystem",
+        "element",
+        "segment",
+        "system"
+      ],
+      "title": "Level",
+      "type": "string"
+    },
+    "MatrixRow": {
+      "additionalProperties": false,
+      "properties": {
+        "test_type": {
+          "description": "Unified test_type id",
+          "title": "Test Type",
+          "type": "string"
+        },
+        "variant": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Sub-row, e.g. modal_survey",
+          "title": "Variant"
+        },
+        "label": {
+          "description": "Row heading as printed",
+          "title": "Label",
+          "type": "string"
+        },
+        "clause": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Clause the row points to",
+          "title": "Clause"
+        },
+        "parameters_ref": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Id of the test_parameters record giving levels and durations",
+          "title": "Parameters Ref"
+        },
+        "suggested_sequence": {
+          "anyOf": [
+            {
+              "items": {
+                "type": "integer"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "SSC-S-016 style sequence positions when the table gives them",
+          "title": "Suggested Sequence"
+        },
+        "cells": {
+          "additionalProperties": {
+            "$ref": "#/$defs/Cell"
+          },
+          "description": "column id -> cell",
+          "title": "Cells",
+          "type": "object"
+        },
+        "notes": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Notes"
+        }
+      },
+      "required": [
+        "test_type",
+        "label",
+        "cells"
+      ],
+      "title": "MatrixRow",
+      "type": "object"
+    },
+    "Method": {
+      "enum": [
+        "test",
+        "analysis",
+        "analysis_or_test",
+        "analysis_and_test",
+        "inspection",
+        "demonstration",
+        "review_of_design",
+        "similarity"
+      ],
+      "title": "Method",
+      "type": "string"
+    },
+    "Regime": {
+      "description": "Unified test regime. Standards use different words for similar ideas; the\nterminology map in the library records the local word and the local factors.",
+      "enum": [
+        "qualification",
+        "protoflight",
+        "acceptance",
+        "development",
+        "all"
+      ],
+      "title": "Regime",
+      "type": "string"
+    },
+    "Requirement": {
+      "description": "Unified applicability code for a test cell.",
+      "enum": [
+        "required",
+        "required_unless_justified",
+        "evaluate",
+        "customer_decision",
+        "optional",
+        "conditional",
+        "as_specified",
+        "not_required",
+        "not_applicable"
+      ],
+      "title": "Requirement",
+      "type": "string"
+    },
+    "Scope": {
+      "additionalProperties": false,
+      "properties": {
+        "test_types": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Test Types",
+          "type": "array"
+        },
+        "levels": {
+          "items": {
+            "$ref": "#/$defs/Level"
+          },
+          "title": "Levels",
+          "type": "array"
+        },
+        "hardware_types": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Hardware Types",
+          "type": "array"
+        },
+        "regimes": {
+          "items": {
+            "$ref": "#/$defs/Regime"
+          },
+          "title": "Regimes",
+          "type": "array"
+        },
+        "flags": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Flags",
+          "type": "array"
+        }
+      },
+      "title": "Scope",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "kind": {
+      "const": "applicability_matrix",
+      "title": "Kind",
+      "type": "string"
+    },
+    "id": {
+      "pattern": "^[a-z0-9][a-z0-9._-]*$",
+      "title": "Id",
+      "type": "string"
+    },
+    "standard": {
+      "title": "Standard",
+      "type": "string"
+    },
+    "title": {
+      "title": "Title",
+      "type": "string"
+    },
+    "citation": {
+      "$ref": "#/$defs/Citation"
+    },
+    "regime": {
+      "$ref": "#/$defs/Regime",
+      "default": "all"
+    },
+    "level_of_assembly": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/Level"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "description": "Set when the whole table is about one level"
+    },
+    "column_dimension": {
+      "enum": [
+        "level_of_assembly",
+        "hardware_type",
+        "mission_class"
+      ],
+      "title": "Column Dimension",
+      "type": "string"
+    },
+    "columns": {
+      "items": {
+        "$ref": "#/$defs/ColumnDef"
+      },
+      "title": "Columns",
+      "type": "array"
+    },
+    "applies_to": {
+      "$ref": "#/$defs/Scope",
+      "description": "Hardware the whole table is limited to (GEVS Table 2.7-1 applies to cryogenic hardware only); empty = every item at the matching level"
+    },
+    "rows": {
+      "items": {
+        "$ref": "#/$defs/MatrixRow"
+      },
+      "title": "Rows",
+      "type": "array"
+    },
+    "legend": {
+      "additionalProperties": {
+        "type": "string"
+      },
+      "description": "raw code -> paraphrase of the printed legend",
+      "title": "Legend",
+      "type": "object"
+    },
+    "footnotes": {
+      "additionalProperties": {
+        "type": "string"
+      },
+      "description": "footnote id -> paraphrase",
+      "title": "Footnotes",
+      "type": "object"
+    },
+    "confidence": {
+      "default": "verified",
+      "enum": [
+        "verified",
+        "deck_only",
+        "secondary",
+        "needs_check"
+      ],
+      "title": "Confidence",
+      "type": "string"
+    },
+    "notes": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Notes"
+    }
+  },
+  "required": [
+    "kind",
+    "id",
+    "standard",
+    "title",
+    "citation",
+    "column_dimension",
+    "columns",
+    "rows"
+  ],
+  "title": "ApplicabilityMatrix",
+  "type": "object",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/decoher3nce/space-test-standards/schema/applicability_matrix.schema.json"
+}

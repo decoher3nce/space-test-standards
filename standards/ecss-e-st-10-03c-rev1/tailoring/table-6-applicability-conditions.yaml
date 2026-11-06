@@ -1,0 +1,65 @@
+# Relaxations written into the applicability conditions of Tables 6-1, 6-3 and 6-5 and clauses
+# 6.1 and 6.4 (space segment element).
+kind: tailoring_provision
+id: ecss-e-st-10-03c-rev1.provision.element_mechanical_test_substitutions
+standard: ecss-e-st-10-03c-rev1
+title: Element mechanical tests substituted for one another
+citation: {standard: ecss-e-st-10-03c-rev1, clause: "6.2", table: Table 6-1, page: "87", pdf_page: 87, note: "also Table 6-3 (pdf 94) and Table 6-5 (pdf 101)"}
+summary: >
+  At element level the applicability conditions allow several substitutions: acoustic may be
+  replaced by random vibration (for a small compact element acoustic is not an adequate simulation),
+  and when acoustic is performed random vibration may be avoided; sinusoidal vibration may be
+  replaced by a transient test combined with a modal survey; sine burst can replace a static test;
+  at acceptance sinusoidal vibration is not needed if acoustic or random is performed, and shock is
+  limited to appendage deployment and to a launcher interface changed since the PFM or QM.
+applies_to:
+  test_types: [acoustic, random_vibration, sine_vibration, sine_burst, static_load, modal_survey, shock]
+  levels: [element]
+permits:
+  - action: substitute_test
+    description: Replace acoustic by random vibration for small compact elements, or skip random vibration when acoustic is performed.
+  - action: substitute_test
+    description: Replace sinusoidal vibration by a transient test combined with a modal survey.
+  - action: substitute_test
+    description: Replace the static test by a sine burst test; the static test is mandatory only when not done at structure subsystem level.
+  - action: delete_test
+    description: At acceptance, omit sinusoidal vibration when acoustic or random vibration is performed, and limit shock to appendage deployment and changed launcher interfaces.
+approval: Customer (X-coded tests)
+---
+kind: tailoring_provision
+id: ecss-e-st-10-03c-rev1.provision.element_split_testing_and_simulators
+standard: ecss-e-st-10-03c-rev1
+title: Element tested as several parts when a single-entity test is not feasible
+citation: {standard: ecss-e-st-10-03c-rev1, clause: "6.1", page: "86", pdf_page: 86}
+summary: >
+  When an element cannot be tested as one entity, for example because it exceeds facility capacity,
+  it may be tested as several elements or pieces of equipment (such as a service module and a
+  payload module); items that interact at element level but are absent from the test are
+  represented by fluid, mechanical, thermal, electrical or software simulators.
+applies_to:
+  levels: [element, subsystem]
+permits:
+  - action: change_level_of_assembly
+    description: Test the element as separate modules or equipment when a single-entity test is not feasible.
+    constraints: Effects of missing interacting items are included through simulators (6.1b).
+approval: Customer (test baseline tailored per project, 6.1c)
+---
+kind: tailoring_provision
+id: ecss-e-st-10-03c-rev1.provision.element_pfm_credit_for_qualification_on_other_models
+standard: ecss-e-st-10-03c-rev1
+title: Element PFM tested to acceptance requirements for aspects qualified on other models
+citation: {standard: ecss-e-st-10-03c-rev1, clause: "6.4", page: "101", pdf_page: 101}
+summary: >
+  When part of the element qualification is obtained on other models, the PFM is tested in
+  accordance with the acceptance baseline (Table 6-3) for the relevant test types; for example,
+  mechanical qualification on a structural model lets the PFM be tested mechanically to acceptance
+  requirements. Equipment inside a PFM element should be acceptance tested because its design is
+  already qualified (6.1e).
+applies_to:
+  levels: [element]
+  regimes: [protoflight]
+permits:
+  - action: accept_in_lieu
+    description: Apply acceptance levels and the Table 6-3 baseline on the PFM for the test types whose qualification was achieved on a dedicated model.
+    constraints: Credit is per test type and requires the qualification on the other model to be relevant to it.
+approval: Customer (model philosophy agreed per 4.5.1a)

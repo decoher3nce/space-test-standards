@@ -1,0 +1,31 @@
+kind: vocabulary
+vocabulary: flag
+description: >
+  Physics and programme flags on product nodes. Flags drive footnote conditions and overlay rules
+  (for example thermal vacuum is required, not consolidated into thermal cycling, when
+  vacuum_sensitive is set).
+entries:
+  - {id: vacuum_sensitive, name: "Vacuum-sensitive (performance or failure mode depends on vacuum)"}
+  - {id: rf_high_power, name: "Carries high RF power (multipaction, corona risk)"}
+  - {id: high_voltage, name: "Contains high voltage"}
+  - {id: pressurized, name: "Pressurised in operation"}
+  - {id: sealed, name: "Sealed or hermetic enclosure"}
+  - {id: mechanism, name: "Contains moving parts"}
+  - {id: deployable, name: "Deploys or separates in flight"}
+  - {id: optical_surface, name: "Has exposed optical surfaces"}
+  - {id: limited_life, name: "Limited-life item (wear, cycles, hours)"}
+  - {id: magnetic_sensitive, name: "Magnetic cleanliness matters"}
+  - {id: contamination_sensitive, name: "Contamination-sensitive"}
+  - {id: cryogenic, name: "Operates below 120 K"}
+  - {id: crewed_volume, name: "Installed in a crewed or habitable pressurised volume"}
+  - {id: composite_or_bonded, name: "Composite, bonded or welded structure"}
+  - {id: beryllium, name: "Contains beryllium"}
+  - {id: has_eee_parts, name: "Contains electronic parts"}
+  - {id: microvibration_source, name: "Exports micro-vibration"}
+  - {id: microvibration_sensitive, name: "Sensitive to micro-vibration"}
+  - {id: alignment_critical, name: "Alignment-critical"}
+  - {id: single_string, name: "Single-string (no redundancy)"}
+  - {id: lithium_ion, name: "Lithium-ion battery"}
+  - {id: heat_pipe, name: "Contains heat pipes or loop heat pipes"}
+  - {id: primary_load_path, name: "Part of the primary structural load path"}
+  - {id: self_induced_shock, name: "Produces its own shock (release device, deployment)"}

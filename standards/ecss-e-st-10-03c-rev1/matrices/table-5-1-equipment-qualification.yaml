@@ -1,0 +1,536 @@
+# ECSS-E-ST-10-03C Rev.1 Table 5-1 "Space segment equipment - Qualification test baseline".
+# Codes are kept exactly as printed (R, X, "-"); application notes are paraphrased footnotes.
+# Columns are the equipment types a to l of the printed key; letter e shares the unified id
+# fluid_component with letter d and is therefore recorded in `notes` (see VOCAB-REQUESTS.md).
+kind: applicability_matrix
+id: ecss-e-st-10-03c-rev1.matrix.equipment_qualification
+standard: ecss-e-st-10-03c-rev1
+title: Space segment equipment qualification test baseline (Table 5-1)
+citation: {standard: ecss-e-st-10-03c-rev1, clause: "5.2", table: Table 5-1, page: "46", pdf_page: 46, note: "table spans pdf pages 46-48; key on pdf page 47"}
+regime: qualification
+level_of_assembly: unit
+column_dimension: hardware_type
+columns:
+  - {id: electronic, label: a, notes: "Electronic, electrical and RF equipment"}
+  - {id: antenna, label: b, notes: Antenna}
+  - {id: battery, label: c, notes: Battery}
+  - {id: fluid_component, label: d, notes: "Valve. Letter e (fluid or propulsion equipment) shares this unified id and is recorded in the matrix notes"}
+  - {id: pressure_vessel, label: f, notes: Pressure vessel}
+  - {id: thruster, label: g, notes: Thruster}
+  - {id: thermal, label: h, notes: Thermal equipment}
+  - {id: optical, label: i, notes: Optical equipment}
+  - {id: mechanism, label: j, notes: Mechanism}
+  - {id: solar_array, label: k, notes: Solar array}
+  - {id: solar_panel, label: l, notes: Solar panel}
+rows:
+  - test_type: functional_performance
+    label: Functional and performance (FFT/RFT)
+    clause: "5.5.1.1"
+    cells:
+      electronic: {code: R, requirement: required}
+      antenna: {code: R, requirement: required}
+      battery: {code: R, requirement: required}
+      fluid_component: {code: R, requirement: required}
+      pressure_vessel: {code: R, requirement: required}
+      thruster: {code: R, requirement: required}
+      thermal: {code: R, requirement: required}
+      optical: {code: R, requirement: required}
+      mechanism: {code: R, requirement: required}
+      solar_array: {code: R, requirement: required, footnotes: [fft_solar_array_deployment]}
+      solar_panel: {code: R, requirement: required}
+    notes: No level and duration row in Table 5-2 (no environment applied)
+  - test_type: humidity
+    label: Humidity
+    clause: "5.5.1.2"
+    cells:
+      electronic: {code: X, requirement: customer_decision}
+      antenna: {code: X, requirement: customer_decision}
+      battery: {code: X, requirement: customer_decision}
+      fluid_component: {code: X, requirement: customer_decision}
+      pressure_vessel: {code: X, requirement: customer_decision}
+      thruster: {code: X, requirement: customer_decision}
+      thermal: {code: X, requirement: customer_decision}
+      optical: {code: X, requirement: customer_decision}
+      mechanism: {code: X, requirement: customer_decision}
+      solar_array: {code: "-", requirement: not_required, footnotes: [solar_see_20_08]}
+      solar_panel: {code: X, requirement: customer_decision, footnotes: [solar_see_20_08]}
+    notes: No level and duration row in Table 5-2 (room-condition test applied without margin)
+  - test_type: life
+    label: Life
+    clause: "5.5.1.3"
+    parameters_ref: ecss-e-st-10-03c-rev1.params.life
+    cells:
+      electronic: {code: X, requirement: customer_decision, footnotes: [dedicated_model]}
+      antenna: {code: X, requirement: customer_decision, footnotes: [dedicated_model]}
+      battery: {code: R, requirement: required, footnotes: [dedicated_model]}
+      fluid_component: {code: R, requirement: required, footnotes: [dedicated_model]}
+      pressure_vessel: {code: X, requirement: customer_decision, footnotes: [dedicated_model]}
+      thruster: {code: R, requirement: required, footnotes: [dedicated_model]}
+      thermal: {code: X, requirement: customer_decision, footnotes: [dedicated_model]}
+      optical: {code: X, requirement: customer_decision, footnotes: [dedicated_model]}
+      mechanism: {code: R, requirement: required, footnotes: [dedicated_model]}
+      solar_array: {code: "-", requirement: not_required}
+      solar_panel: {code: "-", requirement: not_required, footnotes: [life_solar_panel_20_08]}
+    notes: "Table 5-2 No 1. Column e (fluid or propulsion equipment) is X here, unlike column d (R)"
+  - test_type: burn_in
+    label: Burn-in
+    clause: "5.5.1.4"
+    cells:
+      electronic: {code: X, requirement: customer_decision, footnotes: [burn_in_parallel]}
+      antenna: {code: "-", requirement: not_required}
+      battery: {code: "-", requirement: not_required}
+      fluid_component: {code: X, requirement: customer_decision, footnotes: [burn_in_parallel]}
+      pressure_vessel: {code: "-", requirement: not_required}
+      thruster: {code: X, requirement: customer_decision, footnotes: [burn_in_parallel]}
+      thermal: {code: "-", requirement: not_required}
+      optical: {code: "-", requirement: not_required}
+      mechanism: {code: "-", requirement: not_required}
+      solar_array: {code: "-", requirement: not_required}
+      solar_panel: {code: "-", requirement: not_required}
+    notes: "No level and duration row in Table 5-2. Column e (fluid or propulsion equipment) is \"-\" here, unlike column d (X)"
+  - test_type: physical_properties
+    label: Physical properties
+    clause: "5.5.2.1"
+    cells:
+      electronic: {code: R, requirement: required, footnotes: [cog_moi_by_calculation]}
+      antenna: {code: R, requirement: required, footnotes: [cog_moi_by_calculation]}
+      battery: {code: R, requirement: required, footnotes: [cog_moi_by_calculation]}
+      fluid_component: {code: R, requirement: required, footnotes: [cog_moi_by_calculation]}
+      pressure_vessel: {code: R, requirement: required, footnotes: [cog_moi_by_calculation]}
+      thruster: {code: R, requirement: required, footnotes: [cog_moi_by_calculation]}
+      thermal: {code: R, requirement: required, footnotes: [cog_moi_by_calculation]}
+      optical: {code: R, requirement: required, footnotes: [cog_moi_by_calculation]}
+      mechanism: {code: R, requirement: required, footnotes: [cog_moi_by_calculation]}
+      solar_array: {code: R, requirement: required, footnotes: [cog_moi_by_calculation]}
+      solar_panel: {code: R, requirement: required, footnotes: [cog_moi_by_calculation]}
+    notes: No level and duration row in Table 5-2
+  - test_type: static_load
+    label: Static load
+    clause: "5.5.2.2"
+    parameters_ref: ecss-e-st-10-03c-rev1.params.static_load
+    cells:
+      electronic: {code: X, requirement: customer_decision, footnotes: [one_of_three_strength_tests]}
+      antenna: {code: X, requirement: customer_decision, footnotes: [one_of_three_strength_tests]}
+      battery: {code: X, requirement: customer_decision, footnotes: [one_of_three_strength_tests]}
+      fluid_component: {code: X, requirement: customer_decision, footnotes: [one_of_three_strength_tests]}
+      pressure_vessel: {code: X, requirement: customer_decision, footnotes: [one_of_three_strength_tests]}
+      thruster: {code: X, requirement: customer_decision, footnotes: [one_of_three_strength_tests]}
+      thermal: {code: X, requirement: customer_decision, footnotes: [one_of_three_strength_tests]}
+      optical: {code: X, requirement: customer_decision, footnotes: [one_of_three_strength_tests]}
+      mechanism: {code: X, requirement: customer_decision, footnotes: [one_of_three_strength_tests]}
+      solar_array: {code: X, requirement: customer_decision, footnotes: [one_of_three_strength_tests]}
+      solar_panel: {code: "-", requirement: not_required}
+    notes: Table 5-2 No 2
+  - test_type: spin
+    label: Spin
+    clause: "5.5.2.2"
+    parameters_ref: ecss-e-st-10-03c-rev1.params.spin
+    cells:
+      electronic: {code: X, requirement: customer_decision, footnotes: [one_of_three_strength_tests]}
+      antenna: {code: X, requirement: customer_decision, footnotes: [one_of_three_strength_tests]}
+      battery: {code: X, requirement: customer_decision, footnotes: [one_of_three_strength_tests]}
+      fluid_component: {code: X, requirement: customer_decision, footnotes: [one_of_three_strength_tests]}
+      pressure_vessel: {code: X, requirement: customer_decision, footnotes: [one_of_three_strength_tests]}
+      thruster: {code: X, requirement: customer_decision, footnotes: [one_of_three_strength_tests]}
+      thermal: {code: X, requirement: customer_decision, footnotes: [one_of_three_strength_tests]}
+      optical: {code: X, requirement: customer_decision, footnotes: [one_of_three_strength_tests]}
+      mechanism: {code: X, requirement: customer_decision, footnotes: [one_of_three_strength_tests]}
+      solar_array: {code: X, requirement: customer_decision, footnotes: [one_of_three_strength_tests]}
+      solar_panel: {code: "-", requirement: not_required}
+    notes: Table 5-2 No 3
+  - test_type: sine_burst
+    label: Sine Burst
+    clause: "5.5.2.2"
+    parameters_ref: ecss-e-st-10-03c-rev1.params.sine_burst
+    cells:
+      electronic: {code: X, requirement: customer_decision, footnotes: [one_of_three_strength_tests]}
+      antenna: {code: X, requirement: customer_decision, footnotes: [one_of_three_strength_tests]}
+      battery: {code: X, requirement: customer_decision, footnotes: [one_of_three_strength_tests]}
+      fluid_component: {code: X, requirement: customer_decision, footnotes: [one_of_three_strength_tests]}
+      pressure_vessel: {code: X, requirement: customer_decision, footnotes: [one_of_three_strength_tests]}
+      thruster: {code: X, requirement: customer_decision, footnotes: [one_of_three_strength_tests]}
+      thermal: {code: X, requirement: customer_decision, footnotes: [one_of_three_strength_tests]}
+      optical: {code: X, requirement: customer_decision, footnotes: [one_of_three_strength_tests]}
+      mechanism: {code: X, requirement: customer_decision, footnotes: [one_of_three_strength_tests]}
+      solar_array: {code: X, requirement: customer_decision, footnotes: [one_of_three_strength_tests]}
+      solar_panel: {code: "-", requirement: not_required}
+    notes: Table 5-2 No 4
+  - test_type: random_vibration
+    label: Random vibration
+    clause: "5.5.2.3"
+    parameters_ref: ecss-e-st-10-03c-rev1.params.random_vibration
+    cells:
+      electronic: {code: R, requirement: required}
+      antenna: {code: X, requirement: customer_decision, footnotes: [random_or_acoustic_by_size]}
+      battery: {code: R, requirement: required}
+      fluid_component: {code: R, requirement: required}
+      pressure_vessel: {code: R, requirement: required}
+      thruster: {code: R, requirement: required}
+      thermal: {code: R, requirement: required}
+      optical: {code: X, requirement: customer_decision, footnotes: [random_or_acoustic_by_size]}
+      mechanism: {code: X, requirement: customer_decision, footnotes: [random_or_acoustic_by_size]}
+      solar_array: {code: X, requirement: customer_decision, footnotes: [solar_array_random_added_to_acoustic]}
+      solar_panel: {code: "-", requirement: not_required}
+    notes: "Table 5-2 No 5. The printed note names b (antennas), i (optical) and j (mechanism) for the random-or-acoustic choice"
+  - test_type: acoustic
+    label: Acoustic
+    clause: "5.5.2.4"
+    parameters_ref: ecss-e-st-10-03c-rev1.params.acoustic
+    cells:
+      electronic: {code: "-", requirement: not_required}
+      antenna: {code: X, requirement: customer_decision, footnotes: [random_or_acoustic_by_size]}
+      battery: {code: "-", requirement: not_required}
+      fluid_component: {code: "-", requirement: not_required}
+      pressure_vessel: {code: "-", requirement: not_required}
+      thruster: {code: "-", requirement: not_required}
+      thermal: {code: "-", requirement: not_required}
+      optical: {code: X, requirement: customer_decision, footnotes: [random_or_acoustic_by_size]}
+      mechanism: {code: X, requirement: customer_decision, footnotes: [random_or_acoustic_by_size]}
+      solar_array: {code: R, requirement: required, footnotes: [solar_array_random_added_to_acoustic]}
+      solar_panel: {code: "-", requirement: not_required}
+    notes: Table 5-2 No 6
+  - test_type: sine_vibration
+    label: Sinusoidal vibration
+    clause: "5.5.2.5"
+    parameters_ref: ecss-e-st-10-03c-rev1.params.sine_vibration
+    cells:
+      electronic: {code: R, requirement: required}
+      antenna: {code: R, requirement: required}
+      battery: {code: R, requirement: required}
+      fluid_component: {code: R, requirement: required}
+      pressure_vessel: {code: R, requirement: required}
+      thruster: {code: R, requirement: required}
+      thermal: {code: R, requirement: required}
+      optical: {code: R, requirement: required}
+      mechanism: {code: R, requirement: required}
+      solar_array: {code: R, requirement: required}
+      solar_panel: {code: "-", requirement: not_required}
+    notes: Table 5-2 No 7
+  - test_type: shock
+    label: Shock
+    clause: "5.5.2.6"
+    parameters_ref: ecss-e-st-10-03c-rev1.params.shock
+    cells:
+      electronic: {code: R, requirement: required, footnotes: [shock_not_needed_if_insensitive]}
+      antenna: {code: X, requirement: customer_decision, footnotes: [shock_not_needed_if_insensitive]}
+      battery: {code: R, requirement: required, footnotes: [shock_not_needed_if_insensitive]}
+      fluid_component: {code: R, requirement: required, footnotes: [shock_not_needed_if_insensitive]}
+      pressure_vessel: {code: X, requirement: customer_decision, footnotes: [shock_not_needed_if_insensitive]}
+      thruster: {code: R, requirement: required, footnotes: [shock_not_needed_if_insensitive]}
+      thermal: {code: X, requirement: customer_decision, footnotes: [shock_not_needed_if_insensitive]}
+      optical: {code: R, requirement: required, footnotes: [shock_not_needed_if_insensitive]}
+      mechanism: {code: R, requirement: required, footnotes: [shock_not_needed_if_insensitive]}
+      solar_array: {code: "-", requirement: not_required, footnotes: [solar_array_shock_at_component_level]}
+      solar_panel: {code: "-", requirement: not_required}
+    notes: Table 5-2 No 8
+  - test_type: microvibration_emission
+    label: Micro-vibration generated environment
+    clause: "5.5.2.7"
+    cells:
+      electronic: {code: X, requirement: customer_decision, footnotes: [microvib_emission_if_source], condition: Equipment expected to generate mission-degrading micro-vibrations}
+      antenna: {code: X, requirement: customer_decision, footnotes: [microvib_emission_if_source], condition: Equipment expected to generate mission-degrading micro-vibrations}
+      battery: {code: "-", requirement: not_required}
+      fluid_component: {code: X, requirement: customer_decision, footnotes: [microvib_emission_if_source], condition: Equipment expected to generate mission-degrading micro-vibrations}
+      pressure_vessel: {code: "-", requirement: not_required}
+      thruster: {code: X, requirement: customer_decision, footnotes: [microvib_emission_if_source], condition: Equipment expected to generate mission-degrading micro-vibrations}
+      thermal: {code: "-", requirement: not_required}
+      optical: {code: "-", requirement: not_required}
+      mechanism: {code: X, requirement: customer_decision, footnotes: [microvib_emission_if_source], condition: Equipment expected to generate mission-degrading micro-vibrations}
+      solar_array: {code: "-", requirement: not_required}
+      solar_panel: {code: "-", requirement: not_required}
+    notes: No level and duration row in Table 5-2
+  - test_type: microvibration_susceptibility
+    label: Micro-vibration susceptibility
+    clause: "5.5.2.8"
+    parameters_ref: ecss-e-st-10-03c-rev1.params.microvibration_susceptibility
+    cells:
+      electronic: {code: X, requirement: customer_decision, footnotes: [microvib_susceptibility_if_sensitive], condition: Functionality or performance expected to degrade under micro-vibration}
+      antenna: {code: "-", requirement: not_required}
+      battery: {code: "-", requirement: not_required}
+      fluid_component: {code: "-", requirement: not_required}
+      pressure_vessel: {code: "-", requirement: not_required}
+      thruster: {code: "-", requirement: not_required}
+      thermal: {code: "-", requirement: not_required}
+      optical: {code: X, requirement: customer_decision, footnotes: [microvib_susceptibility_if_sensitive], condition: Functionality or performance expected to degrade under micro-vibration}
+      mechanism: {code: X, requirement: customer_decision, footnotes: [microvib_susceptibility_if_sensitive], condition: Functionality or performance expected to degrade under micro-vibration}
+      solar_array: {code: "-", requirement: not_required}
+      solar_panel: {code: "-", requirement: not_required}
+    notes: Table 5-2 No 9
+  - test_type: leak
+    label: Leak
+    clause: "5.5.3.1"
+    parameters_ref: ecss-e-st-10-03c-rev1.params.leak
+    cells:
+      electronic: {code: X, requirement: customer_decision, footnotes: [electronic_sealed_or_pressurized_only], condition: Sealed or pressurised equipment only}
+      antenna: {code: "-", requirement: not_required}
+      battery: {code: R, requirement: required, footnotes: [battery_pressure_tests_at_cell_level]}
+      fluid_component: {code: R, requirement: required}
+      pressure_vessel: {code: R, requirement: required}
+      thruster: {code: X, requirement: customer_decision}
+      thermal: {code: X, requirement: customer_decision}
+      optical: {code: "-", requirement: not_required}
+      mechanism: {code: "-", requirement: not_required}
+      solar_array: {code: "-", requirement: not_required}
+      solar_panel: {code: "-", requirement: not_required}
+    notes: Table 5-2 No 10
+  - test_type: proof_pressure
+    label: Proof pressure
+    clause: "5.5.3.2"
+    parameters_ref: ecss-e-st-10-03c-rev1.params.proof_pressure
+    cells:
+      electronic: {code: X, requirement: customer_decision, footnotes: [electronic_sealed_or_pressurized_only], condition: Sealed or pressurised equipment only}
+      antenna: {code: "-", requirement: not_required}
+      battery: {code: "-", requirement: not_required, footnotes: [battery_pressure_tests_at_cell_level]}
+      fluid_component: {code: R, requirement: required}
+      pressure_vessel: {code: R, requirement: required}
+      thruster: {code: R, requirement: required}
+      thermal: {code: "-", requirement: not_required}
+      optical: {code: "-", requirement: not_required}
+      mechanism: {code: "-", requirement: not_required}
+      solar_array: {code: "-", requirement: not_required}
+      solar_panel: {code: "-", requirement: not_required}
+    notes: Table 5-2 No 11
+  - test_type: pressure_cycling
+    label: Pressure cycling
+    clause: "5.5.3.3"
+    parameters_ref: ecss-e-st-10-03c-rev1.params.pressure_cycling
+    cells:
+      electronic: {code: X, requirement: customer_decision, footnotes: [electronic_sealed_or_pressurized_only], condition: Sealed or pressurised equipment only}
+      antenna: {code: "-", requirement: not_required}
+      battery: {code: "-", requirement: not_required, footnotes: [battery_pressure_tests_at_cell_level]}
+      fluid_component: {code: R, requirement: required}
+      pressure_vessel: {code: R, requirement: required}
+      thruster: {code: R, requirement: required}
+      thermal: {code: "-", requirement: not_required}
+      optical: {code: "-", requirement: not_required}
+      mechanism: {code: "-", requirement: not_required}
+      solar_array: {code: "-", requirement: not_required}
+      solar_panel: {code: "-", requirement: not_required}
+    notes: Table 5-2 No 12
+  - test_type: design_burst_pressure
+    label: Design burst pressure
+    clause: "5.5.3.4"
+    parameters_ref: ecss-e-st-10-03c-rev1.params.design_burst_pressure
+    cells:
+      electronic: {code: X, requirement: customer_decision, footnotes: [electronic_sealed_or_pressurized_only], condition: Sealed or pressurised equipment only}
+      antenna: {code: "-", requirement: not_required}
+      battery: {code: "-", requirement: not_required}
+      fluid_component: {code: R, requirement: required}
+      pressure_vessel: {code: R, requirement: required}
+      thruster: {code: R, requirement: required}
+      thermal: {code: "-", requirement: not_required}
+      optical: {code: "-", requirement: not_required}
+      mechanism: {code: "-", requirement: not_required}
+      solar_array: {code: "-", requirement: not_required}
+      solar_panel: {code: "-", requirement: not_required}
+    notes: Table 5-2 No 13
+  - test_type: burst
+    label: Burst
+    clause: "5.5.3.5"
+    parameters_ref: ecss-e-st-10-03c-rev1.params.burst
+    cells:
+      electronic: {code: X, requirement: customer_decision, footnotes: [electronic_sealed_or_pressurized_only, burst_dedicated_model_or_last], condition: Sealed or pressurised equipment only}
+      antenna: {code: "-", requirement: not_required}
+      battery: {code: "-", requirement: not_required, footnotes: [battery_pressure_tests_at_cell_level]}
+      fluid_component: {code: R, requirement: required, footnotes: [burst_dedicated_model_or_last]}
+      pressure_vessel: {code: R, requirement: required, footnotes: [burst_dedicated_model_or_last]}
+      thruster: {code: R, requirement: required, footnotes: [burst_dedicated_model_or_last]}
+      thermal: {code: "-", requirement: not_required}
+      optical: {code: "-", requirement: not_required}
+      mechanism: {code: "-", requirement: not_required}
+      solar_array: {code: "-", requirement: not_required}
+      solar_panel: {code: "-", requirement: not_required}
+    notes: Table 5-2 No 14
+  - test_type: thermal_vacuum
+    label: Thermal vacuum
+    clause: "5.5.4.1 & 5.5.4.2"
+    parameters_ref: ecss-e-st-10-03c-rev1.params.thermal_vacuum
+    cells:
+      electronic: {code: R, requirement: required}
+      antenna: {code: X, requirement: customer_decision}
+      battery: {code: R, requirement: required}
+      fluid_component: {code: R, requirement: required}
+      pressure_vessel: {code: X, requirement: customer_decision}
+      thruster: {code: R, requirement: required}
+      thermal: {code: R, requirement: required}
+      optical: {code: R, requirement: required}
+      mechanism: {code: R, requirement: required}
+      solar_array: {code: "-", requirement: not_required}
+      solar_panel: {code: R, requirement: required, footnotes: [solar_panel_tv_plus_dvt_coupon]}
+    notes: Table 5-2 No 15
+  - test_type: thermal_cycle
+    variant: mission_pressure
+    label: Thermal test at mission pressure
+    clause: "5.5.4.1 & 5.5.4.3"
+    parameters_ref: ecss-e-st-10-03c-rev1.params.thermal_mission_pressure
+    cells:
+      electronic: {code: R, requirement: required, footnotes: [mission_pressure_applicability, mission_pressure_combination, no_room_pressure_cycling]}
+      antenna: {code: X, requirement: customer_decision, footnotes: [mission_pressure_applicability, mission_pressure_combination, no_room_pressure_cycling]}
+      battery: {code: R, requirement: required, footnotes: [mission_pressure_applicability, mission_pressure_combination, no_room_pressure_cycling]}
+      fluid_component: {code: R, requirement: required, footnotes: [mission_pressure_applicability, mission_pressure_combination, no_room_pressure_cycling]}
+      pressure_vessel: {code: X, requirement: customer_decision, footnotes: [mission_pressure_applicability, mission_pressure_combination, no_room_pressure_cycling]}
+      thruster: {code: R, requirement: required, footnotes: [mission_pressure_applicability, mission_pressure_combination, no_room_pressure_cycling]}
+      thermal: {code: R, requirement: required, footnotes: [mission_pressure_applicability, mission_pressure_combination, no_room_pressure_cycling]}
+      optical: {code: R, requirement: required, footnotes: [mission_pressure_applicability, mission_pressure_combination, no_room_pressure_cycling]}
+      mechanism: {code: R, requirement: required, footnotes: [mission_pressure_applicability, mission_pressure_combination, no_room_pressure_cycling]}
+      solar_array: {code: "-", requirement: not_required}
+      solar_panel: {code: "-", requirement: not_required}
+    notes: "Table 5-2 No 16. Encoded under thermal_cycle as the closest unified id; see VOCAB-REQUESTS.md"
+  - test_type: emc
+    label: EMC
+    clause: "5.5.5.1"
+    parameters_ref: ecss-e-st-10-03c-rev1.params.emc
+    cells:
+      electronic: {code: R, requirement: required}
+      antenna: {code: X, requirement: customer_decision, footnotes: [emc_bonding_only_without_electronics]}
+      battery: {code: X, requirement: customer_decision, footnotes: [emc_bonding_only_without_electronics]}
+      fluid_component: {code: X, requirement: customer_decision, footnotes: [emc_bonding_only_without_electronics]}
+      pressure_vessel: {code: X, requirement: customer_decision, footnotes: [emc_bonding_only_without_electronics]}
+      thruster: {code: X, requirement: customer_decision, footnotes: [emc_bonding_only_without_electronics]}
+      thermal: {code: X, requirement: customer_decision, footnotes: [emc_bonding_only_without_electronics]}
+      optical: {code: X, requirement: customer_decision, footnotes: [emc_bonding_only_without_electronics]}
+      mechanism: {code: X, requirement: customer_decision, footnotes: [emc_bonding_only_without_electronics]}
+      solar_array: {code: X, requirement: customer_decision, footnotes: [emc_bonding_only_without_electronics]}
+      solar_panel: {code: X, requirement: customer_decision, footnotes: [emc_bonding_only_without_electronics]}
+    notes: Table 5-2 No 17
+  - test_type: magnetics
+    label: Magnetic
+    clause: "5.5.5.2"
+    cells:
+      electronic: {code: X, requirement: customer_decision, footnotes: [magnetic_if_mission_needs]}
+      antenna: {code: X, requirement: customer_decision, footnotes: [magnetic_if_mission_needs]}
+      battery: {code: X, requirement: customer_decision, footnotes: [magnetic_if_mission_needs]}
+      fluid_component: {code: X, requirement: customer_decision, footnotes: [magnetic_if_mission_needs]}
+      pressure_vessel: {code: X, requirement: customer_decision, footnotes: [magnetic_if_mission_needs]}
+      thruster: {code: X, requirement: customer_decision, footnotes: [magnetic_if_mission_needs]}
+      thermal: {code: X, requirement: customer_decision, footnotes: [magnetic_if_mission_needs]}
+      optical: {code: X, requirement: customer_decision, footnotes: [magnetic_if_mission_needs]}
+      mechanism: {code: X, requirement: customer_decision, footnotes: [magnetic_if_mission_needs]}
+      solar_array: {code: X, requirement: customer_decision, footnotes: [magnetic_if_mission_needs]}
+      solar_panel: {code: X, requirement: customer_decision, footnotes: [magnetic_if_mission_needs]}
+    notes: No level and duration row in Table 5-2
+  - test_type: esd
+    label: ESD
+    clause: "5.5.5.3"
+    parameters_ref: ecss-e-st-10-03c-rev1.params.esd
+    cells:
+      electronic: {code: R, requirement: required}
+      antenna: {code: X, requirement: customer_decision}
+      battery: {code: X, requirement: customer_decision}
+      fluid_component: {code: X, requirement: customer_decision}
+      pressure_vessel: {code: X, requirement: customer_decision}
+      thruster: {code: X, requirement: customer_decision}
+      thermal: {code: X, requirement: customer_decision}
+      optical: {code: X, requirement: customer_decision}
+      mechanism: {code: X, requirement: customer_decision}
+      solar_array: {code: X, requirement: customer_decision, footnotes: [esd_solar_20_08]}
+      solar_panel: {code: X, requirement: customer_decision, footnotes: [esd_solar_20_08]}
+    notes: Table 5-2 No 18
+  - test_type: pim
+    label: PIM
+    clause: "5.5.5.4"
+    parameters_ref: ecss-e-st-10-03c-rev1.params.pim
+    cells:
+      electronic: {code: X, requirement: customer_decision}
+      antenna: {code: X, requirement: customer_decision}
+      battery: {code: "-", requirement: not_required}
+      fluid_component: {code: "-", requirement: not_required}
+      pressure_vessel: {code: "-", requirement: not_required}
+      thruster: {code: "-", requirement: not_required}
+      thermal: {code: "-", requirement: not_required}
+      optical: {code: "-", requirement: not_required}
+      mechanism: {code: "-", requirement: not_required}
+      solar_array: {code: "-", requirement: not_required}
+      solar_panel: {code: "-", requirement: not_required}
+    notes: Table 5-2 No 19
+  - test_type: discharge
+    variant: multipaction
+    label: Multipactor
+    clause: "5.5.5.5"
+    cells:
+      electronic: {code: X, requirement: customer_decision}
+      antenna: {code: X, requirement: customer_decision}
+      battery: {code: "-", requirement: not_required}
+      fluid_component: {code: "-", requirement: not_required}
+      pressure_vessel: {code: "-", requirement: not_required}
+      thruster: {code: "-", requirement: not_required}
+      thermal: {code: "-", requirement: not_required}
+      optical: {code: "-", requirement: not_required}
+      mechanism: {code: "-", requirement: not_required}
+      solar_array: {code: "-", requirement: not_required}
+      solar_panel: {code: "-", requirement: not_required}
+    notes: No level and duration row in Table 5-2
+  - test_type: discharge
+    variant: corona_arc
+    label: Corona and arc discharge
+    clause: "5.5.5.6"
+    parameters_ref: ecss-e-st-10-03c-rev1.params.corona_arc_discharge
+    cells:
+      electronic: {code: R, requirement: required, footnotes: [corona_applicability], condition: Equipment exposed to the critical low-pressure (Paschen) range during its life}
+      antenna: {code: R, requirement: required, footnotes: [corona_applicability], condition: Equipment exposed to the critical low-pressure (Paschen) range during its life}
+      battery: {code: R, requirement: required, footnotes: [corona_applicability], condition: Equipment exposed to the critical low-pressure (Paschen) range during its life}
+      fluid_component: {code: "-", requirement: not_required}
+      pressure_vessel: {code: "-", requirement: not_required}
+      thruster: {code: "-", requirement: not_required}
+      thermal: {code: "-", requirement: not_required}
+      optical: {code: "-", requirement: not_required}
+      mechanism: {code: "-", requirement: not_required}
+      solar_array: {code: "-", requirement: not_required}
+      solar_panel: {code: "-", requirement: not_required}
+    notes: Table 5-2 No 20
+  - test_type: audible_noise
+    label: Audible noise
+    clause: "5.5.6.1"
+    cells:
+      electronic: {code: R, requirement: required, footnotes: [audible_noise_crewed_only], condition: Equipment for crewed space segment elements only}
+      antenna: {code: "-", requirement: not_required}
+      battery: {code: "-", requirement: not_required}
+      fluid_component: {code: R, requirement: required, footnotes: [audible_noise_crewed_only], condition: Equipment for crewed space segment elements only}
+      pressure_vessel: {code: "-", requirement: not_required}
+      thruster: {code: R, requirement: required, footnotes: [audible_noise_crewed_only], condition: Equipment for crewed space segment elements only}
+      thermal: {code: "-", requirement: not_required}
+      optical: {code: "-", requirement: not_required}
+      mechanism: {code: R, requirement: required, footnotes: [audible_noise_crewed_only], condition: Equipment for crewed space segment elements only}
+      solar_array: {code: "-", requirement: not_required}
+      solar_panel: {code: "-", requirement: not_required}
+    notes: No level and duration row in Table 5-2
+legend:
+  R: Required
+  X: To be decided by the customer
+  "-": Not required
+footnotes:
+  fft_solar_array_deployment: For solar arrays the deployment test is mandatory before and after the environmental tests, with a manual deployment beforehand
+  solar_see_20_08: For solar arrays and solar panels this test is governed by ECSS-E-ST-20-08
+  dedicated_model: Performed on a dedicated model
+  life_solar_panel_20_08: Solar panel life testing is covered by ECSS-E-ST-20-08
+  burn_in_parallel: Run in parallel with the other functional and environmental tests
+  cog_moi_by_calculation: With customer agreement, centre of gravity and moments of inertia may be calculated instead of measured
+  one_of_three_strength_tests: One of static load, spin or sine burst is performed when strength is not already covered by the sinusoidal vibration test
+  random_or_acoustic_by_size: For antennas, optical equipment and mechanisms, random vibration, acoustic or both are chosen according to the type, size and location of the equipment
+  solar_array_random_added_to_acoustic: For solar arrays fixed directly to the element side wall without an offset bracket, random vibration should be added to the acoustic test
+  shock_not_needed_if_insensitive: The shock test may be omitted when the equipment is shown to tolerate levels above the shock environment
+  solar_array_shock_at_component_level: Solar array shock qualification is done at component level and confirmed during the deployment test
+  microvib_emission_if_source: Performed when the customer requires it because the equipment may generate micro-vibrations that degrade the mission
+  microvib_susceptibility_if_sensitive: Performed when the equipment's function or performance may be degraded by micro-vibrations
+  electronic_sealed_or_pressurized_only: For electronic, electrical and RF equipment these structural-integrity tests are mandatory only when the equipment is sealed or pressurised
+  battery_pressure_tests_at_cell_level: For batteries, proof pressure, pressure cycling and burst are performed at cell (component) level
+  burst_dedicated_model_or_last: Performed on a dedicated model or as the final test of the QM programme
+  solar_panel_tv_plus_dvt_coupon: For solar panels thermal vacuum is complemented by thermal tests on the design verification test coupon per ECSS-E-ST-20-08
+  mission_pressure_applicability: Mission-pressure cycling without vacuum cycling applies only to equipment operating in a non-vacuum environment for its whole life; consider depressurisation failure when deciding
+  mission_pressure_combination: Mission-pressure cycling and vacuum cycling may be combined in sequence
+  no_room_pressure_cycling: Room-pressure temperature cycling (US-style thermal cycling, ECSS-E-ST-10-03A) is not part of this standard
+  emc_bonding_only_without_electronics: For equipment without electronics the EMC test reduces to a bonding test
+  magnetic_if_mission_needs: Performed when justified by mission needs, in line with the EMC control plan
+  esd_solar_20_08: For solar arrays and panels ESD testing is covered by ECSS-E-ST-20-08
+  corona_applicability: Applicability conditions are given in clause 5.5.5.6 (exposure to the critical low-pressure range)
+  audible_noise_crewed_only: Required only for equipment of crewed space segment elements
+notes: >
+  Rows follow the printed order and section headings (General, Mechanical, Structural integrity,
+  Thermal, Electrical/RF, Mission specific). Requirement mirrors the printed code; gating
+  application notes are carried in footnotes and `condition`. Column e "Fluid or propulsion
+  equipment" is not a separate column because it shares the unified id fluid_component with
+  column d (Valve); its printed codes equal column d in every row except Life (e is X) and
+  Burn-in (e is "-"). Table NOTE 1: R versus X reflects the type's sensitivity to the
+  environment, the probability of meeting it and project specifics. Clause 5.1b: equipment
+  belonging to several types takes the union of the tests required for each type. Clause 5.1e-g
+  add FFT/PT at start and end of the programme and RFT around each environmental block.

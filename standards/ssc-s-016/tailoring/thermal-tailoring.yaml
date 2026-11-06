@@ -1,0 +1,196 @@
+# Thermal tailoring that SSC-S-016 itself allows, as described in the NESC Academy deck: the
+# 4.10.2 thermal vacuum exemption (slides 41-42), cycle-count trades against temperature range
+# (slides 23, 35, 43-44), slice/board credit (slide 40), dwell reduction (slide 39), fewer
+# acceptance cycles (slide 36) and the vehicle thermal cycle option (slides 60, 69). Provisions
+# that are the briefing's recommended position rather than text of the standard say so in notes.
+kind: tailoring_provision
+id: ssc-s-016.provision.tv_exemption_4_10_2
+standard: ssc-s-016
+title: 4.10.2 exemption - acceptance thermal vacuum folded into thermal cycling for vacuum-insensitive electronic units
+citation: {standard: ssc-s-016, clause: "4.10.2", table: "Alternative Approach to Vacuum Testing Electronic Units (deck slide 41)", page: "41", pdf_page: 42, note: "also deck slide 42 (pdf 43) and footnote 7 of the unit acceptance table (slide 6, pdf 7)"}
+summary: >
+  Paragraph 4.10.2 lets acceptance electronic units waive the thermal vacuum test and combine its
+  cycles into the less expensive thermal cycle test when the unit design has been demonstrated to
+  be insensitive to vacuum: temperatures nearly identical in vacuum and in air, performance
+  unaffected by vacuum, and no RF, high-voltage or arcing-susceptible parts. The demonstration
+  comes from the earlier qualification or protoqualification thermal vacuum testing, which is why
+  those units always receive thermal vacuum.
+applies_to:
+  test_types: [thermal_vacuum, thermal_cycle]
+  levels: [unit]
+  hardware_types: [electronic]
+  regimes: [acceptance]
+permits:
+  - action: combine_tests
+    description: Run the acceptance thermal vacuum cycles as additional thermal cycle cycles, so the total cycle count is kept in a single ambient-pressure test.
+    constraints: Only for units shown insensitive to vacuum in prior qualification or protoqualification thermal vacuum testing; total cycle count and burn-in hours are unchanged.
+  - action: delete_test
+    description: Waive the separate acceptance thermal vacuum test for the vacuum-insensitive electronic unit.
+    constraints: Not available to qualification or protoqualification units, which must still perform thermal vacuum to establish the insensitivity; a unit with the vacuum_sensitive flag (RF, high voltage, arcing risk, low-pressure heat transfer) does not qualify.
+approval: Not stated in the deck; the exemption is a paragraph of the standard, verify who approves the insensitivity demonstration
+documentation: Demonstration of vacuum insensitivity from qualification or protoqualification test data
+confidence: deck_only
+notes: >
+  Deck-sourced; verify the exact conditions and approval path against SSC-S-016 4.10.2. The deck
+  recommends against extending the exemption to protoqualification units (slide 42).
+---
+kind: tailoring_provision
+id: ssc-s-016.provision.narrow_range_more_cycles
+standard: ssc-s-016
+title: Narrower unit test temperature range compensated by more cycles (equivalent screening)
+citation: {standard: ssc-s-016, clause: "6.3.8", table: "Equivalent Thermal Stress Screening (deck slide 35)", page: "35", pdf_page: 36, note: "also deck slides 23 and 43 (pdf 24, 45); the standard's equivalence equation (exponent 1.4) is in the unit thermal clauses (verify)"}
+summary: >
+  When a unit's thermal limits prevent testing over the default range (for example a payload unit
+  that cannot reach -24 to +61 degC), the unit is tested to its constrained range and the number of
+  thermal cycles is increased to give the same screening and fatigue exposure, using the
+  standard's equivalence based on an exponent of 1.4 on the temperature range. The deck notes this
+  is the usual occasion for tailoring, more common for payload units than bus units, and that
+  testing only to allowable limits reduces unit test effectiveness, demonstrates no performance
+  margin and complicates higher-level tests.
+applies_to:
+  test_types: [thermal_cycle, thermal_vacuum]
+  levels: [unit]
+  hardware_types: [electronic]
+  regimes: [acceptance, protoflight]
+permits:
+  - action: reduce_level
+    description: Test over a temperature range narrower than the default ESS range when unit performance and operation are constrained to it.
+    constraints: Only when the unit cannot meet the default range; must be paired with the increased cycle count below.
+  - action: increase_cycles
+    description: Increase the number of thermal cycles so that cycles times the temperature range to the power 1.4 matches the default requirement.
+    constraints: Equivalence per the standard's exponent-1.4 relation; the deck's curve runs from the default 14 (acceptance) or 20 (protoqualification) cycles at full range up to about 50 cycles near a 40-50 degC range.
+approval: Not stated in the deck
+documentation: Not stated in the deck
+confidence: deck_only
+notes: Deck-sourced; verify the equivalence formula and its limits against SSC-S-016 6.3.8.
+---
+kind: tailoring_provision
+id: ssc-s-016.provision.two_tier_testing
+standard: ssc-s-016
+title: Two-tier unit thermal testing - full ESS range with performance tests at narrower limits
+citation: {standard: ssc-s-016, clause: "6.3.8", table: "Test Temperature Tailoring - Two-Tier Testing (deck slide 44)", page: "44", pdf_page: 45}
+summary: >
+  A unit with well known and proven performance limits may be exposed to the full SSC-S-016 ESS
+  temperature range while its performance tests are run only at a narrower performance range
+  inside it. The hardware is screened over the full range but performance margin is not
+  demonstrated, mission flexibility for unplanned flight scenarios is restricted, and retest or
+  margin reduction after design changes is more likely; the deck says it should be considered only
+  when performance cannot be demonstrated over the default ranges.
+applies_to:
+  test_types: [thermal_cycle, thermal_vacuum]
+  levels: [unit]
+  hardware_types: [electronic]
+  regimes: [acceptance, protoflight, qualification]
+permits:
+  - action: other
+    description: Run specification performance and functional tests at a narrower hot/cold performance range while exposing the unit (survival, hot and cold starts) to the full screening range.
+    constraints: Only for units with well known, proven performance limits and only when performance cannot be shown over the default range; the screening range itself is not reduced.
+approval: Not stated in the deck
+documentation: Not stated in the deck
+confidence: deck_only
+notes: Deck-sourced description of an approach the briefing presents as tailoring the program may see; verify whether SSC-S-016 6.3.8 itself provides for it.
+---
+kind: tailoring_provision
+id: ssc-s-016.provision.slice_board_credit
+standard: ssc-s-016
+title: Credit for slice/board-level thermal cycling toward unit cycle requirements, up to half
+citation: {standard: ssc-s-016, clause: "6.3.8", table: "Slice/Board Level Test Consideration (deck slide 40)", page: "40", pdf_page: 41, note: "also deck slide 70 (pdf 71): unit-level testing is retained, board testing alone is not sufficient"}
+summary: >
+  Thermal cycling performed on individual slices or boards before formal unit-level thermal
+  cycling may be credited as an equivalent screening environment for up to half of the required
+  unit cycle count, for qualification, protoqualification and acceptance hardware, provided all
+  slices and boards in the unit were tested, powered on, functionally tested in a manner
+  consistent with unit testing, and anomalies and defects were reported. Board testing alone does
+  not satisfy the unit requirement.
+applies_to:
+  test_types: [thermal_cycle]
+  levels: [unit, subassembly]
+  hardware_types: [electronic]
+  regimes: [acceptance, protoflight, qualification]
+permits:
+  - action: reduce_cycles
+    description: Reduce the unit-level thermal cycle count by crediting slice/board-level cycles.
+    constraints: Credit limited to half the required unit cycle count; every slice/board tested, powered, functionally tested consistent with unit testing, anomalies reported; the screening environment must be equivalent.
+approval: Not stated in the deck
+documentation: Slice/board test records including functional results and reported anomalies
+confidence: deck_only
+notes: >
+  The deck says SSC-S-016 "will give consideration" to slice/board testing, which may mean this is
+  a 2026-revision provision rather than 2014 text; it is recorded here pending verification against
+  SSC-S-016 6.3.8 and TR-2025-00777.
+---
+kind: tailoring_provision
+id: ssc-s-016.provision.dwell_reduction
+standard: ssc-s-016
+title: Reduced thermal dwell when data or analysis show the whole test article reaches temperature sooner
+citation: {standard: ssc-s-016, clause: "6.3.8", table: "Proposed Tailoring - Thermal Dwell Times (deck slide 39)", page: "39", pdf_page: 40, note: "dwell requirement values on deck slide 37 (pdf 38)"}
+summary: >
+  The dwell requirement (1 hr thermal cycle; 2 hr first and last thermal vacuum cycle, 1 hr
+  intermediate) exists so that internal locations, which lag the base-plate sensors, are at test
+  temperature before functional testing starts. The briefing's position is to keep the
+  requirement but allow a shorter dwell at unit or vehicle level when data or analysis demonstrate
+  that significantly less time brings all areas of the test article to test temperature.
+applies_to:
+  test_types: [thermal_cycle, thermal_vacuum]
+  levels: [unit, subsystem, element]
+  regimes: [acceptance, protoflight, qualification]
+permits:
+  - action: reduce_duration
+    description: Shorten the dwell at a temperature plateau before functional testing.
+    constraints: Only with test data or thermal analysis showing all internal locations reach the test temperature in the shorter time; starting functional tests while parts are still transitioning is an under-test.
+approval: Not stated in the deck
+documentation: Data or analysis demonstrating the shorter time to temperature
+confidence: deck_only
+notes: This is the briefing's recommended response to a common tailoring request; verify whether SSC-S-016 6.3.8/6.3.9 or 4.10 allow it in these terms.
+---
+kind: tailoring_provision
+id: ssc-s-016.provision.fewer_acceptance_cycles
+standard: ssc-s-016
+title: Fewer unit acceptance thermal cycles only with hardware-specific reliability data
+citation: {standard: ssc-s-016, clause: "6.3.8", table: "Proposed Tailoring - Fewer Acceptance Thermal Cycles (deck slide 36)", page: "36", pdf_page: 37, note: "also deck slides 32-34 (pdf 33-35) for the test-effectiveness data"}
+summary: >
+  Requests to cut unit acceptance thermal cycling (eight cycles is often proposed) are answered by
+  the data behind the baseline: 14 cycles over 85 degC give about 95 percent test effectiveness
+  (2 sigma), 8 cycles about 85-88 percent, letting two to four more latent defects escape to
+  integration and one to three to flight. The briefing's recommendation is to keep 14 cycles and
+  reduce only where hardware-specific data show the needed reliability is reached with fewer;
+  card or slice thermal preconditioning does not by itself satisfy the unit cycle requirement.
+applies_to:
+  test_types: [thermal_cycle, thermal_vacuum]
+  levels: [unit]
+  hardware_types: [electronic]
+  regimes: [acceptance]
+permits:
+  - action: reduce_cycles
+    description: Reduce the acceptance thermal cycle count below the 14-cycle baseline.
+    constraints: Only when hardware-specific data demonstrate the required reliability with fewer cycles; a generic eight-cycle proposal is not accepted on test-effectiveness grounds.
+approval: Not stated in the deck
+documentation: Hardware-specific reliability data
+confidence: deck_only
+notes: Briefing's recommended position; verify the standard's own wording on cycle-count tailoring in SSC-S-016 6.3.8 and 4.10.
+---
+kind: tailoring_provision
+id: ssc-s-016.provision.vehicle_tc_option
+standard: ssc-s-016
+title: Optional vehicle thermal cycle test preceding thermal vacuum (Appendix A) with reduced thermal vacuum cycles
+citation: {standard: ssc-s-016, clause: "Appendix A", table: "Subsystem and Vehicle Thermal Test Parameters (deck slide 69)", page: "69", pdf_page: 70, note: "also deck slide 60 (pdf 61)"}
+summary: >
+  A vehicle (or subsystem) thermal cycle test may be run before thermal vacuum as an option
+  discussed in the standard's Appendix A. It adds screening with faster transitions, lets
+  performance and procedure problems be resolved before the vacuum test, and reduces the required
+  thermal vacuum cycles: 2 TV + 3 TC instead of 4 TV for acceptance and protoqualification, and
+  4 TV + 6 TC instead of 8 TV for qualification. Thermal cycle and thermal vacuum remain
+  non-interchangeable; the option costs test time and needs continuous temperature monitoring
+  because transitions are faster than in vacuum.
+applies_to:
+  test_types: [thermal_vacuum, thermal_cycle]
+  levels: [subsystem, element]
+  regimes: [acceptance, protoflight, qualification]
+permits:
+  - action: alternate_cycle_plan
+    description: Replace the thermal-vacuum-only plan with a combined plan of fewer thermal vacuum cycles plus ambient-pressure thermal cycles.
+    constraints: Acceptance and protoqualification 2 TV + 3 TC (in place of 4 TV); qualification 4 TV + 6 TC (in place of 8 TV); thermal balance and first/last-cycle performance tests stay in the thermal vacuum part.
+approval: Not stated in the deck
+documentation: Not stated in the deck
+confidence: deck_only
+notes: Deck-sourced; verify against SSC-S-016 Appendix A and the vehicle thermal test table (section 8).

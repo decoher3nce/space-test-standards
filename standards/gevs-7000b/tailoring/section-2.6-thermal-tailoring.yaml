@@ -1,0 +1,77 @@
+# Relaxations that Section 2.6 itself permits, one record per clause.
+kind: tailoring_provision
+id: gevs-7000b.provision.thermal_tailoring_technical_authority
+standard: gevs-7000b
+title: Thermal verification tailoring needs technical authority concurrence and is recorded at MCR/SRR (2.6.2.6)
+citation: {standard: gevs-7000b, clause: "2.6.2.6", page: "2.6-14", pdf_page: 255}
+summary: >
+  Section 2.6 may be tailored for unavoidable exceptions, for cases where verification is better done
+  at lower levels of assembly, or to reflect hardware size and complexity, but only with the
+  technical authority's concurrence and with the tailoring documented at MCR/SRR. The baseline plan
+  should still follow the heritage approach; late deviations for cost or schedule are contingencies.
+applies_to:
+  test_types: [thermal_vacuum, thermal_balance, thermal_cycle]
+permits:
+  - action: other
+    description: Tailor the Section 2.6 thermal verification specifications for the stated reasons.
+    constraints: Concurrence of the technical authority; documented at MCR/SRR; Class C/D and CubeSat projects still target 12 protoflight cycles before flight and 7120.8/DNH projects tailor with Code 545 before design (2.6.2.2.3).
+approval: Technical authority
+documentation: MCR/SRR documentation
+---
+kind: tailoring_provision
+id: gevs-7000b.provision.tv_cold_margin_reduced_fixed_setpoint_heaters
+standard: gevs-7000b
+title: Unit cold test margin may drop from 10 to 5 degC for units with redundant fixed-setpoint heater control (2.6.3.2.1.1)
+citation: {standard: gevs-7000b, clause: "2.6.3.2.1.1", page: "2.6-16", pdf_page: 257}
+summary: >
+  For units kept by redundant, fixed-setpoint operational heaters, the cold-end margin in unit-level
+  thermal vacuum testing may be reduced from 10 degC to 5 degC; higher-level tests with the heater
+  control enabled need not drive the hardware below the setpoint. Units not directly heater controlled
+  keep the 10 degC cold margin.
+applies_to:
+  test_types: [thermal_vacuum]
+  levels: [unit]
+  hardware_types: [thermal]
+permits:
+  - action: reduce_level
+    description: Reduce the unit-level cold test margin from 10 degC to 5 degC below the AFT range.
+    constraints: Only with redundant fixed-setpoint heater control and only if the heater duty-cycle requirement of 2.6.4.1 (under 70 percent in the worst cold case) is met.
+---
+kind: tailoring_provision
+id: gevs-7000b.provision.ambient_thermal_cycle_for_mechanical_hardware
+standard: gevs-7000b
+title: Ambient-pressure thermal cycling may replace thermal vacuum for mechanical hardware without heat sources (2.6.3.2.2.1)
+citation: {standard: gevs-7000b, clause: "2.6.3.2.2.1", page: "2.6-19", pdf_page: 260}
+summary: >
+  When thermal cycling serves as a performance or workmanship screen for mechanical hardware that has
+  no heat-generating components, it may be run at ambient pressure, and the cycle count may be below
+  the eight thermal vacuum cycles otherwise taken as the qualification minimum, following the
+  hardware-specific table on page 2.6-18 (honeycomb panels with bonded inserts, mechanisms at
+  temperature extremes are the examples given).
+applies_to:
+  test_types: [thermal_vacuum]
+  hardware_types: [structure, mechanism, thermal]
+permits:
+  - action: substitute_test
+    description: Thermal cycle at ambient pressure instead of under vacuum.
+    constraints: Hardware contains no heat-generating components.
+  - action: reduce_cycles
+    description: Use the hardware-specific cycle counts (see the gevs-7000b.rule.hardware_cycles_* records) rather than eight thermal vacuum cycles.
+---
+kind: tailoring_provision
+id: gevs-7000b.provision.tv_limited_functional_in_lieu_of_cpt
+standard: gevs-7000b
+title: A limited functional test may replace the CPT at thermal vacuum plateaus when a full CPT is impractical (2.6.3.3.1.6)
+citation: {standard: gevs-7000b, clause: "2.6.3.3.1.6", page: "2.6-21", pdf_page: 262}
+summary: >
+  A comprehensive performance test is performed at least once at a hot plateau and once at a cold
+  plateau, exercising primary and redundant operation. Where that is impractical, the project may
+  approve a limited functional test instead, provided the major mission-critical modes are shown to
+  perform.
+applies_to:
+  test_types: [functional_performance, thermal_vacuum]
+permits:
+  - action: substitute_test
+    description: Substitute a limited performance test for the CPT at the hot and cold plateaus.
+    constraints: Major mission-critical modes demonstrated; otherwise 2.3.2 applies in full.
+approval: Project approval

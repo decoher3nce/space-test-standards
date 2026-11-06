@@ -1,0 +1,25 @@
+kind: rule
+id: gevs-7000b.rule.emi_susceptibility_scanning
+standard: gevs-7000b
+title: Susceptibility scan rates and step sizes, upper limit 18 GHz (Table 2.5-1, replacing MIL-STD-461G Table III)
+citation: {standard: gevs-7000b, clause: "2.5.1.5.4.1", table: Table 2.5-1, page: "2.5-9", pdf_page: 100}
+category: general
+statement: >
+  Swept-frequency susceptibility tests keep analog scan rates and stepped-scan step sizes at or below
+  the Table 2.5-1 values, expressed as fractions of the tuned frequency fo. The upper limit is 18 GHz
+  rather than 40 GHz; 18 to 40 GHz is scanned only when the procurement specification names
+  transmitters there. In the 1 to 18 GHz band the rate and step are four times those of MIL-STD-461G
+  Table III to cut test time. Thresholds of susceptibility are determined per MIL-STD-461G when the
+  EUT fails at full level (2.5.1.5.4.2).
+applies_to:
+  test_types: [emc]
+values:
+  analog_rate_30hz_to_1mhz: {value: 0.0333, unit: factor, note: "fo per second"}
+  step_30hz_to_1mhz: {value: 0.05, unit: factor, note: "fraction of fo"}
+  analog_rate_1mhz_to_30mhz: {value: 0.00667, unit: factor, note: "fo per second"}
+  step_1mhz_to_30mhz: {value: 0.01, unit: factor, note: "fraction of fo"}
+  analog_rate_30mhz_to_1ghz: {value: 0.00333, unit: factor, note: "fo per second"}
+  step_30mhz_to_1ghz: {value: 0.005, unit: factor, note: "fraction of fo"}
+  analog_rate_1ghz_to_18ghz: {value: 0.00667, unit: factor, note: "fo per second; four times MIL-STD-461G Table III"}
+  step_1ghz_to_18ghz: {value: 0.01, unit: factor, note: "fraction of fo; four times MIL-STD-461G Table III"}
+  upper_frequency: {text: "18 GHz (40 GHz only if specified)", unit: text}

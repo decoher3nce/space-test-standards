@@ -1,0 +1,32 @@
+kind: standard
+id: gevs-7000b
+designation: GSFC-STD-7000B
+title: General Environmental Verification Standard (GEVS) for GSFC Flight Programs and Projects
+revision: B
+date: "2021-04-28"
+publisher: NASA Goddard Space Flight Center
+status: active
+supersedes: GSFC-STD-7000A (2013)
+url: https://standards.nasa.gov/standard/GSFC/GSFC-STD-7000
+access: public_domain
+copyright_posture: >
+  Work of the United States Government, not subject to copyright in the United States. Structured
+  values, codes and clause citations are stored here; the standard's prose is not reproduced.
+scope: >
+  Environmental verification requirements and guidelines for GSFC payloads, subsystems and
+  components: structural and mechanical, EMC, thermal, cryogenic, contamination control and
+  end-to-end testing, with test factors and durations for prototype, protoflight and acceptance
+  programmes and a CubeSat companion in Appendix B.
+regime_terms:
+  qualification: Prototype qualification
+  protoflight: Protoflight qualification
+  acceptance: Acceptance
+level_terms:
+  unit: Unit (Component)
+  subsystem: Subsystem / Instrument
+  element: Payload / Spacecraft
+  segment: System segment
+source_file: gsfc-std-7000b_signature_cycle_04_28_2021_fixed_links.pdf (337 pages); pdf_page values index this file
+notes: >
+  Section numbering restarts per section (printed pages read "2.2 - 5"). Table 2.2-1 (levels of
+  assembly) is an image in the PDF; the level definitions are taken from Section 1.x definitions.

@@ -1,0 +1,73 @@
+# GEVS Table 2.6-1 "Thermal Vacuum Verification Summary (Non-Cryogenic)" is organised by level of
+# assembly rather than regime, so it is encoded as one record per level with regime "all".
+kind: test_parameters
+id: gevs-7000b.params.thermal_vacuum_unit
+standard: gevs-7000b
+test_type: thermal_vacuum
+title: Thermal vacuum summary, unit level, non-cryogenic (Table 2.6-1)
+citation: {standard: gevs-7000b, clause: "2.6.3.2.2.1", table: Table 2.6-1, page: "2.6-17", pdf_page: 258}
+level_of_assembly: [unit]
+by_regime:
+  all:
+    cycles: {value: 4, unit: cycles, note: "preferred plan, instrument hardware (0 if the instrument level performs 8)"}
+    dwell: {value: 4, unit: hr, per: plateau}
+    rate: {value: 1.0, unit: degC_per_min, note: "maximum transition rate"}
+    extra:
+      cycles_spacecraft_hardware: {value: 8, unit: cycles, note: "preferred plan, spacecraft/bus hardware"}
+      cycles_alternate_instrument_hardware: {value: 6, unit: cycles, note: "alternate plan when subsystem and system cycles are reduced"}
+      cycles_alternate_spacecraft_hardware: {value: 10, unit: cycles, note: "alternate plan when system cycles are reduced"}
+    footnotes: [n1, n3, n4, n6]
+footnotes:
+  n3: Test temperature margin column reads "AFT range +/-10C" (Figure 2.6-1); the regime-specific margin is taken from the Table 2.2-2 record gevs-7000b.params.thermal_vacuum_margin (10 degC prototype/protoflight, 5 degC acceptance).
+  n1: >
+    Workmanship screening goal is a minimum of 12 cycles before flight. Preferred approach: the
+    system test provides the final 4 cycles for all flight hardware; instrument hardware completes
+    8 cycles before delivery to system I&T, at least 4 of them at the subsystem/instrument level.
+    If the project reduces subsystem or system cycles, the alternate plan adds cycles at lower
+    levels rather than under-testing.
+  n4: Plateau durations are estimates of soak time after stabilisation; pre-test thermal analysis confirms or modifies them, and they may be extended to meet vacuum operating-hour requirements.
+  n6: Transition rates are suggested; achievable rates at higher levels of assembly are determined analytically by PDR.
+---
+kind: test_parameters
+id: gevs-7000b.params.thermal_vacuum_subsystem
+standard: gevs-7000b
+test_type: thermal_vacuum
+title: Thermal vacuum summary, subsystem/instrument level, non-cryogenic (Table 2.6-1)
+citation: {standard: gevs-7000b, clause: "2.6.3.2.2.1", table: Table 2.6-1, page: "2.6-17", pdf_page: 258}
+level_of_assembly: [subsystem]
+by_regime:
+  all:
+    cycles: {value: 4, unit: cycles, note: "preferred plan (8 if the units performed 0)"}
+    dwell: {value: 12, unit: hr, per: plateau}
+    rate: {value: 1.0, unit: degC_per_min, note: "maximum transition rate"}
+    extra:
+      cycles_alternate: {value: 4, unit: cycles, note: "alternate plan"}
+    footnotes: [n1, n3, n4, n5, n6]
+footnotes:
+  n3: Test temperature margin column reads "AFT range +/-10C"; the regime-specific margin is taken from gevs-7000b.params.thermal_vacuum_margin.
+  n1: See unit-level record; 12 cycles before flight in total, at least 4 at the subsystem/instrument level.
+  n4: Plateau durations are estimates confirmed by pre-test thermal analysis.
+  n5: Temperatures achieved may equal the unit protoflight temperatures but should be at least 10 degC beyond worst-case hot and cold margined mission predictions (which already include the 5 degC design/uncertainty margin).
+  n6: Transition rates are suggested; determine achievable rates analytically by PDR.
+---
+kind: test_parameters
+id: gevs-7000b.params.thermal_vacuum_element
+standard: gevs-7000b
+test_type: thermal_vacuum
+title: Thermal vacuum summary, system/satellite level, non-cryogenic (Table 2.6-1)
+citation: {standard: gevs-7000b, clause: "2.6.3.2.2.1", table: Table 2.6-1, page: "2.6-17", pdf_page: 258}
+level_of_assembly: [element]
+by_regime:
+  all:
+    cycles: {value: 4, unit: cycles, note: "preferred plan; the final 4 cycles for all flight hardware"}
+    dwell: {value: 24, unit: hr, per: plateau}
+    rate: {value: 1.0, unit: degC_per_min, note: "maximum transition rate"}
+    extra:
+      cycles_alternate: {value: 2, unit: cycles, note: "alternate plan"}
+    footnotes: [n1, n3, n4, n5, n6]
+footnotes:
+  n3: Test temperature margin column reads "AFT range +/-10C"; the regime-specific margin is taken from gevs-7000b.params.thermal_vacuum_margin.
+  n1: See unit-level record; 12 cycles before flight in total.
+  n4: Plateau durations are estimates confirmed by pre-test thermal analysis.
+  n5: Temperatures achieved may equal the unit protoflight temperatures but should be at least 10 degC beyond worst-case hot and cold margined mission predictions.
+  n6: Transition rates are suggested; determine achievable rates analytically by PDR.

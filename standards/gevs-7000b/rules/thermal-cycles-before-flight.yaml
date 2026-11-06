@@ -1,0 +1,14 @@
+kind: rule
+id: gevs-7000b.rule.twelve_thermal_cycles
+standard: gevs-7000b
+title: Minimum of 12 thermal vacuum cycles before flight (non-cryogenic hardware)
+citation: {standard: gevs-7000b, clause: "2.6.3.2.2.1", table: Table 2.6-1, page: "2.6-17", pdf_page: 258}
+category: screening
+statement: >
+  For all non-cryogenic flight hardware (above 120 K) a minimum of 12 thermal vacuum cycles before
+  flight is prescribed, accumulated across the levels of assembly as summarised in Table 2.6-1. The
+  cycle count is set to induce a prescribed amount of thermal stress, not to mirror mission cycles.
+applies_to:
+  test_types: [thermal_vacuum]
+values:
+  min_cycles_before_flight: {value: 12, unit: cycles}

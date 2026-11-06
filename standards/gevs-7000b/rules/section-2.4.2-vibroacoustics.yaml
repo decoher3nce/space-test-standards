@@ -1,0 +1,111 @@
+# GEVS 2.4.2 "Vibroacoustic Qualification": rules with structure beyond the Table 2.2-2 factors.
+kind: rule
+id: gevs-7000b.rule.fatigue_life_prototype_durations
+standard: gevs-7000b
+title: Prototype vibroacoustic durations at least four times intended life when lifetime must be demonstrated (2.4.2.1)
+citation: {standard: gevs-7000b, clause: "2.4.2.1", page: "2.4 - 14", pdf_page: 65}
+category: general
+statement: >
+  A protoflight programme cannot demonstrate lifetime because the test article flies. When
+  reliability requires a lifetime demonstration, a prototype programme is used and vibroacoustic
+  exposures are extended to at least four times the intended life to cover fatigue scatter; for ELV
+  payloads both the vibroacoustic and sine environments count. Where thermally induced fatigue is
+  possible (solar arrays, antennas) prototype thermal cycle testing at worst-case limit temperatures
+  for the mission number of cycles is performed; a smaller qualification panel with all full-scale
+  design details and at least 100 solar cells may stand in for a large array, and the test may be
+  accelerated by widening the cycle range if stress analysis shows no unrealistic failure modes.
+applies_to:
+  test_types: [acoustic, random_vibration, sine_vibration, thermal_cycle]
+  regimes: [qualification]
+values:
+  prototype_exposure_life_factor: {value: 4, unit: factor, relative_to: intended_life}
+  solar_array_qualification_panel_min_cells: {value: 100, unit: count}
+---
+kind: rule
+id: gevs-7000b.rule.payload_random_vibration_applicability
+standard: gevs-7000b
+title: Payload random vibration required for small payloads, assessed case by case above 454 kg; control tolerances (2.4.2.3)
+citation: {standard: gevs-7000b, clause: "2.4.2.3", page: "2.4 - 15", pdf_page: 66}
+category: general
+statement: >
+  A payload-level random vibration test at qualification level (limit plus 3 dB) is required for
+  payloads under 454 kg (1000 lb) and assessed case by case for larger ones; large ELV payloads need
+  it only with a close-coupled direct load path to the vehicle skin, where lift-off and transonic
+  excitation both matter. Small payloads cover the full 20 to 2000 Hz range. Vibration is applied
+  through a flight-type adapter at its base in three orthogonal axes, one along thrust; the control
+  spectrum is held within plus or minus 3 dB and the overall rms within plus or minus 10 percent. If
+  the payload test is not performed, feasibility at the next lower level is assessed. Acoustic tests
+  need at least four microphones and a minimum overall level of 138 dB (2.4.2.2).
+applies_to:
+  test_types: [random_vibration]
+  levels: [element]
+values:
+  mass_threshold_test_required: {text: "below 454 kg (1000 lb)", unit: text}
+  axes: {value: 3, unit: axes, note: "orthogonal, one parallel to thrust"}
+  asd_control_tolerance: {value: 3, unit: dB, relative_to: specified_level, note: "plus or minus"}
+  overall_rms_tolerance: {value: 10, unit: percent, relative_to: specified_level, note: "plus or minus"}
+  frequency_range_small_payloads: {text: "20 to 2000 Hz", unit: text}
+notes: >
+  The first page of the clause is 2.4 - 15 (pdf 66); the test requirements paragraph (a) is on
+  2.4 - 16 (pdf 67).
+---
+kind: rule
+id: gevs-7000b.rule.vibroacoustic_acceptance_protoflight_for_bonded_structure
+standard: gevs-7000b
+title: Protoflight vibroacoustic levels retained at acceptance for beryllium, composite, ceramic and bonded load paths (2.4.2.6)
+citation: {standard: gevs-7000b, clause: "2.4.2.6", page: "2.4 - 18", pdf_page: 69}
+category: general
+statement: >
+  Acceptance vibroacoustic testing of previously qualified hardware is at flight limit level for the
+  protoflight durations, with at least 138 dB acoustic and at least the workmanship random vibration
+  levels; the payload gets acoustic and/or three-axis random vibration and components get three-axis
+  random vibration. Hardware with beryllium, composite (including metal matrix), ceramic or bonded
+  joints in the structural load path whose margins are driven by vibroacoustic loads is tested to
+  protoflight levels even when already qualified, at the lowest practical level of assembly, because
+  that strength depends on workmanship.
+applies_to:
+  test_types: [acoustic, random_vibration]
+  regimes: [acceptance]
+  flags: [composite_or_bonded, beryllium]
+values:
+  acceptance_level: {value: 0, unit: dB, relative_to: limit_level}
+  bonded_structure_level: {value: 3, unit: dB, relative_to: limit_level, note: "protoflight level kept for the listed materials"}
+  acoustic_minimum_overall: {value: 138, unit: db_oaspl, relative_to: none}
+---
+kind: rule
+id: gevs-7000b.rule.retest_reflight_hardware
+standard: gevs-7000b
+title: Retest of reflight hardware - acoustic at limit level and random vibration in at least one axis after disassembly (2.4.2.7)
+citation: {standard: gevs-7000b, clause: "2.4.2.7", page: "2.4 - 21", pdf_page: 72}
+category: retest
+statement: >
+  For reflown hardware the retest depends on the rework done after flight and on the stresses of the
+  next flight versus the last; the aim is workmanship. With no disassembly the test may be
+  unnecessary, allowing for storage and elapsed time. Subsystems taken apart and reassembled get at
+  least an acoustic test at limit level and a random vibration test in at least one axis; extensive
+  rework calls for more.
+applies_to:
+  test_types: [acoustic, random_vibration]
+  levels: [subsystem]
+values:
+  acoustic_level: {value: 0, unit: dB, relative_to: limit_level}
+  random_vibration_axes_min: {value: 1, unit: axes}
+---
+kind: rule
+id: gevs-7000b.rule.retest_reworked_hardware
+standard: gevs-7000b
+title: Retest of reworked components - single-axis workmanship random vibration to Table 2.4-4 as a minimum (2.4.2.8)
+citation: {standard: gevs-7000b, clause: "2.4.2.8", page: "2.4 - 21", pdf_page: 72}
+category: retest
+statement: >
+  A component reworked after completing its mechanical verification (for example a replaced part on a
+  board) is retested in proportion to the rework and disassembly, to confirm workmanship. The minimum
+  is a single-axis workmanship random vibration test to the Table 2.4-4 levels in the axis that best
+  excites the reworked area; more axes if one cannot cover it; and three-axis acceptance-level testing
+  when rework or disassembly is significant and acceptance levels exceed workmanship levels.
+applies_to:
+  test_types: [random_vibration]
+  levels: [unit]
+values:
+  minimum_axes: {value: 1, unit: axes, note: "axis chosen to excite the reworked area"}
+  minimum_level: {text: "Table 2.4-4 workmanship spectrum (gevs-7000b.params.random_vibration_minimum_workmanship_unit)", unit: text}

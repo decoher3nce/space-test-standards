@@ -1,0 +1,80 @@
+# GEVS Table 2.7-1 "Cryogenic Vacuum, Thermal, Electrical and Mechanical Requirements". The
+# superscripts in the table are footnote numbers (1 to 7), not the Table 2.4-1 "T2" meaning; the raw
+# printed code is kept and the footnote named in each cell.
+kind: applicability_matrix
+id: gevs-7000b.matrix.cryogenic_vacuum_thermal
+standard: gevs-7000b
+title: Cryogenic vacuum, thermal, electrical and mechanical requirements (Table 2.7-1)
+citation: {standard: gevs-7000b, clause: "2.7.2", table: Table 2.7-1, page: "2.7-2", pdf_page: 277}
+regime: all
+applies_to: {flags: [cryogenic]}
+column_dimension: level_of_assembly
+columns:
+  - {id: element, label: Payload or highest practicable level of assembly}
+  - {id: subsystem, label: Subsystem including instruments}
+  - {id: unit, label: Unit / component}
+rows:
+  - test_type: thermal_vacuum
+    variant: cryogenic
+    label: Thermal vacuum (cryo-thermal)
+    clause: "2.7.3"
+    cells:
+      element: {code: T, requirement: required, method: test, footnotes: [n1, n5]}
+      subsystem: {code: T, requirement: required, method: test, footnotes: [n1, n5]}
+      unit: {code: T2, requirement: required, method: test, footnotes: [n1, n2, n5], notes: "Superscript 2 is footnote 2 (ambient cycling may substitute for warm components), not the Table 2.4-1 T2 code", condition: Ambient-pressure temperature cycling may replace thermal vacuum cycling for warm components when analysis shows equal severity}
+  - test_type: thermal_balance
+    variant: cryogenic
+    label: Thermal balance (cryo-thermal)
+    clause: "2.7.4"
+    cells:
+      element: {code: T and A, requirement: required, method: analysis_and_test, footnotes: [n1, n3, n5]}
+      subsystem: {code: "T,A", requirement: required, method: analysis_and_test, footnotes: [n1, n3, n5], condition: Test not required at this level when analysis verification covers the non-tested elements}
+      unit: {code: "T,A", requirement: required, method: analysis_and_test, footnotes: [n1, n3, n5], condition: Test not required at this level when analysis verification covers the non-tested elements}
+  - test_type: humidity
+    variant: temperature_pressure_humidity_habitable
+    label: Temperature-pressure-humidity (habitable volumes)
+    clause: "2.7.5"
+    cells:
+      element: {code: T/A, requirement: conditional, method: analysis_or_test, footnotes: [n3], condition: Test required if analysis indicates possible condensation}
+      subsystem: {code: T/A, requirement: conditional, method: analysis_or_test, footnotes: [n3], condition: Test required if analysis indicates possible condensation}
+      unit: {code: T/A, requirement: conditional, method: analysis_or_test, footnotes: [n3], condition: Test required if analysis indicates possible condensation}
+  - test_type: humidity
+    variant: transportation_and_storage
+    label: Temperature-humidity (transportation and storage)
+    clause: "2.7.5.1"
+    cells:
+      element: {code: A, requirement: required, method: analysis, footnotes: [n4]}
+      subsystem: {code: A, requirement: required, method: analysis, footnotes: [n4]}
+      unit: {code: A, requirement: required, method: analysis, footnotes: [n4]}
+  - test_type: random_vibration
+    variant: cold_vibration
+    label: Cold vibration testing
+    cells:
+      element: {code: T, requirement: conditional, method: test, footnotes: [n6], condition: Required when the payload launches with critical cryo-thermal components at operating temperature}
+      subsystem: {code: T, requirement: conditional, method: test, footnotes: [n6], condition: Required when the payload launches with critical cryo-thermal components at operating temperature}
+      unit: {code: T, requirement: conditional, method: test, footnotes: [n6], condition: Required when the payload launches with critical cryo-thermal components at operating temperature}
+    notes: No cold-vibration test type exists in the vocabulary; random_vibration with variant cold_vibration is the closest id (see VOCAB-REQUESTS.md). The table gives no clause reference for this row.
+  - test_type: leak
+    label: Leak testing
+    clause: "2.7.6"
+    cells:
+      element: {code: T, requirement: required, method: test, footnotes: [n7]}
+      subsystem: {code: T, requirement: required, method: test, footnotes: [n7]}
+      unit: {code: T, requirement: required, method: test, footnotes: [n7]}
+legend:
+  T: Test required
+  A: Analysis required; tests may be needed to substantiate it
+  T/A: Test required if analysis indicates possible condensation
+  "T,A": Test not required at this level of assembly if analysis verification is established for non-tested elements
+footnotes:
+  n1: Applies to hardware in unpressurised spaces and to ELV-launched hardware.
+  n2: Ambient-pressure temperature cycling may replace thermal vacuum cycling for warm (near room temperature) components of a cryogenic system if analysis shows the air test is as severe in temperature levels and gradients.
+  n3: Applies to flight hardware in pressurised environments.
+  n4: Consider environmental control of the enclosure.
+  n5: Survival/safehold testing for equipment whose non-operating extremes exceed its operating ones; performance to specification is not expected until temperatures return to qualification conditions.
+  n6: Cold vibration of critical cryo-thermal components is required when they launch at operational temperature; they must perform to specification at temperature afterwards.
+  n7: Hardware that passes the leak test at a lower level need not be retested higher unless the vessel wall's structural integrity may have been compromised.
+notes: >
+  Footnotes 1 to 4 are on page 2.7-2 (pdf 277); footnotes 5 to 7 and the legend on 2.7-3 (pdf 278).
+  Section 2.7 applies to systems operating below 120 K and to cryocooler systems with cooling loads
+  at or below 200 K. Row clause references are the Section 2.7 subsections that elaborate each row.

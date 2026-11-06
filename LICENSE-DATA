@@ -1,0 +1,9 @@
+The YAML records under vocabulary/ and standards/ and the generated tables under docs/ are
+licensed under the Creative Commons Attribution 4.0 International License (CC BY 4.0):
+https://creativecommons.org/licenses/by/4.0/
+
+Attribution: "space-test-standards, by decoher3nce and contributors".
+
+These records are derived data (codes, numeric values, clause citations) extracted from the
+public documents named in each standards/<id>/standard.yaml. They do not reproduce the text of
+those documents. Each source document remains subject to its publisher's terms; see NOTICE.md.

@@ -1,0 +1,61 @@
+# GEVS Table 2.4-3 "Generalized Random Vibration Test Levels, Components (ELV), 22.7 kg or less".
+# The table's two columns are headed Qualification and Acceptance; the mass-attenuation formula under
+# it labels the 0.16 plateau "for protoflight", so qualification and protoflight are encoded alike.
+kind: test_parameters
+id: gevs-7000b.params.random_vibration_generalized_unit
+standard: gevs-7000b
+test_type: random_vibration
+variant: generalized_component_levels
+title: Generalized random vibration test levels for components of 22.7 kg or less (Table 2.4-3)
+citation: {standard: gevs-7000b, clause: "2.4.2.5", table: Table 2.4-3, page: "2.4 - 19", pdf_page: 70}
+level_of_assembly: [unit]
+by_regime:
+  qualification:
+    level: {value: 14.1, unit: grms, relative_to: none, note: "overall"}
+    duration: {value: 1, unit: min, per: axis}
+    axes: {value: 3, unit: axes, note: "mutually perpendicular"}
+    extra:
+      asd_20_hz: {value: 0.026, unit: g2_per_hz}
+      slope_20_to_50_hz: {text: "+6 dB/oct", unit: text}
+      asd_50_to_800_hz: {value: 0.16, unit: g2_per_hz}
+      slope_800_to_2000_hz: {text: "-6 dB/oct", unit: text}
+      asd_2000_hz: {value: 0.026, unit: g2_per_hz}
+    footnotes: [mass, slopes, cap]
+  protoflight:
+    level: {value: 14.1, unit: grms, relative_to: none, note: "overall"}
+    duration: {value: 1, unit: min, per: axis}
+    axes: {value: 3, unit: axes, note: "mutually perpendicular"}
+    extra:
+      asd_20_hz: {value: 0.026, unit: g2_per_hz}
+      slope_20_to_50_hz: {text: "+6 dB/oct", unit: text}
+      asd_50_to_800_hz: {value: 0.16, unit: g2_per_hz}
+      slope_800_to_2000_hz: {text: "-6 dB/oct", unit: text}
+      asd_2000_hz: {value: 0.026, unit: g2_per_hz}
+    footnotes: [mass, slopes, cap]
+  acceptance:
+    level: {value: 10.0, unit: grms, relative_to: none, note: "overall"}
+    duration: {value: 1, unit: min, per: axis}
+    axes: {value: 3, unit: axes, note: "mutually perpendicular"}
+    extra:
+      asd_20_hz: {value: 0.013, unit: g2_per_hz}
+      slope_20_to_50_hz: {text: "+6 dB/oct", unit: text}
+      asd_50_to_800_hz: {value: 0.08, unit: g2_per_hz}
+      slope_800_to_2000_hz: {text: "-6 dB/oct", unit: text}
+      asd_2000_hz: {value: 0.013, unit: g2_per_hz}
+    footnotes: [mass, slopes, cap]
+footnotes:
+  mass: >
+    For components heavier than 22.7 kg (50 lb) the plateau may be lowered in proportion to mass:
+    reduction in dB = 10 log(W / 22.7) with W in kg (10 log(W / 50) in lb), so the 50 to 800 Hz
+    plateau becomes 0.16 x (22.7 / W) g2/Hz for qualification/protoflight and 0.08 x (22.7 / W) for
+    acceptance.
+  slopes: >
+    The +6 and -6 dB/oct slopes are kept up to 59 kg (130 lb); above that mass the slopes are
+    adjusted so the spectrum stays at 0.01 g2/Hz at 20 Hz and at 2000 Hz.
+  cap: Above 182 kg (400 lb) the specification is held at the 182-kg level and not reduced further.
+notes: >
+  2.4.2.5 applies these levels only when nothing is known about the expected environment; measured
+  levels at the mounting location, or statistically estimated responses of similar components, take
+  precedence. Duration and axis count come from 2.4.2.5(a) (one minute per axis in three axes) and
+  Table 2.2-2. Whatever the derived level, it may not fall below the Table 2.4-4 workmanship minimum
+  (gevs-7000b.params.random_vibration_minimum_workmanship_unit).

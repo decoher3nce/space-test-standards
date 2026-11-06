@@ -1,0 +1,87 @@
+# GEVS 2.3 "Electrical Function Test Guidelines": functional-test placement and operating-hour rules.
+kind: rule
+id: gevs-7000b.rule.electrical_interface_tests_before_integration
+standard: gevs-7000b
+title: Electrical interface tests before integration to the next level; harness checks before mating (2.3.1)
+citation: {standard: gevs-7000b, clause: "2.3.1", page: "2.3 - 1", pdf_page: 49}
+category: functional_test
+statement: >
+  Before an assembly, component or subsystem is integrated into the next higher assembly, its
+  interface signals are verified against the performance specification. Harnesses are checked for
+  routing, impedance, isolation and workmanship before mating to other hardware.
+applies_to:
+  test_types: [electrical_interface]
+  levels: [subassembly, unit, subsystem]
+---
+kind: rule
+id: gevs-7000b.rule.cpt_after_each_assembly_stage_and_at_extremes
+standard: gevs-7000b
+title: Comprehensive performance test after each stage of assembly and at hot and cold extremes at both input voltages (2.3.2)
+citation: {standard: gevs-7000b, clause: "2.3.2", page: "2.3 - 1", pdf_page: 49}
+category: functional_test
+statement: >
+  A CPT is run on each hardware element after each stage of assembly (component, subsystem,
+  payload). Where environmental testing is done at a level, further CPTs are run at the hot and cold
+  extremes of the temperature or thermal vacuum test, at both maximum and minimum input voltage,
+  and at the end of the environmental sequence, plus any other points the verification plan sets.
+  The CPT exercises all redundant circuitry and operational modes within practical limits; the first
+  CPT is the baseline for comparison.
+applies_to:
+  test_types: [functional_performance]
+  levels: [unit, subsystem, element]
+values:
+  input_voltages_at_extremes: {value: 2, unit: count, note: "maximum and minimum input voltage at each temperature extreme"}
+---
+kind: rule
+id: gevs-7000b.rule.lpt_before_during_after_environments
+standard: gevs-7000b
+title: Limited performance tests before, during and after environmental tests (2.3.3)
+citation: {standard: gevs-7000b, clause: "2.3.3", page: "2.3 - 1", pdf_page: 49}
+category: functional_test
+statement: >
+  LPTs are run before, during and after environmental tests as appropriate to show functional
+  capability has not degraded, and in place of a CPT where one is not warranted or practicable. They
+  cover selected hardware and software functions; the verification specification states when they occur.
+applies_to:
+  test_types: [functional_limited]
+---
+kind: rule
+id: gevs-7000b.rule.operating_hours_and_failure_free_performance
+standard: gevs-7000b
+title: 1000 operating hours, with 350 failure-free hours including 100 hot, 100 cold and 200 in vacuum (2.3.4)
+citation: {standard: gevs-7000b, clause: "2.3.4", page: "2.3 - 2", pdf_page: 50}
+category: operating_hours
+statement: >
+  All flight electronic hardware and spares accumulate 1000 hours of power-on time before launch
+  (1000 hours on each side for prime/redundant electronics). At the end of the verification programme
+  the payload shows failure-free performance for at least the last 350 hours, of which 100 hours are
+  at hot dwell, 100 at cold dwell and at least 200 in vacuum. The demonstration may be made at
+  subsystem level when integration happens at the launch site. Major hardware changes invalidate the
+  demonstration. The hours are tailored up or down for hardware classification and mission duration;
+  the same requirements apply to instruments and subsystems before delivery to the spacecraft.
+applies_to:
+  test_types: [burn_in]
+  flags: [has_eee_parts]
+values:
+  operating_time_before_launch: {value: 1000, unit: hr, per: side, note: "per prime and redundant side"}
+  failure_free_hours: {value: 350, unit: hr, note: "the last 350 hours of operation"}
+  failure_free_hours_hot: {value: 100, unit: hr}
+  failure_free_hours_cold: {value: 100, unit: hr}
+  failure_free_hours_vacuum: {value: 200, unit: hr, note: "minimum within the 350"}
+notes: >
+  2.6.3.6.2 (page 2.6-23, pdf 264) restates the 100 hot and 100 cold trouble-free hours as the thermal
+  vacuum acceptance criterion and refers back to the 350/200-hour requirement here. The permitted
+  variation is recorded as gevs-7000b.provision.failure_free_hours_varied.
+---
+kind: rule
+id: gevs-7000b.rule.limited_life_electrical_elements
+standard: gevs-7000b
+title: Life test programme to be considered for limited-life electrical elements (2.3.5)
+citation: {standard: gevs-7000b, clause: "2.3.5", page: "2.3 - 2", pdf_page: 50}
+category: general
+statement: >
+  Electrical elements with limited lifetimes are candidates for a life test programme. The
+  verification plan identifies the elements, the test hardware and the test methods.
+applies_to:
+  test_types: [life]
+  flags: [limited_life, has_eee_parts]

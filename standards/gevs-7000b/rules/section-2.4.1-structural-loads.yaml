@@ -1,0 +1,119 @@
+# GEVS 2.4.1 "Structural Loads Qualification": requirements with numeric structure not already in
+# Table 2.2-2 (test factors) or Table 2.2-3 (factors of safety).
+kind: rule
+id: gevs-7000b.rule.coupled_loads_model_frequency_range
+standard: gevs-7000b
+title: Test-verified finite element model for coupled loads analysis, all significant modes below 70 Hz for ELV (2.4.1.1.1)
+citation: {standard: gevs-7000b, clause: "2.4.1.1.1", page: "2.4 - 4", pdf_page: 55}
+category: model_philosophy
+statement: >
+  A test-verified finite element model of the payload is coupled with the launch vehicle model for a
+  coupled loads analysis whose forcing functions are at the flight limit level of Table 2.4-2. For
+  ELV payloads the model must capture all significant modes below 70 Hz unless the launch vehicle
+  provider needs higher. No flight event may be dropped from the analysis unless base-drive analysis
+  shows no significant spacecraft modes in the bands of the launch vehicle forcing functions. Shipping
+  and handling loads are analysed and included in the limit loads when not enveloped by flight loads.
+  When qualification by analysis is used, the modal survey upper frequency may need to rise.
+applies_to:
+  test_types: [modal_survey, static_load]
+  levels: [element]
+values:
+  elv_model_frequency_upper_bound: {text: "70 Hz (all significant modes below), unless the launch vehicle requires higher", unit: text}
+---
+kind: rule
+id: gevs-7000b.rule.modal_survey_correlation_criteria
+standard: gevs-7000b
+title: Modal survey target modes and test-analysis correlation goals (2.4.1.2)
+citation: {standard: gevs-7000b, clause: "2.4.1.2", page: "2.4 - 7", pdf_page: 58}
+category: general
+statement: >
+  A modal survey is required for payloads and subsystems/instruments with significant modal mass in
+  the launch vehicle coupled-loads frequency range, decided case by case. All significant modes up to
+  the required frequency are identified in frequency and shape; a mode is significant when its modal
+  effective mass is at least 5 percent of the total mass at that level of assembly, and modes that
+  drive high responses of critical components are also targets. Cross-orthogonality of test and
+  analysis shapes against the analytical mass matrix aims for at least 0.9 on the diagonal and at
+  most 0.1 off-diagonal, and test and analysis frequencies agree within 5 percent. The support
+  should duplicate launch boundary conditions where feasible.
+applies_to:
+  test_types: [modal_survey]
+  levels: [element, subsystem]
+values:
+  significant_mode_effective_mass: {value: 5, unit: percent, relative_to: total_mass}
+  cross_orthogonality_diagonal_min: {value: 0.9, unit: factor}
+  cross_orthogonality_off_diagonal_max: {value: 0.1, unit: factor}
+  frequency_match_tolerance: {value: 5, unit: percent, relative_to: analytical_frequency}
+---
+kind: rule
+id: gevs-7000b.rule.beryllium_strength_qualification
+standard: gevs-7000b
+title: Beryllium structure - strength test to 1.25 x limit, design factors 1.4 yield and 1.6 ultimate, penetrant inspection (2.4.1.3.1)
+citation: {standard: gevs-7000b, clause: "2.4.1.3.1", page: "2.4 - 9", pdf_page: 60}
+category: factor_of_safety
+statement: >
+  Every beryllium primary and secondary structural element is strength tested to 1.25 x limit load
+  with no detrimental permanent deformation and alignment requirements met afterwards. Design uses
+  factors of safety of 1.4 on yield and 1.6 on ultimate; cross-rolled sheet designs preclude
+  out-of-plane loads; stress analysis treats the material's lack of ductility rigorously with
+  worst-case tolerances; machined surfaces are chemically milled; all parts receive penetrant
+  inspection per NASA-STD-5009. Beryllium is never qualified by analysis alone.
+applies_to:
+  test_types: [static_load, sine_burst]
+  flags: [beryllium]
+values:
+  strength_test_level: {value: 1.25, unit: factor, relative_to: limit_load}
+  design_factor_yield: {value: 1.4, unit: factor}
+  design_factor_ultimate: {value: 1.6, unit: factor}
+---
+kind: rule
+id: gevs-7000b.rule.proof_tests_composite_bonded_welded_glass
+standard: gevs-7000b
+title: Proof tests for composite elements, bonded joints, critical welds and stressed glass (2.4.1.4.1)
+citation: {standard: gevs-7000b, clause: "2.4.1.4.1", page: "2.4 - 10", pdf_page: 61}
+category: screening
+statement: >
+  For ELV payloads: nonmetallic composite structural elements (including metal matrix) are preferably
+  all proof tested to 1.25 x limit load, or a representative set to 1.25 x the highest limit load for
+  that structure type with the rest qualified by similarity, using at least B-basis allowables plus
+  process and damage control plans. Every bonded structural joint is preferably proof tested to 1.25 x
+  limit, or at least one of each joint type with the rest by similarity (B-basis allowables); composite
+  and metallic honeycomb panels with bonded joints are thermally cycled to worst-case extremes before
+  proof testing. Critical welds are proof tested to 1.25 x limit with NDE before and after. Metallic
+  honeycomb is not treated as a composite. Fracture control per NASA-STD-5019 applies to pressure
+  vessels, dewars, lines and fittings, castings (unless HIP'd and proof tested), weldments, parts of
+  MSFC-SPEC-3029 Table II/III materials under sustained tension, quench-crack-prone materials, and
+  nonredundant mission-critical springs loaded above 25 percent of ultimate. Glass stressed above 10
+  percent of ultimate tensile strength is shown safe-life or fail-safe by fracture analysis or proof
+  tested to 1.0 x limit. These requirements also apply to acceptance of all flight hardware (2.4.1.5).
+applies_to:
+  test_types: [static_load, proof_load, thermal_cycle]
+  flags: [composite_or_bonded]
+values:
+  proof_test_level: {value: 1.25, unit: factor, relative_to: limit_load}
+  glass_proof_test_level: {value: 1.0, unit: factor, relative_to: limit_load, note: "alternative to safe-life or fail-safe fracture analysis for glass stressed above 10 percent of ultimate"}
+  glass_stress_threshold: {value: 10, unit: percent, relative_to: ultimate_tensile_strength}
+  spring_preload_threshold_for_fracture_control: {value: 25, unit: percent, relative_to: ultimate_strength}
+notes: >
+  The clause runs over pages 2.4 - 10 to 2.4 - 11 (pdf 61 to 62). The matrix row "Structural
+  reliability" in gevs-7000b.matrix.structural_mechanical points here.
+---
+kind: rule
+id: gevs-7000b.rule.structural_acceptance_proof_tests
+standard: gevs-7000b
+title: Acceptance of previously qualified structure - proof tests still required for beryllium, composites, bonded joints and critical welds (2.4.1.5)
+citation: {standard: gevs-7000b, clause: "2.4.1.5", page: "2.4 - 12", pdf_page: 63}
+category: general
+statement: >
+  Structural design loads testing is generally not repeated for flight structure already qualified by
+  a valid prototype or protoflight test for the current mission. The structural reliability
+  requirements of 2.4.1.4 still apply, and unless equivalent loads were applied to the actual flight
+  hardware during protoflight testing, beryllium structure, nonmetallic composite elements, bonded
+  structural joints and critical welds are proof tested to 1.25 x limit load. A follow-on spacecraft
+  with structural modifications or a new instrument complement is requalified for loads if analysis
+  so indicates.
+applies_to:
+  test_types: [static_load, proof_load]
+  regimes: [acceptance]
+  flags: [composite_or_bonded, beryllium]
+values:
+  acceptance_proof_level: {value: 1.25, unit: factor, relative_to: limit_load}

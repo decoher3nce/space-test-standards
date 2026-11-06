@@ -1,0 +1,31 @@
+# Ordering statements made in the thermal and cryogenic sections.
+kind: rule
+id: gevs-7000b.rule.thermal_tests_after_mechanical_tests
+standard: gevs-7000b
+title: Thermal verification tests recommended after successful mechanical testing at each level (2.6)
+citation: {standard: gevs-7000b, clause: "2.6", page: "2.6-2", pdf_page: 243}
+category: sequence
+statement: >
+  Section 2.6 recommends that thermal verification testing follow successful mechanical testing at
+  the unit, subsystem and system levels, so that the thermal test also screens workmanship after the
+  dynamic environments.
+applies_to:
+  test_types: [thermal_vacuum, thermal_balance]
+  levels: [unit, subsystem, element]
+before: [random_vibration, acoustic, sine_vibration, shock]
+---
+kind: rule
+id: gevs-7000b.rule.cryo_thermal_after_mechanical_at_system_level
+standard: gevs-7000b
+title: Mechanical testing before cryo-thermal testing at system level; test order set by the project with the cryogenics engineer (2.7.2)
+citation: {standard: gevs-7000b, clause: "2.7.2", page: "2.7-1", pdf_page: 276}
+category: sequence
+statement: >
+  The order of the Table 2.7-1 tests and analyses is set by the project with the cognizant cryogenics
+  engineer in the verification plan, specification and procedures, with mechanical testing before
+  cryo-thermal testing at the system level.
+applies_to:
+  test_types: [thermal_vacuum, thermal_balance]
+  levels: [element]
+  flags: [cryogenic]
+before: [random_vibration, acoustic, sine_vibration, shock]

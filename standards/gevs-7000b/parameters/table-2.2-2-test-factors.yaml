@@ -1,0 +1,191 @@
+# GEVS Table 2.2-2 "Test Factors/Durations" encoded one record per row. Each record is a
+# separate YAML document in this file so the whole table stays together.
+kind: test_parameters
+id: gevs-7000b.params.static_load
+standard: gevs-7000b
+test_type: static_load
+variant: centrifuge_or_static_load
+title: Structural loads by centrifuge or static load (Table 2.2-2)
+citation: {standard: gevs-7000b, clause: "2.2.4", table: Table 2.2-2, page: "2.2 - 5", pdf_page: 46}
+by_regime:
+  qualification:
+    level: {value: 1.25, unit: factor, relative_to: limit_load}
+    duration: {value: 1, unit: min}
+    footnotes: [f1, f4]
+  protoflight:
+    level: {value: 1.25, unit: factor, relative_to: limit_load}
+    duration: {value: 30, unit: s}
+    footnotes: [f1, f4]
+  acceptance:
+    level: {value: 1.0, unit: factor, relative_to: limit_load}
+    duration: {value: 30, unit: s}
+    footnotes: [f1, f4]
+footnotes:
+  f1: >
+    If qualified by analysis only, positive margins must be shown for factors of safety of 2.0 on
+    yield and 2.6 on ultimate; beryllium and composite materials cannot be qualified by analysis
+    alone. Weldments, beryllium, bonded and composite structure (including metal matrix) are tested
+    to 1.25 x limit for both qualification and acceptance.
+  f4: >
+    Shorter durations may be used in static testing to protect hardware from facility-driven
+    damage, provided the dwell demonstrates the target load within tolerance, all measurements are
+    recorded, and the structure is stable under load.
+---
+kind: test_parameters
+id: gevs-7000b.params.sine_burst
+standard: gevs-7000b
+test_type: sine_burst
+title: Structural loads by sine burst (Table 2.2-2)
+citation: {standard: gevs-7000b, clause: "2.2.4", table: Table 2.2-2, page: "2.2 - 5", pdf_page: 46}
+by_regime:
+  qualification:
+    level: {value: 1.25, unit: factor, relative_to: limit_load}
+    cycles: {value: 5, unit: cycles, per: axis, note: at full level}
+    footnotes: [f1]
+  protoflight:
+    level: {value: 1.25, unit: factor, relative_to: limit_load}
+    cycles: {value: 5, unit: cycles, per: axis, note: at full level}
+    footnotes: [f1]
+  acceptance:
+    level: {value: 1.0, unit: factor, relative_to: limit_load}
+    cycles: {value: 5, unit: cycles, per: axis, note: at full level}
+    footnotes: [f1]
+footnotes:
+  f1: >
+    If qualified by analysis only, positive margins must be shown for factors of safety of 2.0 on
+    yield and 2.6 on ultimate; beryllium and composite materials cannot be qualified by analysis
+    alone. Weldments, beryllium, bonded and composite structure are tested to 1.25 x limit for
+    both qualification and acceptance.
+---
+kind: test_parameters
+id: gevs-7000b.params.acoustic
+standard: gevs-7000b
+test_type: acoustic
+title: Acoustics level and duration (Table 2.2-2)
+citation: {standard: gevs-7000b, clause: "2.2.4", table: Table 2.2-2, page: "2.2 - 5", pdf_page: 46}
+by_regime:
+  qualification:
+    level: {value: 3, unit: dB, relative_to: limit_level}
+    duration: {value: 2, unit: min}
+    footnotes: [f2]
+  protoflight:
+    level: {value: 3, unit: dB, relative_to: limit_level}
+    duration: {value: 1, unit: min}
+    footnotes: [f2]
+  acceptance:
+    level: {value: 0, unit: dB, relative_to: limit_level}
+    duration: {value: 1, unit: min}
+    footnotes: [f2]
+footnotes:
+  f2: As a minimum, the test level shall be equal to or greater than the workmanship level.
+---
+kind: test_parameters
+id: gevs-7000b.params.random_vibration
+standard: gevs-7000b
+test_type: random_vibration
+title: Random vibration level and duration (Table 2.2-2)
+citation: {standard: gevs-7000b, clause: "2.2.4", table: Table 2.2-2, page: "2.2 - 5", pdf_page: 46}
+by_regime:
+  qualification:
+    level: {value: 3, unit: dB, relative_to: limit_level}
+    duration: {value: 2, unit: min, per: axis}
+    footnotes: [f2]
+  protoflight:
+    level: {value: 3, unit: dB, relative_to: limit_level}
+    duration: {value: 1, unit: min, per: axis}
+    footnotes: [f2]
+  acceptance:
+    level: {value: 0, unit: dB, relative_to: limit_level}
+    duration: {value: 1, unit: min, per: axis}
+    footnotes: [f2]
+footnotes:
+  f2: As a minimum, the test level shall be equal to or greater than the workmanship level.
+---
+kind: test_parameters
+id: gevs-7000b.params.sine_vibration
+standard: gevs-7000b
+test_type: sine_vibration
+title: Sine vibration level and sweep rate (Table 2.2-2)
+citation: {standard: gevs-7000b, clause: "2.2.4", table: Table 2.2-2, page: "2.2 - 5", pdf_page: 46}
+by_regime:
+  qualification:
+    level: {value: 1.25, unit: factor, relative_to: limit_level}
+    sweep_rate: {value: 2, unit: oct_per_min}
+    footnotes: [f3]
+  protoflight:
+    level: {value: 1.25, unit: factor, relative_to: limit_level}
+    sweep_rate: {value: 4, unit: oct_per_min}
+    footnotes: [f3]
+  acceptance:
+    level: {value: 1.0, unit: factor, relative_to: limit_level}
+    sweep_rate: {value: 4, unit: oct_per_min}
+    footnotes: [f3]
+footnotes:
+  f3: >
+    Choose the sweep direction to minimise risk to the hardware. If the sweep satisfies a loads
+    requirement rather than simulating an oscillatory mission environment, a faster rate (for
+    example 6 to 8 oct/min) may be considered to reduce over-stress.
+---
+kind: test_parameters
+id: gevs-7000b.params.shock_actual_device
+standard: gevs-7000b
+test_type: shock
+variant: actual_device
+title: Mechanical shock by actuation of the actual device (Table 2.2-2)
+citation: {standard: gevs-7000b, clause: "2.2.4", table: Table 2.2-2, page: "2.2 - 5", pdf_page: 46}
+by_regime:
+  qualification:
+    actuations: {value: 2, unit: actuations}
+  protoflight:
+    actuations: {value: 2, unit: actuations}
+  acceptance:
+    actuations: {value: 1, unit: actuations}
+---
+kind: test_parameters
+id: gevs-7000b.params.shock_simulated
+standard: gevs-7000b
+test_type: shock
+variant: simulated
+title: Mechanical shock by simulated input (Table 2.2-2)
+citation: {standard: gevs-7000b, clause: "2.2.4", table: Table 2.2-2, page: "2.2 - 5", pdf_page: 46}
+by_regime:
+  qualification:
+    level: {value: 1.4, unit: factor, relative_to: limit_level}
+    axes: {value: 2, unit: applications, per: axis}
+  protoflight:
+    level: {value: 1.4, unit: factor, relative_to: limit_level}
+    axes: {value: 1, unit: applications, per: axis}
+  acceptance:
+    level: {value: 1.0, unit: factor, relative_to: limit_level}
+    axes: {value: 1, unit: applications, per: axis}
+---
+kind: test_parameters
+id: gevs-7000b.params.thermal_vacuum_margin
+standard: gevs-7000b
+test_type: thermal_vacuum
+title: Thermal vacuum temperature margin (Table 2.2-2)
+citation: {standard: gevs-7000b, clause: "2.2.4", table: Table 2.2-2, page: "2.2 - 5", pdf_page: 46}
+by_regime:
+  qualification:
+    margin: {value: 10, unit: degC, relative_to: max_predicted, note: beyond maximum and minimum predicted}
+  protoflight:
+    margin: {value: 10, unit: degC, relative_to: max_predicted, note: beyond maximum and minimum predicted}
+  acceptance:
+    margin: {value: 5, unit: degC, relative_to: max_predicted, note: beyond maximum and minimum predicted}
+notes: >
+  Section 2.2.5 adds that the acceptance margin is typically 5 degC for thermal vacuum and 20 degC
+  for thermal cycling at ambient pressure.
+---
+kind: test_parameters
+id: gevs-7000b.params.emc_magnetics
+standard: gevs-7000b
+test_type: emc
+title: EMC and magnetics (Table 2.2-2)
+citation: {standard: gevs-7000b, clause: "2.2.4", table: Table 2.2-2, page: "2.2 - 5", pdf_page: 46}
+by_regime:
+  qualification:
+    level: {text: As specified for mission, unit: text}
+  protoflight:
+    level: {text: As specified for mission, unit: text}
+  acceptance:
+    level: {text: As specified for mission, unit: text}

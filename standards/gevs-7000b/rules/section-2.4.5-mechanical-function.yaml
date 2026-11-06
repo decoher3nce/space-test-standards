@@ -1,0 +1,157 @@
+# GEVS 2.4.5 "Mechanical Function Verification": the requirements with numeric structure.
+kind: rule
+id: gevs-7000b.rule.mechanical_function_energy_levels
+standard: gevs-7000b
+title: Mechanical function tests at nominal, low and high energy, with operation shown 10 degC beyond expected flight temperatures (2.4.5)
+citation: {standard: gevs-7000b, clause: "2.4.5", page: "2.4 - 28", pdf_page: 79}
+category: general
+statement: >
+  A kinematic analysis of all mechanical operations covers margins, clearances (stowed, operational
+  and in motion) and worst-case loads. Payload tests show each device is correctly installed and free
+  to move, and are repeated after any device is removed and reinstalled. Each subsystem or instrument
+  mechanical operation is qualified at nominal, low- and high-energy levels; the margin tests vary
+  every parameter that could affect operation (temperature, friction, spring forces, cable and
+  insulation stiffness, spin rate) and as a minimum demonstrate operation at temperatures 10 degC
+  beyond the expected flight range. Gravity compensation keeps uncompensated effects under about 10
+  percent of operational loads (0.1 g usually acceptable). Humidity-sensitive lubricants such as MoS2
+  are protected. For acceptance of previously qualified hardware the subsystem test is run at the
+  nominal level only, with torque margin still demonstrated (2.4.5.4). Motors critical to mission
+  success are fully characterised at minimum and maximum bus voltage before integration.
+applies_to:
+  test_types: [mechanical_function]
+  levels: [subsystem, element]
+  flags: [mechanism, deployable]
+values:
+  temperature_margin_for_function: {value: 10, unit: degC, relative_to: max_predicted, note: "beyond both ends of the expected flight temperature range"}
+  energy_levels_tested: {value: 3, unit: count, note: "nominal, low and high energy; acceptance of qualified hardware at nominal only"}
+  uncompensated_gravity_limit: {value: 10, unit: percent, relative_to: operational_loads, note: "guide; 0.1 g usually acceptable (page 2.4 - 34, pdf 85)"}
+---
+kind: rule
+id: gevs-7000b.rule.mechanical_function_after_other_tests
+standard: gevs-7000b
+title: Subsystem mechanical function qualification test after other tests that could affect mechanical operation (2.4.5.2.c)
+citation: {standard: gevs-7000b, clause: "2.4.5.2", page: "2.4 - 33", pdf_page: 84}
+category: sequence
+statement: >
+  The subsystem or instrument functional qualification test is conducted after any other testing
+  that may affect mechanical operation, to confirm performance and show no degradation from those
+  tests; the project may move it to payload level. The subsystem is exposed to the environmental
+  effects that precede or accompany the operation in flight, and preconditioning (vibration, thermal
+  cycling, pressure profiles, transportation) is applied when appropriate.
+applies_to:
+  test_types: [mechanical_function]
+  levels: [subsystem]
+  flags: [mechanism, deployable]
+before: [random_vibration, acoustic, sine_vibration, shock, thermal_vacuum]
+notes: The "before" list names the environments the clause implies could affect operation; the text itself says "any other testing that may affect mechanical operation".
+---
+kind: rule
+id: gevs-7000b.rule.mechanism_life_test_factor
+standard: gevs-7000b
+title: Mechanism life test demonstrates at least 2.0 times mission life without failure (2.4.5.1)
+citation: {standard: gevs-7000b, clause: "2.4.5.1", page: "2.4 - 30", pdf_page: 81}
+category: general
+statement: >
+  Mechanical elements that move repetitively and whose useful life must be known get a life test
+  programme defined in the verification plan and specification. The life test article is as nearly
+  identical to flight as possible (preferably a flight spare or qualification unit), is first exposed
+  to the flight-like structural and thermal environments, and is run with representative gravity,
+  thermal (including hot-cold transitions), vacuum, voltage and duty-cycle conditions, with health
+  parameters trended and a fail-safe setup. The minimum demonstrated failure-free life is 2.0 times
+  the mission life, with higher margins encouraged; acceleration is approached with caution according
+  to lubrication regime (never pushing boundary or mixed regimes into EHD; step-motor rotor
+  oscillations damped below 10 percent of peak before the next accelerated step). Post-test
+  disassembly and inspection are mandatory; abnormal wear, lubricant breakdown or debris can fail the
+  test. Omitting a life test needs documented rationale and supporting analysis; heritage alone is a
+  weak argument.
+applies_to:
+  test_types: [life]
+  flags: [mechanism, limited_life]
+values:
+  demonstrated_life_factor: {value: 2.0, unit: factor, relative_to: mission_life}
+  step_motor_overshoot_damping_before_next_step: {value: 10, unit: percent, relative_to: peak_overshoot}
+notes: The clause spans pages 2.4 - 28 to 2.4 - 31 (pdf 79 to 82); the 2.0 factor is on 2.4 - 30.
+---
+kind: rule
+id: gevs-7000b.rule.bearing_and_lubricant_design_criteria
+standard: gevs-7000b
+title: Bearing fatigue life at 99.95 percent survival, lubricant quantity margin above 10, Hertzian stress limits (2.4.5.2.a)
+citation: {standard: gevs-7000b, clause: "2.4.5.2", page: "2.4 - 32", pdf_page: 83}
+category: general
+statement: >
+  Lubricant selection rests on development tests over the design life; an analysis shows lubricant
+  quantity (ignoring degradation) sufficient for the mechanism life with a margin greater than 10,
+  while degradation-based availability is proven by life test. Each ball bearing installation is
+  substantiated by analysis plus development tests or prior use. Bearing fatigue life is computed at
+  99.95 percent survival under maximum time-varying loads. For 52100 or 440C steel in non-critical or
+  non-quiet applications the mean Hertzian contact stress stays below 2760 MPa (400 ksi) at yield load
+  and 2310 MPa (335 ksi) in operation; for quiet or low-torque-ripple bearings, below 2310 MPa at
+  yield load and 830 MPa (120 ksi) in operation, with contact ellipses contained by the raceways and
+  tolerances analysed nominal and off-nominal. Other materials use manufacturer allowables with
+  aerospace reduction factors, approved by the responsible engineer.
+applies_to:
+  flags: [mechanism]
+values:
+  bearing_fatigue_survival_probability: {value: 99.95, unit: percent}
+  lubricant_quantity_margin: {value: 10, unit: factor, relative_to: mission_life_consumption, note: "margin greater than 10"}
+  hertzian_stress_yield_load_standard: {text: "2760 MPa (400 ksi) mean, 52100 or 440C, non-quiet", unit: text}
+  hertzian_stress_operating_standard: {text: "2310 MPa (335 ksi) mean", unit: text}
+  hertzian_stress_yield_load_quiet: {text: "2310 MPa (335 ksi) mean, quiet or low torque ripple", unit: text}
+  hertzian_stress_operating_quiet: {text: "830 MPa (120 ksi) mean", unit: text}
+---
+kind: rule
+id: gevs-7000b.rule.mechanism_run_in
+standard: gevs-7000b
+title: Run-in of moving mechanical assemblies - at least 50 hours, or 15 cycles or 5 percent of life cycles, before further acceptance testing (2.4.5.2.c(4))
+citation: {standard: gevs-7000b, clause: "2.4.5.2", page: "2.4 - 34", pdf_page: 85}
+category: screening
+statement: >
+  After initial functional testing each moving mechanical assembly is run in before further
+  acceptance testing, unless this would reduce reliability, to catch early material and workmanship
+  defects and to wear in parts to consistent low friction. The run-in lasts at least 50 hours, or for
+  cycle-governed items at least 15 cycles or 5 percent of the expected life cycles, whichever is
+  greater, under representative loads, speed and environment (ambient allowed when objectives are met
+  and no debris or degradation results), with periodic measurements; gear trains with lubricants are
+  inspected and cleaned afterwards where practicable.
+applies_to:
+  test_types: [wear_in]
+  levels: [unit]
+  flags: [mechanism]
+values:
+  run_in_minimum_hours: {value: 50, unit: hr}
+  run_in_minimum_cycles: {value: 15, unit: cycles, note: "for cycle-governed items; or 5 percent of expected life cycles, whichever is greater"}
+  run_in_minimum_life_fraction: {value: 5, unit: percent, relative_to: expected_life_cycles}
+---
+kind: rule
+id: gevs-7000b.rule.torque_margin_factors_of_safety
+standard: gevs-7000b
+title: Torque or force margin - factors of safety on known and variable resisting torques by programme phase (2.4.5.3)
+citation: {standard: gevs-7000b, clause: "2.4.5.3", page: "2.4 - 35", pdf_page: 86}
+category: factor_of_safety
+statement: >
+  Torque (or force, for linear devices) margin is demonstrated by test at the highest possible level
+  of assembly through the full range of travel under worst-case predicted end-of-life conditions
+  (maximum or minimum predicted, not qualification, temperatures; gradients; rate; voltage; vacuum).
+  It is verified on the qualification or protoflight unit before and after qualification-level
+  environments and, where possible without breaking configuration, on flight units before and after
+  acceptance environments. TM = Tavail / (FSk x Tknown + FSv x Tvariable) - 1 must be greater than
+  zero using the acceptance/qualification-phase factors, where Tavail is the minimum available torque
+  (at the motor output at minimum voltage, excluding gear trains), Tknown the fixed quantifiable
+  torques such as accelerated inertias, and Tvariable the friction, alignment, latch, harness,
+  damper and lubricant-related torques. Kick-off springs count only at the start of travel; gear-driven
+  systems keep at least 1 in-oz available at the motor. Higher factors apply with unusual uncertainty,
+  non-representative or non-repeatable test conditions, or component-only testing; lower factors
+  need a waiver. A torque margin plan is presented at PDR and compliance shown by CDR.
+applies_to:
+  test_types: [mechanical_function]
+  flags: [mechanism, deployable]
+values:
+  fs_known_pdr: {value: 2.0, unit: factor, note: "FSk at preliminary design review"}
+  fs_variable_pdr: {value: 4.0, unit: factor, note: "FSv at preliminary design review"}
+  fs_known_cdr: {value: 1.5, unit: factor, note: "FSk at critical design review"}
+  fs_variable_cdr: {value: 3.0, unit: factor, note: "FSv at critical design review"}
+  fs_known_test: {value: 1.5, unit: factor, note: "FSk at acceptance / qualification test"}
+  fs_variable_test: {value: 2.0, unit: factor, note: "FSv at acceptance / qualification test"}
+  torque_margin_minimum: {value: 0, unit: factor, note: "TM must be greater than 0 with the test-phase factors"}
+  minimum_available_torque_at_motor: {text: "1 in-oz for gear-driven systems", unit: text}
+notes: The table of factors is on page 2.4 - 35 (pdf 86); the TM formula and definitions on 2.4 - 36 (pdf 87).

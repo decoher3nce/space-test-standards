@@ -1,0 +1,206 @@
+# Unit-level thermal test parameters of SSC-S-016 as reported in the NESC Academy deck
+# (J. W. Welch, June 2026). Temperature ranges from slide 23 (pdf 24) and 53 (pdf 54); cycle
+# counts from the duration-history table on slide 31 (pdf 32); dwell, rate, soak, failure-free
+# and burn-in from slide 37 (pdf 38); non-electronic cycles from slide 55 (pdf 56). One record per
+# test so a matrix row can point at it. All deck_only.
+kind: test_parameters
+id: ssc-s-016.params.thermal_cycle_unit
+standard: ssc-s-016
+test_type: thermal_cycle
+title: Unit thermal cycle test for electronic units (range, cycles, dwell, rate, soak, burn-in)
+citation: {standard: ssc-s-016, clause: "6.3.8", table: "Unit Thermal Test Parameter Requirements in SSC-S-016 (deck slide 53)", page: "53", pdf_page: 54, note: "also deck slides 23, 31 and 37 (pdf 24, 32, 38); pdf_page indexes the NESC deck"}
+level_of_assembly: [unit]
+hardware_type: [electronic]
+by_regime:
+  acceptance:
+    temperature_range: {min_value: -24, max_value: 61, unit: degC, note: "default minimum ESS range for electronic units; the test uses the predicted range (with uncertainty margin) or this default, whichever is more severe"}
+    margin: {value: 0, unit: degC, relative_to: max_predicted, note: "acceptance extremes are the maximum/minimum predicted temperatures, which already include the 11 degC thermal uncertainty margin"}
+    cycles: {value: 10, unit: cycles, note: "10 thermal cycle plus 4 thermal vacuum cycles = 14 total"}
+    dwell: {value: 1, unit: hr, per: plateau, note: "all cycles; time at plateau before functional testing starts"}
+    rate: {min_value: 3, max_value: 5, unit: degC_per_min}
+    extra:
+      temperature_span: {value: 85, unit: degC, note: "minimum range, cold to hot"}
+      total_thermal_cycles: {value: 14, unit: cycles, note: "thermal cycle plus thermal vacuum"}
+      burn_in_hours: {value: 200, unit: hr, note: "accrued over thermal cycle, thermal vacuum and elevated-temperature operation; at least 100 hr per redundant path"}
+      soak_first_last_cycle: {value: 4, unit: hr, per: plateau, note: "total time at plateau on first and last cycle"}
+      soak_intermediate_cycle: {value: 1, unit: hr, per: plateau}
+      failure_free_final_cycles: {value: 3, unit: cycles, note: "last three thermal cycles failure-free"}
+    footnotes: [n_range, n_cycles, n_profile, n_burn_in]
+  protoflight:
+    temperature_range: {min_value: -29, max_value: 66, unit: degC, note: "default minimum range; or predicted extremes widened by 5 degC each side, whichever is more severe"}
+    margin: {value: 5, unit: degC, relative_to: max_predicted, note: "beyond maximum and minimum predicted temperatures"}
+    cycles: {value: 16, unit: cycles, note: "16 thermal cycle plus 4 thermal vacuum cycles = 20 total"}
+    dwell: {value: 1, unit: hr, per: plateau, note: "all cycles"}
+    rate: {min_value: 3, max_value: 5, unit: degC_per_min}
+    extra:
+      temperature_span: {value: 95, unit: degC}
+      total_thermal_cycles: {value: 20, unit: cycles}
+      burn_in_hours: {value: 200, unit: hr, note: "as for acceptance"}
+      soak_first_last_cycle: {value: 4, unit: hr, per: plateau}
+      soak_intermediate_cycle: {value: 1, unit: hr, per: plateau}
+      failure_free_final_cycles: {value: 3, unit: cycles}
+    footnotes: [n_range, n_cycles, n_profile, n_burn_in, n_pq]
+  qualification:
+    temperature_range: {min_value: -34, max_value: 71, unit: degC, note: "default minimum range; or predicted extremes widened by 10 degC each side, whichever is more severe"}
+    margin: {value: 10, unit: degC, relative_to: max_predicted, note: "beyond maximum and minimum predicted temperatures"}
+    cycles: {value: 23, unit: cycles, note: "23 thermal cycle plus 4 thermal vacuum cycles = 27 total"}
+    dwell: {value: 1, unit: hr, per: plateau, note: "all cycles"}
+    rate: {min_value: 3, max_value: 5, unit: degC_per_min}
+    extra:
+      temperature_span: {value: 105, unit: degC}
+      total_thermal_cycles: {value: 27, unit: cycles}
+      burn_in_hours: {text: Enveloped, unit: text, note: "no separate burn-in requirement for qualification units"}
+      soak_first_last_cycle: {value: 4, unit: hr, per: plateau}
+      soak_intermediate_cycle: {value: 1, unit: hr, per: plateau}
+      failure_free_final_cycles: {value: 3, unit: cycles}
+    footnotes: [n_range, n_cycles, n_profile]
+footnotes:
+  n_range: >
+    Default ranges are for minimum environmental stress screening of electronic units (deck slide 23);
+    the 85 degC acceptance span is the operating range characteristic of well-built electronic parts.
+    Units whose limits prevent the default range are tested to their constrained range with more cycles.
+  n_cycles: >
+    Cycle counts from the deck's test-duration history (slide 31) and summary (slide 53); the deck
+    says SSC-S-016 (2014) reduced protoqualification from 27 to 20 total cycles. Additional cycling
+    may be needed to demonstrate life for orbital requirements.
+  n_profile: >
+    Dwell is the time at a plateau before functional testing starts; soak is the total time at the
+    plateau (slide 37). Unit operates at plateaus and during transitions; hot and cold starts are
+    demonstrated at the plateaus.
+  n_burn_in: >
+    Burn-in applies to acceptance and protoqualification electronic units and is the total of
+    thermal cycle, thermal vacuum and elevated-temperature operation; ambient operation does not
+    count (slides 37, 45, 48). The 2026 revision lowers it; see ssc-s-016-2026.
+  n_pq: The deck states that a flightproof test strategy is not applicable to thermal environments (slide 53).
+confidence: deck_only
+notes: >
+  All values read from the NESC deck; verify against SSC-S-016 6.3.8 (unit thermal cycle test)
+  and the unit thermal test parameter table of the standard. The deck attributes these values to
+  the 2014 SMC-S-016 content redesignated SSC-S-016 ("SSC-S-016 2023").
+---
+kind: test_parameters
+id: ssc-s-016.params.thermal_vacuum_unit
+standard: ssc-s-016
+test_type: thermal_vacuum
+title: Unit thermal vacuum test for electronic units (range, cycles, dwell, rate, soak)
+citation: {standard: ssc-s-016, clause: "6.3.9", table: "Unit Thermal Test Parameter Requirements in SSC-S-016 (deck slide 53)", page: "53", pdf_page: 54, note: "also deck slides 23, 31 and 37 (pdf 24, 32, 38); pdf_page indexes the NESC deck"}
+level_of_assembly: [unit]
+hardware_type: [electronic]
+by_regime:
+  acceptance:
+    temperature_range: {min_value: -24, max_value: 61, unit: degC, note: "same default range as thermal cycling"}
+    margin: {value: 0, unit: degC, relative_to: max_predicted, note: "acceptance extremes are the maximum/minimum predicted temperatures"}
+    cycles: {value: 4, unit: cycles, note: "4 thermal vacuum plus 10 thermal cycle cycles = 14 total"}
+    dwell: {value: 2, unit: hr, per: plateau, note: "first and last cycle; 1 hr on intermediate cycles"}
+    rate: {value: 1, unit: degC_per_min, note: "average rate greater than 1 degC/min where possible"}
+    extra:
+      dwell_intermediate_cycle: {value: 1, unit: hr, per: plateau}
+      soak_first_last_cycle: {value: 4, unit: hr, per: plateau}
+      soak_intermediate_cycle: {value: 1, unit: hr, per: plateau}
+      total_thermal_cycles: {value: 14, unit: cycles}
+      burn_in_hours: {value: 200, unit: hr, note: "shared total with thermal cycling and elevated-temperature operation"}
+      failure_free_final_cycles: {value: 3, unit: cycles, note: "applies to the last three thermal vacuum cycles only when no thermal cycle test is performed"}
+    footnotes: [n_vac, n_profile]
+  protoflight:
+    temperature_range: {min_value: -29, max_value: 66, unit: degC}
+    margin: {value: 5, unit: degC, relative_to: max_predicted}
+    cycles: {value: 4, unit: cycles, note: "4 thermal vacuum plus 16 thermal cycle cycles = 20 total"}
+    dwell: {value: 2, unit: hr, per: plateau, note: "first and last cycle; 1 hr on intermediate cycles"}
+    rate: {value: 1, unit: degC_per_min, note: "average rate greater than 1 degC/min where possible"}
+    extra:
+      dwell_intermediate_cycle: {value: 1, unit: hr, per: plateau}
+      soak_first_last_cycle: {value: 4, unit: hr, per: plateau}
+      soak_intermediate_cycle: {value: 1, unit: hr, per: plateau}
+      total_thermal_cycles: {value: 20, unit: cycles}
+      burn_in_hours: {value: 200, unit: hr}
+    footnotes: [n_vac, n_profile, n_earn]
+  qualification:
+    temperature_range: {min_value: -34, max_value: 71, unit: degC}
+    margin: {value: 10, unit: degC, relative_to: max_predicted}
+    cycles: {value: 4, unit: cycles, note: "4 thermal vacuum plus 23 thermal cycle cycles = 27 total"}
+    dwell: {value: 2, unit: hr, per: plateau, note: "first and last cycle; 1 hr on intermediate cycles"}
+    rate: {value: 1, unit: degC_per_min, note: "average rate greater than 1 degC/min where possible"}
+    extra:
+      dwell_intermediate_cycle: {value: 1, unit: hr, per: plateau}
+      soak_first_last_cycle: {value: 4, unit: hr, per: plateau}
+      soak_intermediate_cycle: {value: 1, unit: hr, per: plateau}
+      total_thermal_cycles: {value: 27, unit: cycles}
+    footnotes: [n_vac, n_profile, n_earn]
+footnotes:
+  n_vac: >
+    Thermal vacuum is the primary unit test for vacuum-sensitive units (deck slide 15). Under 4.10.2
+    an acceptance electronic unit shown to be insensitive to vacuum may fold these cycles into the
+    thermal cycle test (slide 41); see ssc-s-016.provision.tv_exemption_4_10_2.
+  n_profile: Dwell, rate and soak from deck slide 37; dwell is time at plateau before functional testing, soak is total plateau time.
+  n_earn: Qualification and protoqualification units always receive thermal vacuum; the demonstration of vacuum insensitivity there is what allows deleting it for acceptance units (deck slide 42).
+confidence: deck_only
+notes: >
+  All values read from the NESC deck; verify against SSC-S-016 6.3.9 (unit thermal vacuum test)
+  and the unit thermal test parameter table of the standard.
+---
+kind: test_parameters
+id: ssc-s-016.params.thermal_vacuum_unit_nonelectronic
+standard: ssc-s-016
+test_type: thermal_vacuum
+variant: nonelectronic
+title: Unit thermal vacuum cycles for non-electronic (mechanical) units
+citation: {standard: ssc-s-016, clause: "6.3.9", table: "Thermal Testing of Non-Electronic Units (deck slide 55)", page: "55", pdf_page: 56, note: "pdf_page indexes the NESC deck"}
+level_of_assembly: [unit]
+hardware_type: [mechanism]
+by_regime:
+  acceptance:
+    cycles: {value: 1, unit: cycles}
+    temperature_range: {text: Based on flight temperature predictions, unit: text}
+    footnotes: [n_scope]
+  protoflight:
+    cycles: {value: 3, unit: cycles}
+    temperature_range: {text: Based on flight temperature predictions, unit: text}
+    footnotes: [n_scope]
+  qualification:
+    cycles: {value: 6, unit: cycles}
+    temperature_range: {text: Based on flight temperature predictions, unit: text}
+    footnotes: [n_scope]
+footnotes:
+  n_scope: >
+    The deck's slide is titled "Thermal Testing of Non-Electronic Units" and discusses mechanical
+    units, deployment mechanisms and batteries; the 1/3/6 cycle table sits beside a deployment
+    mechanism example. The intent is flight-like performance demonstration (thermal vacuum, not
+    thermal cycling), with fewer cycles and temperatures from flight predictions rather than
+    screening. hardware_type is set to mechanism as the closest match; which other non-electronic
+    unit types share these counts must be read from the standard.
+confidence: deck_only
+notes: >
+  Verify against SSC-S-016 6.3.9 and the unit thermal vacuum requirements for non-electronic
+  units; the deck does not state the temperature margins used for these units.
+---
+kind: test_parameters
+id: ssc-s-016.params.burn_in_unit
+standard: ssc-s-016
+test_type: burn_in
+title: Unit burn-in operating hours for electronic units
+citation: {standard: ssc-s-016, clause: "6.3.8", table: "Other SSC-S-016 Thermal Test Requirements (deck slide 37)", page: "37", pdf_page: 38, note: "also deck slides 31, 45, 46 and 53 (pdf 32, 46, 47, 54); the standard's burn-in clause number is not given in the deck, 6.3.8 is the thermal cycle clause the burn-in rides on"}
+level_of_assembly: [unit]
+hardware_type: [electronic]
+by_regime:
+  acceptance:
+    duration: {value: 200, unit: hr, note: "total of thermal cycle, thermal vacuum and elevated-temperature operating time"}
+    extra:
+      hours_per_redundant_path: {value: 100, unit: hr, note: "at least 100 hr on each redundant path"}
+    footnotes: [n_accrual]
+  protoflight:
+    duration: {value: 200, unit: hr, note: "total of thermal cycle, thermal vacuum and elevated-temperature operating time"}
+    extra:
+      hours_per_redundant_path: {value: 100, unit: hr}
+    footnotes: [n_accrual]
+  qualification:
+    duration: {text: Enveloped, unit: text, note: "no separate burn-in requirement for qualification units"}
+footnotes:
+  n_accrual: >
+    Hours short of the total are made up with additional thermal cycles (preferred for fatigue-driven
+    defects) or hot acceptance-temperature dwell (preferred for diffusion-driven defects); ambient
+    operation gives little thermal stress and does not count (deck slides 45 and 48). The 2026
+    revision lowers the total to 150-175 hr; see ssc-s-016-2026.params.burn_in_unit.
+confidence: deck_only
+notes: >
+  Verify against the SSC-S-016 unit burn-in requirement (clause not named in the deck; search
+  6.3.8/6.3.9 and the unit acceptance table footnote 8).

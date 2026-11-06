@@ -1,0 +1,192 @@
+# GEVS 2.6 thermal vacuum verification: margins, plateau criteria, pressure, spares, retest,
+# start-up demonstrations and outgassing. Cycle counts are in Table 2.6-1 (parameters) and
+# gevs-7000b.rule.twelve_thermal_cycles.
+kind: rule
+id: gevs-7000b.rule.tv_test_margins_by_regime_and_level
+standard: gevs-7000b
+title: Thermal vacuum test margins - protoflight 10 degC, qualification 15 degC, acceptance 5 degC beyond AFT; 15 degC beyond predictions at subsystem/system (2.6.1, 2.6.3.2.1)
+citation: {standard: gevs-7000b, clause: "2.6.3.2.1.1", page: "2.6-16", pdf_page: 257}
+category: margin
+statement: >
+  Test margins are added to the unit allowable flight temperature (AFT) range, which is set by
+  hardware capability rather than mission predictions. Protoflight margin is 10 degC beyond AFT and is
+  preferred for all GSFC hardware, including every copy on a payload or on systems launched together;
+  qualification margin is 15 degC on dedicated hardware; acceptance margin is 5 degC and is used only
+  after a protoflight programme has succeeded through system level, never for additional units on the
+  same payload. For non-cryogenic units the 10 degC margin applies at every level of testing. At
+  subsystem and system level, hardware not directly heater controlled reaches at least 15 degC beyond
+  the predicted mission temperature ranges of the units (the subsystem/system protoflight condition);
+  hardware with fixed non-selectable heater control demonstrates what the control range allows, while
+  variable-setpoint hardware aims for plus or minus 10 degC and no less than 5 degC from the nominal
+  setpoint, with the control range shown in thermal balance. Table 2.6-1 note 5 asks for at least 10
+  degC beyond worst-case margined predictions (which already carry the 5 degC design margin). For
+  cryogenic hardware below 120 K the 10 degC margin is a goal agreed with the project and documented
+  by SRR. Non-operational limits normally carry no test margin.
+applies_to:
+  test_types: [thermal_vacuum]
+  levels: [unit, subsystem, element]
+values:
+  protoflight_margin: {value: 10, unit: degC, relative_to: design_range, note: "beyond AFT, hot and cold"}
+  qualification_margin: {value: 15, unit: degC, relative_to: design_range, note: "beyond AFT (2.6.1, page 2.6-2, pdf 243)"}
+  acceptance_margin: {value: 5, unit: degC, relative_to: design_range, note: "beyond AFT (2.6.1, page 2.6-3, pdf 244)"}
+  subsystem_system_margin_beyond_predictions: {value: 15, unit: degC, relative_to: max_predicted, note: "for hardware not directly heater controlled"}
+  variable_setpoint_margin_goal: {value: 10, unit: degC, relative_to: nominal_setpoint, note: "goal; never less than 5 degC"}
+  variable_setpoint_margin_min: {value: 5, unit: degC, relative_to: nominal_setpoint}
+  fixed_setpoint_unit_cold_margin_reduced: {value: 5, unit: degC, relative_to: design_range, note: "permitted reduction, see gevs-7000b.provision.tv_cold_margin_reduced_fixed_setpoint_heaters"}
+  cryogenic_margin_goal: {value: 10, unit: degC, relative_to: design_range, note: "goal below 120 K; limitations documented by SRR (2.6.3.2.1.2, pdf 258)"}
+---
+kind: rule
+id: gevs-7000b.rule.tv_plateau_stabilisation_and_minimum_dwells
+standard: gevs-7000b
+title: Thermal vacuum plateau start criteria and minimum dwells - unit 4 h operational, 2 h non-operational; subsystem 12 h; system 24 h; survival 8 h (2.6.3.2.3)
+citation: {standard: gevs-7000b, clause: "2.6.3.2.3", page: "2.6-19", pdf_page: 260}
+category: general
+statement: >
+  Each plateau lasts long enough to finish the required performance tests and accumulate the hot and
+  cold operating hours. Unit testing: the dwell starts when the control temperature (usually the
+  baseplate or platen) is within 2 degC of the protoflight temperature; hot and cold operational
+  plateaus are at least 4 hours, non-operational plateaus at least 2 hours. Subsystem testing: the
+  dwell starts when 98 percent of the test-article sensors are within 2 degC of the expected
+  temperature or changing less than 0.1 degC per hour; operational plateaus at least 12 hours,
+  survival or safehold plateaus at least 8 hours. System testing: same 98 percent / 2 degC / 0.1 degC
+  per hour criterion; operational plateaus at least 24 hours, survival or safehold at least 8 hours.
+  Cryogenic plateaus are set by analysis and may be far longer; the cryogenic control criterion may be
+  tighter than 2 degC. Table 2.6-1 note 4 says these are estimates to be confirmed by pre-test
+  analysis.
+applies_to:
+  test_types: [thermal_vacuum]
+  levels: [unit, subsystem, element]
+values:
+  unit_control_temperature_tolerance: {value: 2, unit: degC, note: "control sensor within this of the test temperature before the dwell starts"}
+  unit_operational_plateau_min: {value: 4, unit: hr, per: plateau}
+  unit_non_operational_plateau_min: {value: 2, unit: hr, per: plateau}
+  subsystem_sensor_fraction_stable: {value: 98, unit: percent, note: "of sensors within 2 degC or drifting under 0.1 degC per hour"}
+  subsystem_operational_plateau_min: {value: 12, unit: hr, per: plateau}
+  subsystem_survival_plateau_min: {value: 8, unit: hr, per: plateau}
+  system_operational_plateau_min: {value: 24, unit: hr, per: plateau}
+  system_survival_plateau_min: {value: 8, unit: hr, per: plateau}
+  stability_drift_rate: {text: "less than 0.1 degC per hour (alternative to the 2 degC band)", unit: text}
+---
+kind: rule
+id: gevs-7000b.rule.tv_chamber_pressure_and_tolerances
+standard: gevs-7000b
+title: Thermal vacuum chamber pressure below 1.33e-3 Pa after discharge checks; pressure and temperature tolerances (2.6.3.2.4, 2.6.1)
+citation: {standard: gevs-7000b, clause: "2.6.3.2.4", page: "2.6-20", pdf_page: 261}
+category: tolerance
+statement: >
+  After electrical discharge checks the chamber pressure is below 1.33e-3 Pa (1e-5 torr). Items
+  operating during pressure transitions demonstrate function through the voltage-breakdown region
+  during pump-down and/or repressurisation; hardware for partial-pressure environments (for example
+  on Mars) is tested in those environments too. Section 2.6.1 tolerances: temperature 2 degC;
+  pressure plus or minus 5 percent above 1.3e4 Pa, 10 percent between 1.3e2 and 1.3e4 Pa, 25 percent
+  between 1.3e1 and 1.3e2 Pa, 80 percent below 1.3e1 Pa.
+applies_to:
+  test_types: [thermal_vacuum]
+values:
+  chamber_pressure_max: {text: "1.33e-3 Pa (1e-5 torr)", unit: text}
+  temperature_tolerance: {value: 2, unit: degC}
+  pressure_tolerance_above_1p3e4_pa: {value: 5, unit: percent}
+  pressure_tolerance_1p3e2_to_1p3e4_pa: {value: 10, unit: percent}
+  pressure_tolerance_1p3e1_to_1p3e2_pa: {value: 25, unit: percent}
+  pressure_tolerance_below_1p3e1_pa: {value: 80, unit: percent}
+notes: The tolerance table is in 2.6.1 on page 2.6-5 (pdf 246); Section 1.13 holds the general test-condition tolerances.
+---
+kind: rule
+id: gevs-7000b.rule.spare_hardware_thermal_cycles
+standard: gevs-7000b
+title: Spare components - at least 8 thermal cycles if integrated before system test, 12 if after (2.6.2.2)
+citation: {standard: gevs-7000b, clause: "2.6.2.2", page: "2.6-5", pdf_page: 246}
+category: screening
+statement: >
+  Spares are procured with the flight hardware and tested so their cycle count, levels and durations
+  match the total other flight components receive across unit, subsystem and payload tests, so they
+  can be fitted at any point. As a minimum a spare component sees eight thermal cycles before
+  integration onto the subsystem or system ahead of system test, and twelve if integrated after
+  system test. Multiple flight systems follow the same protoflight approach, repeating thermal balance
+  on each (2.6.2.2.1).
+applies_to:
+  test_types: [thermal_vacuum]
+  levels: [unit]
+values:
+  spare_cycles_before_system_test: {value: 8, unit: cycles}
+  spare_cycles_after_system_test: {value: 12, unit: cycles}
+notes: The clause begins on 2.6-5 and the cycle numbers are on 2.6-6 (pdf 247).
+---
+kind: rule
+id: gevs-7000b.rule.tv_retest_after_rework
+standard: gevs-7000b
+title: Thermal vacuum retest after repair or rework, by the level at which the failure occurred (2.6.2.2.2)
+citation: {standard: gevs-7000b, clause: "2.6.2.2.2", page: "2.6-6", pdf_page: 247}
+category: retest
+statement: >
+  Retest follows any failure whose investigation needs disassembly, rework or repair, sized to restore
+  flightworthiness; ideally the successful cycles after rework still total the 12-cycle specification.
+  Failure in unit test: repeat the whole unit thermal vacuum test. Failure in subsystem test: the
+  reworked unit repeats at least 4 unit cycles before reinstallation and then at least 2 subsystem
+  cycles, or at least 8 unit cycles if no subsystem cycles remain. Failure in system test, subsystem
+  hardware: the unit is removed, repaired and retested at least 6 cycles before reinstallation, then
+  completes the remaining system testing (same count whether or not system cycles are repeated).
+  Failure in system test, system hardware: at least 6 cycles then at least 2 system cycles, or at
+  least 10 cycles if no system testing is repeated.
+applies_to:
+  test_types: [thermal_vacuum]
+  levels: [unit, subsystem, element]
+values:
+  after_unit_failure: {text: "repeat entire unit-level thermal vacuum test", unit: text}
+  after_subsystem_failure_unit_cycles: {value: 4, unit: cycles, note: "then at least 2 subsystem cycles"}
+  after_subsystem_failure_subsystem_cycles: {value: 2, unit: cycles}
+  after_subsystem_failure_no_subsystem_cycles_left: {value: 8, unit: cycles, note: "unit cycles"}
+  after_system_failure_subsystem_hardware: {value: 6, unit: cycles}
+  after_system_failure_system_hardware: {value: 6, unit: cycles, note: "then at least 2 system cycles"}
+  after_system_failure_system_cycles: {value: 2, unit: cycles}
+  after_system_failure_no_system_test_repeated: {value: 10, unit: cycles}
+  target_total_after_rework: {value: 12, unit: cycles}
+---
+kind: rule
+id: gevs-7000b.rule.tv_hot_and_cold_start_demonstrations
+standard: gevs-7000b
+title: Hot and cold turn-on demonstrated at least once each under vacuum, primary and redundant sides, without margin on the turn-on temperature (2.6.3.3.1.5)
+citation: {standard: gevs-7000b, clause: "2.6.3.3.1.5", page: "2.6-21", pdf_page: 262}
+category: functional_test
+statement: >
+  Start-up after exposure to orbital extremes is shown under vacuum at least once at the low and
+  once at the high temperature, on primary and redundant sides as applicable. Turn-on temperatures
+  follow expected mission operations with no added margin, at survival/safehold or qualification
+  conditions whichever is more extreme. Units: cold turn-on follows the cold non-operating or
+  protoflight exposure (whichever is more extreme); hot turn-on follows the bakeout plateau after
+  cooling to the hot protoflight limit. Subsystem and payload demonstrations mirror the units that
+  are actually power cycled in orbit and recovery from survival/safehold, whether by flight heater or
+  by internal dissipation after turn-on; the off or safehold soak follows Table 2.6-1. Functional
+  tests run at every hot and cold plateau and during transitions, with a CPT at least once hot and
+  once cold (2.6.3.3.1.6). Items operating through pressure transitions get an electrical discharge
+  check (2.6.3.3.1). Before backfilling, all sensors read above the dew point (2.6.3.3.1.7).
+applies_to:
+  test_types: [thermal_vacuum, functional_performance]
+  levels: [unit, subsystem, element]
+values:
+  cold_turn_on_demonstrations_min: {value: 1, unit: count, per: side}
+  hot_turn_on_demonstrations_min: {value: 1, unit: count, per: side}
+  turn_on_temperature_margin: {value: 0, unit: degC, relative_to: max_predicted, note: "no margin; survival/safehold or qualification condition, whichever is more extreme"}
+---
+kind: rule
+id: gevs-7000b.rule.tv_outgassing_phase_and_contamination_monitoring
+standard: gevs-7000b
+title: Outgassing phase in a hot exposure for contamination-sensitive articles; TQCM and cold finger monitoring; start and end hot (2.6.3.3.1.1, 2.6.5)
+citation: {standard: gevs-7000b, clause: "2.6.5", page: "2.6-29", pdf_page: 270}
+category: general
+statement: >
+  Contamination-sensitive test articles (or when the contamination control plan requires it) include
+  an outgassing phase folded into a hot exposure of the thermal vacuum test, held until the monitors
+  show outgassing has fallen to an acceptable level (2.6.3.3.1.1, page 2.6-20, pdf 261). The chamber
+  and support equipment are examined and certified beforehand, with chamber bakeout where needed, so
+  that chamber sources do not mask the article's own. Monitoring during thermal vacuum uses at least a
+  temperature-controlled quartz crystal microbalance for accretion rate and a cold finger for content;
+  RGA, GC/MS, FTIR, cryogenic QCMs, mirrors and wipes may be added, with sensor placement chosen to
+  see the intended source. Cold-to-hot transitions are slow enough to avoid re-deposition from the
+  walls; testing preferably starts and ends with a hot soak, and if the last exposure is cold the
+  article is warmed before return to ambient so it stays the warmest item in the chamber.
+applies_to:
+  test_types: [thermal_vacuum, bakeout]
+  flags: [contamination_sensitive]
+values:
+  minimum_monitors: {text: "one TQCM (accretion rate) and one cold finger (content and relative amount)", unit: text}

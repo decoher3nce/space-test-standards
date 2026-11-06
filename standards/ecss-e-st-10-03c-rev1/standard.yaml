@@ -1,0 +1,32 @@
+kind: standard
+id: ecss-e-st-10-03c-rev1
+designation: ECSS-E-ST-10-03C Rev.1
+title: Space engineering - Testing
+revision: C Rev.1
+date: "2022-05-31"
+publisher: ESA-ESTEC Requirements & Standards Section on behalf of ECSS
+status: active
+supersedes: ECSS-E-ST-10-03C (2012-06-01)
+url: https://ecss.nl/standard/ecss-e-st-10-03c-rev-1-testing-31-may-2022/
+access: free_registration
+copyright_posture: >
+  Copyright ECSS; free download after registration. Only structured values (codes, levels,
+  durations) and clause or table citations are stored here. The standard's text, notes and
+  application notes are paraphrased or omitted, never reproduced.
+scope: >
+  Requirements for space segment equipment and element test programmes: test philosophy, model
+  philosophy, qualification, acceptance and protoflight baselines (Tables 5-1 to 5-6 for equipment,
+  6-1 to 6-6 for elements), test levels and durations, tolerances, and the tailoring approach in Annex D.
+regime_terms:
+  qualification: Qualification (QM/EQM)
+  protoflight: Protoflight (PFM)
+  acceptance: Acceptance (FM)
+  development: Development tests
+level_terms:
+  unit: Space segment equipment
+  subsystem: Subsystem
+  element: Space segment element
+source_file: ECSS-E-ST-10-03C-Rev.1 (31 May 2022).pdf (146 pages); pdf_page values index this file
+notes: >
+  Equipment types a to l are defined in clause 5.1; the applicability matrices use R (required) and
+  X (performed when agreed with the customer) and "-" (not required).

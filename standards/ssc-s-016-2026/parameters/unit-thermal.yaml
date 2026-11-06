@@ -1,0 +1,102 @@
+# Unit thermal test durations the NESC Academy deck attributes to the 2026 revision of SSC-S-016
+# (TR-2025-00777): the "SSC-S-016 2026" column of the test-duration history on slide 31 (pdf 32)
+# and the burn-in reduction stated on slides 37, 45 and 46 (pdf 38, 46, 47). Only reported deltas
+# are encoded; temperature ranges, dwell, rate and soak are not restated for 2026 in the deck.
+kind: test_parameters
+id: ssc-s-016-2026.params.thermal_cycle_unit
+standard: ssc-s-016-2026
+test_type: thermal_cycle
+title: Unit thermal cycle count and burn-in for electronic units (2026 revision, as reported)
+citation: {standard: ssc-s-016-2026, clause: "6.3.8", table: "Unit Thermal Testing - Test Duration (deck slide 31)", page: "31", pdf_page: 32, note: "clause number assumed unchanged from the 2014 edition; pdf_page indexes the NESC deck"}
+level_of_assembly: [unit]
+hardware_type: [electronic]
+by_regime:
+  acceptance:
+    cycles: {value: 10, unit: cycles, note: "10 thermal cycle plus 4 thermal vacuum cycles = 14 total; unchanged from the 2014 edition"}
+    extra:
+      total_thermal_cycles: {value: 14, unit: cycles}
+      burn_in_hours: {min_value: 150, max_value: 175, unit: hr, note: "150 hr for non-internally-redundant units, 175 hr for internally redundant units"}
+    footnotes: [n_delta]
+  protoflight:
+    cycles: {value: 16, unit: cycles, note: "16 thermal cycle plus 4 thermal vacuum cycles = 20 total; unchanged"}
+    extra:
+      total_thermal_cycles: {value: 20, unit: cycles}
+      burn_in_hours: {min_value: 150, max_value: 175, unit: hr, note: "150 hr non-internally-redundant, 175 hr internally redundant"}
+    footnotes: [n_delta]
+  qualification:
+    cycles: {value: 23, unit: cycles, note: "23 thermal cycle plus 4 thermal vacuum cycles = 27 total; unchanged"}
+    extra:
+      total_thermal_cycles: {value: 27, unit: cycles}
+    footnotes: [n_delta]
+footnotes:
+  n_delta: >
+    The deck's 2026 column keeps the 2014 cycle counts and reduces only the burn-in hours; the
+    deck says the revision is generally less stressing than SMC-S-016 while keeping the baseline
+    test-effectiveness goals. Temperature ranges are not restated for 2026 in the deck; see
+    ssc-s-016.params.thermal_cycle_unit for the 2014 values.
+confidence: deck_only
+notes: >
+  Deck-sourced delta; verify against TR-2025-00777 / SSC-S-016 (2026) unit thermal cycle clause.
+---
+kind: test_parameters
+id: ssc-s-016-2026.params.thermal_vacuum_unit
+standard: ssc-s-016-2026
+test_type: thermal_vacuum
+title: Unit thermal vacuum cycle count and burn-in for electronic units (2026 revision, as reported)
+citation: {standard: ssc-s-016-2026, clause: "6.3.9", table: "Unit Thermal Testing - Test Duration (deck slide 31)", page: "31", pdf_page: 32, note: "clause number assumed unchanged from the 2014 edition; pdf_page indexes the NESC deck"}
+level_of_assembly: [unit]
+hardware_type: [electronic]
+by_regime:
+  acceptance:
+    cycles: {value: 4, unit: cycles, note: "4 thermal vacuum plus 10 thermal cycle cycles = 14 total; unchanged"}
+    extra:
+      total_thermal_cycles: {value: 14, unit: cycles}
+      burn_in_hours: {min_value: 150, max_value: 175, unit: hr, note: "shared total with thermal cycling; 150 hr non-internally-redundant, 175 hr internally redundant"}
+    footnotes: [n_delta]
+  protoflight:
+    cycles: {value: 4, unit: cycles, note: "4 thermal vacuum plus 16 thermal cycle cycles = 20 total; unchanged"}
+    extra:
+      total_thermal_cycles: {value: 20, unit: cycles}
+      burn_in_hours: {min_value: 150, max_value: 175, unit: hr}
+    footnotes: [n_delta]
+  qualification:
+    cycles: {value: 4, unit: cycles, note: "4 thermal vacuum plus 23 thermal cycle cycles = 27 total; unchanged"}
+    extra:
+      total_thermal_cycles: {value: 27, unit: cycles}
+    footnotes: [n_delta]
+footnotes:
+  n_delta: Cycle counts unchanged from 2014; only burn-in hours differ. See ssc-s-016.params.thermal_vacuum_unit for ranges, dwell, rate and soak.
+confidence: deck_only
+notes: Deck-sourced delta; verify against TR-2025-00777 / SSC-S-016 (2026) unit thermal vacuum clause.
+---
+kind: test_parameters
+id: ssc-s-016-2026.params.burn_in_unit
+standard: ssc-s-016-2026
+test_type: burn_in
+title: Unit burn-in operating hours for electronic units (2026 revision - 150 hr, 175 hr if internally redundant)
+citation: {standard: ssc-s-016-2026, clause: "6.3.8", table: "Other SSC-S-016 Thermal Test Requirements (deck slide 37)", page: "37", pdf_page: 38, note: "also deck slides 31, 45 and 46 (pdf 32, 46, 47); the burn-in clause number is not given in the deck"}
+level_of_assembly: [unit]
+hardware_type: [electronic]
+by_regime:
+  acceptance:
+    duration: {min_value: 150, max_value: 175, unit: hr, note: "total thermal test operating time; the value depends on internal redundancy"}
+    extra:
+      non_internally_redundant_hours: {value: 150, unit: hr}
+      internally_redundant_hours: {value: 175, unit: hr}
+    footnotes: [n_basis]
+  protoflight:
+    duration: {min_value: 150, max_value: 175, unit: hr, note: "total thermal test operating time; the value depends on internal redundancy"}
+    extra:
+      non_internally_redundant_hours: {value: 150, unit: hr}
+      internally_redundant_hours: {value: 175, unit: hr}
+    footnotes: [n_basis]
+  qualification:
+    duration: {text: Enveloped, unit: text, note: "as in the 2014 edition; no separate burn-in requirement reported for qualification units"}
+footnotes:
+  n_basis: >
+    The deck cites the Lockheed Martin burn-in study (Smith, IES 1988) as supporting the reduction
+    from 300 hr (MIL-STD-1540A/B) to 200 hr and now to 150-175 hr, and notes a 14-cycle unit
+    thermal vacuum test typically accrues the hours without added cycling. Whether the 100 hr per
+    redundant path rule of the 2014 edition is retained is not stated.
+confidence: deck_only
+notes: Deck-sourced delta; verify against TR-2025-00777 / SSC-S-016 (2026) burn-in requirement, including how "internally redundant" is defined.

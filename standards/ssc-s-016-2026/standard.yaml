@@ -1,0 +1,25 @@
+kind: standard
+id: ssc-s-016-2026
+designation: SSC-S-016 (2026 revision), published as Aerospace TR-2025-00777
+title: Test Requirements for Launch, Upper-Stage and Space Vehicles (revision)
+revision: "2026"
+date: "2026"
+publisher: US Space Force Space Systems Command / The Aerospace Corporation
+status: active
+supersedes: ssc-s-016
+access: limited
+copyright_posture: >
+  Only deltas reported in a public briefing are recorded, as deck_only values. The TR itself has not
+  been encoded; obtain it from the customer before relying on these values.
+scope: >
+  Revision of SSC-S-016 with requirements reported as generally less stressing than SMC-S-016 while
+  keeping the baseline test-effectiveness goals. Known deltas: unit burn-in hours.
+regime_terms:
+  qualification: Qualification
+  protoflight: Protoqualification
+  acceptance: Acceptance
+level_terms:
+  unit: Unit
+  subsystem: Subsystem
+  element: Vehicle
+source_file: NESC Academy deck (J. W. Welch, June 2026), 72 pages
